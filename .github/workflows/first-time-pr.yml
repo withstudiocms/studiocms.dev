@@ -42,7 +42,7 @@ jobs:
                       'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                      content: "<@&1309279407743172608>",
+                      content: `<@&${{ secrets.DISCORD_ROLE_HONOURED }}>, <@&${{ secrets.DISCORD_ROLE_REVERED }}>, <@&${{ secrets.DISCORD_ROLE_EXALTED }}>`,
                       tts: false,
                       embeds: [
                         {
