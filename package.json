@@ -1,16 +1,36 @@
 {
-  "name": "@example/minimal",
-  "type": "module",
+  "name": "studiocms-dot-dev",
   "version": "0.0.1",
-  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.5.0",
   "scripts": {
+    "astro": "astro",
+    "build": "astro check && astro build",
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "ci:install": "pnpm install --frozen-lockfile"
   },
   "dependencies": {
-    "astro": "^4.16.14"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/tailwind": "^5.1.2",
+    "astro": "^4.16.14",
+    "sharp": "^0.33.5",
+    "typescript": "^5.6.3",
+    "@fontsource-variable/onest": "^5.1.0",
+    "@iconify-json/heroicons": "^1.2.1",
+    "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/typography": "^0.5.15",
+    "astro-icon": "^1.1.2",
+    "motion": "^11.11.17",
+    "tailwind-merge": "^2.5.4",
+    "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss": "^3.4.15",
+    "@resvg/resvg-js": "^2.6.2",
+    "html-entities": "^2.5.2",
+    "satori": "^0.12.0",
+    "satori-html": "^0.3.2"
   }
 }
