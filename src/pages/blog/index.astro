@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
 import BlogCard from '../../components/BlogCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -12,7 +13,7 @@ blogPosts.sort(({ data: { publishDate: a } }, { data: { publishDate: b } }) => {
 
 <BaseLayout title='Blog'>
     <section class='studiocms-container mx-auto py-12 px-8 md:px-0 min-h-[calc(100vh_-_70px)]'>
-        <h1 class="text-5xl font-bold mb-8">The StudioCMS Blog</h1>
+        <h1 class="text-5xl font-bold mb-8">The StudioCMS Blog <a href="/rss.xml" title="RSS Feed"><Icon name='heroicons:rss' class='inline' /></a></h1>
         <p class="mb-12 text-lg">Get the latest news from StudioCMS</p>
         <div class="grid md:grid-cols-3 gap-8 md:gap-4">
             {
