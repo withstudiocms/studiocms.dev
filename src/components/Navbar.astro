@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { DISCORD_URL, DOCS_URL, GITHUB_URL } from '../constants';
+import { DISCORD_URL, DOCS_URL, GITHUB_URL, SPONSOR_URL } from '../constants';
 import ThemeSelect from './ThemeSelect.astro';
 ---
 
@@ -35,6 +35,10 @@ import ThemeSelect from './ThemeSelect.astro';
             Docs
           </a>
         </li>
+        <!-- 
+        
+        Disabled until new roadmap is available
+        
         <li class="text-link">
           <a 
             href='/roadmap' 
@@ -45,7 +49,7 @@ import ThemeSelect from './ThemeSelect.astro';
           >
             Roadmap
           </a>
-        </li>
+        </li> -->
         <li>
           <a
             href={DISCORD_URL}
@@ -71,6 +75,20 @@ import ThemeSelect from './ThemeSelect.astro';
             <Icon
               name='github'
               class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            class="navbar-icon"
+            href={SPONSOR_URL}
+            rel='external nofollow'
+            aria-label='GitHub link'
+            title="Patreon"
+            >
+            <Icon
+              name='patreon'
+              class='h-6 w-6 transition duration-200 ease-in-out hover:scale-110'
             />
           </a>
         </li>
