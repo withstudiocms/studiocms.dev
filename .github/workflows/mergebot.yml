@@ -3,12 +3,10 @@ name: mergebot
 on:
   push:
     branches: [main]
-    
+
 jobs:
   mergebot:
-    runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'withstudiocms' }}
-    steps:
-    - name: withStudioCMS Mergebot
-      uses: withstudiocms/mergebot@v1.0.1
-  
+    if: ${{ github.repository_owner == 'bombshell-dev' }}
+    uses: withstudiocms/mergebot/action.yml@main
+    secrets:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MERGEBOT }}
