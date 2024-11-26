@@ -1,6 +1,8 @@
 ---
 title: Goodbye, Astro Studio!
 description: Astro Studio is gone but StudioCMS isn't!
+blueSky:
+  postId: 3lbtzm6pmh22q
 publishDate: 2024-09-21
 ogVariant: fall
 author: adam-matthiesen

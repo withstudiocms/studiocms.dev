@@ -1,6 +1,8 @@
 ---
 title: StudioCMS secures Sponsorship from Turso
 description: Turso has become our first official sponsor!
+blueSky:
+  postId: 3lbtzp5v2kc2g
 publishDate: 2024-09-30
 hero:
   image: "./assets/turso-sponsor.png"

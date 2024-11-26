@@ -9,6 +9,12 @@ const blogCollection = defineCollection({
 				message: 'Description must be less than 50 characters',
 			}),
 			publishDate: z.date(),
+			blueSky: z
+				.object({
+					postId: z.string(),
+					profile: z.string().optional(),
+				})
+				.optional(),
 			hero: z
 				.object({
 					image: image(),

@@ -1,6 +1,8 @@
 ---
 title: 'New Domain, Modular Structure & NPM Package Names!'
 description: Updated Domain, and new npm Packages.
+blueSky:
+  postId: 3lbtzo5a6ys2q
 publishDate: 2024-09-23
 hero:
   image: "./assets/newdomain-packagename.png"

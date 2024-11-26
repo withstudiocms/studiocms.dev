@@ -1,6 +1,8 @@
 ---
 title: Welcoming our latest maintainer!
 description: Welcoming our newest member, and dashboard!
+blueSky:
+  postId: 3lbtzr6gvxs2g
 publishDate: 2024-10-03
 ogVariant: fall
 author: adam-matthiesen
