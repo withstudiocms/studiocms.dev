@@ -15,7 +15,7 @@ You've read the title (or so I hope), so what am I on about here?
 
 Well, you've no doubt seen that we have been [sponsored by Turso](https://studiocms.dev/blog/turso-sponsorship), which were and still are incredibly 
 grateful for. However, we're trying to improve our experience as much as possible for both new users and contributors to the project. At this point 
-we feel we can move away from Astrolicious , the community organization who's been helping us nurture our little project, and go in alone to have full 
+we feel we can move away from Astrolicious, the community organization who's been helping us nurture our little project, and go in alone to have full 
 control over our own ecosystem! After talking to [Florian](https://github.com/florian-lefebvre) and [Alex](https://github.com/alexanderniebuhr), 
 we've come to the conclusion that it's time for a fresh coat of new paint. Therefore, I introduce to you:
 
@@ -23,8 +23,8 @@ we've come to the conclusion that it's time for a fresh coat of new paint. There
 That's right, we've escaped the confines of our single channel on Astrolicious' Server and made ourselves [a new home](https://chat.studiocms.dev). This 
 will be the place for you to chat and receive news about StudioCMS from now on! *Don't worry, the blog isn't going anywhere ;)*
 
-Moving to the new Discord Server has already allowed us to do some pretty cool things. For example, yours truly has been hard at work at our new Open 
-Source Discord Bot, [Apollo](https://github.com/withstudiocms/apollo)! If you're on the Astro Discord, you'll know what they're good at. PTAL notifications, 
+Moving to the new Discord server has already allowed us to do some pretty cool things. For example, yours truly has been hard at work at our new open 
+source Discord bot, [Apollo](https://github.com/withstudiocms/apollo)! If you're on the Astro Discord, you'll know what they're good at. PTAL notifications, 
 moderation tools (soon™️), support forum utilities, it's all there.
 
 You can even use this Bot in your own Servers! All you need is a GitHub App, Discord App, and a libSQL database connection, for which we obviously use 
@@ -35,9 +35,9 @@ But if you really **did** read the title (or clicked one of the links in this ar
 pleasure that I announce... *Drumroll please...* 🥁
 
 ## The new StudioCMS GitHub Org
-That's right, along with the Discord Server we've also got [our own GitHub Organization](https://github.com/withstudiocms) now! 
+Along with the Discord server we now have [our own GitHub Organization](https://github.com/withstudiocms)! 
 Similar to the Discord, we've felt that only having access to the repository without any organization-management options was holding us back a tiny bit, 
-so here's to [github.com/withstudiocms](https://github.com/withstudiocms).
+so here's to [github.com/withstudiocms](https://github.com/withstudiocms) 🍻.
 
 This new Org allows us to have better team management, de-clutter our Monorepo and iterate faster on any changes we want to implement. It's small things, 
 really - for example, our website now has its own repository. It's not much, but it's definitely better than having to navigate an entire monorepo to update a blog post. 
