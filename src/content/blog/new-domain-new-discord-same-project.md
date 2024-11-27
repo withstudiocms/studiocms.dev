@@ -35,7 +35,7 @@ But if you really **did** read the title (or clicked one of the links in this ar
 pleasure that I announce... *Drumroll please...* 🥁
 
 ## The new StudioCMS GitHub Org
-That's right, along with the Discord Server we've also got [our own GitHub Organization](https://github.com/withstudiocms) now! 
+Along with the Discord server we now have [our own GitHub Organization](https://github.com/withstudiocms)! 
 Similar to the Discord, we've felt that only having access to the repository without any organization-management options was holding us back a tiny bit, 
 so here's to [github.com/withstudiocms](https://github.com/withstudiocms).
 
