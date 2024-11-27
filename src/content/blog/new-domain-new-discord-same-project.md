@@ -13,7 +13,7 @@ Although it's been a while since we last talked, I can assure you that work on S
 
 You've read the title (or so I hope), so what am I on about here?
 
-Well, you've no doubt seen that we have been [sponsored by Turso](https://studiocms.dev/blog/turso-sponsorship), which were and still are incredibly 
+Well, you've no doubt seen that we have been [sponsored by Turso](https://studiocms.dev/blog/turso-sponsorship), which we were and still are incredibly 
 grateful for. However, we're trying to improve our experience as much as possible for both new users and contributors to the project. At this point 
 we feel we can move away from Astrolicious, the community organization who's been helping us nurture our little project, and go in alone to have full 
 control over our own ecosystem! After talking to [Florian](https://github.com/florian-lefebvre) and [Alex](https://github.com/alexanderniebuhr), 
