@@ -15,6 +15,6 @@ export default defineConfig({
 	},
 	integrations: [icon(), tailwind()],
 	experimental: {
-		contentIntellisense: true
-	}
+		contentIntellisense: true,
+	},
 });
