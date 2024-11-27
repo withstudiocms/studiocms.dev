@@ -1,0 +1,44 @@
+---
+interface Props {
+	postId: string;
+	profile?: string;
+}
+
+const { profile = 'studiocms.dev', postId } = Astro.props;
+
+const blueskyCommentsUrl = `https://bsky.app/profile/${profile}/post/${postId}`;
+---
+
+<hr class="my-8" />
+
+<h3>Comments</h3>
+
+<div>
+    <p class="text-sm">
+        Comments are powered by <a href="https://blueskyapp.com" target="_blank" rel="noopener noreferrer">BlueSky</a>.
+    </p>
+    <p>
+        You can comment on this post by visiting the <a href={blueskyCommentsUrl} target="_blank" rel="noopener noreferrer">BlueSky page</a>.
+    </p>
+</div>
+
+<bluesky-comments url={blueskyCommentsUrl}>
+</bluesky-comments>
+
+<script is:inline type="module">
+import "https://esm.sh/bluesky-comments-tag/load";
+</script>
+
+<style is:global>
+
+[data-theme='dark'] {
+  bluesky-comments {
+    --bluesky-bg-color: #1e293b;
+    --bluesky-text-color: #e2e8f0;
+    --bluesky-border-color: #4a5568;
+    --bluesky-hover-bg: #2d3748;
+    --bluesky-handle-color: #9ca3af;
+    --bluesky-footer-text-color: #9ca3af;
+  }
+}
+</style>

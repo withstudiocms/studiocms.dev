@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
 import type { GetStaticPaths, ImageMetadata } from 'astro';
 import { Icon } from 'astro-icon/components';
+import BlueSky from '../../../components/BlueSky.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
@@ -102,6 +103,10 @@ const imageProps = {
             </div>
             <article class="my-10 mx-auto prose dark:prose-invert lg:prose-xl">
                 <Content />
+
+                {
+                    post.data.blueSky && <BlueSky postId={post.data.blueSky.postId} profile={post.data.blueSky.profile} />
+                }
             </article>
         </section>
     </div>
