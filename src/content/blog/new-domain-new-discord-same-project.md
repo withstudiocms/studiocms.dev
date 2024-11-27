@@ -28,7 +28,7 @@ Source Discord Bot, [Apollo](https://github.com/withstudiocms/apollo)! If you're
 moderation tools (soon™️), support forum utilities, it's all there.
 
 You can even use this Bot in your own Servers! All you need is a GitHub App, Discord App, and a libSQL database connection, for which we obviously use 
-and highly recommend [Turso](https://turso.tech/). You can take a look at the [README file](https://github.com/withstudiocms/apollo?tab=readme-ov-file#apollo) 
+and highly recommend [Turso](https://tur.so/studiocms). You can take a look at the [README file](https://github.com/withstudiocms/apollo?tab=readme-ov-file#apollo) 
 to learn more.
 
 But if you really **did** read the title (or clicked one of the links in this article), you might've also noticed another thing. Thus, it is with great 
