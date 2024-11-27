@@ -1,6 +1,8 @@
 ---
 title: New Domain, new Discord, same Project!
 description: .xyz is out, .dev is the new black.
+blueSky:
+  postId: 3lbxo6sexqk2a
 publishDate: 2024-11-27
 ogVariant: winter
 author: louis-escher
