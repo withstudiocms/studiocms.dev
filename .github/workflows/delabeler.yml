@@ -23,6 +23,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: |
             awaiting review(s)
+            awaiting review
             in progress
             question
             help wanted
