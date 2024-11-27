@@ -27,7 +27,7 @@ Moving to the new Discord server has already allowed us to do some pretty cool t
 source Discord bot, [Apollo](https://github.com/withstudiocms/apollo)! If you're on the Astro Discord, you'll know what they're good at. PTAL notifications, 
 moderation tools (soon™️), support forum utilities, it's all there.
 
-You can even use this Bot in your own Servers! All you need is a GitHub App, Discord App, and a libSQL database connection, for which we obviously use 
+You can even use this Bot in your own servers! All you need is a GitHub app, Discord app, and a libSQL database connection, for which we obviously use 
 and highly recommend [Turso](https://turso.tech/). You can take a look at the [README file](https://github.com/withstudiocms/apollo?tab=readme-ov-file#apollo) 
 to learn more.
 
