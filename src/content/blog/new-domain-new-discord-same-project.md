@@ -23,8 +23,8 @@ we've come to the conclusion that it's time for a fresh coat of new paint. There
 That's right, we've escaped the confines of our single channel on Astrolicious' Server and made ourselves [a new home](https://chat.studiocms.dev). This 
 will be the place for you to chat and receive news about StudioCMS from now on! *Don't worry, the blog isn't going anywhere ;)*
 
-Moving to the new Discord Server has already allowed us to do some pretty cool things. For example, yours truly has been hard at work at our new Open 
-Source Discord Bot, [Apollo](https://github.com/withstudiocms/apollo)! If you're on the Astro Discord, you'll know what they're good at. PTAL notifications, 
+Moving to the new Discord server has already allowed us to do some pretty cool things. For example, yours truly has been hard at work at our new open 
+source Discord bot, [Apollo](https://github.com/withstudiocms/apollo)! If you're on the Astro Discord, you'll know what they're good at. PTAL notifications, 
 moderation tools (soon™️), support forum utilities, it's all there.
 
 You can even use this Bot in your own Servers! All you need is a GitHub App, Discord App, and a libSQL database connection, for which we obviously use 
