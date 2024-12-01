@@ -16,9 +16,9 @@ const verticalClass = twMerge('my-4 h-full border-r border-gray-300 hidden md:bl
 
 {
   orientation === 'horizontal' ? (
-    <div aria-label='separator' class={horizontalClass} />
+    <div role='separator' class={horizontalClass} />
   ) : (
-    <div aria-label='separator' class={verticalClass} />
+    <div role='separator' class={verticalClass} />
   )
 }
 
