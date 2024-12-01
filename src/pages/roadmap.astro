@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title='Roadmap'>
-    <section
+    <main
       id='hero'
       class='h-hero grid place-items-center bg-slate-100 p-4 md:p-6 text-gray-900 dark:bg-[--purple-900] dark:text-slate-100'
     >
@@ -21,11 +21,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
         </div>
       </div>
-    </section>
+    </main>
     <script>
         setTimeout(() => {
             window.location.assign((document.getElementById('roadmap-url') as HTMLAnchorElement).href);
         }, 2000);
     </script>
-
 </BaseLayout>

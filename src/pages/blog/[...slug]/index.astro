@@ -43,7 +43,7 @@ const imageProps = {
 ---
 
 <BaseLayout title={post.data.title} desc={post.data.description} ogImage={imageProps.src}>
-    <div class="p-8 pt-4">
+    <main class="p-8 pt-4">
         <section class='studiocms-container mx-auto min-h-[calc(100vh_-_70px)]'>
             <div class="breadcrumbs mb-4 text-lg">
                 <a href="/blog" class="hover:text-indigo-400 transition-colors flex flex-row gap-2 items-center">
@@ -109,7 +109,7 @@ const imageProps = {
                 }
             </article>
         </section>
-    </div>
+    </main>
 </BaseLayout>
 <style>
     .author-contents-bg {
