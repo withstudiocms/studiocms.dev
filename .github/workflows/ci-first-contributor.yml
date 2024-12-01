@@ -23,7 +23,7 @@ jobs:
 
             Welcome to the StudioCMS project! We're excited to have you here. Thanks for opening your first issue! 🎉
 
-            If you have not already and your issue is related to a bug, please make sure to include the following information in your issue:
+            If you are reporting a bug, please make sure to include the following information in your issue:
             - A clear description of the issue
             - Steps to reproduce the issue
             - Expected behavior
@@ -41,7 +41,7 @@ jobs:
           pr-opened-message: >
             Hello @${{ github.event.pull_request.user.login }}, and thank you for opening your first pull request to StudioCMS! 🎉
 
-            If you have not already, please make sure to review the project's [Contributing Guide](https://github.com/withstudiocms/.github/blob/main/CONTRIBUTING.md) to ensure your pull request meets our quality standards.
+            Please make sure to review the project's [Contributing Guide](https://github.com/withstudiocms/.github/blob/main/CONTRIBUTING.md) to ensure your pull request meets our quality standards.
 
             We're excited to have you here and appreciate your contribution. If you have not already, please make sure to include the following information in your pull request:
             - A clear description of the changes
