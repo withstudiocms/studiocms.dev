@@ -21,11 +21,11 @@ const useAstroIcon = icon.startsWith('heroicons:');
     <div class='flex items-center justify-start gap-3 pb-4'>
       {
         useAstroIcon
-          ? <AstroIcon name={icon} height={32} width={32} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
+          ? <AstroIcon name={icon} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
           : icon === "astro" 
-            ? <AstroLogo  height={32} width={32} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
+            ? <AstroLogo  height={32} width={32} class='stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
             : icon === "markdown" 
-              ? <Markdown  height={32} width={32} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
+              ? <Markdown  height={32} width={32} class='stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
               : undefined
       }
       <!-- <Icon

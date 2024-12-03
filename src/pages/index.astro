@@ -73,8 +73,7 @@ const features = (await getCollection('features')).sort(
           href={GITHUB_URL}
         >
           <h3 class='text-center text-2xl relative top-px'>Star it</h3>
-          <!-- <Icon name='star' class='text-2xl' /> -->
-          <Star class="text-2xl" />
+          <Star height={24} width={24} class="text-2xl" />
         </a>
         <Separator orientation='vertical' extraClasses='h-3/5' />
         <a
@@ -82,8 +81,7 @@ const features = (await getCollection('features')).sort(
           href={SPONSOR_URL}
         >
           <h3 class='text-center text-2xl'>Sponsor it</h3>
-          <!-- <Icon name='patreon' class='text-3xl' /> -->
-          <Patreon class="text-3xl" />
+          <Patreon height={24} width={24} class="text-3xl inline" />
         </a>
       </div>
     </section>
