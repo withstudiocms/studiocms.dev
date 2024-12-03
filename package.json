@@ -23,7 +23,7 @@
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.15",
     "astro": "^5.0.0",
-    "astro-icon": "^1.1.2",
+    "astro-icon": "^1.1.4",
     "html-entities": "^2.5.2",
     "motion": "^11.11.17",
     "satori": "^0.12.0",

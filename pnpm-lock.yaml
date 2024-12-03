@@ -36,8 +36,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(@types/node@22.9.1)(jiti@1.21.6)(rollup@4.27.3)(typescript@5.6.3)(yaml@2.6.1)
       astro-icon:
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: ^1.1.4
+        version: 1.1.4
       html-entities:
         specifier: ^2.5.2
         version: 2.5.2
@@ -978,8 +978,8 @@ packages:
   array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
 
-  astro-icon@1.1.2:
-    resolution: {integrity: sha512-2qAHBtZLYuFEIMP0Ck0edyLi5fQmJjwP2Qbv41f8L4KAJ2sra/dH7q5lCOn4q0DHVtS0w3tPG8UKQRits3UPcg==}
+  astro-icon@1.1.4:
+    resolution: {integrity: sha512-sMLkQaevIQLv38WBzb/RDbsmxhg5+X+KcNmpTi9cE6MLurNWU1MPnlO87d9Vwg4HxTenKpDlYp81A3syXFW/gw==}
 
   astro@5.0.0:
     resolution: {integrity: sha512-hsDlZ8m8rHWDdvCi3TcgFT6vS2S4Wt33m9AUOPfLUZ1JkzchIKtviWbGFqJCu3LhlpnUHyP2AxujWVm+IBS6tw==}
@@ -3416,7 +3416,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro-icon@1.1.2:
+  astro-icon@1.1.4:
     dependencies:
       '@iconify/tools': 4.0.7
       '@iconify/types': 2.0.0
