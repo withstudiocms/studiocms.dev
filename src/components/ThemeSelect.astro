@@ -1,12 +1,12 @@
 ---
-import { Icon } from 'astro-icon/components';
+import Icon from '@studiocms/ui/utils/Icon.astro';
 import Check from '../assets/check.svg';
 ---
 
 <div class="dropdown relative select-none w-8 h-8 z-50">
   <button id="themeselector" class="hover:scale-110 transition duration-200 ease-in-out" aria-label="Select Theme">
-    <Icon name={'heroicons:sun-solid'} class="h-8 w-8 text-black dark:hidden" />
-    <Icon name={'heroicons:moon-solid'} class="hidden h-8 w-8 text-white dark:block" />
+    <Icon name={'sun-solid'} class="h-8 w-8 text-black dark:hidden" />
+    <Icon name={'moon-solid'} class="hidden h-8 w-8 text-white dark:block" />
   </button>
 
   <div class="dropdown__window absolute right-0 top-12 z-10 hidden min-w-40 overflow-hidden rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] focus-visible:outline-none dark:shadow-[0_3px_10px_rgb(0,0,0,0.2)]" tabindex="0">

@@ -1,8 +1,8 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
+import Icon from '@studiocms/ui/utils/Icon.astro';
 import type { GetStaticPaths, ImageMetadata } from 'astro';
-import { Icon } from 'astro-icon/components';
 import BlueSky from '../../../components/BlueSky.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
@@ -47,7 +47,7 @@ const imageProps = {
         <section class='studiocms-container mx-auto min-h-[calc(100vh_-_70px)]'>
             <div class="breadcrumbs mb-4 text-lg">
                 <a href="/blog" class="hover:text-indigo-400 transition-colors flex flex-row gap-2 items-center">
-                    <Icon name="heroicons:arrow-left" class={'w-6 h-6'} />
+                    <Icon name="arrow-left" class={'w-6 h-6'} />
                     <span>Back to Blog</span>
                 </a>
             </div>

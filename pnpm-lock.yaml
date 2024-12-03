@@ -29,6 +29,9 @@ importers:
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
+      '@studiocms/ui':
+        specifier: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/ui@393
+        version: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/ui@393(astro@5.0.0(@types/node@22.9.1)(jiti@1.21.6)(rollup@4.27.3)(typescript@5.7.2)(yaml@2.6.1))
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.15(tailwindcss@3.4.15)
@@ -856,6 +859,12 @@ packages:
     resolution: {integrity: sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA==}
     engines: {node: '>= 8.0.0'}
     hasBin: true
+
+  '@studiocms/ui@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/ui@393':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@studiocms/ui@393}
+    version: 0.1.0-beta.7
+    peerDependencies:
+      astro: '>=4.16'
 
   '@tailwindcss/typography@0.5.15':
     resolution: {integrity: sha512-AqhlCXl+8grUz8uqExv5OTtgpjuVIwFTSXTrh8y9/pw6q2ek7fJ+Y8ZEVw7EB2DCcuCOtEjf9w3+J3rzts01uA==}
@@ -3273,6 +3282,15 @@ snapshots:
     dependencies:
       fflate: 0.7.4
       string.prototype.codepointat: 0.2.1
+
+  '@studiocms/ui@https://pkg.pr.new/withstudiocms/studiocms/@studiocms/ui@393(astro@5.0.0(@types/node@22.9.1)(jiti@1.21.6)(rollup@4.27.3)(typescript@5.7.2)(yaml@2.6.1))':
+    dependencies:
+      '@fontsource-variable/onest': 5.1.0
+      '@iconify-json/heroicons': 1.2.1
+      '@iconify/utils': 2.1.33
+      astro: 5.0.0(@types/node@22.9.1)(jiti@1.21.6)(rollup@4.27.3)(typescript@5.7.2)(yaml@2.6.1)
+    transitivePeerDependencies:
+      - supports-color
 
   '@tailwindcss/typography@0.5.15(tailwindcss@3.4.15)':
     dependencies:

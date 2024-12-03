@@ -1,5 +1,7 @@
 ---
-import { Icon as AstroIcon } from 'astro-icon/components';
+import { icons as heroIcons } from '@iconify-json/heroicons/icons.json';
+import Icon from '@studiocms/ui/utils/Icon.astro';
+import type { HeroIconName } from '@studiocms/ui/utils/iconType.ts';
 import AstroLogo from '../assets/astro.svg';
 import Markdown from '../assets/markdown.svg';
 
@@ -11,7 +13,15 @@ interface Props {
 
 const { icon, description, feature } = Astro.props;
 
-const useAstroIcon = icon.startsWith('heroicons:');
+const heroIconName = icon.replace('heroicons:', '');
+
+const isHeroIcon = (icon: string) => {
+	const Hero = Object.keys(heroIcons);
+
+	if (Hero.includes(icon)) return true;
+
+	return false;
+};
 ---
 
 <div
@@ -20,8 +30,8 @@ const useAstroIcon = icon.startsWith('heroicons:');
   <div class='h-full place-self-center rounded-lg bg-slate-200 dark:bg-[--purple-900] p-6 md:p-8'>
     <div class='flex items-center justify-start gap-3 pb-4'>
       {
-        useAstroIcon
-          ? <AstroIcon name={icon} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
+        isHeroIcon(heroIconName)
+          ? <Icon name={heroIconName as HeroIconName} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
           : icon === "astro" 
             ? <AstroLogo  height={32} width={32} class='stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
             : icon === "markdown" 

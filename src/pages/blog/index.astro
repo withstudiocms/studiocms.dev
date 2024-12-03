@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components';
+import Icon from '@studiocms/ui/utils/Icon.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -18,7 +18,7 @@ blogPosts.sort(({ data: { publishDate: a } }, { data: { publishDate: b } }) => {
     <h1 class="text-5xl font-bold mb-8">
       The StudioCMS Blog 
       <!-- <a href="/rss.xml" title="RSS Feed">
-        <Icon name="heroicons:rss" class="inline" />
+        <Icon name="rss" class="inline" />
       </a> -->
     </h1>
     <p class="mb-12 text-lg">Get the latest news from StudioCMS</p>

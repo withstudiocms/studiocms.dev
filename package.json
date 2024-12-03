@@ -22,6 +22,7 @@
     "@iconify-json/heroicons": "^1.2.1",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.15",
+    "@studiocms/ui": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/ui@393",
     "astro": "^5.0.0",
     "astro-icon": "^1.1.4",
     "html-entities": "^2.5.2",
