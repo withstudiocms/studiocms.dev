@@ -1,5 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Discord from '../assets/discord.svg';
+import Github from '../assets/github.svg';
+import Logo from '../assets/logo.svg';
+import Patreon from '../assets/patreon.svg';
 import { DISCORD_URL, DOCS_URL, GITHUB_URL, SPONSOR_URL } from '../constants';
 import ThemeSelect from './ThemeSelect.astro';
 ---
@@ -9,7 +13,7 @@ import ThemeSelect from './ThemeSelect.astro';
 >
   <div class="studiocms-container mx-auto flex flex-center justify-between">
     <a href="/" class='flex w-fit items-center justify-center gap-x-4' aria-label="StudioCMS">
-      <Icon name='logo' class='h-8 w-8 stroke-slate-100 text-[--purple-900] dark:text-white' />
+      <Logo class='h-8 w-8 stroke-slate-100 text-[--purple-900] dark:text-white' />
       <span class="hidden md:block font-bold text-2xl" aria-hidden>StudioCMS</span>
     </a>
     <div>
@@ -54,8 +58,7 @@ import ThemeSelect from './ThemeSelect.astro';
             aria-label='Discord link'
             title="Discord"
           >
-            <Icon
-              name='discord'
+            <Discord
               class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
             />
           </a>
@@ -68,8 +71,7 @@ import ThemeSelect from './ThemeSelect.astro';
             aria-label='GitHub link'
             title="GitHub"
             >
-            <Icon
-              name='github'
+            <Github
               class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
             />
           </a>
@@ -82,8 +84,7 @@ import ThemeSelect from './ThemeSelect.astro';
             aria-label='GitHub link'
             title="Patreon"
             >
-            <Icon
-              name='patreon'
+            <Patreon
               class='h-6 w-6 transition duration-200 ease-in-out hover:scale-110'
             />
           </a>
@@ -133,8 +134,7 @@ import ThemeSelect from './ThemeSelect.astro';
                 aria-label='Discord link'
                 title="Discord"
               >
-                <Icon
-                  name='discord'
+                <Discord
                   class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
                 />
               </a>
@@ -145,8 +145,7 @@ import ThemeSelect from './ThemeSelect.astro';
                 aria-label='GitHub link'
                 title="GitHub"
                 >
-                <Icon
-                  name='github'
+                <Github
                   class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
                 />
               </a>

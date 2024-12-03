@@ -1,5 +1,7 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon as AstroIcon } from 'astro-icon/components';
+import AstroLogo from '../assets/astro.svg';
+import Markdown from '../assets/markdown.svg';
 
 interface Props {
 	feature?: string;
@@ -8,6 +10,8 @@ interface Props {
 }
 
 const { icon, description, feature } = Astro.props;
+
+const useAstroIcon = icon.startsWith('heroicons:');
 ---
 
 <div
@@ -15,10 +19,19 @@ const { icon, description, feature } = Astro.props;
 >
   <div class='h-full place-self-center rounded-lg bg-slate-200 dark:bg-[--purple-900] p-6 md:p-8'>
     <div class='flex items-center justify-start gap-3 pb-4'>
-      <Icon
+      {
+        useAstroIcon
+          ? <AstroIcon name={icon} height={32} width={32} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
+          : icon === "astro" 
+            ? <AstroLogo  height={32} width={32} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
+            : icon === "markdown" 
+              ? <Markdown  height={32} width={32} class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white' />
+              : undefined
+      }
+      <!-- <Icon
         name={icon}
         class='h-8 w-8 stroke-black stroke-[0.1px] text-[--purple-900] dark:text-white'
-      />
+      /> -->
       <span class="text-xl font-bold">{feature}</span>
     </div>
     <p>

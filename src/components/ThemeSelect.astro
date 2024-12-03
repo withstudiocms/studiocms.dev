@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Check from '../assets/check.svg';
 ---
 
 <div class="dropdown relative select-none w-8 h-8 z-50">
@@ -10,15 +11,15 @@ import { Icon } from 'astro-icon/components';
 
   <div class="dropdown__window absolute right-0 top-12 z-10 hidden min-w-40 overflow-hidden rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] focus-visible:outline-none dark:shadow-[0_3px_10px_rgb(0,0,0,0.2)]" tabindex="0">
     <button class="flex items-center w-full gap-2 whitespace-nowrap border-b border-slate-300 py-2 pl-3 pr-4 text-left bg-slate-200 dark:bg-neutral-900 hover:bg-slate-200 focus-visible:outline-none dark:border-neutral-700 dark:border-slate-700 dark:hover:bg-neutral-800" id="deviceMode" value="auto">
-      <Icon name={'check'} class="checkmark invisible h-8 w-8" />
+      <Check class="checkmark invisible h-8 w-8" />
       Device Default
     </button>
     <button class="flex items-center w-full gap-2 whitespace-nowrap border-b border-slate-300 py-2 pl-3 pr-4 text-left bg-slate-200 dark:bg-neutral-900 hover:bg-slate-200 focus-visible:outline-none dark:border-neutral-700 dark:hover:bg-neutral-800" id="lightMode" value="light">
-      <Icon name={'check'} class="checkmark invisible h-8 w-8" />
+      <Check class="checkmark invisible h-8 w-8" />
       Light Theme
     </button>
     <button class="flex items-center w-full gap-2 whitespace-nowrap border-b border-slate-300 py-2 pl-3 pr-4 text-left bg-slate-200 dark:bg-neutral-900 hover:bg-slate-200 focus-visible:outline-none dark:border-none dark:hover:bg-neutral-800" id="darkMode" value="dark">
-      <Icon name={'check'} class="checkmark invisible h-8 w-8" />
+      <Check class="checkmark invisible h-8 w-8" />
       Dark Theme
     </button>
     <span class="sr-only">Change theme</span>

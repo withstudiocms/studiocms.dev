@@ -1,11 +1,11 @@
 import tailwind from '@astrojs/tailwind';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
-import getCoolifyURL from './utils';
+// import getCoolifyURL from './utils';
 
 // https://astro.build/config
 export default defineConfig({
-	site: getCoolifyURL(true) || 'https://studiocms.dev',
+	site: 'https://studiocms.dev',
 	image: {
 		remotePatterns: [
 			{
@@ -16,5 +16,8 @@ export default defineConfig({
 	integrations: [icon(), tailwind()],
 	experimental: {
 		contentIntellisense: true,
+		svg: {
+			mode: 'inline',
+		},
 	},
 });

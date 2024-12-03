@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components';
+// import { Icon } from 'astro-icon/components';
 import Image from 'astro/components/Image.astro';
+import Patreon from '../assets/patreon.svg';
+import Star from '../assets/star.svg';
 import FeatureCard from '../components/FeatureCard.astro';
 import Hero from '../components/Hero.astro';
 import Marquee from '../components/Marquee.astro';
@@ -71,7 +73,8 @@ const features = (await getCollection('features')).sort(
           href={GITHUB_URL}
         >
           <h3 class='text-center text-2xl relative top-px'>Star it</h3>
-          <Icon name='star' class='text-2xl' />
+          <!-- <Icon name='star' class='text-2xl' /> -->
+          <Star class="text-2xl" />
         </a>
         <Separator orientation='vertical' extraClasses='h-3/5' />
         <a
@@ -79,7 +82,8 @@ const features = (await getCollection('features')).sort(
           href={SPONSOR_URL}
         >
           <h3 class='text-center text-2xl'>Sponsor it</h3>
-          <Icon name='patreon' class='text-3xl' />
+          <!-- <Icon name='patreon' class='text-3xl' /> -->
+          <Patreon class="text-3xl" />
         </a>
       </div>
     </section>
