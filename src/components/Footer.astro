@@ -1,5 +1,8 @@
 ---
-import { Icon } from 'astro-icon/components';
+// import { Icon } from 'astro-icon/components';
+import Discord from '../assets/discord.svg';
+import Github from '../assets/github.svg';
+import Patreon from '../assets/patreon.svg';
 import { DISCORD_URL, GITHUB_URL, SPONSOR_URL } from '../constants';
 ---
 
@@ -18,8 +21,7 @@ import { DISCORD_URL, GITHUB_URL, SPONSOR_URL } from '../constants';
           rel="external nofollow"
           aria-label="Discord link"
         >
-          <Icon
-            name="discord"
+          <Discord
             class="h-8 w-8 transition duration-200 ease-in-out hover:scale-110"
           />
         </a>
@@ -31,8 +33,7 @@ import { DISCORD_URL, GITHUB_URL, SPONSOR_URL } from '../constants';
           rel="external nofollow"
           aria-label="GitHub link"
         >
-          <Icon
-            name="github"
+          <Github
             class="h-8 w-8 transition duration-200 ease-in-out hover:scale-110"
           />
         </a>
@@ -44,8 +45,7 @@ import { DISCORD_URL, GITHUB_URL, SPONSOR_URL } from '../constants';
           rel="external nofollow"
           aria-label="Patreon link"
         >
-          <Icon
-            name="patreon"
+          <Patreon
             class="h-6 w-6 transition duration-200 ease-in-out hover:scale-110"
           />
         </a>
