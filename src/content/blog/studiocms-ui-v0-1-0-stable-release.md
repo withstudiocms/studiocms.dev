@@ -1,6 +1,6 @@
 ---
 title: 'A new UI Library Approaches!'
-description: "We're releasing @studiocms/ui, the library we use to build the StudioCMS ecosystem to the community!"
+description: "@studiocms/ui is our first ever stable resource!"
 publishDate: 2024-12-08
 ogVariant: accent
 author: louis-escher
