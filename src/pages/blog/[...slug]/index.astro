@@ -1,7 +1,9 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { render } from 'astro:content';
-import type { GetStaticPaths } from 'astro';
+import type { GetStaticPaths, ImageMetadata } from 'astro';
+import BlueSky from '../../../components/BlueSky.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getBlogCollection } from '../../../utils/collectionUtils';
 
 export const getStaticPaths = (async () => {
@@ -32,11 +34,113 @@ if (post.data.hero) {
 const imageProps = {
 	src: postOgImage,
 	alt: postOgDescription,
-	width: 3840,
-	height: 2160,
+	width: 1280,
+	height: 720,
 };
 ---
 
-{
-    JSON.stringify(post)
-}
+<BaseLayout>
+
+	<article class="container">
+
+		<div class="breadcrumbs">
+			<a href="/blog">Back to Blog</a>
+		</div>
+
+		<div class="hero">
+			<Image {...imageProps} class="aspect-video" loading={'eager'} />
+		</div>
+
+		<h1>{post.data.title}</h1>
+		<p>{post.data.description}</p>
+
+		<div class="author">
+			<Image src={post.data.author.avatar as ImageMetadata} alt={post.data.author.name} width={48} height={48} />
+			<div class="author-info">
+			<span>{post.data.author.name}</span>
+			<span class="date">
+				{new Date(post.data.publishDate).toLocaleDateString('en-US', {
+					day: '2-digit',
+					month: 'long',
+					year: 'numeric',
+				})}
+			</span>
+			</div>
+		</div>
+
+
+		<hr class="my-8" />
+
+		<Content />
+	</article>
+
+	<BlueSky postId={post.data.blueSky.postId} />
+</BaseLayout>
+
+<style>
+	.container {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
+	.breadcrumbs {
+		margin: 1rem 0;
+	
+	}
+
+	.hero {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid var(--neutral-800);
+		border-radius: 20px;
+		max-width: 100%;
+	}
+
+	.hero img {
+		width: 100%;
+		height: auto;
+	}
+
+	.hero .aspect-video {
+		aspect-ratio: 16 / 9;
+	}
+
+	h1 {
+		font-size: 2rem;
+		font-weight: 600;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	hr {
+		margin: 2rem 0;
+	}
+
+	.author {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		font-size: 1rem;
+	}
+
+	.author-info {
+		display: flex;
+		flex-direction: column;
+		line-height: 0.75rem;
+	}
+
+	.author img {
+		border-radius: 50%;
+	}
+
+	.date {
+		font-size: 0.875rem;
+		color: hsl(var(--text-muted));
+		margin-top: 0.5rem;
+	}
+	
+</style>
