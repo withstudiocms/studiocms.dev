@@ -1,5 +1,3 @@
-import tailwind from '@astrojs/tailwind';
-import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import getCoolifyURL from './utils';
 
@@ -13,7 +11,7 @@ export default defineConfig({
 			},
 		],
 	},
-	integrations: [icon(), tailwind()],
+	integrations: [],
 	experimental: {
 		contentIntellisense: true,
 	},

@@ -1,7 +1,19 @@
-import { defineCollection, reference, z } from 'astro:content';
+import { reference, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { file, glob } from 'astro/loaders';
 
-const blogCollection = defineCollection({
-	type: 'content',
+const authors = defineCollection({
+	loader: glob({ pattern: '*.json', base: 'src/data/authors' }),
+	schema: ({ image }) =>
+		z.object({
+			name: z.string(),
+			avatar: image(),
+			link: z.string().url(),
+		}),
+});
+
+const blog = defineCollection({
+	loader: glob({ pattern: '*.md', base: 'src/data/blog' }),
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
@@ -12,7 +24,7 @@ const blogCollection = defineCollection({
 			blueSky: z
 				.object({
 					postId: z.string(),
-					profile: z.string().optional(),
+					profile: z.string().optional().default('studiocms.dev'),
 				})
 				.optional(),
 			hero: z
@@ -39,39 +51,13 @@ const blogCollection = defineCollection({
 		}),
 });
 
-const authorsCollection = defineCollection({
-	type: 'data',
-	schema: ({ image }) =>
-		z.object({
-			name: z.string(),
-			avatar: image(),
-			link: z.string().url(),
-		}),
-});
-
-const featuresCollection = defineCollection({
-	type: 'data',
+const features = defineCollection({
+	loader: file('src/features.json'),
 	schema: z.object({
-		sortOrder: z.number(),
 		feature: z.string(),
 		description: z.string(),
 		icon: z.string(),
 	}),
 });
 
-// const testimonialsCollection = defineCollection({
-// 	type: 'data',
-// 	schema: ({ image }) =>
-// 		z.object({
-// 			name: z.string(),
-// 			comment: z.string(),
-// 			avatar: image(),
-// 		}),
-// });
-
-export const collections = {
-	blog: blogCollection,
-	authors: authorsCollection,
-	features: featuresCollection,
-	// testimonials: testimonialsCollection,
-};
+export const collections = { authors, blog, features };

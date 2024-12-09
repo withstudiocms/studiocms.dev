@@ -1,60 +1,16 @@
-import { type CollectionEntry, getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import type { APIContext, APIRoute, GetStaticPaths } from 'astro';
 import { html } from 'satori-html';
-import ogAccent from '../../../lib/ogBackgrounds/accent.txt?raw';
-import ogBluePurple from '../../../lib/ogBackgrounds/blue-purple.txt?raw';
-import ogBlueYellow from '../../../lib/ogBackgrounds/blue-yellow.txt?raw';
-import ogFall from '../../../lib/ogBackgrounds/fall.txt?raw';
-import ogGreenAccent from '../../../lib/ogBackgrounds/green-accent.txt?raw';
-import ogRed from '../../../lib/ogBackgrounds/red.txt?raw';
-import ogSpring from '../../../lib/ogBackgrounds/spring.txt?raw';
-import ogSummer from '../../../lib/ogBackgrounds/summer.txt?raw';
-import ogWinter from '../../../lib/ogBackgrounds/winter.txt?raw';
-import { satoriAstroOG } from '../../../lib/satoriOG';
-
-export const variantSelector = (
-	variant:
-		| 'accent'
-		| 'blue-purple'
-		| 'blue-yellow'
-		| 'fall'
-		| 'green-accent'
-		| 'red'
-		| 'spring'
-		| 'summer'
-		| 'winter'
-		| undefined
-) => {
-	switch (variant) {
-		case 'accent':
-			return ogAccent;
-		case 'blue-purple':
-			return ogBluePurple;
-		case 'blue-yellow':
-			return ogBlueYellow;
-		case 'fall':
-			return ogFall;
-		case 'green-accent':
-			return ogGreenAccent;
-		case 'red':
-			return ogRed;
-		case 'spring':
-			return ogSpring;
-		case 'summer':
-			return ogSummer;
-		case 'winter':
-			return ogWinter;
-		default:
-			return ogAccent;
-	}
-};
+import parseVariant from '../../../data/ogBackgrounds';
+import { getBlogCollection } from '../../../utils/collectionUtils';
+import { satoriAstroOG } from '../../../utils/satori/satoriOG';
 
 export const getStaticPaths = (async () => {
-	const blogPosts = await getCollection('blog');
+	const blogPosts = await getBlogCollection();
 
 	return blogPosts.map((post) => ({
 		params: {
-			slug: post.slug,
+			slug: post.id,
 		},
 		props: {
 			post,
@@ -65,18 +21,16 @@ export const getStaticPaths = (async () => {
 export const GET: APIRoute = async ({ props }: APIContext) => {
 	const post: CollectionEntry<'blog'> = props.post;
 
-	const font400File = await fetch(
-		'https://cdn.jsdelivr.net/fontsource/fonts/onest@latest/latin-400-normal.ttf'
-	);
-	const font400Data = await font400File.arrayBuffer();
+	const font = {
+		400: await (
+			await fetch('https://cdn.jsdelivr.net/fontsource/fonts/onest@latest/latin-400-normal.ttf')
+		).arrayBuffer(),
+		800: await (
+			await fetch('https://cdn.jsdelivr.net/fontsource/fonts/onest@latest/latin-800-normal.ttf')
+		).arrayBuffer(),
+	};
 
-	const font800File = await fetch(
-		'https://cdn.jsdelivr.net/fontsource/fonts/onest@latest/latin-800-normal.ttf'
-	);
-
-	const font800Data = await font800File.arrayBuffer();
-
-	const variant = variantSelector(post.data.ogVariant);
+	const variant = parseVariant(post.data.ogVariant);
 
 	return await satoriAstroOG({
 		template: html`
@@ -94,13 +48,13 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
 			fonts: [
 				{
 					name: 'Onset',
-					data: font400Data,
+					data: font[400],
 					weight: 400,
 					style: 'normal',
 				},
 				{
 					name: 'Onset',
-					data: font800Data,
+					data: font[800],
 					weight: 800,
 					style: 'normal',
 				},
