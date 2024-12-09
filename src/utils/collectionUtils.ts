@@ -1,4 +1,5 @@
-import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 
 export async function getBlogCollection() {
 	const blog = await getCollection('blog');
@@ -39,6 +40,28 @@ export async function getBlogCollection() {
 			render: post,
 		};
 	});
+}
+
+export async function processPost(post: CollectionEntry<'blog'>) {
+	return {
+		imageProps: {
+			src: post.data.hero
+				? (await getImage({ src: post.data.hero.image as ImageMetadata, format: 'webp' })).src
+				: `/blog/${post.id}/og.png`,
+			alt: post.data.hero ? post.data.hero.alt : post.data.description,
+			width: 800,
+			height: 450,
+		},
+		title: post.data.title,
+		description: post.data.description,
+		link: `/blog/${post.id}`,
+		author: (await getEntry(post.data.author)).data,
+		publishDate: post.data.publishDate.toLocaleDateString('en-US', {
+			day: '2-digit',
+			month: 'long',
+			year: 'numeric',
+		}),
+	};
 }
 
 export async function getFeatureCollection() {
