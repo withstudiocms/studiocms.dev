@@ -2,6 +2,7 @@
 import { Image, getImage } from 'astro:assets';
 import { type CollectionEntry, getEntry } from 'astro:content';
 import { Card } from '@studiocms/ui/components';
+import Icon from '@studiocms/ui/utils/Icon.astro';
 import type { ImageMetadata } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getBlogCollection } from '../../utils/collectionUtils';
@@ -34,7 +35,7 @@ async function processPost(post: CollectionEntry<'blog'>) {
 
     <main>
 
-        <h1>The StudioCMS Blog</h1>
+        <h1>The StudioCMS Blog<a class="inline-icon" href="/rss.xml" title="RSS Feed"><Icon name='rss' height={24} width={24} /></a></h1> 
 
         <p>Get the latest news from StudioCMS</p>
 
@@ -80,6 +81,11 @@ async function processPost(post: CollectionEntry<'blog'>) {
         font-size: 2.5rem;
         margin-bottom: 20px;
     }
+
+    .inline-icon {
+        margin-left: 10px;
+    }
+
 
     .list-group {
         display: grid;
