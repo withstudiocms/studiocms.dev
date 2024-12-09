@@ -1,8 +1,13 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { getFeatureCollection } from '../utils/collectionUtils';
 
 const features = await getFeatureCollection();
 ---
-{
-    JSON.stringify(features)
-}
+<BaseLayout>
+
+    <main style="height: 70vh;">
+
+    </main>
+
+</BaseLayout>

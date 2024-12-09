@@ -1,0 +1,115 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import '@studiocms/ui/css/global.css';
+import { Footer } from '@studiocms/ui/components';
+import BlueSkyLogo from '../assets/bsky.svg';
+import DiscordLogo from '../assets/discord.svg';
+import GitHubLogo from '../assets/github.svg';
+import LogoAdaptive from '../assets/logo-adaptive.svg';
+import PatreonLogo from '../assets/patreon.svg';
+import TwitterLogo from '../assets/twitter.svg';
+import NavBar from '../components/NavBar.astro';
+
+const OgBanner = new URL('og.jpg', Astro.site);
+
+interface Props {
+	title?: string;
+	description?: string;
+	ogImage?: string | URL;
+}
+
+const {
+	title,
+	description = 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
+	ogImage = OgBanner,
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <BaseHead {title} {description} {ogImage} />
+    <body>
+        <NavBar />
+        <slot />
+
+        <Footer
+        links={{
+            'StudioCMS Ecosystem': [
+                { label: 'StudioCMS UI', href: 'https://ui.studiocms.dev' },
+                { label: 'Apollo', href: 'https://github.com/withstudiocms/apollo' }
+            ],
+            'Resources': [
+                { label: 'Docs', href: 'https://docs.studiocms.dev' },
+                { label: 'Live Demo', href: 'https://next-demo.studiocms.dev' },
+            ],
+        }}
+        copyright={'MIT License \u00A9 2024 - StudioCMS'}
+    >
+        <div slot="brand" class="footer-brand">
+            <LogoAdaptive height={48} width={45.76} />
+            <span class="studiocms-footer-text">
+                <span>StudioCMS</span>
+            </span>
+        </div>
+        <div slot="socials" class="socials">
+            <a href="https://github.com/withstudiocms">
+                <GitHubLogo width={28} height={28} />
+            </a>
+            <a href="https://chat.studiocms.dev">
+                <DiscordLogo width={32} height={32} />
+            </a>
+            <a href="https://patreon.com/studiocms">
+                <PatreonLogo width={24} height={24} />
+            </a>
+            <a href="https://bsky.app/profile/studiocms.dev">
+                <BlueSkyLogo width={24} height={24} />
+            </a>
+            <a href="https://twitter.com/withstudiocms">
+                <TwitterLogo width={22} height={22} />
+            </a>
+        </div>
+    </Footer>
+    </body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+    
+        main {
+            padding: min(8rem, 10vh) 0;
+        }
+    
+        .footer-brand {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            align-items: center;
+            white-space: nowrap;
+        }
+    
+        .studiocms-footer-text {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    
+        .studiocms-footer-text span:last-of-type {
+            color: hsl(var(--text-muted));
+        }
+    
+        .socials {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1.25rem;
+        }
+    
+        .socials a {
+            color: hsla(var(--text-normal) / .75);
+            transition: all .15s ease;
+        }
+    
+        .socials a:hover {
+            color: hsl(var(--text-normal));
+        }
+    </style>
+</html>

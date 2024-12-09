@@ -14,5 +14,6 @@ export default defineConfig({
 	integrations: [],
 	experimental: {
 		contentIntellisense: true,
+		svg: true,
 	},
 });

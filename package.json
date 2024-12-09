@@ -20,6 +20,7 @@
     "@fontsource-variable/onest": "^5.1.0",
     "@iconify-json/heroicons": "^1.2.1",
     "@resvg/resvg-js": "^2.6.2",
+    "@studiocms/ui": "^0.1.0",
     "astro": "^5.0.3",
     "html-entities": "^2.5.2",
     "motion": "^11.13.1",
