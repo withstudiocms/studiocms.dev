@@ -1,31 +1,195 @@
 ---
-import Footer from '../components/Footer.astro';
-import Head from '../components/Head.astro';
-import Navbar from '../components/Navbar.astro';
-import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import '@studiocms/ui/css/global.css';
+import { Divider, Footer } from '@studiocms/ui/components';
+import BlueSkyLogo from '../assets/bsky.svg';
+import DiscordLogo from '../assets/discord.svg';
+import GitHubLogo from '../assets/github.svg';
+import LogoAdaptive from '../assets/logo-adaptive.svg';
+import PatreonLogo from '../assets/patreon.svg';
+import TwitterLogo from '../assets/twitter.svg';
+import NavBar from '../components/NavBar.astro';
+import {
+	BLUESKY_URL,
+	DISCORD_URL,
+	DOCS_URL,
+	GITHUB_URL,
+	LIVE_DEMO_URL,
+	SPONSOR_URL,
+	TWITTER_URL,
+} from '../constants';
+import { Sponsors } from '../sponsors';
+
+const OgBanner = new URL('og.jpg', Astro.site);
 
 interface Props {
 	title?: string;
-	desc?: string;
-	ogImage?: string;
+	description?: string;
+	ogImage?: string | URL;
 }
 
-const { title, desc, ogImage } = Astro.props;
-
-let OgImage: URL | undefined = undefined;
-if (ogImage) {
-	OgImage = new URL(ogImage, Astro.url.origin);
-}
+const {
+	title,
+	description = 'A dedicated CMS for Astro DB. Built from the ground up by the Astro community.',
+	ogImage = OgBanner,
+} = Astro.props;
 ---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <BaseHead {title} {description} {ogImage} />
+    <body>
+        <NavBar />
+        <slot />
 
-<html
-  class='scrollbar scrollbar-thumb-white scrollbar-track-[#1a172e] text-[--purple-900] dark:text-[--white-50]'
-  lang='en'
->
-  <Head {title} {desc} ogImage={OgImage}/>
-  <body>
-    <Navbar />
-    <slot />
-    <Footer />
-  </body>
+        <Footer
+        links={{
+            'StudioCMS Ecosystem': [
+                { label: 'StudioCMS UI', href: 'https://ui.studiocms.dev' },
+                { label: 'Apollo', href: 'https://github.com/withstudiocms/apollo' }
+            ],
+            'Resources': [
+                { label: 'Docs', href: DOCS_URL },
+                { label: 'Live Demo', href: LIVE_DEMO_URL },
+            ],
+        }}
+        copyright={'MIT License \u00A9 2024 - StudioCMS'}
+    >
+        <div slot="brand" class="footer-holder">
+            <div class="footer-brand">
+                <LogoAdaptive height={48} width={45.76} />
+                <span class="studiocms-footer-text">
+                    <span>StudioCMS</span>
+                </span>
+            </div>
+            <div class="footer-sponsor">
+                <Divider background='background-step-1'>{Sponsors.length > 1 ? "Sponsors" : "Sponsored By"}</Divider>
+                <ul>
+                    { Sponsors.map(({ name, link, logo: { dark: Dark, light: Light }}) => (
+                        <li><a title={name} href={link} aria-label={`${name} Sponsor link`}>
+                            <Dark height={48} width={150} class='sponsor-logo-dark'/>
+                            <Light height={48} width={150} class='sponsor-logo-light'/>
+                        </a></li>
+                    )) }
+                </ul>
+            </div>
+        </div>
+        <div slot="socials" class="socials">
+            <a href={GITHUB_URL} title="GitHub" aria-label="GitHub Link">
+                <GitHubLogo width={28} height={28} />
+            </a>
+            <a href={DISCORD_URL} title="Discord" aria-label="Discord Link">
+                <DiscordLogo width={32} height={32} />
+            </a>
+            <a href={SPONSOR_URL} title="Patreon" aria-label="Patreon Link">
+                <PatreonLogo width={24} height={24} />
+            </a>
+            <a href={BLUESKY_URL} title="BlueSky" aria-label="BlueSky Link">
+                <BlueSkyLogo width={24} height={24} />
+            </a>
+            <a href={TWITTER_URL} title="Twitter 'X'" aria-label="Twitter 'X' Link">
+                <TwitterLogo width={22} height={22} />
+            </a>
+        </div>
+    </Footer>
+    </body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+    
+        main {
+            padding: min(8rem, 10vh) 0;
+        }
+
+        .sponsor-logo-dark {
+            display: none;
+        }
+
+        .sponsor-logo-light {
+            display: block;
+        }
+
+        [data-theme="dark"] {
+            .sponsor-logo-dark {
+                display: block;
+            }
+
+            .sponsor-logo-light {
+                display: none;
+            }
+
+        }
+
+        .footer-holder {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sponsor-text {
+            font-size: 1rem;
+            font-weight: bold;
+            color: hsl(var(--text-muted));
+        }
+    
+        .footer-brand {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .footer-sponsor {
+            display: block;
+            flex-direction: column;
+            align-items: center;
+            white-space: nowrap;
+            margin-left: 2rem;
+        }
+
+        .footer-sponsor ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .footer-sponsor ul li {
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+    
+        .studiocms-footer-text {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    
+        .studiocms-footer-text span:last-of-type {
+            color: hsl(var(--text-muted));
+        }
+    
+        .socials {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1.25rem;
+        }
+    
+        .socials a {
+            color: hsla(var(--text-normal) / .75);
+            transition: all .15s ease;
+        }
+    
+        .socials a:hover {
+            color: hsl(var(--text-normal));
+        }
+    </style>
 </html>

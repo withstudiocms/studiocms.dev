@@ -1,0 +1,140 @@
+---
+import { ThemeToggle } from '@studiocms/ui/components';
+import Icon from '@studiocms/ui/utils/Icon.astro';
+import DiscordLogo from '../assets/discord.svg';
+import GitHubLogo from '../assets/github.svg';
+import LogoAdaptive from '../assets/logo-adaptive.svg';
+import PatreonLogo from '../assets/patreon.svg';
+import { DISCORD_URL, DOCS_URL, GITHUB_URL, ROADMAP_URL, SPONSOR_URL } from '../constants';
+---
+
+<nav class="navbar">
+    <div class="upper">
+      <a href="/" class="brand" aria-label="StudioCMS">
+        <LogoAdaptive class="brand-icon" />
+        <span class="brand-name">StudioCMS</span>
+      </a>
+        <ul class="links">
+          <li><a href="/blog" aria-label="Blog link" title="Blog">Blog</a></li>
+          <li><a href={DOCS_URL} rel="external nofollow" aria-label="Docs link" title="Docs">Docs</a></li>
+          <li><a href={ROADMAP_URL} rel="external nofollow" aria-label="Roadmap link" title="Roadmap">Roadmap</a></li>
+          <li><a href={GITHUB_URL} rel="external nofollow" aria-label="GitHub link" title="GitHub"><GitHubLogo class="icon" /></a></li>
+          <li><a href={DISCORD_URL} rel="external nofollow" aria-label="Discord link" title="Discord"><DiscordLogo class="icon" /></a></li>
+          <li><a href={SPONSOR_URL} rel="external nofollow" aria-label="Sponsor link" title="Sponsor"><PatreonLogo class="icon" /></a></li>
+        </ul>
+    </div>
+    <div class="theme-toggle-holder">
+      {/* 
+      // @ts-ignore */}
+      <ThemeToggle>
+        <Icon name="moon" slot="dark" class='toggle-icon' />
+        <Icon name="sun" slot="light" class='toggle-icon' />
+      </ThemeToggle>
+    </div>
+</nav>
+
+<style>
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      background-color: hsl(var(--background-step-1));
+      padding: 0.5rem 10vw;
+      color: hsl(var(--text-normal)) !important;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .navbar .theme-toggle-holder {
+      width: 2rem;
+      display: block;
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+    }
+
+    .toggle-icon {
+      height: 24px;
+      width: 24px;
+    }
+  
+    .upper, .lower {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+  
+    .brand-icon {
+      height: 2rem;
+      width: 2rem;
+      color: hsl(var(--text-normal));
+    }
+  
+    .brand-name {
+      font-size: 1.6em;
+      font-weight: bold;
+      margin-left: 1rem;
+      color: hsl(var(--text-normal));
+    }
+
+    .links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      text-align: center;
+      vertical-align: middle;
+      gap: 2rem;
+    }
+  
+    .links li {
+      list-style: none;
+    }
+  
+    .links li a {
+      color: hsl(var(--text-normal)) !important;
+      text-decoration: none;
+    }
+  
+    .links li:hover a {
+      text-decoration: underline;
+    }
+  
+    .icon {
+      height: 20px;
+      width: 20px;
+      transition: transform 0.2s ease-in-out;
+    }
+  
+    .icon:hover {
+      transform: scale(1.1);
+    }
+
+    @media screen and (max-width: 768px) {
+      .navbar {
+        padding: 1rem 5vw;
+      }
+
+      .brand {
+        margin: 0 auto;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .navbar {
+        padding: 2rem 2vw;
+      }
+
+      .brand {
+        margin: 0;
+      }
+    }
+</style>

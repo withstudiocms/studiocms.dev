@@ -1,27 +1,106 @@
 ---
-import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components';
-import BlogCard from '../../components/BlogCard.astro';
+import { Image } from 'astro:assets';
+import { Card } from '@studiocms/ui/components';
+import Icon from '@studiocms/ui/utils/Icon.astro';
+import type { ImageMetadata } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getBlogCollection, processPost } from '../../utils/collectionUtils';
 
-const blogPosts = await getCollection('blog');
+const posts = await getBlogCollection();
 
-blogPosts.sort(({ data: { publishDate: a } }, { data: { publishDate: b } }) => {
-	return b.getTime() - a.getTime();
-});
+const ogImage = new URL('/blog/og.png', Astro.site);
 ---
+<BaseLayout title='Blog' description='News and Updates related to StudioCMS' {ogImage}>
+    <main>
+        <h1>The StudioCMS Blog<a class="inline-icon" href="/rss.xml" title="RSS Feed"><Icon name='rss' height={24} width={24} /></a></h1> 
+        <p>Get the latest news from StudioCMS</p>
 
-<BaseLayout title="Blog">
-  <main
-    class="studiocms-container mx-auto py-12 px-8 md:px-0 min-h-[calc(100vh_-_70px)]"
-  >
-    <h1 class="text-5xl font-bold mb-8">
-      The StudioCMS Blog <a href="/rss.xml" title="RSS Feed"
-        ><Icon name="heroicons:rss" class="inline" /></a>
-    </h1>
-    <p class="mb-12 text-lg">Get the latest news from StudioCMS</p>
-    <div class="grid md:grid-cols-3 gap-8 md:gap-4">
-      {blogPosts.map((post, index) => <BlogCard {post} {index} />)}
-    </div>
-  </main>
+        <div class="list-group">
+            {posts.map(async (post) => {
+                const { imageProps, title, description, link, author, publishDate } = await processPost(post.render);
+
+                return (
+                    <Card class='list-item' as={'a'} href={link}>
+                        <Image {...imageProps} class="image" />
+                        <div class="content">
+                            <h3>{title}</h3>
+                            <p>{description}</p>
+                        </div>
+                        <div class="footer" slot="footer">
+                            <div class="author">
+                                <Image src={author.avatar as ImageMetadata} alt={author.name} width={50} height={50} />
+                                <div>
+                                    <p>{author.name}</p>
+                                    <p class="pub-date">{publishDate}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Card>
+                )
+            })}
+        </div>
+    </main>
 </BaseLayout>
+
+<style>
+    main {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .inline-icon {
+        margin-left: 10px;
+    }
+
+
+    .list-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .list-item {
+        margin: 0;
+        padding: 0;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .footer {
+        display: flex;
+    }
+
+    .author {
+        display: flex;
+        align-items: center;
+        line-height: 0.2rem;
+    }
+
+    .author img {
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .pub-date {
+        font-size: 0.8rem;
+        color: hsl(var(--text-muted));
+    }
+
+</style>
