@@ -37,9 +37,11 @@ const imageProps = {
 	width: 1280,
 	height: 720,
 };
+
+const ogImageURL = new URL(postOgImage, Astro.site);
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} ogImage={postOgImage}>
+<BaseLayout title={post.data.title} description={post.data.description} ogImage={ogImageURL}>
 
 	<article class="container">
 
