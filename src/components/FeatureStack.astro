@@ -1,0 +1,71 @@
+---
+import { Card } from '@studiocms/ui/components';
+import Icon from '@studiocms/ui/utils/Icon.astro';
+import { getFeatureCollection } from '../utils/collectionUtils';
+import { processFeatureIcon } from '../utils/processFeatureIcon';
+
+const features = await getFeatureCollection();
+---
+<h2 class="section-label">Features <Icon name="cog" width="24" height="24" /></h2>
+
+<div class="feature-grid">
+
+    {features.map((feature) => {
+
+        const { Component, name } = processFeatureIcon(feature.data.icon);
+
+        return (
+            <Card class='feature-card'>
+                <h3 slot="header" class="feature-label"><Component name={name} height={24} width={24} class="feature-icon"/>{feature.data.feature}</h3>
+                <p>{feature.data.description}</p>
+            </Card>
+        )
+    })}
+</div>
+
+<style>
+
+    .section-label {
+        padding: 1rem;
+        font-size: 2rem;
+        margin: 0 auto;
+        max-width: 1200px;
+        vertical-align: middle;
+    }
+
+    .feature-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .feature-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: hsl(var(--background-step-1));
+        color: hsl(var(--text-normal));
+        box-shadow: 0 0 10px 0 hsla(var(--shadow-color), 0.1);
+        width: 100%;
+        height: 100%;
+    }
+
+    .feature-label {
+        display: flex;
+        font-size: 1.5rem;
+        font-weight: bold;
+        align-items: center;
+        text-align: center;
+    }
+
+    .feature-icon {
+        height: 24px;
+        width: 24px;
+        background-color: unset;
+        margin-right: 0.5rem;
+    }
+</style>

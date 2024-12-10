@@ -81,5 +81,3 @@ export const SatoriEndpoint = async (
 		},
 	});
 };
-
-export default parseVariant;
