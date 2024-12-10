@@ -30,6 +30,12 @@ export const getCoolifyURL = (returnHttps?: boolean) => {
 	console.log('Checking for COOLIFY_DOMAINNAME');
 
 	const urlList = process.env.COOLIFY_DOMAINNAME;
+
+	if (urlList === '$COOLIFY_FQDN') {
+		console.error('COOLIFY_DOMAINNAME is set to $COOLIFY_FQDN');
+		return undefined;
+	}
+
 	if (!urlList) {
 		console.error('COOLIFY_DOMAINNAME is not set');
 		return undefined;
