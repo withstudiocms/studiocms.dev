@@ -28,7 +28,7 @@ const posts = await getBlogCollection();
                             <div class="author">
                                 <Image src={author.avatar as ImageMetadata} alt={author.name} width={50} height={50} />
                                 <div>
-                                    <p>By {author.name}</p>
+                                    <p>{author.name}</p>
                                     <p class="pub-date">{publishDate}</p>
                                 </div>
                             </div>
