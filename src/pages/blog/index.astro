@@ -85,12 +85,12 @@ const ogImage = new URL('/blog/og.png', Astro.site);
 
     .footer {
         display: flex;
-        background-color: var(--background-step-1);
     }
 
     .author {
         display: flex;
         align-items: center;
+        line-height: 0.2rem;
     }
 
     .author img {
@@ -100,7 +100,7 @@ const ogImage = new URL('/blog/og.png', Astro.site);
 
     .pub-date {
         font-size: 0.8rem;
-        color: var(--text-muted);
+        color: hsl(var(--text-muted));
     }
 
 </style>
