@@ -7,8 +7,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getBlogCollection, processPost } from '../../utils/collectionUtils';
 
 const posts = await getBlogCollection();
+
+const ogImage = new URL('/blog/og.png', Astro.site);
 ---
-<BaseLayout title='Blog' description='News and Updates related to StudioCMS'>
+<BaseLayout title='Blog' description='News and Updates related to StudioCMS' {ogImage}>
     <main>
         <h1>The StudioCMS Blog<a class="inline-icon" href="/rss.xml" title="RSS Feed"><Icon name='rss' height={24} width={24} /></a></h1> 
         <p>Get the latest news from StudioCMS</p>
