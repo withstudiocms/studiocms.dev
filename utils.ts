@@ -27,19 +27,19 @@ function splitListandSelectFirst(list: string) {
  * @see https://coolify.io/docs/knowledge-base/environment-variables#predefined-variables
  */
 export const getCoolifyURL = (returnHttps?: boolean) => {
-	console.log('Checking for COOLIFY_FQDN');
+	console.log('Checking for COOLIFY_DOMAINNAME');
 
-	const urlList = process.env.COOLIFY_FQDN;
+	const urlList = process.env.COOLIFY_DOMAINNAME;
 	if (!urlList) {
-		console.error('COOLIFY_FQDN is not set');
+		console.error('COOLIFY_DOMAINNAME is not set');
 		return undefined;
 	}
 
-	console.log('COOLIFY_FQDN:', urlList);
+	console.log('COOLIFY_DOMAINNAME:', urlList);
 
 	const url = splitListandSelectFirst(urlList);
 
-	console.log('Main Selected COOLIFY_FQDN:', url);
+	console.log('Main Selected COOLIFY_DOMAINNAME:', url);
 
 	const strippedUrl = stripTrailingSlash(stripHTTPandHTTPS(url));
 
