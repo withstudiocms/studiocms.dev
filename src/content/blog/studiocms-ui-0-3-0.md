@@ -3,6 +3,8 @@ title: "StudioCMS UI v0.3.0 - The Accessibility Update"
 author: louis-escher
 publishDate: 2024-12-19
 description: We're releasing @studiocms/ui v0.3.0!
+blueSky:
+  postId: 3ldocyrv7bc2s
 hero:
   image: "./assets/ui-0.3.0.png"
   alt: StudioCMS UI 0.3.0 - The Accessibility Update
