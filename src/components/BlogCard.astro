@@ -46,6 +46,8 @@ const imageProps = {
             <Image
                 src={ avatar as ImageMetadata }
                 alt={ name }
+                width={ 50 }
+                height={ 50 }
                 class="aspect-square rounded-full shadow w-[50px]"
                 loading={index < 6 ? 'eager' : 'lazy'}
             />
