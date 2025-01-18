@@ -1,6 +1,8 @@
 ---
 title: '2024: A Year in Review'
 description: 'Goodbye 2024: A Look Back.'
+blueSky:
+  postId: 3lfyk3gw6kk25
 publishDate: 2025-01-17
 ogVariant: red
 author: adam-matthiesen
