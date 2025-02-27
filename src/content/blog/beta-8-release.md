@@ -8,7 +8,7 @@ hero:
 author: paul-valladares
 ---
 
-Hey peeps, as we roll into 2025, we're super excited to drop StudioCMS version `0.1.0-beta.8`. This release builds on all the hard work we did in 2024 and brings a ton of cool improvements to help both devs and marketers easily handle content in the Astro ecosystem. Let’s break down what’s new.
+Hey peeps! As we roll into 2025, we're super excited to drop StudioCMS version `0.1.0-beta.8`. This release builds on all the hard work we did in 2024 and brings a ton of cool improvements to help both devs and marketers easily handle content in the Astro ecosystem. Let’s break down what’s new.
 
 ## What’s New in Beta.8
 
