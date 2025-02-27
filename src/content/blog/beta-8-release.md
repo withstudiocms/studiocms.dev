@@ -6,13 +6,13 @@ ogVariant: green-accent
 author: paul-valladares
 ---
 
-As we step into 2025, StudioCMS is excited to announce the release of version `0.1.0-beta.8`, a major milestone that builds on our progress from 2024. This update introduces significant enhancements, making it easier for developers to manage content within the Astro ecosystem. Let’s explore what’s new and how it can benefit you.
+As we step into 2025, StudioCMS is excited to announce the release of version `0.1.0-beta.8`, a major milestone that builds on our progress from 2024. This update introduces significant enhancements, making it easier for developers and marketers alike to manage content within the Astro ecosystem. Let’s explore what’s new and how it can benefit you.
 
 ## What’s New in Beta.8
 
 StudioCMS 0.1.0-beta.8 brings several exciting features:
 
-**Redesigned Dashboard:** The dashboard has been completely revamped using the `@studiocms/ui` library, offering a modern, intuitive interface for managing content. This unexpected improvement enhances usability, making navigation smoother for developers.
+**Redesigned Dashboard:** The dashboard has been completely revamped using the `@studiocms/ui` library, offering a modern, intuitive interface for managing content.
 
 **Auth System Overhaul:** Security is tighter with a new authentication system using lucia-next, new encryption (requiring a CMS_ENCRYPTION_KEY), and support for multiple oAuth providers. Login and signup pages have a fresh look with backgrounds, improving user experience.
 
@@ -22,7 +22,7 @@ StudioCMS 0.1.0-beta.8 brings several exciting features:
 
 **User Management Enhancements:** New features for creating users and sending invites simplify team collaboration, with an updated UI for better clarity.
 
-**Plugin System and i18n:** A basic plugin system allows custom extensions, and internationalization (i18n) support makes StudioCMS accessible to a global audience, with tools like a LanguageSelector component.
+**Plugin System and i18n:** A basic plugin system allows custom extensions, and internationalization (i18n) support makes StudioCMS accessible to a global audience.
 
 These updates reflect our commitment to providing a robust, flexible CMS for developers.
 
@@ -32,15 +32,15 @@ To highlight the advancements, here’s a comparison of key features between the
 
 | Feature | Beta.7 (Sep 24, 2024) | Beta.8 (Feb 27, 2025) |
 | --- | --- | --- |
-| Authentication System | Lucia-based, with basic oAuth support | Overhauled with lucia-next, new encryption, multiple oAuth |
+| Authentication System | Lucia-based, with basic oAuth support | Overhauled with lucia-next |
 | Dashboard | Standard UI, basic navigation | Completely redesigned using `@studiocms/ui`, modern interface |
 | CMS Model | Headful, integrated routes | Headless, with `@studiocms/blog` for headful setups |
 | Sitemaps | Static integration | Dynamic sitemaps for improved SEO |
 | User Management | Basic user creation | Enhanced with invites, updated UI |
 | Plugin System | Limited, basic support | Basic system introduced, expandable |
-| Internationalization | Minimal, no dedicated system | Full i18n support with LanguageSelector |
+| Internationalization | Minimal, no dedicated system | Full i18n support with |
 
-This table, derived from the GitHub releases and pull request, illustrates the significant upgrades in beta.8, enhancing functionality and user experience.
+This table, derived from the GitHub releases and pull requests, illustrates the significant upgrades in beta.8, enhancing functionality and user experience.
 
 ## Future Outlook and Community Engagement
 
