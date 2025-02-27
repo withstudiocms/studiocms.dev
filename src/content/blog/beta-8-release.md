@@ -42,7 +42,7 @@ To highlight the advancements, here’s a comparison of key features between the
 | Plugin System | Limited, basic support | Basic system introduced, expandable |
 | Internationalization | Minimal, no dedicated system | Full i18n support |
 
-This table, derived from the GitHub releases and pull requests, illustrates the significant upgrades in beta.8, enhancing functionality and user experience.
+This table, derived from the GitHub releases and pull requests, illustrates the significant upgrades in `beta.8`, enhancing functionality and user experience.
 
 ## What’s Next & How to Get Involved
 
