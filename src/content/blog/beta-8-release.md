@@ -1,8 +1,6 @@
 ---
 title: "Beta 8 Release"
 description: "StudioCMS 0.1.0-beta.8 is being released."
-blueSky:
-  postId: 3lfyk3gw6kk26
 publishDate: 2025-02-28
 ogVariant: green-accent
 author: paul-valladares
