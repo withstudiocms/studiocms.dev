@@ -46,7 +46,7 @@ This table, derived from the GitHub releases and pull requests, illustrates the 
 
 ## What’s Next & How to Get Involved
 
-Looking ahead, we’re all about making StudioCMS even more robust. Expect more focus on stability, performance, and a killer user experience. We’re planning to expand our plugin ecosystem, improve documentation, and keep the community vibe strong—just check out our Discord if you haven’t already. A big shoutout to [turso](https://turso.tech) for their sponsorship and to everyone who’s been part of this journey.
+Looking ahead, we’re all about making StudioCMS even more robust. Expect more focus on stability, performance, and a killer user experience. We’re planning to expand our plugin ecosystem, improve documentation, and keep the community vibe strong—just check out our Discord if you haven’t already. A big shoutout to [Turso](https://turso.tech) for their sponsorship and to everyone who’s been part of this journey.
 
 We’d love for you to join the fun—whether it’s reporting bugs, suggesting features, or contributing code. Check out our [contributing guide](https://github.com/withstudiocms/.github/blob/main/CONTRIBUTING.md) for the details. Let’s keep pushing the boundaries together!
 
