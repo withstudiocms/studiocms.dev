@@ -14,13 +14,11 @@ As we step into 2025, StudioCMS is excited to announce the release of version `0
 
 StudioCMS 0.1.0-beta.8 brings several exciting features:
 
-**Redesigned Dashboard:** The dashboard has been completely revamped using the @studiocms
-/ui library, offering a modern, intuitive interface for managing content. This unexpected improvement enhances usability, making navigation smoother for developers.
+**Redesigned Dashboard:** The dashboard has been completely revamped using the `@studiocms/ui` library, offering a modern, intuitive interface for managing content. This unexpected improvement enhances usability, making navigation smoother for developers.
 
-**Auth System Overhaul:** Security is tighter with a new authentication system using lucia-next, new encryption (requiring a CMS_ENCRYPTION_KEY), and support for multiple oAuth providers. Login and signup pages have a fresh look with ThreeJS backgrounds, improving user experience.
+**Auth System Overhaul:** Security is tighter with a new authentication system using lucia-next, new encryption (requiring a CMS_ENCRYPTION_KEY), and support for multiple oAuth providers. Login and signup pages have a fresh look with backgrounds, improving user experience.
 
-**Headless CMS Model:** StudioCMS now focuses on backend functionalities, giving you flexibility to integrate with any frontend framework. For headful setups, the @studiocms
-/blog plugin is recommended, offering a complete solution.
+**Headless CMS Model:** StudioCMS now focuses on backend functionalities, giving you flexibility to integrate with any frontend framework. For headful setups, the `@studiocms/blog` plugin is recommended, offering a complete solution.
 
 **Dynamic Sitemaps:** This feature automatically generates sitemaps, improving your website’s search engine optimization (SEO) and ensuring content is discoverable.
 
@@ -32,7 +30,7 @@ These updates reflect our commitment to providing a robust, flexible CMS for dev
 
 ## Comparative Analysis: Beta.7 vs. Beta.8
 
-To highlight the advancements, here’s a comparison of key features between the last release, 0.1.0-beta.7, and the new 0.1.0-beta.8, based on available release notes and changelog:
+To highlight the advancements, here’s a comparison of key features between the last release, `0.1.0-beta.7`, and the new `0.1.0-beta.8`, based on available release notes and changelog:
 
 | Feature | Beta.7 (Sep 24, 2024) | Beta.8 (Feb 27, 2025) |
 | --- | --- | --- |
