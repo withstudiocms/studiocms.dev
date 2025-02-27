@@ -1,0 +1,231 @@
+<div class="hero-anim-container">
+	<canvas id="anim-canvas" />
+</div>
+
+<script>
+	interface Star {
+		radius: number;
+		pos: {
+			x: number;
+			y: number;
+		};
+		speed: number;
+	}
+
+	class HeroAnimation {
+		private ctx: CanvasRenderingContext2D;
+		private width: number;
+		private height: number;
+		private stars: Star[][] = [];
+		private isUsingReducedMotion: boolean;
+
+		protected readonly CIRCLE_DIAMETERS: number[] = [800, 1400, 2000];
+		protected readonly STAR_COLOR = '#9072d3';
+
+		/**
+		 * Animation for the hero section
+		 * @param canvas - The canvas the animation should be drawn on.
+		 * @param isUsingReducedMotion - Whether or not the user prefers reduced motion.
+		 */
+		constructor(canvas: HTMLCanvasElement, isUsingReducedMotion: boolean) {
+			this.ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+
+			this.width = canvas.width = 2000;
+			this.height = canvas.height = 2000;
+			this.isUsingReducedMotion = isUsingReducedMotion;
+
+			this.init();
+		}
+
+		/**
+		 * Initializes the contents of the canvas.
+		 */
+		private init = () => {
+			this.drawCircles();
+			
+			for (let i = 0; i < this.CIRCLE_DIAMETERS.length; i++) {
+				this.stars.push([]);
+				this.generateStars(i, this.CIRCLE_DIAMETERS[i] / 200);
+			}
+
+			this.animateStars();
+		};
+
+		/**
+		 * Clears the canvas and resets the drawing styles.
+		 */
+		private clearContext = () => {
+			this.ctx.clearRect(0, 0, this.width, this.height);
+			this.ctx.strokeStyle = 'none';
+			this.ctx.lineWidth = 0;
+			this.ctx.shadowBlur = 0;
+		};
+
+		/**
+		 * Draws the circles for each given diameter.
+		 */
+		private drawCircles = () => {
+			for (const diameter of this.CIRCLE_DIAMETERS) {
+				this.drawCircle(diameter);
+			}
+		};
+
+		/**
+		 * Draws a circle in the center of the canvas based on a given diameter.
+		 * @param diameter - The diameter for the circle.
+		 */
+		private drawCircle = (diameter: number) => {
+			const radius = diameter / 2;
+			const centerX = Math.floor(this.width / 2);
+			const centerY = Math.floor(this.height / 2);
+
+			this.ctx.strokeStyle = '#353535';
+			this.ctx.lineWidth = 1;
+			this.ctx.beginPath();
+			this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+			this.ctx.stroke();
+		};
+
+		/**
+		 * Generates a random position on a circle and returns the coordinates.
+		 * @param orbitIndex - The orbit to generate the stars on
+		 */
+		private generatePositionOnCircle = (orbitIndex: number) => {
+			// We need a random circle first, get one from the available diameters
+			const circleDiameter = this.CIRCLE_DIAMETERS[orbitIndex];
+
+			const radius = circleDiameter / 2;
+			const centerX = Math.floor(this.width / 2);
+			const centerY = Math.floor(this.height / 2);
+
+			// The angle and the radius determine the position - multiplying a value between 0 and 1 with 2 PI 
+			// will give us an angle between 0 and 360 degrees
+			const angle = Math.random() * Math.PI * 2;
+
+			// The coordinate is then based on the sine or cosine multiplied by the radius. We add the center of 
+			// the canvas to shift the point to the correct position.
+			return {
+				x: centerX + Math.sin(angle) * radius,
+				y: centerY + Math.cos(angle) * radius,
+			};
+		}
+
+		/**
+		 * Draws a star based on it's position.
+		 * @param star - The star to draw.
+		 */
+		private drawStar = (star: Star) => {
+			const { x, y } = star.pos;
+
+			this.ctx.fillStyle = this.STAR_COLOR;
+			this.ctx.shadowBlur = 10;
+			this.ctx.shadowColor = this.STAR_COLOR;
+			this.ctx.beginPath();
+			this.ctx.arc(x, y, star.radius, 0, 2 * Math.PI);
+			this.ctx.fill();
+		};
+
+		/**
+		 * Generates a number of stars all located on a specific orbit.
+		 * @param orbit - The orbit to place the stars on
+		 * @param num - The number of stars to generate
+		 */
+		private generateStars = (orbit: number, num: number) => {
+			const stars: Star[] = Array.from({ length: num }, () => {
+				const { x, y } = this.generatePositionOnCircle(orbit);
+
+				// Radius and speed are artificial values that can be tweaked later
+				return {
+					radius: 3,
+					pos: {
+						x,
+						y,
+					},
+					speed: Math.random() * 0.002 / 2,
+				}
+			});
+
+			// Draw all the stars right away 
+			for (const star of stars) {
+				this.drawStar(star);
+			}
+
+			// Assign the stars to the correct orbit array.
+			this.stars[orbit] = stars;
+		};
+
+		/**
+		 * Recalculates a stars position in space based on it's speed value.
+		 * @param orbit - The orbit the star is placed on
+		 * @param star - The star to calculate the new position for
+		 */
+		private recalculateStarPosition = (orbit: number, star: Star) => {
+			const { x, y } = star.pos;
+
+			const radius = this.CIRCLE_DIAMETERS[orbit] / 2;
+			const centerX = Math.floor(this.width / 2);
+			const centerY = Math.floor(this.height / 2);
+
+			const angle = Math.atan2(y - centerY, x - centerX);
+			const newAngle = angle + star.speed;
+
+			return {
+				...star,
+				pos: {
+					x: centerX + Math.cos(newAngle) * radius,
+					y: centerY + Math.sin(newAngle) * radius,
+				},
+			};
+		};
+
+		/**
+		 * Resets the canvas, then re-draws all orbits, moves the stars forward based on their 
+		 * speed and draws them as well.
+		 */
+		private animateStars = () => {
+			this.clearContext();
+			this.drawCircles();
+
+			for (let i = 0; i < this.stars.length; i++) {
+				for (let j = 0; j < this.stars[i].length; j++) {
+					const star = this.stars[i][j];
+					const newStar = this.recalculateStarPosition(i, star);
+
+					this.drawStar(newStar);
+					this.stars[i][j] = newStar;
+				}
+			}
+			
+			if (!this.isUsingReducedMotion) {
+				requestAnimationFrame(this.animateStars);
+			}
+		}
+	}
+
+	const isUsingReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const canvas = document.getElementById('anim-canvas') as HTMLCanvasElement;
+
+	new HeroAnimation(canvas, isUsingReducedMotion);
+</script>
+
+<style>
+	.hero-anim-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		width: 100vw;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		height: 150vh;
+		max-height: 150vh;
+  	mask-image: linear-gradient(to bottom, hsl(var(--background-base)) 50%, hsla(var(--background-base) / 0.8) 60%, hsla(var(--background-base) / 0) 80%);
+	}
+
+	#anim-canvas {
+		width: 100%;
+	}
+</style>

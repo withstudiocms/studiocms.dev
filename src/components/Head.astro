@@ -1,7 +1,8 @@
 ---
-import ThemeManager from './ThemeManager.astro';
 import '@fontsource-variable/onest';
+import '@/styles/global.css';
 import onestWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
+
 interface Props {
 	title?: string;
 	desc?: string;
@@ -43,17 +44,4 @@ const studioTitle = `StudioCMS${title ? ` - ${title}` : ''}`;
   <link rel='shortcut icon' type='image/svg+xml' href='/favicon.svg' />
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href={onestWoff2} />
   <link rel="alternate" type="application/rss+xml" title={studioTitle} href={RSSFeed} />
-
-  <ThemeManager defaultTheme="dark" />
-
-  <!-- 
-  
-  Disabled until new Analytics provider is available
-
-  <script 
-    is:inline 
-    defer 
-    src="https://analytics.studiocms.xyz/script.js" 
-    data-website-id="e3a84c8d-d45a-49d9-932b-00eeb63f8c48">
-  </script> -->
 </head>

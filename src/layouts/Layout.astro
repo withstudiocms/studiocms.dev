@@ -1,0 +1,80 @@
+---
+import { Footer } from 'studiocms:ui/components';
+
+import Navbar from '@/components/Navbar.astro';
+import Head from '@/components/Head.astro';
+import HeroAnimation from '@/components/HeroAnimation.astro';
+
+import GitHubLogo from '@/assets/github.svg';
+import DiscordLogo from '@/assets/discord.svg';
+import PatreonLogo from '@/assets/patreon.svg';
+import BlueSkyLogo from '@/assets/bsky.svg';
+import TwitterLogo from '@/assets/twitter.svg';
+import LogoAdaptive from '@/assets/logo-adaptive.svg';
+
+interface Props {
+	title?: string;
+	desc?: string;
+	ogImage?: string;
+}
+
+const { ogImage } = Astro.props;
+
+let OgImage: URL | undefined = undefined;
+if (ogImage) {
+	OgImage = new URL(ogImage, Astro.url.origin);
+}
+
+const path = Astro.originPathname;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<Head {...Astro.props} ogImage={OgImage} />
+	</head>
+	<body>
+		<Navbar />
+		{path === "/" && (
+			<HeroAnimation />
+		)}
+		<main>
+			<slot />
+		</main>
+		<Footer
+			links={{
+				'StudioCMS Ecosystem': [
+					{ label: 'StudioCMS UI', href: 'https://ui.studiocms.dev' },
+					{ label: 'Apollo', href: 'https://github.com/withstudiocms/apollo' }
+				],
+				'Resources': [
+					{ label: 'Docs', href: 'https://docs.studiocms.dev' },
+				],
+			}}
+			copyright='MIT License © 2025 - StudioCMS'
+		>
+			<div slot='brand' class='footer-brand'>
+				<LogoAdaptive height={48} width={45.76} />
+				<span class='studiocms-footer-text'>
+					<span>StudioCMS</span>
+				</span>
+			</div>
+			<div slot='socials' class='socials'>
+				<a href='https://github.com/withstudiocms'>
+					<GitHubLogo width={28} height={28} />
+				</a>
+				<a href='https://chat.studiocms.dev'>
+					<DiscordLogo width={32} height={32} />
+				</a>
+				<a href='https://patreon.com/studiocms'>
+					<PatreonLogo width={24} height={24} />
+				</a>
+				<a href='https://bsky.app/profile/studiocms.dev'>
+					<BlueSkyLogo width={24} height={24} />
+				</a>
+				<a href='https://twitter.com/withstudiocms'>
+					<TwitterLogo width={22} height={22} />
+				</a>
+			</div>
+		</Footer>
+	</body>
+</html>
