@@ -12,7 +12,7 @@ Hey peeps, as we roll into 2025, we're super excited to drop StudioCMS version `
 
 ## What’s New in Beta.8
 
-StudioCMS 0.1.0-beta.8 brings several exciting features:
+StudioCMS `0.1.0-beta.8` brings several exciting features:
 
 **Redesigned Dashboard:** The dashboard has been completely revamped using the `@studiocms/ui` library, offering a modern, intuitive interface for managing content.
 
