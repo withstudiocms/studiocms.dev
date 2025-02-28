@@ -14,7 +14,7 @@ Hey peeps! As we roll into 2025, we're super excited to drop StudioCMS version `
 
 StudioCMS `0.1.0-beta.8` brings several exciting features:
 
-**Redesigned Dashboard:** The dashboard has been completely revamped using the `@studiocms/ui` library, offering a modern, intuitive interface for managing content.
+**Redesigned Dashboard:** The dashboard has been completely revamped using the [`@studiocms/ui`](https://ui.studiocms.dev) library, offering a modern, intuitive interface for managing content.
 
 **Auth System Overhaul:** Security is tighter with a new authentication system using lucia-next, new encryption (requiring a CMS_ENCRYPTION_KEY), and support for multiple oAuth providers. Login and signup pages have a fresh look with backgrounds, improving user experience.
 
@@ -46,7 +46,7 @@ This table, derived from the GitHub releases and pull requests, illustrates the 
 
 ## What’s Next & How to Get Involved
 
-Looking ahead, we’re all about making StudioCMS even more robust. Expect more focus on stability, performance, and a killer user experience. We’re planning to expand our plugin ecosystem, improve documentation, and keep the community vibe strong—just check out our Discord if you haven’t already. A big shoutout to [Turso](https://turso.tech) for their sponsorship and to everyone who’s been part of this journey.
+Looking ahead, we’re all about making StudioCMS even more robust. Expect more focus on stability, performance, and a killer user experience. We’re planning to expand our plugin ecosystem, improve documentation, and keep the community vibe strong—just check out our [Discord](https://chat.studiocms.dev) if you haven’t already. A big shoutout to [Turso](https://tur.so/studiocms) for their sponsorship and to everyone who’s been part of this journey.
 
 We’d love for you to join the fun—whether it’s reporting bugs, suggesting features, or contributing code. Check out our [contributing guide](https://github.com/withstudiocms/.github/blob/main/CONTRIBUTING.md) for the details. Let’s keep pushing the boundaries together!
 
