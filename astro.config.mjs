@@ -3,8 +3,13 @@ import getCoolifyURL from './utils';
 
 import UI from '@studiocms/ui';
 
+import db from '@astrojs/db';
+import node from '@astrojs/node';
+import studiocms from 'studiocms';
+
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
   site: getCoolifyURL(true) || 'https://studiocms.dev',
   image: {
     remotePatterns: [
@@ -13,8 +18,17 @@ export default defineConfig({
       },
     ],
   },
-  integrations: [UI()],
+  integrations: [
+    UI(),
+    db(),
+    studiocms({
+      dbStartPage: true,
+    })
+  ],
   experimental: {
     svg: true
-  }
+  },
+  adapter: node({
+    mode: 'standalone'
+  })
 });
