@@ -2,6 +2,8 @@
 title: "Beta 8 Release"
 description: "StudioCMS 0.1.0-beta.8 is being released."
 publishDate: 2025-02-28
+blueSky:
+  postId: 3lja4azctl22a
 hero: 
     image: "./assets/beat-8-release.png"
     alt: "Beta 8 Release"
