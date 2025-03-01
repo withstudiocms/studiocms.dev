@@ -21,9 +21,7 @@ export default defineConfig({
   integrations: [
     UI(),
     db(),
-    studiocms({
-      dbStartPage: true,
-    })
+    studiocms()
   ],
   experimental: {
     svg: true

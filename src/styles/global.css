@@ -13,10 +13,12 @@ body {
 }
 
 main {
-	width: 100vw;
+	width: var(--page-width);
 	height: 100%;
-	position: relative;
-	z-index: 1;
+	z-index: 5;
+	margin: 0 auto;
+	padding-top: 6rem;
+	pointer-events: all;
 }
 
 main::after {
@@ -29,6 +31,17 @@ main::after {
 	background-image: url('/noise.png');
 	background-repeat: repeat;
 	opacity: .5;
+	z-index: -1;
+}
+
+section, section * {
+	position: relative;
+	z-index: 5;
+}
+
+footer {
+	z-index: 10 !important;
+	position: relative;
 }
 
 footer a {

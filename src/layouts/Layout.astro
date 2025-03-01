@@ -1,5 +1,5 @@
 ---
-import { Footer } from 'studiocms:ui/components';
+import { Footer, Toaster } from 'studiocms:ui/components';
 
 import Navbar from '@/components/Navbar.astro';
 import Head from '@/components/Head.astro';
@@ -33,6 +33,7 @@ const path = Astro.originPathname;
 		<Head {...Astro.props} ogImage={OgImage} />
 	</head>
 	<body>
+		<Toaster />
 		<Navbar />
 		{path === "/" && (
 			<HeroAnimation />
