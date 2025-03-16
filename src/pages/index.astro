@@ -33,19 +33,19 @@ const features = (await getCollection('features')).sort(
 
     <Hero />
     <span class="sr-only">Sponsor Section</span>
-    <section class='studiocms-container mx-auto px-8 py-10 relative -translate-y-20 md:-translate-y-32'>
-      <h2 class='text-center text-3xl font-semibold block'>Sponsored by</h2>
-      <div class='flex flex-row flex-wrap align-center justify-center mb-12 relative'>
+    <section class='relative mx-auto studiocms-container px-8 py-10 -translate-y-20 md:-translate-y-32'>
+      <h2 class='block font-semibold text-3xl text-center'>Sponsored by</h2>
+      <div class='relative flex flex-row flex-wrap justify-center mb-12 align-center'>
         <a href={sponsors.turso.web.sponsorLink} target="_blank" rel="sponsored">
-          <Image src={'/sponsors/turso.svg'} alt={'Turso Logo'} width={410} height={120} class='dark:block hidden' loading={'eager'} />
-          <Image src={'/sponsors/turso-dark.svg'} alt={'Turso Logo'} width={410} height={120} class='block dark:hidden' loading={'eager'} />
+          <Image src={'/sponsors/turso.svg'} alt={'Turso Logo'} width={410} height={120} class='hidden dark:block' loading={'eager'} />
+          <Image src={'/sponsors/turso-dark.svg'} alt={'Turso Logo'} width={410} height={120} class='dark:hidden block' loading={'eager'} />
         </a>
       </div>
     </section>
     <span class='sr-only'>Features section</span>
-    <section class='studiocms-container mx-auto px-8 py-10'>
-      <h2 class='mb-4 md:mb-8 text-center text-5xl font-bold'>Features</h2>
-      <div class='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3'>
+    <section class='mx-auto studiocms-container px-8 py-10'>
+      <h2 class='mb-4 md:mb-8 font-bold text-5xl text-center'>Features</h2>
+      <div class='gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
         {features.map(({ data }) => <FeatureCard {...data} />)}
       </div>
     </section>
@@ -54,46 +54,46 @@ const features = (await getCollection('features')).sort(
       <Marquee />
     </section>
     <span class='sr-only'>Pricing section</span>
-    <section class='studiocms-container mx-auto py-10 px-8'>
-      <div class='mx-auto flex flex-col items-center justify-center pb-10'>
-        <h2 class='mb-4 text-5xl font-bold'>Pricing</h2>
-        <p class='text-xl text-center max-w-[60ch]'>
+    <section class='mx-auto studiocms-container px-8 py-10'>
+      <div class='flex flex-col justify-center items-center mx-auto pb-10'>
+        <h2 class='mb-4 font-bold text-5xl'>Pricing</h2>
+        <p class='max-w-[60ch] text-xl text-center'>
           Dive into our open-source adventure - it's totally free, no price tags
           here! But hey, if you're feeling the vibe, jump in and contribute in
           your own awesome way. Code, ideas, high-fives? We love it all!
         </p>
       </div>
       <div
-        class='mx-auto flex py-8 flex-col items-center justify-center gap-x-16 gap-y-10 md:flex-row'
+        class='flex md:flex-row flex-col justify-center items-center gap-x-16 gap-y-10 mx-auto py-8'
       >
         <a
-          class='flex items-center gap-x-4 transition-all duration-200 ease-in-out hover:scale-105 hover:cursor-pointer hover:text-yellow-400 bg-slate-300 dark:bg-neutral-900/90 rounded-lg px-4 py-3'
+          class='flex items-center gap-x-4 bg-slate-300 dark:bg-neutral-900/90 px-4 py-3 rounded-lg hover:text-yellow-400 hover:scale-105 transition-all duration-200 ease-in-out hover:cursor-pointer'
           href={GITHUB_URL}
         >
-          <h3 class='text-center text-2xl relative top-px'>Star it</h3>
+          <h3 class='top-px relative text-2xl text-center'>Star it</h3>
           <Icon name='star' class='text-2xl' />
         </a>
         <Separator orientation='vertical' extraClasses='h-3/5' />
         <a
-          class='flex items-center gap-x-4 transition-all duration-200 ease-in-out hover:scale-105 hover:cursor-pointer hover:text-green-400'
+          class='flex items-center gap-x-4 hover:text-green-400 hover:scale-105 transition-all duration-200 ease-in-out hover:cursor-pointer'
           href={SPONSOR_URL}
         >
-          <h3 class='text-center text-2xl'>Sponsor it</h3>
-          <Icon name='patreon' class='text-3xl' />
+          <h3 class='text-2xl text-center'>Sponsor it</h3>
+          <Icon name='opencollective' class='text-3xl' />
         </a>
       </div>
     </section>
     <!-- { testimonials.length > 0 && (
       <span class='sr-only'>Testimonials section</span>
-      <section class='container mx-auto px-4 pb-20'>
-        <div class='mx-auto flex flex-col items-center justify-center pb-10'>
-          <h2 class='pb-8 text-5xl font-bold'>Testimonials</h2>
-          <p class='w-3/5 text-center text-xl'>
+      <section class='mx-auto px-4 pb-20 container'>
+        <div class='flex flex-col justify-center items-center mx-auto pb-10'>
+          <h2 class='pb-8 font-bold text-5xl'>Testimonials</h2>
+          <p class='w-3/5 text-xl text-center'>
             Look what our awesome community has to say about us. We're so grateful
             for the love and support we've received. It's what keeps us going!
           </p>
         </div>
-        <div class='grid grid-cols-1 gap-8 pt-10 sm:grid-cols-2 md:grid-cols-3'>
+        <div class='gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-10'>
           {testimonials.map(({ data }) => <TestimonialCard {...data} />)}
         </div>
       </section>

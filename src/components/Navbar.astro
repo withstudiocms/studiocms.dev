@@ -5,11 +5,11 @@ import ThemeSelect from './ThemeSelect.astro';
 ---
 
 <nav
-  class='flex w-full items-center justify-between py-8 bg-slate-100 px-8 text-gray-900 dark:bg-[--purple-900] dark:text-slate-100'
+  class='flex justify-between items-center bg-slate-100 dark:bg-[--purple-900] px-8 py-8 w-full text-gray-900 dark:text-slate-100'
 >
-  <div class="studiocms-container mx-auto flex flex-center justify-between">
-    <a href="/" class='flex w-fit items-center justify-center gap-x-4' aria-label="StudioCMS">
-      <Icon name='logo' class='h-8 w-8 stroke-slate-100 text-[--purple-900] dark:text-white' />
+  <div class="flex flex-center justify-between mx-auto studiocms-container">
+    <a href="/" class='flex justify-center items-center gap-x-4 w-fit' aria-label="StudioCMS">
+      <Icon name='logo' class='stroke-slate-100 w-8 h-8 text-[--purple-900] dark:text-white' />
       <span class="hidden md:block font-bold text-2xl" aria-hidden>StudioCMS</span>
     </a>
     <div>
@@ -38,7 +38,7 @@ import ThemeSelect from './ThemeSelect.astro';
         <li class="text-link">
           <a 
             href='/roadmap' 
-            class='font-medium text-lg hover:underline mr-8' 
+            class='mr-8 font-medium text-lg hover:underline' 
             rel='external nofollow' 
             aria-label='Roadmap link'
             title="Roadmap"
@@ -56,7 +56,7 @@ import ThemeSelect from './ThemeSelect.astro';
           >
             <Icon
               name='discord'
-              class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
+              class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
             />
           </a>
         </li>
@@ -70,7 +70,7 @@ import ThemeSelect from './ThemeSelect.astro';
             >
             <Icon
               name='github'
-              class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
+              class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
             />
           </a>
         </li>
@@ -79,12 +79,12 @@ import ThemeSelect from './ThemeSelect.astro';
             class="navbar-icon"
             href={SPONSOR_URL}
             rel='external nofollow'
-            aria-label='GitHub link'
-            title="Patreon"
+            aria-label='Open Collective link'
+            title="Open Collective"
             >
             <Icon
-              name='patreon'
-              class='h-6 w-6 transition duration-200 ease-in-out hover:scale-110'
+              name='opencollective'
+              class='w-6 h-6 hover:scale-110 transition duration-200 ease-in-out'
             />
           </a>
         </li>
@@ -95,7 +95,7 @@ import ThemeSelect from './ThemeSelect.astro';
           <div id="mobile-dropdown-icon-container">
             <Icon
               name='heroicons:bars-3'
-              class='h-8 w-8 transition duration-200 ease-in-out cursor-pointer'
+              class='w-8 h-8 transition duration-200 ease-in-out cursor-pointer'
             />
           </div>
           <div id="mobile-dropdown-container">
@@ -118,7 +118,7 @@ import ThemeSelect from './ThemeSelect.astro';
             </a>
             <a 
               href='/roadmap' 
-              class='font-medium text-lg hover:underline mr-8' 
+              class='mr-8 font-medium text-lg hover:underline' 
               rel='external nofollow' 
               aria-label='Roadmap link'
               title="Roadmap"
@@ -135,7 +135,7 @@ import ThemeSelect from './ThemeSelect.astro';
               >
                 <Icon
                   name='discord'
-                  class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
+                  class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
                 />
               </a>
               <a
@@ -147,7 +147,7 @@ import ThemeSelect from './ThemeSelect.astro';
                 >
                 <Icon
                   name='github'
-                  class='h-8 w-8 transition duration-200 ease-in-out hover:scale-110'
+                  class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
                 />
               </a>
             </div>
