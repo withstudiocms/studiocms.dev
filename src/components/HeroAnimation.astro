@@ -163,7 +163,11 @@
 			const { x, y } = star.pos;
 
 			const starImageOffset = this.STAR_INSTANCE_CANVAS_SIZE / 2;
-			this.ctx.drawImage(this.starInstanceCanvas, x - starImageOffset, y - starImageOffset);
+			this.ctx.drawImage(
+				this.starInstanceCanvas,
+				Math.round(x - starImageOffset),
+				Math.round(y - starImageOffset)
+			);
 		};
 
 		/**
