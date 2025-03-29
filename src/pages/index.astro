@@ -1,6 +1,16 @@
 ---
 import { Button, Icon } from 'studiocms:ui/components';
 import Layout from '../layouts/Layout.astro';
+import { Card } from 'studiocms:ui/components';
+import AWS from '@/assets/icons/aws.svg';
+import Coolify from '@/assets/icons/coolify.svg';
+import Docker from '@/assets/icons/docker.svg';
+import Netlify from '@/assets/icons/netlify.svg';
+import Node from '@/assets/icons/node.svg';
+import Vercel from '@/assets/icons/vercel.svg';
+
+import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
+import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 ---
 
 <Layout>
@@ -26,6 +36,79 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 	<div class="video-player">Video here!</div>
+	<section class="target-groups">
+		<Card class="target-group-div" variant='filled'>
+			<h2>For Developers.</h2>
+		</Card>
+		<Card class="target-group-div" variant='filled'>
+			<h2>For Marketers.</h2>
+		</Card>
+		<Card class="target-group-div enterprise" variant='filled'>
+			<h2>For Enterprises.</h2>
+		</Card>
+	</section>
+	<section class="hosting-methods">
+		<h2>Server <span class="keyword">and</span> Serverless</h2>
+		<p class="balanced">
+			StudioCMS stores all of it's data in a remote libSQL instance, <br>
+			so you can deploy your site to serverless hosts and enjoy the full editing capabilities.
+		</p>
+		<div class="hosting-providers">
+			<Card as='a' href='/' class="hosting-provider">
+				<AWS />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider">
+				<Coolify />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider">
+				<Docker />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider">
+				<Netlify />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider">
+				<Node />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider">
+				<Vercel />
+			</Card>
+		</div>
+	</section>
+	<section class="plugins-section">
+		<h2>Extensible by Design</h2>
+		<p>Lorem Ipsum, Tailwind-style Demo goes here</p>
+	</section>
+	<section class="banner">
+		<p>Join a community of developers already using StudioCMS.</p>
+		<div></div>
+	</section>
+	<section class="social-proof">
+		<h2>Trusted by the community</h2>
+	</section>
+	<section class="ecosystem">
+		<h2>Part of the StudioCMS Ecosystem</h2>
+	</section>
+	<section class="blog-showcase">
+		<h2>Keep up With What's Happening</h2>
+	</section>
+	<section class="final-cta"></section>
+	<section class="sponsors">
+		<h2>Sponsors</h2>
+		<p>StudioCMS is free, open source software, brought to you by:</p>
+		<div class="sponsors-grid">
+			<a href="https://tur.so/studiocms" class="sponsor turso">
+				<TursoFullLogo />
+				<p>Official Database Sponsor</p>
+			</a>
+			<a href="https://www.skip2.net/?utm_source=studiocms" class="sponsor skip2">
+				<Skip2FullLogo />
+				<p>Official Network Sponsor</p>
+			</a>
+		</div>
+	</section>
+	<div>
+		Apollo goes here, poking out from behind the footer
+	</div>
 </Layout>
 <script>
 	import { toast } from "studiocms:ui/components";
@@ -41,6 +124,12 @@ import Layout from '../layouts/Layout.astro';
 	});
 </script>
 <style>
+	section:not(.banner), .video-player {
+		max-width: var(--page-width);
+		margin: 0 auto;
+		margin-bottom: 8rem;
+		text-align: center;
+	}
 	section.hero {
 		width: 100%;
 		text-align: center;
@@ -51,6 +140,16 @@ import Layout from '../layouts/Layout.astro';
 		justify-content: center;
 		gap: 1rem;
 		position: relative;
+		margin-bottom: 0;
+	}
+
+	section.banner {
+		margin-bottom: 8rem;
+	}
+
+	h2 {
+		font-size: 2em;
+		margin-bottom: .5rem;
 	}
 
 	.announcement-badge {
@@ -112,5 +211,114 @@ import Layout from '../layouts/Layout.astro';
 		justify-content: center;
 		border-radius: var(--radius-lg);
 		z-index: 5;
+	}
+
+	.target-groups {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.target-group-div {
+		width: calc(50% - .5rem);
+	}
+
+	.target-group-div.enterprise {
+		width: 100%;
+	}
+
+	.hosting-methods {
+		text-align: center;
+	}
+
+	.hosting-providers {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		margin-top: 3rem;
+	}
+
+	.hosting-provider {
+		width: 5rem;
+		height: 5rem;
+		display: block;
+		background-color: hsl(var(--background-step-1));
+		transition: all .15s ease;
+	}
+
+	.hosting-provider:hover {
+		background-color: hsl(var(--background-step-2));
+	}
+	
+	.hosting-provider svg {
+		max-width: 4.5rem;
+		max-height: 4.5rem;
+	}
+
+	section.banner {
+		width: 100%;
+		background-color: hsl(var(--background-step-2));
+		padding: 2rem calc((100vw - var(--page-width)) / 2);
+		text-align: center;
+	}
+
+	.sponsors {
+		text-align: center;
+	}
+
+	.sponsors-grid {
+		width: 100%;
+		border-radius: 1rem;
+		border: 1px solid hsl(var(--border));
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		overflow: hidden;
+		gap: 1px;
+		background-color: hsl(var(--border));
+		margin-top: 1rem;
+	}
+
+	.sponsor {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		background-color: hsl(var(--background-step-1));
+		transition: all .15s ease;
+		text-decoration: none;
+		color: hsl(var(--text-muted));
+	}
+
+	.sponsor:hover {
+		background-color: hsl(var(--background-step-2));
+	}
+
+	.sponsor svg {
+		max-width: 100%;
+		height: 8rem;
+	}
+
+	.sponsor.turso {
+		grid-column: 1 / span 2;
+	}
+
+	.sponsor.skip2 {
+		grid-column: 3 / span 2;
+	}
+</style>
+<style is:global>	
+	.hosting-provider .sui-card-body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	main {
+		width: 100vw !important;
 	}
 </style>

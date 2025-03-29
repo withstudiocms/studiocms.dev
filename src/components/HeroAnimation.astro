@@ -165,8 +165,8 @@
 			const starImageOffset = this.STAR_INSTANCE_CANVAS_SIZE / 2;
 			this.ctx.drawImage(
 				this.starInstanceCanvas,
-				Math.round(x - starImageOffset),
-				Math.round(y - starImageOffset)
+				x - starImageOffset,
+				y - starImageOffset
 			);
 		};
 
@@ -183,8 +183,8 @@
 				return {
 					radius: this.STAR_RADIUS,
 					pos: {
-						x: Math.floor(x),
-						y: Math.ceil(y),
+						x: x,
+						y: y,
 					},
 					speed: Math.random() * 0.002 / 2,
 				}

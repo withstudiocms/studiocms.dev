@@ -9,6 +9,7 @@ export default defineStudioCMSConfig({
                     allowUserRegistration: false,
                 }
             }
-        }
-    }
+        },
+        inject404Route: false,
+    },
 });

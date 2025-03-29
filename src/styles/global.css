@@ -10,18 +10,10 @@
 
 body {
 	overflow-x: hidden;
+	position: relative;
 }
 
-main {
-	width: var(--page-width);
-	height: 100%;
-	z-index: 5;
-	margin: 0 auto;
-	padding-top: 6rem;
-	pointer-events: all;
-}
-
-main::after {
+body::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -32,6 +24,15 @@ main::after {
 	background-repeat: repeat;
 	opacity: .5;
 	z-index: -1;
+}
+
+main {
+	width: var(--page-width);
+	height: auto;
+	z-index: 5;
+	margin: 0 auto;
+	padding-top: 6rem;
+	pointer-events: all;
 }
 
 section, section * {
@@ -106,4 +107,16 @@ footer a:hover {
 	flex-direction: row;
 	gap: 1rem;
 	align-items: center;
+}
+
+span.keyword {
+	background: linear-gradient(90deg, #a581f3 0%, #dc93ff 100%);
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.balanced {
+	text-wrap: balanced;
 }
