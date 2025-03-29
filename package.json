@@ -8,7 +8,8 @@
     "build": "astro build --remote",
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "ci:install": "pnpm install --frozen-lockfile"
   },
   "dependencies": {
     "@astrojs/db": "^0.14.7",
