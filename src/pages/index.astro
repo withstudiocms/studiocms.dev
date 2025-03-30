@@ -2,6 +2,7 @@
 import { Button, Icon } from 'studiocms:ui/components';
 import Layout from '../layouts/Layout.astro';
 import { Card } from 'studiocms:ui/components';
+import { Image } from 'astro:assets';
 
 import AWS from '@/assets/icons/aws.svg';
 import Coolify from '@/assets/icons/coolify.svg';
@@ -19,6 +20,9 @@ import MarketerIconPattern from '@/assets/marketer-icon-pattern.svg';
 import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
 import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 import EcosystemSection from '@/components/EcosystemSection.astro';
+
+import ApolloDefaultExpression from '@/assets/apollo-default.png';
+import ApolloHappyExpression from '@/assets/apollo-happy.png';
 ---
 
 <Layout>
@@ -188,6 +192,14 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 				<span class="stat-text keyword">360+</span>
 				<span class="stat-desc">GitHub stars</span>
 			</div>
+			<Image
+				src={ApolloHappyExpression}
+				alt="Our mascot, Apollo, happily looking at the statistics."
+				width={177.5}
+				loading="lazy"
+				class='apollo-banner-deco'
+				quality={100}
+			/>
 		</div>
 	</section>
 	<section class="social-proof">
@@ -215,7 +227,14 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 		</div>
 	</section>
 	<div>
-		Apollo goes here, poking out from behind the footer
+		<Image
+			src={ApolloDefaultExpression}
+			alt="Our mascot, Apollo, poking out from behind the footer Element."
+			width={160}
+			loading="lazy"
+			class='apollo-footer-deco'
+			quality={100}
+		/>
 	</div>
 </Layout>
 <script>
@@ -479,6 +498,15 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 		gap: 1.5rem;
 		margin: 0 auto;
 		margin-top: 1.5rem;
+		position: relative;
+	}
+
+	.apollo-banner-deco {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: -1;
+		transform: translate(50%, -50%);
 	}
 
 	.stat {
@@ -547,6 +575,12 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 
 	.sponsor.skip2 {
 		grid-column: 3 / span 2;
+	}
+
+	.apollo-footer-deco {
+		position: relative;
+		left: 50vw;
+		transform: translate(-50%, 30%);
 	}
 </style>
 <style is:global>	
