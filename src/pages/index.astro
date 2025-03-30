@@ -142,21 +142,27 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 		<div class="hosting-providers">
 			<Card as='a' href='/' class="hosting-provider" aria-label="NodeJS Logo">
 				<Node />
+				<Node class='glow-layer' />
 			</Card>
 			<Card as='a' href='/' class="hosting-provider" aria-label="Coolify Logo">
 				<Coolify />
+				<Coolify class='glow-layer' />
 			</Card>
 			<Card as='a' href='/' class="hosting-provider" aria-label="Docker Logo">
 				<Docker />
+				<Docker class='glow-layer' />
 			</Card>
 			<Card as='a' href='/' class="hosting-provider" aria-label="Netlify Logo">
 				<Netlify />
+				<Netlify class='glow-layer' />
 			</Card>
 			<Card as='a' href='/' class="hosting-provider" aria-label="Vercel Logo">
 				<Vercel />
+				<Vercel class='glow-layer' />
 			</Card>
 			<Card as='a' href='/' class="hosting-provider" aria-label="Amazon Web Services Logo">
 				<AWS />
+				<AWS class='glow-layer' />
 			</Card>
 		</div>
 	</section>
@@ -432,13 +438,32 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 	}
 
 	.hosting-provider:hover {
-		background-color: hsl(var(--background-step-2));
+		background-image: radial-gradient(
+			hsl(var(--background-step-1)),
+			hsl(var(--background-step-3))
+		);
 		border: 1px solid hsl(var(--primary-base));
 	}
 	
 	.hosting-provider svg {
 		max-width: 4.5rem;
 		max-height: 4.5rem;
+	}
+
+	.hosting-provider svg.glow-layer {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0;
+		transition: all .15s ease;
+		filter: blur(4px);
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+
+	.hosting-provider:hover svg.glow-layer {
+		opacity: .5;
 	}
 
 	section.banner {
