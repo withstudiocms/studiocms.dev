@@ -26,6 +26,10 @@ body::after {
 	z-index: -1;
 }
 
+[data-theme="light"] body::after {
+	content: none;
+}
+
 main {
 	width: var(--page-width);
 	height: auto;
