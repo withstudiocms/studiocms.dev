@@ -2,15 +2,23 @@
 import { Button, Icon } from 'studiocms:ui/components';
 import Layout from '../layouts/Layout.astro';
 import { Card } from 'studiocms:ui/components';
+
 import AWS from '@/assets/icons/aws.svg';
 import Coolify from '@/assets/icons/coolify.svg';
 import Docker from '@/assets/icons/docker.svg';
 import Netlify from '@/assets/icons/netlify.svg';
 import Node from '@/assets/icons/node.svg';
 import Vercel from '@/assets/icons/vercel.svg';
+import NPM from '@/assets/npm.svg';
+import Discord from '@/assets/discord.svg';
+import GitHub from '@/assets/github.svg';
+
+import DevIconPattern from '@/assets/developer-icon-pattern.svg';
+import MarketerIconPattern from '@/assets/marketer-icon-pattern.svg';
 
 import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
 import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
+import EcosystemSection from '@/components/EcosystemSection.astro';
 ---
 
 <Layout>
@@ -24,11 +32,10 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 			StudioCMS is the all-in-one content management solution for your next Astro project.
 		</p>
 		<div class="hero-cta">
-			<code class="code-cta">
+			<code class="code-cta" id="install-cta">
 				npx create studiocms
-				<button id="code-cta-copy">
-					<Icon name='document-duplicate-20-solid' width={16} height={16} />
-				</button>
+				<Icon name='document-duplicate-20-solid' class='active' id='copy-icon' width={16} height={16} />
+				<Icon name='check-20-solid' id='copy-check' width={16} height={16} />
 			</code>
 			<Button color='primary'>
 				Try the demo!
@@ -37,14 +44,93 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 	</section>
 	<div class="video-player">Video here!</div>
 	<section class="target-groups">
-		<Card class="target-group-div" variant='filled'>
+		<Card class="target-group-div">
 			<h2>For Developers.</h2>
+			<p>StudioCMS offers lorem ipsum solor dit amet. StudioCMS offers lorem ipsum solor dit amet.</p>
+			<div class="reasons-list">
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+			</div>
+			<Button href='/' color='mono'>
+				Read more
+			</Button>
+			<DevIconPattern class="icon-deco" />
 		</Card>
-		<Card class="target-group-div" variant='filled'>
+		<Card class="target-group-div">
 			<h2>For Marketers.</h2>
+			<p>StudioCMS offers lorem ipsum solor dit amet. StudioCMS offers lorem ipsum solor dit amet.</p>
+			<div class="reasons-list">
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+			</div>
+			<Button href='/' color='mono'>
+				Read more
+			</Button>
+			<MarketerIconPattern class="icon-deco" />
 		</Card>
-		<Card class="target-group-div enterprise" variant='filled'>
+		<Card class="target-group-div enterprise">
 			<h2>For Enterprises.</h2>
+			<p>
+				StudioCMS offers lorem ipsum solor dit amet. StudioCMS offers lorem ipsum solor dit amet.
+				StudioCMS offers lorem ipsum solor dit amet. StudioCMS offers lorem ipsum solor dit amet.
+			</p>
+			<div class="reasons-list">
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+				<div class="reason">
+					<div class="reason-header">
+						<Icon name='check-20-solid' width={20} height={20} />
+						<h3>Reason</h3>
+					</div>
+					<p>Small description with text that is up to eighty characters long.</p>
+				</div>
+			</div>
+			<Button href='/' color='mono'>
+				Read more
+			</Button>
 		</Card>
 	</section>
 	<section class="hosting-methods">
@@ -54,23 +140,23 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 			so you can deploy your site to serverless hosts and enjoy the full editing capabilities.
 		</p>
 		<div class="hosting-providers">
-			<Card as='a' href='/' class="hosting-provider">
-				<AWS />
-			</Card>
-			<Card as='a' href='/' class="hosting-provider">
-				<Coolify />
-			</Card>
-			<Card as='a' href='/' class="hosting-provider">
-				<Docker />
-			</Card>
-			<Card as='a' href='/' class="hosting-provider">
-				<Netlify />
-			</Card>
-			<Card as='a' href='/' class="hosting-provider">
+			<Card as='a' href='/' class="hosting-provider" aria-label="NodeJS Logo">
 				<Node />
 			</Card>
-			<Card as='a' href='/' class="hosting-provider">
+			<Card as='a' href='/' class="hosting-provider" aria-label="Coolify Logo">
+				<Coolify />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider" aria-label="Docker Logo">
+				<Docker />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider" aria-label="Netlify Logo">
+				<Netlify />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider" aria-label="Vercel Logo">
 				<Vercel />
+			</Card>
+			<Card as='a' href='/' class="hosting-provider" aria-label="Amazon Web Services Logo">
+				<AWS />
 			</Card>
 		</div>
 	</section>
@@ -80,16 +166,32 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 	</section>
 	<section class="banner">
 		<p>Join a community of developers already using StudioCMS.</p>
-		<div></div>
+		<div class="stats-container">
+			<div class="stat">
+				<Discord class="stat-icon" />
+				<span class="stat-text keyword">90+</span>
+				<span class="stat-desc">Discord community members</span>
+			</div>
+			<div class="stat">
+				<NPM class="stat-icon" />
+				<span class="stat-text keyword">450+</span>
+				<span class="stat-desc">Monthly npm downloads</span>
+			</div>
+			<div class="stat">
+				<GitHub class="stat-icon" />
+				<span class="stat-text keyword">360+</span>
+				<span class="stat-desc">GitHub stars</span>
+			</div>
+		</div>
 	</section>
 	<section class="social-proof">
 		<h2>Trusted by the community</h2>
+		<span>Social Proof</span>
 	</section>
-	<section class="ecosystem">
-		<h2>Part of the StudioCMS Ecosystem</h2>
-	</section>
+	<EcosystemSection />
 	<section class="blog-showcase">
 		<h2>Keep up With What's Happening</h2>
+		<span>latest blog article goes here</span>
 	</section>
 	<section class="final-cta"></section>
 	<section class="sponsors">
@@ -111,16 +213,25 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 	</div>
 </Layout>
 <script>
-	import { toast } from "studiocms:ui/components";
+	const copyBtn = document.querySelector<HTMLButtonElement>('#install-cta')!;
+	const copyIcon = document.querySelector<HTMLElement>('#copy-icon')!;
+	const successIcon = document.querySelector<HTMLElement>('#copy-check')!;
 
-	const copyBtn = document.querySelector<HTMLButtonElement>('#code-cta-copy');
+	let timeout: NodeJS.Timeout | null = null;
 
-	copyBtn?.addEventListener('click', () => {
+	copyBtn.addEventListener('click', () => {
+		if (timeout) {
+			clearTimeout(timeout);
+		}
+
 		navigator.clipboard.writeText('npx create studiocms');
-		toast({
-			title: 'Copied to clipboard!',
-			type: 'success'
-		});
+		copyIcon.classList.remove('active');
+		successIcon.classList.add('active');
+
+		timeout = setTimeout(() => {
+			copyIcon.classList.add('active');
+			successIcon.classList.remove('active');
+		}, 3000);
 	});
 </script>
 <style>
@@ -130,6 +241,7 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 		margin-bottom: 8rem;
 		text-align: center;
 	}
+	
 	section.hero {
 		width: 100%;
 		text-align: center;
@@ -196,10 +308,19 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 		background-color: hsl(var(--background-step-2));
 		border: 1px solid hsl(var(--border));
 		border-radius: var(--radius-md);
+		cursor: pointer;
 	}
 
-	.code-cta button {
-		cursor: pointer;
+	#copy-icon, #copy-check {
+		display: none;
+	}
+
+	#copy-icon.active, #copy-check.active {
+		display: block;
+	}
+
+	#copy-check.active {
+		color: hsl(var(--success-base)) !important;
 	}
 
 	.video-player {
@@ -209,7 +330,7 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: var(--radius-lg);
+		border-radius: 1.25rem;
 		z-index: 5;
 	}
 
@@ -222,10 +343,72 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 
 	.target-group-div {
 		width: calc(50% - .5rem);
+		background-color: hsl(var(--background-step-2));
+		transition: all .15s ease;
+		text-align: left;
+		overflow: hidden;
+		border-radius: 1.25rem;
+
+		--reason-cols: 2;
+	}
+
+	.target-group-div:hover {
+		border: 1px solid hsl(var(--primary-base));
+	}
+
+	.target-group-div h3 {
+		font-weight: 500;
 	}
 
 	.target-group-div.enterprise {
 		width: 100%;
+
+		--reason-cols: 4;
+	}
+
+	.reasons-list {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(var(--reason-cols), 1fr);
+		gap: 1rem;
+	}
+
+	.reason {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+		background-color: hsl(var(--background-step-3));
+		padding: .75rem;
+		border-radius: .5rem;
+	}
+
+	.reason-header {
+		display: flex;
+		flex-direction: row;
+		gap: .5rem;
+		align-items: center;
+	}
+
+	.reason-header svg {
+		color: hsl(var(--primary-base));
+	}
+
+	.icon-deco {
+		position: absolute;
+		filter: saturate(0);
+		opacity: .5;
+		rotate: -45deg;
+		top: 60%;
+		left: 60%;
+		z-index: -1;
+		transition: all .15s ease;
+	}
+
+	.target-group-div:hover .icon-deco {
+		filter: saturate(1);
+		opacity: 1;
+		transform: translateY(.5rem);
+		transform: translatex(.5rem);
 	}
 
 	.hosting-methods {
@@ -245,10 +428,12 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 		display: block;
 		background-color: hsl(var(--background-step-1));
 		transition: all .15s ease;
+		border-radius: 1.25rem;
 	}
 
 	.hosting-provider:hover {
 		background-color: hsl(var(--background-step-2));
+		border: 1px solid hsl(var(--primary-base));
 	}
 	
 	.hosting-provider svg {
@@ -263,13 +448,43 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 		text-align: center;
 	}
 
+	.stats-container {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5rem;
+		margin: 0 auto;
+		margin-top: 1.5rem;
+	}
+
+	.stat {
+		width: 100%;
+		border: 1px solid hsl(var(--border));
+		background-color: hsl(var(--background-step-3));
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		text-align: left;
+		padding: 1.5rem;
+		border-radius: 1.25rem;
+	}
+
+	.stat-icon {
+		width: 2rem;
+		height: auto;
+	}
+
+	.stat-text {
+		font-size: 3em;
+		font-weight: bolder;
+	}
+
 	.sponsors {
 		text-align: center;
 	}
 
 	.sponsors-grid {
 		width: 100%;
-		border-radius: 1rem;
+		border-radius: 1.25rem;
 		border: 1px solid hsl(var(--border));
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -316,9 +531,25 @@ import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
 		justify-content: center;
 		width: 100%;
 		height: 100%;
+		padding: 1.5rem;
+	}
+
+	.target-group-div .sui-card-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1.5rem;
+
+		h2 {
+			margin-bottom: 0;
+		}
 	}
 
 	main {
 		width: 100vw !important;
+	}
+
+	.target-group-div .sui-button {
+		width: fit-content !important;
 	}
 </style>

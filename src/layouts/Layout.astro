@@ -1,5 +1,5 @@
 ---
-import { Footer, Toaster } from 'studiocms:ui/components';
+import { Footer } from 'studiocms:ui/components';
 
 import Navbar from '@/components/Navbar.astro';
 import Head from '@/components/Head.astro';
@@ -7,7 +7,7 @@ import HeroAnimation from '@/components/HeroAnimation.astro';
 
 import GitHubLogo from '@/assets/github.svg';
 import DiscordLogo from '@/assets/discord.svg';
-import PatreonLogo from '@/assets/patreon.svg';
+import OpenCollectiveLogo from '@/assets/opencollective.svg';
 import BlueSkyLogo from '@/assets/bsky.svg';
 import TwitterLogo from '@/assets/twitter.svg';
 import LogoAdaptive from '@/assets/logo-adaptive.svg';
@@ -33,7 +33,6 @@ const path = Astro.originPathname;
 		<Head {...Astro.props} ogImage={OgImage} />
 	</head>
 	<body>
-		<Toaster />
 		<Navbar />
 		{path === "/" && (
 			<HeroAnimation />
@@ -66,19 +65,19 @@ const path = Astro.originPathname;
 				</span>
 			</div>
 			<div slot='socials' class='socials'>
-				<a href='https://github.com/withstudiocms'>
+				<a href='https://github.com/withstudiocms' aria-label="Our GitHub Organization">
 					<GitHubLogo width={28} height={28} />
 				</a>
-				<a href='https://chat.studiocms.dev'>
+				<a href='https://chat.studiocms.dev' aria-label="Our Discord Server">
 					<DiscordLogo width={32} height={32} />
 				</a>
-				<a href='https://patreon.com/studiocms'>
-					<PatreonLogo width={24} height={24} />
+				<a href='https://opencollective.com/StudioCMS' aria-label="Our Open Collective">
+					<OpenCollectiveLogo width={24} height={24} />
 				</a>
-				<a href='https://bsky.app/profile/studiocms.dev'>
+				<a href='https://bsky.app/profile/studiocms.dev' aria-label="Our Bluesky Account">
 					<BlueSkyLogo width={24} height={24} />
 				</a>
-				<a href='https://twitter.com/withstudiocms'>
+				<a href='https://twitter.com/withstudiocms' aria-label="Our Twitter/X Account">
 					<TwitterLogo width={22} height={22} />
 				</a>
 			</div>

@@ -110,11 +110,12 @@ footer a:hover {
 }
 
 span.keyword {
-	background: linear-gradient(90deg, #a581f3 0%, #dc93ff 100%);
+	background: linear-gradient(135deg, #a581f3 0%, #c964cf 90%);
 	color: transparent;
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
+	width: fit-content;
 }
 
 .balanced {
