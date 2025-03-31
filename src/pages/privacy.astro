@@ -5,7 +5,7 @@ import Layout from "@/layouts/Layout.astro";
 import { StudioCMSRenderer } from 'studiocms:renderer';
 import studioCMS_SDK from 'studiocms:sdk';
 
-const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug('imprint');
+const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug('privacy');
 
 if (!page) {
   return Astro.redirect('/404');
