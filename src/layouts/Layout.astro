@@ -16,9 +16,10 @@ interface Props {
 	title?: string;
 	desc?: string;
 	ogImage?: string;
+	heroAnim?: boolean;
 }
 
-const { ogImage } = Astro.props;
+const { ogImage, heroAnim } = Astro.props;
 
 let OgImage: URL | undefined = undefined;
 if (ogImage) {
@@ -34,7 +35,7 @@ const path = Astro.originPathname;
 	</head>
 	<body>
 		<Navbar />
-		{path === "/" && (
+		{(path === "/" || heroAnim) && (
 			<HeroAnimation />
 		)}
 		<main>

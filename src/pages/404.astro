@@ -1,6 +1,50 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Button } from "studiocms:ui/components";
 ---
-<Layout>
-	<h1>404</h1>
+<Layout heroAnim>
+	<section>
+		<h1>Page Not Found</h1>
+		<p>
+			We couldn't find the page you were looking for. It might have been removed, renamed, or never existed in the first place.
+		</p>
+		<Button
+			href="/"
+			color="primary"
+		>
+			Go to Homepage
+		</Button>
+	</section>
 </Layout>
+<style>
+	body {
+		overflow: hidden !important;
+	}
+</style>
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		height: calc(100vh - 6rem);
+		padding: 2rem;
+		padding-bottom: 6rem;
+		gap: 1rem;
+	}
+
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+
+	h2 {
+		font-size: 2em;
+		margin: 0;
+	}
+
+	p {
+		max-width: 65ch;
+	}
+</style>
