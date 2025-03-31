@@ -4,7 +4,7 @@ import AstroLogo from '@/assets/astro.svg';
 import SwordsIcon from '@/assets/swords.svg';
 ---
 
-<section class="ecosystem not-content">
+<section class="ecosystem">
     <h2 class="ecosystem-heading">
         <span>Part of the StudioCMS Ecosystem</span>
     </h2>
@@ -51,9 +51,9 @@ import SwordsIcon from '@/assets/swords.svg';
     }
 
     .ecosystem {
-        margin-top: 4rem !important;
-        padding: 0 10vw;
-        padding-bottom: 4rem !important;
+        max-width: var(--page-width);
+        margin: 0 auto;
+        margin-bottom: 8rem;
     }
 
     @media screen and (max-width: 1500px) {
