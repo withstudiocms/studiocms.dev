@@ -12,4 +12,10 @@ export default defineStudioCMSConfig({
         },
         inject404Route: false,
     },
+    pageTypeOptions: {
+        markdown: {
+            flavor: "astro",
+            autoLinkHeadings: false,
+        }
+    }
 });

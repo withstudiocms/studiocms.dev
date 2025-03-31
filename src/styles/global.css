@@ -124,3 +124,8 @@ span.keyword {
 .balanced {
 	text-wrap: balanced;
 }
+
+article {
+	max-width: 80ch;
+	margin: 0 auto;
+}
