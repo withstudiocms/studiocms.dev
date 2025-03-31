@@ -1,5 +1,5 @@
 ---
-import { Button, Icon } from 'studiocms:ui/components';
+import { Badge, Button, Icon } from 'studiocms:ui/components';
 import Layout from '../layouts/Layout.astro';
 import { Card } from 'studiocms:ui/components';
 import { Image } from 'astro:assets';
@@ -23,6 +23,8 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 
 import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
+
+import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 ---
 
 <Layout>
@@ -209,7 +211,41 @@ import ApolloHappyExpression from '@/assets/apollo-happy.png';
 	<EcosystemSection />
 	<section class="blog-showcase">
 		<h2>Keep up With What's Happening</h2>
-		<span>latest blog article goes here</span>
+		<p>The StudioCMS Blog is the place to go for updates to the ecosystem.</p>
+		<div class="blog-article">
+			<div class="image-container">
+				<Image
+					src={TODO_REMOVE_TempBlogImage as any}
+					inferSize
+					class='blog-image'
+					alt='Alt Text'
+					loading='lazy'
+					quality={100}
+				/>
+				<Image
+					src={TODO_REMOVE_TempBlogImage as any}
+					inferSize
+					class='blog-image-glow'
+					alt='Alt Text'
+					loading='lazy'
+					quality={10}
+				/>
+			</div>
+			<div class="blog-info">
+				<div class="blog-info-text">
+					<h3>Skip2 Networks: Our Official Network Partner</h3>
+					<p>The StudioCMS team is happy to announce that Skip2 Networks is now the official Network Sponsor of StudioCMS!</p>
+					<div class="blog-tags">
+						<Badge label='Announcement' />
+						<Badge label='Sponsor' />
+					</div>
+				</div>
+				<a class="blog-read-more" href="/">
+					<span>Read More</span>
+					<Icon name='arrow-right-20-solid' width={20} height={20} />
+				</a>
+			</div>
+		</div>
 	</section>
 	<section class="final-cta"></section>
 	<section class="sponsors">
@@ -285,7 +321,7 @@ import ApolloHappyExpression from '@/assets/apollo-happy.png';
 	}
 
 	h2 {
-		font-size: 2em;
+		font-size: 2.25em;
 		margin-bottom: .5rem;
 	}
 
@@ -529,6 +565,79 @@ import ApolloHappyExpression from '@/assets/apollo-happy.png';
 	.stat-text {
 		font-size: 3em;
 		font-weight: bolder;
+	}
+
+	.blog-article {
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
+	}
+
+	.blog-showcase > p {
+		margin-bottom: 1.5rem;
+	}
+
+	.image-container {
+		width: calc(66.6666% - 1rem);
+		aspect-ratio: 16 / 9;
+		height: auto;
+	}
+
+	.blog-image {
+		border: 1px solid hsl(var(--border));
+	}
+
+	.blog-image, .blog-image-glow {
+		width: 100%;
+		height: 100%;
+		border-radius: 1.25rem;
+	}
+
+	.blog-image-glow {
+		position: absolute;
+		z-index: -1;
+		filter: blur(10px);
+		top: 0;
+		left: 0;
+	}
+
+	.blog-info {
+		width: calc(33.3333% - 1rem);
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 1rem;
+	}
+
+	.blog-info-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.blog-info h3 {
+		font-size: 1.75em;
+	}
+
+	.blog-tags {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: .5rem;
+	}
+
+	.blog-read-more {
+		display: flex;
+		flex-direction: row;
+		gap: .5rem;
+		text-decoration: none;
+		color: hsl(var(--text-normal));
+		width: fit-content;
+	}
+
+	.blog-read-more:hover {
+		text-decoration: underline;
 	}
 
 	.sponsors {
