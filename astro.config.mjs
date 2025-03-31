@@ -26,6 +26,9 @@ export default defineConfig({
   experimental: {
     svg: true
   },
+  security: {
+    checkOrigin: false,
+  },
   adapter: node({
     mode: 'standalone'
   })
