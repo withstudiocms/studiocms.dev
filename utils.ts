@@ -56,3 +56,4 @@ export const getStudioCMSStars = async (): Promise<number> => {
     return 0;
   }
 };
+

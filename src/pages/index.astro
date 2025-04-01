@@ -212,17 +212,23 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 		<div class="stats-container">
 			<div class="stat">
 				<Discord class="stat-icon" />
-				<span class="stat-text keyword">90+</span>
+				<div class="stat-number">
+					<span class="stat-text">90</span><span class="keyword">+</span>
+				</div>
 				<span class="stat-desc">Discord community members</span>
 			</div>
 			<div class="stat">
 				<NPM class="stat-icon" />
-				<span class="stat-text keyword">450+</span>
+				<div class="stat-number">
+					<span class="stat-text">450</span><span class="keyword">+</span>
+				</div>
 				<span class="stat-desc">Monthly npm downloads</span>
 			</div>
 			<div class="stat">
 				<GitHub class="stat-icon" />
-				<span class="stat-text keyword">360+</span>
+				<div class="stat-number">
+					<span class="stat-text">360</span><span class="keyword">+</span>
+				</div>
 				<span class="stat-desc">GitHub stars</span>
 			</div>
 			<Image
@@ -305,6 +311,9 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 	</div>
 </Layout>
 <script>
+	import { initNumberCountAnimations } from "animations";
+
+	// Elements
 	const copyBtn = document.querySelector<HTMLButtonElement>('#install-cta')!;
 	const copyIcon = document.querySelector<HTMLElement>('#copy-icon')!;
 	const successIcon = document.querySelector<HTMLElement>('#copy-check')!;
@@ -324,6 +333,30 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 			copyIcon.classList.add('active');
 			successIcon.classList.remove('active');
 		}, 3000);
+	});
+
+	// Initialize animations when stats section comes into view
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			// Only run animation once when element comes into view
+			if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+				initNumberCountAnimations('.stat-text');
+				entry.target.classList.add('animated');
+				// Optionally stop observing after animation is triggered
+				observer.unobserve(entry.target);
+			}
+		});
+	}, {
+		// Start animation when element is 10% visible
+		threshold: 0.1
+	});
+
+	// Start observing the stats container
+	document.addEventListener('DOMContentLoaded', () => {
+		const statsContainer = document.querySelector('.stats-container');
+		if (statsContainer) {
+			observer.observe(statsContainer);
+		}
 	});
 </script>
 <style is:global>
@@ -605,9 +638,20 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 		height: auto;
 	}
 
-	.stat-text {
+	.stat-number {
+		display: flex;
+		align-items: baseline;
 		font-size: 3em;
 		font-weight: bolder;
+	}
+
+	.stat-text {
+		font-size: 1em;
+	}
+
+	.stat-number .keyword {
+		font-size: 1em;
+		margin-left: 2px;
 	}
 
 	.blog-article {
