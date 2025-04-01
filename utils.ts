@@ -40,19 +40,3 @@ export const getCoolifyURL = (returnHttps?: boolean) => {
 };
 
 export default getCoolifyURL;
-
-/**
- * Get the number of stars on the StudioCMS GitHub repository
- *
- * @returns The number of stars on the StudioCMS GitHub repository
- */
-export const getStudioCMSStars = async (): Promise<number> => {
-	const response = await fetch('https://api.github.com/repos/withstudiocms/studiocms');
-	try {
-		const data = await response.json();
-		return data.stargazers_count;
-	} catch (error) {
-		console.error('Error fetching StudioCMS stars:', error);
-		return 0;
-	}
-};
