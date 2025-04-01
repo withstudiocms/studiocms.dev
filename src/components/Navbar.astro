@@ -2,6 +2,8 @@
 import LogoAdaptive from '@/assets/logo-adaptive.svg';
 import { Button } from 'studiocms:ui/components';
 import GitHubLogo from '@/assets/github.svg';
+import { getStudioCMSStars } from '../../utils';
+const stars = await getStudioCMSStars();
 ---
 
 <nav>
@@ -18,8 +20,7 @@ import GitHubLogo from '@/assets/github.svg';
     <div>
       <Button href='https://github.com/withstudiocms'>
         <GitHubLogo width={24} height={24} slot="start-content" />
-        {/* TODO: Make this fetch the current number? */}
-        <span>350+</span>
+        <span>{stars}</span>
       </Button>
     </div>
   </div>
