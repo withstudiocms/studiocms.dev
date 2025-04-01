@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import getCoolifyURL from './utils';
+import getCoolifyURL from './astro-config-utils';
 
 import UI from '@studiocms/ui';
 
