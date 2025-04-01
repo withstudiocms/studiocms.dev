@@ -356,22 +356,39 @@ const [
 			}
 		});
 	}, {
-		// Start animation when element is 10% visible
-		threshold: 0.1
+		// Start animation when element is 25% visible for better timing
+		threshold: 0.25
 	});
 
-	// Start observing the stats container
+	// Create separate observer for footer Apollo
+	const footerApolloObserver = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+				entry.target.classList.add('visible');
+				footerApolloObserver.unobserve(entry.target);
+			}
+		});
+	}, {
+		threshold: 0.5
+	});
+
+	// Start observing both Apollo elements
 	document.addEventListener('DOMContentLoaded', () => {
-    const gitHubStars = document.querySelector('nav')?.dataset.stars;
-    const statCardTextItem = document.querySelector('.stat-text.gh-stars');
-    if (gitHubStars && statCardTextItem) {
-      statCardTextItem.textContent = gitHubStars;
-    }
+		const gitHubStars = document.querySelector('nav')?.dataset.stars;
+		const statCardTextItem = document.querySelector('.stat-text.gh-stars');
+		if (gitHubStars && statCardTextItem) {
+			statCardTextItem.textContent = gitHubStars;
+		}
 
 		const statsContainer = document.querySelector('.stats-container');
-
 		if (statsContainer) {
 			observer.observe(statsContainer);
+		}
+
+		// Observe footer Apollo
+		const footerApollo = document.querySelector('.apollo-footer-deco');
+		if (footerApollo) {
+			footerApolloObserver.observe(footerApollo);
 		}
 	});
 </script>
@@ -645,6 +662,14 @@ const [
 		right: 0;
 		z-index: -1;
 		transform: translate(50%, -50%);
+		opacity: 0;
+		transform: translate(50%, 100%) rotate(5deg);
+		transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+
+	.stats-container.animated .apollo-banner-deco {
+		opacity: 1;
+		transform: translate(50%, -50%) rotate(0deg);
 	}
 
 	.stat {
@@ -802,6 +827,14 @@ const [
 	.apollo-footer-deco {
 		position: relative;
 		left: 50vw;
+		transform: translate(-50%, 30%);
+		opacity: 0;
+		transform: translate(-50%, 100%);
+		transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+
+	.apollo-footer-deco.visible {
+		opacity: 1;
 		transform: translate(-50%, 30%);
 	}
 </style>
