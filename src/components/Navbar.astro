@@ -6,7 +6,7 @@ import { getStudioCMSStars } from '../../utils';
 const stars = await getStudioCMSStars();
 ---
 
-<nav>
+<nav data-stars={stars}>
   <div class="nav-content">
     <a href="/" class="nav-brand">
       <LogoAdaptive height={36} width={34.32} />

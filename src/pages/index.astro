@@ -227,7 +227,7 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 			<div class="stat">
 				<GitHub class="stat-icon" />
 				<div class="stat-number keyword">
-					<span class="stat-text">360</span><span>+</span>
+					<span class="stat-text gh-stars">???</span>
 				</div>
 				<span class="stat-desc">GitHub stars</span>
 			</div>
@@ -353,7 +353,14 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 
 	// Start observing the stats container
 	document.addEventListener('DOMContentLoaded', () => {
+    const gitHubStars = document.querySelector('nav')?.dataset.stars;
+    const statCardTextItem = document.querySelector('.stat-text.gh-stars');
+    if (gitHubStars && statCardTextItem) {
+      statCardTextItem.textContent = gitHubStars;
+    }
+
 		const statsContainer = document.querySelector('.stats-container');
+
 		if (statsContainer) {
 			observer.observe(statsContainer);
 		}
