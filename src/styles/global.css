@@ -121,6 +121,11 @@ footer a:hover {
 	width: fit-content;
 }
 
+.keyword * {
+	background: inherit;
+	color: inherit;
+}
+
 .balanced {
 	text-wrap: balanced;
 }
