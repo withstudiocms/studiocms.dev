@@ -112,7 +112,7 @@ footer a:hover {
 	align-items: center;
 }
 
-span.keyword {
+.keyword {
 	background: linear-gradient(135deg, #a581f3 0%, #c964cf 90%);
 	color: transparent;
 	-webkit-background-clip: text;

@@ -212,22 +212,22 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 		<div class="stats-container">
 			<div class="stat">
 				<Discord class="stat-icon" />
-				<div class="stat-number">
-					<span class="stat-text">90</span><span class="keyword">+</span>
+				<div class="stat-number keyword">
+					<span class="stat-text">90</span><span>+</span>
 				</div>
 				<span class="stat-desc">Discord community members</span>
 			</div>
 			<div class="stat">
 				<NPM class="stat-icon" />
-				<div class="stat-number">
-					<span class="stat-text">450</span><span class="keyword">+</span>
+				<div class="stat-number keyword">
+					<span class="stat-text">450</span><span>+</span>
 				</div>
 				<span class="stat-desc">Monthly npm downloads</span>
 			</div>
 			<div class="stat">
 				<GitHub class="stat-icon" />
-				<div class="stat-number">
-					<span class="stat-text">360</span><span class="keyword">+</span>
+				<div class="stat-number keyword">
+					<span class="stat-text">360</span><span>+</span>
 				</div>
 				<span class="stat-desc">GitHub stars</span>
 			</div>
@@ -311,7 +311,7 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 	</div>
 </Layout>
 <script>
-	import { initNumberCountAnimations } from "animations";
+	import { initNumberCountAnimations } from "../scripts/animations";
 
 	// Elements
 	const copyBtn = document.querySelector<HTMLButtonElement>('#install-cta')!;
