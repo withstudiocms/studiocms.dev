@@ -227,7 +227,7 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 			<div class="stat">
 				<GitHub class="stat-icon" />
 				<div class="stat-number keyword">
-					<span class="stat-text gh-stars">???</span>
+					<span class="stat-text gh-stars">0</span>
 				</div>
 				<span class="stat-desc">GitHub stars</span>
 			</div>
@@ -552,7 +552,7 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 		filter: saturate(1);
 		opacity: 1;
 		transform: translateY(.5rem);
-		transform: translatex(.5rem);
+		transform: translateX(.5rem);
 	}
 
 	.hosting-methods {
@@ -619,6 +619,16 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 		margin-top: 1.5rem;
 		position: relative;
 	}
+
+  .stats-container .stat-number {
+    transition: all .15s ease;
+    opacity: 0;
+    transition-delay: .5s;
+  }
+
+  .stats-container.animated .stat-number {
+    opacity: 1;
+  }
 
 	.apollo-banner-deco {
 		position: absolute;
