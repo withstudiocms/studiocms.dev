@@ -95,3 +95,13 @@ export async function getNpmMonthlyDownloads(packageName: string) {
 		return null;
 	}
 }
+
+export async function getDiscordMembers() {
+	try {
+		const response = await fetch('https://apollo.studiocms.dev/api/members/1309279407743172608');
+		const data = await response.json();
+		return data.members;
+	} catch (error) {
+		return 0;
+	}
+}
