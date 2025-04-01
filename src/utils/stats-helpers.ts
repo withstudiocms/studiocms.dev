@@ -14,27 +14,26 @@
 * ```
 */
 export async function getNpmMonthlyDownloads(packageName: string) {
- const today = new Date();
- const lastMonth = new Date();
- lastMonth.setMonth(today.getMonth() - 1);
+	const today = new Date();
+	const lastMonth = new Date();
+	lastMonth.setMonth(today.getMonth() - 1);
 
- const startDate = lastMonth.toISOString().split('T')[0];
- const endDate = today.toISOString().split('T')[0];
+	const startDate = lastMonth.toISOString().split('T')[0];
+	const endDate = today.toISOString().split('T')[0];
 
- const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
+	const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
 
- try {
-	 const response = await fetch(url);
-	 if (!response.ok) {
-		 throw new Error(`Error fetching data: ${response.statusText}`);
-	 }
-	 const data: { downloads: number | string } = await response.json();
-	 console.log(`Package: ${packageName}, Monthly Downloads: ${data.downloads}`);
-	 return data.downloads;
- } catch (error) {
-	 console.error('Failed to fetch npm downloads:', error);
-	 return null;
- }
+	try {
+		const response = await fetch(url);
+		if (!response.ok) {
+			throw new Error(`Error fetching data: ${response.statusText}`);
+		}
+		const data: { downloads: number | string } = await response.json();
+		return data.downloads;
+	} catch (error) {
+		console.error('Failed to fetch npm downloads:', error);
+		return null;
+	}
 }
 
 /**
@@ -59,11 +58,11 @@ export const getStudioCMSStars = async (): Promise<number> => {
  * @returns - The number of members in the Discord server.
  */
 export async function getDiscordMembers() {
- try {
-	 const response = await fetch('https://apollo.studiocms.dev/api/members/1309279407743172608');
-	 const data = await response.json();
-	 return data.members;
- } catch (error) {
-	 return 0;
- }
+	try {
+		const response = await fetch('https://apollo.studiocms.dev/api/members/1309279407743172608');
+		const data = await response.json();
+		return data.members;
+	} catch (error) {
+		return 0;
+	}
 }
