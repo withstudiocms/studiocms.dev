@@ -25,6 +25,9 @@ import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
 
 import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
+import { getNpmMonthlyDownloads } from '../../utils';
+
+const npmDownloads = await getNpmMonthlyDownloads('studiocms');
 ---
 
 <Layout
@@ -220,7 +223,7 @@ import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 			<div class="stat">
 				<NPM class="stat-icon" />
 				<div class="stat-number keyword">
-					<span class="stat-text">450</span><span>+</span>
+					<span class="stat-text">{npmDownloads ? npmDownloads : '450'}</span><span>+</span>
 				</div>
 				<span class="stat-desc">Monthly npm downloads</span>
 			</div>
