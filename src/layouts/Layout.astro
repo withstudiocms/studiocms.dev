@@ -11,12 +11,16 @@ import OpenCollectiveLogo from '@/assets/opencollective.svg';
 import BlueSkyLogo from '@/assets/bsky.svg';
 import TwitterLogo from '@/assets/twitter.svg';
 import LogoAdaptive from '@/assets/logo-adaptive.svg';
+import type { CombinedUserData } from 'studiocms:sdk/types';
 
 interface Props {
 	title?: string;
 	desc?: string;
 	ogImage?: string;
 	heroAnim?: boolean;
+	author?: CombinedUserData;
+	published?: Date;
+	updated?: Date | null;
 }
 
 const { ogImage, heroAnim } = Astro.props;

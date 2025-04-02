@@ -4,6 +4,7 @@ import { Button } from 'studiocms:ui/components';
 import GitHubLogo from '@/assets/github.svg';
 import { getStudioCMSStars } from 'quick-astro:cache';
 const stars = await getStudioCMSStars();
+console.log(stars);
 ---
 
 <nav data-stars={stars}>

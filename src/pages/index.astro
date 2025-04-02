@@ -3,6 +3,7 @@ import { Badge, Button, Icon } from 'studiocms:ui/components';
 import Layout from '../layouts/Layout.astro';
 import { Card } from 'studiocms:ui/components';
 import { Image } from 'astro:assets';
+import cached_SDK from 'studiocms:sdk/cache';
 
 import AWS from '@/assets/icons/aws.svg';
 import Coolify from '@/assets/icons/coolify.svg';
@@ -24,12 +25,35 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
 
-import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
 import { getNpmMonthlyDownloads, getDiscordMembers } from 'quick-astro:cache';
 
-const [npmDownloads, discordMembers] = await Promise.all([
+const getNewestBlogPost = async () => {
+	const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
+	const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] }).children;
+
+	const articles = entries.filter((x) => !!x.pageData).sort((a, b) => b.pageData!.publishedAt.getTime() - a.pageData!.publishedAt.getTime());
+
+	if (articles.length === 0) {
+		return null;
+	}
+
+	const article = articles[0];
+
+	const { title, description, publishedAt, slug, heroImage } = article.pageData!;
+
+	return {
+		title,
+		publishedAt,
+		slug,
+		heroImage,
+		description,
+	}
+}
+
+const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	getNpmMonthlyDownloads('studiocms'),
 	getDiscordMembers(),
+	getNewestBlogPost(),
 ]);
 ---
 
@@ -60,28 +84,30 @@ const [npmDownloads, discordMembers] = await Promise.all([
 	<div class="video-player">Video here!</div>
 	<section class="target-groups">
 		<Card class="target-group-div">
-			<h2>For Developers.</h2>
-			<p>
-				StudioCMS provies the flexibility of other CMSs while getting rid of the pain points and complexity.
-			</p>
-			<div class="reasons-list">
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='arrows-pointing-out-20-solid' width={20} height={20} />
-						<h3>Flexible</h3>
+			<div>
+				<h2>For Developers.</h2>
+				<p>
+					StudioCMS provies the flexibility of other CMSs while getting rid of the pain points and complexity.
+				</p>
+				<div class="reasons-list">
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='arrows-pointing-out-20-solid' width={20} height={20} />
+							<h3>Flexible</h3>
+						</div>
+						<p>
+							StudioCMS works seamlessly with any Astro v5 project, old or new.
+						</p>
 					</div>
-					<p>
-						StudioCMS works seamlessly with any Astro v5 project, old or new.
-					</p>
-				</div>
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='squares-plus-20-solid' width={20} height={20} />
-						<h3>Extensible</h3>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='squares-plus-20-solid' width={20} height={20} />
+							<h3>Extensible</h3>
+						</div>
+						<p>
+							Plugins allow you to extend StudioCMS to do almost anything.
+						</p>
 					</div>
-					<p>
-						Plugins allow you to extend StudioCMS to do almost anything.
-					</p>
 				</div>
 			</div>
 			<Button href='/' color='mono'>
@@ -90,30 +116,32 @@ const [npmDownloads, discordMembers] = await Promise.all([
 			<DevIconPattern class="icon-deco" />
 		</Card>
 		<Card class="target-group-div">
-			<h2>For Marketers.</h2>
-			<p>
-				StudioCMS offers an intuitive way to produce content that will reach your target audience.
-			</p>
-			<div class="reasons-list">
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='pencil-square-20-solid' width={20} height={20} />
-						<h3>Intuitive Editing</h3>
+			<div>
+				<h2>For Marketers.</h2>
+				<p>
+					StudioCMS offers an intuitive way to produce content that will reach your target audience.
+				</p>
+				<div class="reasons-list">
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='pencil-square-20-solid' width={20} height={20} />
+							<h3>Intuitive Editing</h3>
+						</div>
+						<p>
+							StudioCMS offers a variety of editing tools to make your life easier.
+						</p>
 					</div>
-					<p>
-						StudioCMS offers a variety of editing tools to make your life easier.
-					</p>
-				</div>
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='check-20-solid' width={20} height={20} />
-						<h3>
-							Easy to Use
-						</h3>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='check-20-solid' width={20} height={20} />
+							<h3>
+								Easy to Use
+							</h3>
+						</div>
+						<p>
+							StudioCMS is designed to be easy to use, even for non-technical users.
+						</p>
 					</div>
-					<p>
-						StudioCMS is designed to be easy to use, even for non-technical users.
-					</p>
 				</div>
 			</div>
 			<Button href='/' color='mono'>
@@ -122,47 +150,49 @@ const [npmDownloads, discordMembers] = await Promise.all([
 			<MarketerIconPattern class="icon-deco" />
 		</Card>
 		<Card class="target-group-div enterprise">
-			<h2>For Enterprises.</h2>
-			<p>
-				StudioCMS focuses on the needs of large organizations and their teams,
-				allowing you to scale your content production to the next level.
-			</p>
-			<div class="reasons-list">
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='circle-stack-20-solid' width={20} height={20} />
-						<h3>Data Ownership</h3>
+			<div>
+				<h2>For Enterprises.</h2>
+				<p>
+					StudioCMS focuses on the needs of large organizations and their teams,
+					allowing you to scale your content production to the next level.
+				</p>
+				<div class="reasons-list">
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='circle-stack-20-solid' width={20} height={20} />
+							<h3>Data Ownership</h3>
+						</div>
+						<p>
+							You own your data and choose where to host. No more vendor lock-in.
+						</p>
 					</div>
-					<p>
-						You own your data and choose where to host. No more vendor lock-in.
-					</p>
-				</div>
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='user-group-20-solid' width={20} height={20} />
-						<h3>Team-Management</h3>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='user-group-20-solid' width={20} height={20} />
+							<h3>Team-Management</h3>
+						</div>
+						<p>
+							StudioCMS allows you to manage your team and their permissions with ease.
+						</p>
 					</div>
-					<p>
-						StudioCMS allows you to manage your team and their permissions with ease.
-					</p>
-				</div>
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='lock-closed-20-solid' width={20} height={20} />
-						<h3>Secure</h3>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='lock-closed-20-solid' width={20} height={20} />
+							<h3>Secure</h3>
+						</div>
+						<p>
+							StudioCMS is built with security in mind, so you can rest assured that your data is safe.
+						</p>
 					</div>
-					<p>
-						StudioCMS is built with security in mind, so you can rest assured that your data is safe.
-					</p>
-				</div>
-				<div class="reason">
-					<div class="reason-header">
-						<Icon name='bolt-20-solid' width={20} height={20} />
-						<h3>Performant</h3>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='bolt-20-solid' width={20} height={20} />
+							<h3>Performant</h3>
+						</div>
+						<p>
+							StudioCMS is built to be fast and efficient, so you can focus on what matters most.
+						</p>
 					</div>
-					<p>
-						StudioCMS is built to be fast and efficient, so you can focus on what matters most.
-					</p>
 				</div>
 			</div>
 			<Button href='/' color='mono'>
@@ -251,16 +281,19 @@ const [npmDownloads, discordMembers] = await Promise.all([
 		<div class="blog-article">
 			<div class="image-container">
 				<Image
-					src={TODO_REMOVE_TempBlogImage as any}
-					inferSize
+					src={newestBlogPost!.heroImage}
+					width={960}
+					height={540}
 					class='blog-image'
 					alt='Alt Text'
 					loading='lazy'
 					quality={100}
 				/>
 				<Image
-					src={TODO_REMOVE_TempBlogImage as any}
-					inferSize
+					src={newestBlogPost!.heroImage}
+					width={960}
+					height={540}
+					inferSize={true}
 					class='blog-image-glow'
 					alt='Alt Text'
 					loading='lazy'
@@ -269,14 +302,10 @@ const [npmDownloads, discordMembers] = await Promise.all([
 			</div>
 			<div class="blog-info">
 				<div class="blog-info-text">
-					<h3>Skip2 Networks: Our Official Network Partner</h3>
-					<p>The StudioCMS team is happy to announce that Skip2 Networks is now the official Network Sponsor of StudioCMS!</p>
-					<div class="blog-tags">
-						<Badge label='Announcement' />
-						<Badge label='Sponsor' />
-					</div>
+					<h3>{newestBlogPost!.title}</h3>
+					<p>{newestBlogPost!.description}</p>
 				</div>
-				<a class="blog-read-more" href="/">
+				<a class="blog-read-more" href={`/blog/${newestBlogPost!.slug}`}>
 					<span>Read More</span>
 					<Icon name='arrow-right-20-solid' width={20} height={20} />
 				</a>
@@ -580,6 +609,8 @@ const [npmDownloads, discordMembers] = await Promise.all([
 		display: flex;
 		justify-content: space-evenly;
 		margin-top: 3rem;
+		flex-wrap: wrap;
+		gap: 2rem;
 	}
 
 	.hosting-provider {
@@ -826,6 +857,28 @@ const [npmDownloads, discordMembers] = await Promise.all([
 		opacity: 1;
 		transform: translate(-50%, 30%);
 	}
+
+	@media screen and (max-width: 970px) {
+		.target-group-div {
+			width: 100%;
+		}
+
+		.target-group-div.enterprise {
+			--reason-cols: 2;
+		}
+	}
+
+	@media screen and (max-width: 780px) {
+		.hosting-methods br {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		.target-group-div, .target-group-div.enterprise {
+			--reason-cols: 1;
+		}
+	}
 </style>
 <style is:global>	
 	.hosting-provider .sui-card-body {
@@ -838,13 +891,20 @@ const [npmDownloads, discordMembers] = await Promise.all([
 	}
 
 	.target-group-div .sui-card-body {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
 		padding: 1.5rem;
 
 		h2 {
 			margin-bottom: 0;
+		}
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		> .sui-button {
+			margin-top: 1rem;
 		}
 	}
 
@@ -854,5 +914,18 @@ const [npmDownloads, discordMembers] = await Promise.all([
 
 	.target-group-div .sui-button {
 		width: fit-content !important;
+	}
+
+	@media screen and (max-width: 1080px) {
+		.target-group-div {
+			height: auto;
+		}
+
+		.target-group-div .sui-card-body {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			justify-content: space-between;
+		}
 	}
 </style>

@@ -134,4 +134,145 @@ article {
 	max-width: 80ch;
 	margin: 0 auto;
 	margin-bottom: 2rem;
+	line-height: 1.7;
+	min-height: 50vh;
+	font-size: 1.0625rem;
+	width: 100%;
+	text-align: left;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+	display: block;
+	scroll-margin: 4rem;
+}
+
+article p {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+article .heading-wrapper {
+	margin-top: 1rem;
+	font-size: 1.125em;
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+
+	.anchor-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+article hr {
+	height: 1px;
+	border: none;
+	background-color: hsl(var(--border));
+}
+
+article p:has(img) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+article img {
+	max-width: 100%;
+	height: auto;
+	border: 1px solid hsl(var(--border));
+	background-color: hsl(var(--background-step-1)) !important;
+	border-radius: 1rem;
+}
+
+article pre.astro-code {
+	background-color: hsl(var(--background-step-1)) !important;
+	border: 1px solid hsl(var(--border));
+	padding: .5rem .75rem;
+	border-radius: 1rem;
+}
+
+article pre.astro-code * {
+	font-family: 'JetBrains Mono', monospace !important;
+}
+
+article pre.astro-code code {
+	font-size: .925rem;
+}
+
+article code:not(.astro-code code) {
+	background-color: hsl(var(--background-step-3));
+	padding: .125rem .25rem;
+	font-size: .925rem;
+}
+
+article blockquote {
+	border-left: 2px solid hsl(var(--primary-base));
+	padding: .75rem 1rem;
+	margin-left: 0;
+	background-color: hsla(var(--primary-base) / .125);
+	border-radius: 0 1rem 1rem 0;
+	width: 100%;
+	margin: 1rem 0;
+}
+
+article blockquote p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+article table {
+	margin-top: 1rem;
+	text-align: left;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border-radius: 1rem;
+}
+
+article table th {
+	padding: .5rem 1.5rem .5rem .5rem;
+	text-align: left;
+	background-color: hsl(var(--background-step-2));
+	border: 1px solid hsl(var(--border));
+}
+
+article table tbody {
+	margin-top: 1rem;
+	border: 1px solid hsl(var(--border));
+}
+
+article table tbody tr {
+	border-bottom: 1px solid hsl(var(--border));
+}
+
+article table tbody tr td {
+	padding: .5rem 1.5rem .5rem .5rem;
+	border-right: 1px solid hsl(var(--border));
+	background-color: hsl(var(--background-step-1));
+}
+
+article hr {
+	margin: 1rem 0;
+}
+
+article .footnotes li p {
+	word-wrap: break-word;
+}
+
+article .footnotes ol {
+	padding-left: 1.5rem;
+	line-height: 1.2;
+}
+
+@media screen and (max-width: 1350px) {
+	section:not(.banner) {
+		padding: 1.5rem;
+	}
 }

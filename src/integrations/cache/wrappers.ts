@@ -59,6 +59,7 @@ export async function getStudioCMSStars(): Promise<number> {
 
 		return newData;
 	}
+	
 	return cacheData.data as number;
 }
 
