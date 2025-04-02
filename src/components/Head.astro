@@ -30,6 +30,7 @@ const {
 
   <title>{title}</title>
   <meta name='description' content={desc} />
+  <meta name="theme-color" content="#a581f3" />
 
   <meta property='og:title' content={title} />
   <meta property='og:description' content={desc} />
@@ -46,7 +47,9 @@ const {
   <meta name='twitter:site' content='withstudiocms' />
 
   <link rel="canonical" href={Astro.url} />
-  <link rel='shortcut icon' type='image/svg+xml' href='/favicon.svg' />
+  <link rel="icon" href="https://cdn.studiocms.dev/favicon-light.png" type="image/png" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="https://cdn.studiocms.dev/favicon-dark.png" type="image/png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" href="https://cdn.studiocms.dev/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href={onestWoff2} />
   <link rel="alternate" type="application/rss+xml" title={title} href={RSSFeed} />
 </head>
