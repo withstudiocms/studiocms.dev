@@ -8,11 +8,11 @@
  * @throws Will throw an error if the HTTP request fails with a non-OK status.
  *
  * @example
-* ```typescript
-* const downloads = await getNpmMonthlyDownloads("react");
-* console.log(`React was downloaded ${downloads} times last month.`);
-* ```
-*/
+ * ```typescript
+ * const downloads = await getNpmMonthlyDownloads("react");
+ * console.log(`React was downloaded ${downloads} times last month.`);
+ * ```
+ */
 export async function getNpmMonthlyDownloads(packageName: string) {
 	const today = new Date();
 	const lastMonth = new Date();
@@ -28,8 +28,8 @@ export async function getNpmMonthlyDownloads(packageName: string) {
 		if (!response.ok) {
 			throw new Error(`Error fetching data: ${response.statusText}`);
 		}
-		const data: { downloads: number | string } = await response.json();
-		return data.downloads;
+		const data: { downloads: string } = await response.json();
+		return Number.parseInt(`${data.downloads}`);
 	} catch (error) {
 		console.error('Failed to fetch npm downloads:', error);
 		return null;
@@ -45,13 +45,12 @@ export const getStudioCMSStars = async (): Promise<number> => {
 	const response = await fetch('https://api.github.com/repos/withstudiocms/studiocms');
 	try {
 		const data = await response.json();
-		return data.stargazers_count;
+		return Number.parseInt(`${data.stargazers_count}`);
 	} catch (error) {
 		console.error('Error fetching StudioCMS stars:', error);
 		return 0;
 	}
 };
-
 
 /**
  * Fetches the number of members in the Discord server.
@@ -61,7 +60,7 @@ export async function getDiscordMembers() {
 	try {
 		const response = await fetch('https://apollo.studiocms.dev/api/members/1309279407743172608');
 		const data = await response.json();
-		return data.members;
+		return Number.parseInt(`${data.members}`);
 	} catch (error) {
 		return 0;
 	}

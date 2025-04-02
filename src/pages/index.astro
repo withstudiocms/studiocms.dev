@@ -25,12 +25,9 @@ import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
 
 import TODO_REMOVE_TempBlogImage from '@/assets/TEMP-blog-img.png';
-import { getNpmMonthlyDownloads, getDiscordMembers } from '../utils/stats-helpers';
+import { getNpmMonthlyDownloads, getDiscordMembers } from 'quick-astro:cache';
 
-const [
-	npmDownloads,
-	discordMembers,
-] = await Promise.all([
+const [npmDownloads, discordMembers] = await Promise.all([
 	getNpmMonthlyDownloads('studiocms'),
 	getDiscordMembers(),
 ]);
