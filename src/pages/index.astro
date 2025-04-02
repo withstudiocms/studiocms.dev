@@ -1,5 +1,5 @@
 ---
-import { Badge, Button, Icon } from 'studiocms:ui/components';
+import { Button, Icon } from 'studiocms:ui/components';
 import Layout from '../layouts/Layout.astro';
 import { Card } from 'studiocms:ui/components';
 import { Image } from 'astro:assets';
@@ -20,6 +20,8 @@ import MarketerIconPattern from '@/assets/marketer-icon-pattern.svg';
 
 import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
 import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
+import Orbits from '@/assets/orbits.svg';
+
 import EcosystemSection from '@/components/EcosystemSection.astro';
 
 import ApolloDefaultExpression from '@/assets/apollo-default.png';
@@ -312,7 +314,9 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			</div>
 		</div>
 	</section>
-	<section class="final-cta"></section>
+	<section class="final-cta">
+		<Orbits />
+	</section>
 	<section class="sponsors">
 		<h2>Sponsors</h2>
 		<p>StudioCMS is free, open source software, brought to you by:</p>
@@ -511,7 +515,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	}
 
 	.video-player {
-		width: 100%;
+		width: calc(100% - max(calc((100vw - var(--page-width)) / 2), 2rem));
 		aspect-ratio: 16 / 9;
 		background-color: hsl(var(--background-step-1));
 		display: flex;
@@ -654,7 +658,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	section.banner {
 		width: 100%;
 		background-color: hsl(var(--background-step-1));
-		padding: 2rem calc((100vw - var(--page-width)) / 2);
+		padding: 2rem max(calc((100vw - var(--page-width)) / 2), 2rem);
 		text-align: center;
 	}
 
@@ -858,6 +862,12 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		transform: translate(-50%, 30%);
 	}
 
+	@media screen and (max-width: 1480px) {
+		.apollo-banner-deco {
+			display: none;
+		}
+	}
+
 	@media screen and (max-width: 970px) {
 		.target-group-div {
 			width: 100%;
@@ -865,6 +875,26 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 
 		.target-group-div.enterprise {
 			--reason-cols: 2;
+		}
+
+		.stats-container {
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.blog-article {
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		.image-container {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+		}
+
+		.blog-info {
+			width: 100%;
+			gap: 1rem;
 		}
 	}
 
@@ -877,6 +907,10 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	@media screen and (max-width: 640px) {
 		.target-group-div, .target-group-div.enterprise {
 			--reason-cols: 1;
+		}
+
+		.video-player {
+			display: none;
 		}
 	}
 </style>

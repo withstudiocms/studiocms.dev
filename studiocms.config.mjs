@@ -18,4 +18,5 @@ export default defineStudioCMSConfig({
 			autoLinkHeadings: false,
 		},
 	},
+	verbose: true,
 });
