@@ -1,9 +1,18 @@
 ---
 import PageHeader from "@/components/PageHeader.astro";
 import Layout from "@/layouts/Layout.astro";
+import studioCMS_SDK from 'studiocms:sdk';
+
+// const articles = await studioCMS_SDK.GET.databaseEntry.folder('blog');
 ---
 <Layout>
 	<PageHeader
 		title="Blog"
 	/>
+	<div class="articles-grid">
+
+	</div>
 </Layout>
+<style>
+
+</style>

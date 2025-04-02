@@ -63,14 +63,13 @@ import SwordsIcon from '@/assets/swords.svg';
     }
 
     .ecosystem-benefits {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
     }
 
     .benefit-card {
-        width: calc((100% / 3) - (4rem / 3));
+        width: 100%;
         padding: 2rem;
         border-radius: 1rem;
         background-color: hsl(var(--background-step-1));
