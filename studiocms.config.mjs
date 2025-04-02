@@ -2,6 +2,7 @@ import { defineStudioCMSConfig } from 'studiocms/config';
 
 export default defineStudioCMSConfig({
 	dbStartPage: false,
+	verbose: true,
 	dashboardConfig: {
 		AuthConfig: {
 			providers: {
@@ -18,5 +19,4 @@ export default defineStudioCMSConfig({
 			autoLinkHeadings: false,
 		},
 	},
-	verbose: true,
 });

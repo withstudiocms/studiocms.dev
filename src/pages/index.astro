@@ -31,9 +31,12 @@ import { getNpmMonthlyDownloads, getDiscordMembers } from 'quick-astro:cache';
 
 const getNewestBlogPost = async () => {
 	const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
-	const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] }).children;
+	const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] })
+		.children;
 
-	const articles = entries.filter((x) => !!x.pageData).sort((a, b) => b.pageData!.publishedAt.getTime() - a.pageData!.publishedAt.getTime());
+	const articles = entries
+		.filter((x) => !!x.pageData)
+		.sort((a, b) => b.pageData!.publishedAt.getTime() - a.pageData!.publishedAt.getTime());
 
 	if (articles.length === 0) {
 		return null;
@@ -49,8 +52,8 @@ const getNewestBlogPost = async () => {
 		slug,
 		heroImage,
 		description,
-	}
-}
+	};
+};
 
 const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	getNpmMonthlyDownloads('studiocms'),

@@ -36,8 +36,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       studiocms:
-        specifier: https://pkg.pr.new/withstudiocms/studiocms@6d5e892
-        version: https://pkg.pr.new/withstudiocms/studiocms@6d5e892(@astrojs/db@0.14.7(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(react@19.0.0)(vite@6.2.3(@types/node@22.13.5))
+        specifier: https://pkg.pr.new/withstudiocms/studiocms@2aec226
+        version: https://pkg.pr.new/withstudiocms/studiocms@2aec226(@astrojs/db@0.14.7(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(react@19.0.0)(vite@6.2.3(@types/node@22.13.5))
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -1717,8 +1717,8 @@ packages:
     resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
     engines: {node: '>=12'}
 
-  studiocms@https://pkg.pr.new/withstudiocms/studiocms@6d5e892:
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms@6d5e892}
+  studiocms@https://pkg.pr.new/withstudiocms/studiocms@2aec226:
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms@2aec226}
     version: 0.1.0-beta.14
     hasBin: true
     peerDependencies:
@@ -3945,7 +3945,7 @@ snapshots:
     dependencies:
       ansi-regex: 6.1.0
 
-  studiocms@https://pkg.pr.new/withstudiocms/studiocms@6d5e892(@astrojs/db@0.14.7(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(react@19.0.0)(vite@6.2.3(@types/node@22.13.5)):
+  studiocms@https://pkg.pr.new/withstudiocms/studiocms@2aec226(@astrojs/db@0.14.7(react@19.0.0))(@astrojs/markdown-remark@6.3.1)(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(react@19.0.0)(vite@6.2.3(@types/node@22.13.5)):
     dependencies:
       '@astrojs/db': 0.14.7(react@19.0.0)
       '@astrojs/markdown-remark': 6.3.1
