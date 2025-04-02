@@ -2,6 +2,7 @@
 import '@fontsource-variable/onest/index.css';
 import '@/styles/global.css';
 import onestWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
+import { Generator } from 'studiocms:components';
 
 interface Props {
 	title?: string;
@@ -13,13 +14,18 @@ const OgBanner = new URL('/og.png', Astro.url);
 
 const RSSFeed = new URL('rss.xml', Astro.site);
 
-const { title, desc = 'StudioCMS is the all-in-one content management solution for your next Astro project.', ogImage = OgBanner } = Astro.props;
+const {
+	title,
+	desc = 'StudioCMS is the all-in-one content management solution for your next Astro project.',
+	ogImage = OgBanner,
+} = Astro.props;
 ---
 
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <meta name='generator' content={Astro.generator} />
+  {/* Generator from StudioCMS includes generator tags for, Astro, StudioCMS and StudioCMS UI */}
+  <Generator />
 
   <title>{title}</title>
   <meta name='description' content={desc} />
