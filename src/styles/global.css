@@ -37,6 +37,7 @@ main {
 	z-index: 5;
 	margin: 0 auto;
 	pointer-events: all;
+	min-height: calc(100vh);
 }
 
 section, section * {
