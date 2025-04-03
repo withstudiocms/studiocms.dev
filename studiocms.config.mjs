@@ -19,4 +19,7 @@ export default defineStudioCMSConfig({
 			autoLinkHeadings: false,
 		},
 	},
+	componentRegistry: {
+		'sponsorswithimages': './src/components/SponsorsWithImages.astro',
+	}
 });
