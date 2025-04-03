@@ -31,13 +31,16 @@ body::after {
 }
 
 main {
-	max-width: var(--page-width);
 	width: 100%;
 	height: auto;
 	z-index: 5;
 	margin: 0 auto;
 	pointer-events: all;
 	min-height: calc(100vh);
+}
+
+main:not(.index) {
+	max-width: var(--page-width);
 }
 
 section, section * {
