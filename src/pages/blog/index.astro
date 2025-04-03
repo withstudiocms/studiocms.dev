@@ -111,4 +111,16 @@ const articles = (await Promise.all(articlePromises)).filter((x) => typeof x !==
 		color: hsl(var(--text-muted));
 		font-size: 0.875rem;
 	}
+
+	@media screen and (max-width: 960px) {
+		.articles-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		.articles-grid {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

@@ -21,9 +21,10 @@ interface Props {
 	author?: CombinedUserData;
 	published?: Date;
 	updated?: Date | null;
+	home?: boolean;
 }
 
-const { ogImage, heroAnim } = Astro.props;
+const { ogImage, heroAnim, home } = Astro.props;
 
 let OgImage: URL | undefined = undefined;
 if (ogImage) {
@@ -40,7 +41,7 @@ const path = Astro.originPathname;
 		{(path === "/" || heroAnim) && (
 			<HeroAnimation />
 		)}
-		<main>
+		<main class:list={{ index: home }}>
 			<slot />
 		</main>
 		<Footer

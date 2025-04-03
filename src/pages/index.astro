@@ -65,6 +65,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 <Layout
 	title="The Astro-native CMS for all your needs."
 	desc="StudioCMS is the all-in-one content management solution for your next Astro project."
+	home
 >
 	<section class="hero">
 		<a href="/blog/beta-8-announcement" class="announcement-badge">
@@ -76,10 +77,10 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			StudioCMS is the all-in-one content management solution for your next Astro project.
 		</p>
 		<div class="hero-cta">
-			<code class="code-cta" id="install-cta">
+			<code class="code-cta install-cta">
 				npx create studiocms
-				<Icon name='document-duplicate-20-solid' class='active' id='copy-icon' width={16} height={16} />
-				<Icon name='check-20-solid' id='copy-check' width={16} height={16} />
+				<Icon name='document-duplicate-20-solid' class='active copy-icon' width={16} height={16} />
+				<Icon name='check-20-solid' class='copy-check' width={16} height={16} />
 			</code>
 			<Button color='primary'>
 				Try the demo!
@@ -261,7 +262,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			<div class="stat">
 				<GitHub class="stat-icon" />
 				<div class="stat-number keyword">
-					<span class="stat-text gh-stars">0</span>
+					<span class="stat-text gh-stars">0</span><span>+</span>
 				</div>
 				<span class="stat-desc">GitHub stars</span>
 			</div>
@@ -318,7 +319,18 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		</div>
 	</section>
 	<section class="final-cta">
-		<Orbits />
+		<div class="final-cta-card">
+			<h2>It's time to get started.</h2>
+			<div class="hero-cta">
+				<code class="code-cta install-cta">
+					npx create studiocms
+					<Icon name='document-duplicate-20-solid' class='active copy-icon' width={16} height={16} />
+					<Icon name='check-20-solid' class='copy-check' width={16} height={16} />
+				</code>
+			</div>
+			<Orbits class='final-cta-orbits' />
+		</div>
+	</section>
 	</section>
 	<section class="sponsors">
 		<h2>Sponsors</h2>
@@ -349,26 +361,28 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	import { initNumberCountAnimations } from "../scripts/animations";
 
 	// Elements
-	const copyBtn = document.querySelector<HTMLButtonElement>('#install-cta')!;
-	const copyIcon = document.querySelector<HTMLElement>('#copy-icon')!;
-	const successIcon = document.querySelector<HTMLElement>('#copy-check')!;
+	const copyBtns = document.querySelectorAll<HTMLButtonElement>('.install-cta')!;
 
-	let timeout: NodeJS.Timeout | null = null;
+	copyBtns.forEach((copyBtn) => {
+		let timeout: NodeJS.Timeout | null = null;
+		const copyIcon = copyBtn.querySelector<HTMLElement>('.copy-icon')!;
+		const copyCheck = copyBtn.querySelector<HTMLElement>('.copy-check')!;
 
-	copyBtn.addEventListener('click', () => {
-		if (timeout) {
-			clearTimeout(timeout);
-		}
+		copyBtn.addEventListener('click', () => {
+			if (timeout) {
+				clearTimeout(timeout);
+			}
 
-		navigator.clipboard.writeText('npx create studiocms');
-		copyIcon.classList.remove('active');
-		successIcon.classList.add('active');
+			navigator.clipboard.writeText('npx create studiocms');
+			copyIcon.classList.remove('active');
+			copyCheck.classList.add('active');
 
-		timeout = setTimeout(() => {
-			copyIcon.classList.add('active');
-			successIcon.classList.remove('active');
-		}, 3000);
-	});
+			timeout = setTimeout(() => {
+				copyIcon.classList.add('active');
+				copyCheck.classList.remove('active');
+			}, 3000);
+		});
+	})
 
 	// Initialize animations when stats section comes into view
 	const observer = new IntersectionObserver((entries) => {
@@ -505,15 +519,15 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		background-color: hsl(var(--background-step-2));
 	}
 
-	#copy-icon, #copy-check {
+	.copy-icon, .copy-check {
 		display: none;
 	}
 
-	#copy-icon.active, #copy-check.active {
+	.copy-icon.active, .copy-check.active {
 		display: block;
 	}
 
-	#copy-check.active {
+	.copy-check.active {
 		color: hsl(var(--success-base)) !important;
 	}
 
@@ -803,6 +817,70 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 
 	.blog-read-more:hover {
 		text-decoration: underline;
+	}
+
+	.final-cta-card {
+		width: 100%;
+		max-width: var(--page-width);
+		margin: 0 auto;
+		padding: 2rem;
+		background-color: hsl(var(--background-step-1));
+		border-radius: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		padding: 12rem 4rem;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.final-cta-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: radial-gradient(circle at 50% 100%, #c964cf 0%, #a581f3 100%);
+		mask-image: radial-gradient(circle at 50% 100%, black 25%, transparent 100%);
+		z-index: 0;
+		opacity: .5;
+		animation: breathe 10s ease infinite;
+	}
+
+	@keyframes breathe {
+		0% {
+			opacity: 0.5;
+		}
+		50% {
+			opacity: .65;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+
+	.final-cta-card::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('/noise.png');
+		opacity: 0.5;
+		z-index: 1;
+	}
+
+	.final-cta-orbits {
+		position: absolute;
+		z-index: -1;
+		top: 100%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		user-select: none;
+		width: 100%;
 	}
 
 	.sponsors {

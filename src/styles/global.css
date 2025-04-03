@@ -31,7 +31,8 @@ body::after {
 }
 
 main {
-	width: var(--page-width);
+	max-width: var(--page-width);
+	width: 100%;
 	height: auto;
 	z-index: 5;
 	margin: 0 auto;
@@ -272,7 +273,11 @@ article .footnotes ol {
 }
 
 @media screen and (max-width: 1350px) {
-	section:not(.banner) {
+	section:not(.banner):not(main:not(.index) section) {
 		padding: 1.5rem;
+	}
+
+	main:not(.index) {
+		padding: 0 1.5rem;
 	}
 }

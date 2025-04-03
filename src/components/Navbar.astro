@@ -1,31 +1,59 @@
 ---
 import LogoAdaptive from '@/assets/logo-adaptive.svg';
-import { Button } from 'studiocms:ui/components';
+import { Button, Icon } from 'studiocms:ui/components';
 import GitHubLogo from '@/assets/github.svg';
 import { getStudioCMSStars } from 'quick-astro:cache';
 const stars = await getStudioCMSStars()
 ---
 
-<nav data-stars={stars}>
+<nav data-stars={stars || '370'}>
   <div class="nav-content">
     <a href="/" class="nav-brand">
       <LogoAdaptive height={36} width={34.32} />
       <span>StudioCMS</span>
     </a>
     <div class="nav-links">
-      <a href="/blog">Blog</a>
-      <a href="https://docs.studiocms.dev">Docs</a>
-      <a href="/ecosystem">Ecosystem</a>
+      <a href="/blog" style="--i: 0;">Blog</a>
+      <a href="https://docs.studiocms.dev" style="--i: 1;">Docs</a>
+      <a href="/ecosystem" style="--i: 2;">Ecosystem</a>
+      <Button href='https://github.com/withstudiocms' class="mobile-gh-button" fullWidth>
+        <GitHubLogo width={24} height={24} slot="start-content" />
+        <span>{stars || '370+'}</span>
+      </Button>
     </div>
     <div>
-      <Button href='https://github.com/withstudiocms'>
+      <Button href='https://github.com/withstudiocms' class="gh-button">
         <GitHubLogo width={24} height={24} slot="start-content" />
-        <span>{stars}</span>
+        <span>{stars || '370+'}</span>
+      </Button>
+      <Button id='mobile-nav-toggle'>
+        <slot name="start-content">
+          <Icon name="bars-3" width={24} height={24} class="bars" />
+          <Icon name="x-mark" width={24} height={24} class="x-mark" />
+        </slot>
       </Button>
     </div>
   </div>
 </nav>
+<script>
+  const mobileNavToggle = document.getElementById('mobile-nav-toggle')!;
+  const navLinks = document.querySelector('.nav-links')!;
 
+  mobileNavToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    mobileNavToggle.classList.toggle('open');
+
+    if (navLinks.classList.contains('open')) {
+      mobileNavToggle.setAttribute('aria-expanded', 'true');
+      mobileNavToggle.setAttribute('aria-label', 'Close menu');
+    } else {
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+      mobileNavToggle.setAttribute('aria-label', 'Open menu');
+    }
+    
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+</script>
 <style>
   nav {
     width: 100vw;
@@ -79,5 +107,91 @@ const stars = await getStudioCMSStars()
 
   .nav-links a:hover {
     color: hsl(var(--primary-hover));
+  }
+
+  .mobile-gh-button {
+    display: none;
+    color: hsl(var(--text-normal)) !important;
+  }
+
+  #mobile-nav-toggle {
+    display: none;
+  }
+
+  @media screen and (max-width: 786px) {
+    .nav-links {
+      position: static;
+      transform: none;
+      gap: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #mobile-nav-toggle {
+      display: flex;
+    }
+
+    #mobile-nav-toggle .bars {
+      display: block;
+    }
+
+    #mobile-nav-toggle .x-mark {
+      display: none;
+    }
+
+    #mobile-nav-toggle.open .x-mark {
+      display: block;
+    }
+
+    #mobile-nav-toggle.open .bars {
+      display: none;
+    }
+
+    .gh-button {
+      display: none;
+    }
+
+    .nav-links {
+      position: absolute;
+      width: 100vw;
+      left: -1.5rem;
+      flex-direction: column;
+      padding: 1.5rem;
+      background-color: hsla(var(--background-step-1) / .75);
+      backdrop-filter: blur(2px);
+      height: calc(100vh - 73px);
+      top: calc(100% + 1rem + 1px);
+      transition: all .3s ease;
+      transform: translateY(calc(-100% - 73px));
+      opacity: 0;
+    }
+
+    .nav-links a:not(.mobile-gh-button) {
+      transform: translateX(-50%);
+      opacity: 0;
+      width: fit-content;
+    }
+
+    .nav-links.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .nav-links.open a:not(.mobile-gh-button) {
+      transition: color .15s 0s ease, transform .3s calc(.3s + var(--i) * .1s) ease, opacity .3s calc(.3s + var(--i) * .1s) ease;
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .nav-links a:not(.mobile-gh-button) {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    .mobile-gh-button {
+      display: flex;
+      width: 100%;
+      margin-top: 1rem;
+    }
   }
 </style>
