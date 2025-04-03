@@ -213,27 +213,28 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			so you can deploy your site to serverless hosts and still enjoy the full editing capabilities.
 		</p>
 		<div class="hosting-providers">
-			<Card as='a' href='/' class="hosting-provider" aria-label="NodeJS Logo">
+			{/* TODO: Add links once we have guides for the various platforms */}
+			<Card class="hosting-provider" aria-label="NodeJS Logo">
 				<Node />
 				<Node class='glow-layer' />
 			</Card>
-			<Card as='a' href='/' class="hosting-provider" aria-label="Coolify Logo">
+			<Card class="hosting-provider" aria-label="Coolify Logo">
 				<Coolify />
 				<Coolify class='glow-layer' />
 			</Card>
-			<Card as='a' href='/' class="hosting-provider" aria-label="Docker Logo">
+			<Card class="hosting-provider" aria-label="Docker Logo">
 				<Docker />
 				<Docker class='glow-layer' />
 			</Card>
-			<Card as='a' href='/' class="hosting-provider" aria-label="Netlify Logo">
+			<Card class="hosting-provider" aria-label="Netlify Logo">
 				<Netlify />
 				<Netlify class='glow-layer' />
 			</Card>
-			<Card as='a' href='/' class="hosting-provider" aria-label="Vercel Logo">
+			<Card class="hosting-provider" aria-label="Vercel Logo">
 				<Vercel />
 				<Vercel class='glow-layer' />
 			</Card>
-			<Card as='a' href='/' class="hosting-provider" aria-label="Amazon Web Services Logo">
+			<Card class="hosting-provider" aria-label="Amazon Web Services Logo">
 				<AWS />
 				<AWS class='glow-layer' />
 			</Card>
@@ -643,13 +644,13 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		border-radius: 1.25rem;
 	}
 
-	.hosting-provider:hover {
+	/* .hosting-provider:hover {
 		background-image: radial-gradient(
 			hsl(var(--background-step-1)),
 			hsl(var(--background-step-3))
 		);
 		border: 1px solid hsl(var(--primary-base));
-	}
+	} */
 	
 	.hosting-provider svg {
 		max-width: 4.5rem;
