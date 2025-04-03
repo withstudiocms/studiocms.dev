@@ -1,0 +1,24 @@
+---
+import PageHeader from "@/components/PageHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+
+import { StudioCMSRenderer } from 'studiocms:renderer';
+import studioCMS_SDK from 'studiocms:sdk';
+
+const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug('studiocms-for-content-creators');
+
+if (!page) {
+  return Astro.redirect('/404');
+}
+---
+<Layout
+	title="StudioCMS for Content Creators"
+	desc="StudioCMS is easy to use even without technical knowledge. Here's how we can make creating content easier for you."
+>
+	<PageHeader
+		title="StudioCMS for Content Creators"
+	/>
+	<article>
+		<StudioCMSRenderer data={page} />	
+	</article>
+</Layout>
