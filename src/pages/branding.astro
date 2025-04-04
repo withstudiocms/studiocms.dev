@@ -1,0 +1,239 @@
+---
+import PageHeader from "@/components/PageHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+const LOGOMARKS = [
+	{
+		name: "StudioCMS Logo (White)",
+		preview: "/press/logomarks/studiocms-logomark-light.png",
+		dark: false,
+		assets: [
+			{
+				format: "svg",
+				src: "/press/logomarks/studiocms-logomark-light.svg",
+			},
+			{
+				format: "png",
+				src: "/press/logomarks/studiocms-logomark-light.png",
+			},
+		],
+	},
+	{
+		name: "StudioCMS Logo (Black)",
+		preview: "/press/logomarks/studiocms-logomark-dark.png",
+		dark: true,
+		assets: [
+			{
+				format: "svg",
+				src: "/press/logomarks/studiocms-logomark-dark.svg",
+			},
+			{
+				format: "png",
+				src: "/press/logomarks/studiocms-logomark-dark.png",
+			},
+		],
+	},
+	{
+		name: "StudioCMS Logo (Adaptive)",
+		preview: "/press/logomarks/studiocms-logomark-adaptive.svg",
+		dark: true,
+		assets: [
+			{
+				format: "svg",
+				src: "/press/logomarks/studiocms-logomark-adaptive.svg",
+			},
+		],
+	}
+];
+
+const WORDMARKS = [
+	{
+		name: "StudioCMS Wordmark (White)",
+		preview: "/press/wordmarks/studiocms-wordmark-light.png",
+		dark: false,
+		assets: [
+			{
+				format: "svg",
+				src: "/press/wordmarks/studiocms-wordmark-light.svg",
+			},
+			{
+				format: "png",
+				src: "/press/wordmarks/studiocms-wordmark-light.png",
+			},
+		],
+	},
+	{
+		name: "StudioCMS Wordmark (Black)",
+		preview: "/press/wordmarks/studiocms-wordmark-dark.png",
+		dark: true,
+		assets: [
+			{
+				format: "svg",
+				src: "/press/wordmarks/studiocms-wordmark-dark.svg",
+			},
+			{
+				format: "png",
+				src: "/press/wordmarks/studiocms-wordmark-dark.png",
+			},
+		],
+	},
+	{
+		name: "StudioCMS Wordmark (Adaptive)",
+		preview: "/press/wordmarks/studiocms-wordmark-adaptive.svg",
+		dark: true,
+		assets: [
+			{
+				format: "svg",
+				src: "/press/wordmarks/studiocms-wordmark-adaptive.svg",
+			},
+		],
+	}
+];
+---
+<Layout
+	title="Branding"
+	desc="Download the StudioCMS logo and wordmark in various formats."
+>
+	<PageHeader title="Press Resources">
+		<p slot="description">
+			Download the StudioCMS logo and wordmark in various formats. <br>
+			Last updated 31. March, 2025.
+		</p>
+	</PageHeader>
+	<section>
+		<h2>Logomarks</h2>
+		<div class="resource-grid">
+			{LOGOMARKS.map((item) => (
+				<div class="resource" class:list={{ dark: item.dark }}>
+					<div class="resource-preview-container">
+						<Image
+							src={item.preview}
+							alt={item.name}
+							width={200}
+							height={200}
+							inferSize
+							class="resource-preview"
+							loading="eager"
+						/>
+						<div class="formats">
+							{item.assets.map((asset) => (
+								<a class="format-download" href={asset.src} download>
+									{asset.format}
+								</a>
+							))}
+						</div>
+					</div>
+					<h3>{item.name}</h3>
+				</div>
+			))}
+		</div>
+		<h2>Wordmarks</h2>
+		<div class="resource-grid">
+			{WORDMARKS.map((item) => (
+				<div class="resource" class:list={{ dark: item.dark }}>
+					<div class="resource-preview-container">
+						<Image
+							src={item.preview}
+							alt={item.name}
+							width={200}
+							height={200}
+							inferSize
+							class="resource-preview"
+							loading="lazy"
+						/>
+						<div class="formats">
+							{item.assets.map((asset) => (
+								<a class="format-download" href={asset.src} download>
+									{asset.format}
+								</a>
+							))}
+						</div>
+					</div>
+					<h3>{item.name}</h3>
+				</div>
+			))}
+		</div>
+	</section>
+</Layout>
+<style>
+	h2 {
+		font-size: 1.75em;
+		margin-bottom: 1rem;
+	}
+
+	.resource-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
+
+	.resource {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		border: 1px solid hsl(var(--border));
+		border-radius: 1.25rem;
+		background-color: hsl(var(--background-step-1));
+		overflow: hidden;
+	}
+
+	.resource.dark .resource-preview-container {
+		background-color: hsl(var(--text-normal));
+	}
+
+	.resource-preview-container {
+		width: 100%;
+		height: 12rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.resource-preview {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		padding: 1rem;
+	}
+
+	.formats {
+		position: absolute;
+		bottom: .5rem;
+		right: .5rem;
+		display: flex;
+		gap: .5rem;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	.resource h3 {
+		width: 100%;
+		background-color: hsl(var(--background-step-2));
+		border-top: 1px solid hsl(var(--border));
+		padding: 1rem;
+		text-align: left;
+	}
+
+	.format-download {
+		background-color: hsla(var(--primary-base) / .25);
+		padding: .25rem .75rem;
+		color: hsl(var(--text-normal));
+		border-radius: .25rem;
+		text-decoration: none;
+		font-size: .875em;
+		transition: all .15s ease;
+	}
+
+	.resource.dark .format-download {
+		background-color: hsla(var(--text-inverted) / .45);
+	}
+
+	.format-download:hover {
+		background-color: hsla(var(--primary-base) / .45);
+		color: hsl(var(--text-base));
+	}
+
+	.resource.dark .format-download:hover {
+		background-color: hsla(var(--text-inverted) / .65);
+	}
+</style>

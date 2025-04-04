@@ -1,176 +1,197 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { DISCORD_URL, DOCS_URL, GITHUB_URL, SPONSOR_URL } from '../constants';
-import ThemeSelect from './ThemeSelect.astro';
+import LogoAdaptive from '@/assets/logo-adaptive.svg';
+import { Button, Icon } from 'studiocms:ui/components';
+import GitHubLogo from '@/assets/github.svg';
+import { getStudioCMSStars } from 'quick-astro:cache';
+const stars = await getStudioCMSStars()
 ---
 
-<nav
-  class='flex justify-between items-center bg-slate-100 dark:bg-[--purple-900] px-8 py-8 w-full text-gray-900 dark:text-slate-100'
->
-  <div class="flex flex-center justify-between mx-auto studiocms-container">
-    <a href="/" class='flex justify-center items-center gap-x-4 w-fit' aria-label="StudioCMS">
-      <Icon name='logo' class='stroke-slate-100 w-8 h-8 text-[--purple-900] dark:text-white' />
-      <span class="hidden md:block font-bold text-2xl" aria-hidden>StudioCMS</span>
+<nav data-stars={stars || '370'}>
+  <div class="nav-content">
+    <a href="/" class="nav-brand">
+      <LogoAdaptive height={36} width={34.32} />
+      <span>StudioCMS</span>
     </a>
+    <div class="nav-links">
+      <a href="/blog" style="--i: 0;">Blog</a>
+      <a href="https://docs.studiocms.dev" style="--i: 1;">Docs</a>
+      <a href="/ecosystem" style="--i: 2;">Ecosystem</a>
+      <Button href='https://github.com/withstudiocms' class="mobile-gh-button" fullWidth>
+        <GitHubLogo width={24} height={24} slot="start-content" />
+        <span>{stars || '370+'}</span>
+      </Button>
+    </div>
     <div>
-      <ul class='flex items-center gap-x-4'>
-        <li class="text-link">
-          <a 
-            href="/blog"
-            class='font-medium text-lg hover:underline' 
-            aria-label='Blog link'
-            title="Blog"
-          >
-            Blog
-          </a>
-        </li>
-        <li class="text-link">
-          <a 
-            href={DOCS_URL} 
-            class='font-medium text-lg hover:underline' 
-            rel='external nofollow' 
-            aria-label='Docs link'
-            title="Docs"
-          >
-            Docs
-          </a>
-        </li>
-        <li class="text-link">
-          <a 
-            href='/roadmap' 
-            class='mr-8 font-medium text-lg hover:underline' 
-            rel='external nofollow' 
-            aria-label='Roadmap link'
-            title="Roadmap"
-          >
-            Roadmap
-          </a>
-        </li>
-        <li>
-          <a
-            href={DISCORD_URL}
-            class="navbar-icon"
-            rel='external nofollow'
-            aria-label='Discord link'
-            title="Discord"
-          >
-            <Icon
-              name='discord'
-              class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            class="navbar-icon"
-            href={GITHUB_URL}
-            rel='external nofollow'
-            aria-label='GitHub link'
-            title="GitHub"
-            >
-            <Icon
-              name='github'
-              class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            class="navbar-icon"
-            href={SPONSOR_URL}
-            rel='external nofollow'
-            aria-label='Open Collective link'
-            title="Open Collective"
-            >
-            <Icon
-              name='opencollective'
-              class='w-6 h-6 hover:scale-110 transition duration-200 ease-in-out'
-            />
-          </a>
-        </li>
-        <li>
-          <ThemeSelect />
-        </li>
-        <li class="relative">
-          <div id="mobile-dropdown-icon-container">
-            <Icon
-              name='heroicons:bars-3'
-              class='w-8 h-8 transition duration-200 ease-in-out cursor-pointer'
-            />
-          </div>
-          <div id="mobile-dropdown-container">
-            <a 
-              href="/blog"
-              class='font-medium text-lg hover:underline' 
-              aria-label='Blog link'
-              title="Blog"
-            >
-              Blog
-            </a>
-            <a 
-              href={DOCS_URL} 
-              class='font-medium text-lg hover:underline' 
-              rel='external nofollow' 
-              aria-label='Docs link'
-              title="Docs"
-            >
-              Docs
-            </a>
-            <a 
-              href='/roadmap' 
-              class='mr-8 font-medium text-lg hover:underline' 
-              rel='external nofollow' 
-              aria-label='Roadmap link'
-              title="Roadmap"
-            >
-              Roadmap
-            </a>
-            <div class="dropdown-icons">
-              <a
-                href={DISCORD_URL}
-                class="dropdown-icon"
-                rel='external nofollow'
-                aria-label='Discord link'
-                title="Discord"
-              >
-                <Icon
-                  name='discord'
-                  class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
-                />
-              </a>
-              <a
-                class="dropdown-icon"
-                href={GITHUB_URL}
-                rel='external nofollow'
-                aria-label='GitHub link'
-                title="GitHub"
-                >
-                <Icon
-                  name='github'
-                  class='w-8 h-8 hover:scale-110 transition duration-200 ease-in-out'
-                />
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <Button href='https://github.com/withstudiocms' class="gh-button">
+        <GitHubLogo width={24} height={24} slot="start-content" />
+        <span>{stars || '370+'}</span>
+      </Button>
+      <Button id='mobile-nav-toggle'>
+        <slot name="start-content">
+          <Icon name="bars-3" width={24} height={24} class="bars" />
+          <Icon name="x-mark" width={24} height={24} class="x-mark" />
+        </slot>
+      </Button>
     </div>
   </div>
 </nav>
 <script>
-  const toggle = document.getElementById('mobile-dropdown-icon-container') as HTMLDivElement;
-  const dropdown = document.getElementById('mobile-dropdown-container') as HTMLDivElement;
+  const mobileNavToggle = document.getElementById('mobile-nav-toggle')!;
+  const navLinks = document.querySelector('.nav-links')!;
 
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dropdown.classList.toggle('active');
-  });
+  mobileNavToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    mobileNavToggle.classList.toggle('open');
 
-  document.body.addEventListener('click', (event) => {
-    if (!event.target) return;
-
-    if (!dropdown.contains(event.target as Node) && event.target !== toggle) {
-      dropdown.classList.remove('active');
+    if (navLinks.classList.contains('open')) {
+      mobileNavToggle.setAttribute('aria-expanded', 'true');
+      mobileNavToggle.setAttribute('aria-label', 'Close menu');
+    } else {
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+      mobileNavToggle.setAttribute('aria-label', 'Open menu');
     }
+    
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
   });
 </script>
+<style>
+  nav {
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    background-color: hsla(var(--background-step-1) / .5);
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid hsl(var(--border));
+    z-index: 50;
+  }
+
+  .nav-content {
+    width: 100%;
+    max-width: var(--page-width);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+  }
+
+  .nav-brand span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(var(--text-normal));
+  }
+
+  .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: hsl(var(--text-normal));
+    transition: all .15s ease;
+  }
+
+  .nav-links a:hover {
+    color: hsl(var(--primary-hover));
+  }
+
+  .mobile-gh-button {
+    display: none;
+    color: hsl(var(--text-normal)) !important;
+  }
+
+  #mobile-nav-toggle {
+    display: none;
+  }
+
+  @media screen and (max-width: 786px) {
+    .nav-links {
+      position: static;
+      transform: none;
+      gap: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #mobile-nav-toggle {
+      display: flex;
+    }
+
+    #mobile-nav-toggle .bars {
+      display: block;
+    }
+
+    #mobile-nav-toggle .x-mark {
+      display: none;
+    }
+
+    #mobile-nav-toggle.open .x-mark {
+      display: block;
+    }
+
+    #mobile-nav-toggle.open .bars {
+      display: none;
+    }
+
+    .gh-button {
+      display: none;
+    }
+
+    .nav-links {
+      position: absolute;
+      width: 100vw;
+      left: -1.5rem;
+      flex-direction: column;
+      padding: 1.5rem;
+      background-color: hsla(var(--background-step-1) / .75);
+      backdrop-filter: blur(4px) !important;
+      height: calc(100vh - 73px);
+      top: calc(100% + 1rem + 1px);
+      transition: all .3s ease;
+      transform: translateY(calc(-100% - 73px));
+      opacity: 0;
+    }
+
+    .nav-links a:not(.mobile-gh-button) {
+      transform: translateX(-50%);
+      opacity: 0;
+      width: fit-content;
+    }
+
+    .nav-links.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .nav-links.open a:not(.mobile-gh-button) {
+      transition: color .15s 0s ease, transform .3s calc(.3s + var(--i) * .1s) ease, opacity .3s calc(.3s + var(--i) * .1s) ease;
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .nav-links a:not(.mobile-gh-button) {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    .mobile-gh-button {
+      display: flex;
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+</style>

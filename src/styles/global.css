@@ -1,122 +1,287 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-	:root {
-		--purple-900: #101010;
-		--blob-dark: #aa87f4;
-		--blob-light: #201b4b;
-		--white-50: #fafafa;
-	}
-
-	body {
-		@apply bg-slate-100 text-[--purple-900] dark:bg-[--purple-900] dark:text-slate-100;
-	}
-
-	p,
-	span,
-	a,
-	li,
-	label,
-	input,
-	textarea,
-	button {
-		font-weight: 300;
-	}
-
-	/* Animated border */
-
-	@property --border-angle {
-		inherits: false;
-		initial-value: 0deg;
-		syntax: "<angle>";
-	}
-
-	/* Blob Stuff from Hero */
-
-	#blob {
-		animation: change-blob 7.5s linear infinite;
-		transition: d 0.5s ease;
-		transform-origin: center;
-	}
-
-	.panel {
-		position: relative;
-		overflow: hidden;
-	}
-
-	@keyframes change-blob {
-		0%,
-		100% {
-			opacity: 1;
-		}
-
-		50% {
-			opacity: 0.75;
-		}
-	}
-
-	code::before,
-	code::after {
-		content: "" !important;
-	}
+:root {
+	--page-width: 1260px;
 }
 
-.studiocms-container {
-	@apply container lg:max-w-[1000px] xl:max-w-[1200px];
+* {
+  font-family: 'Onest Variable', sans-serif;
+  box-sizing: border-box; 
+  margin: 0;
 }
 
-#mobile-dropdown-icon-container {
-	display: none;
+body {
+	overflow-x: hidden !important;
+	position: relative;
+}
+
+body::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('/noise.png');
+	background-repeat: repeat;
+	opacity: .5;
+	z-index: -1;
+}
+
+[data-theme="light"] body::after {
+	content: none;
+}
+
+main {
+	width: 100%;
+	height: auto;
+	z-index: 5;
+	margin: 0 auto;
+	pointer-events: all;
+	min-height: calc(100vh);
+}
+
+main:not(.index) {
+	max-width: var(--page-width);
+}
+
+section, section * {
+	position: relative;
+	z-index: 5;
+}
+
+footer {
+	z-index: 10 !important;
+	position: relative;
+}
+
+footer a {
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+.sui-footer-link-label {
+	margin-bottom: .5rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 768px) {
-	#mobile-dropdown-icon-container {
-		display: block;
-	}
-
-	.text-link {
-		display: none;
-	}
-
-	.navbar-icon {
-		display: none;
+	.footer-brand {
+		flex-direction: column;
+		gap: 1rem;
+		width: 100%;
 	}
 }
 
-#mobile-dropdown-container {
-	position: absolute;
-	top: calc(32px + 16px);
-	right: 0;
-	flex-direction: column;
-	background-color: #151515;
-	border-radius: 8px;
-	border: 1px solid #29292d;
-	z-index: 9999;
-	box-shadow: 0px 4px 4px #000;
-	display: none;
-
-	&.active {
-		display: flex;
-	}
+.studiocms-footer-text {
+	font-size: 2em;
+	font-weight: bold;
 }
 
-.dropdown-icons {
+.socials {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
-	justify-content: space-around;
-	padding: .5rem 1rem;
-	border-top: 1px solid #29292d;
+	align-items: center;
+	gap: 1.25rem;
 }
 
-#mobile-dropdown-container a:not(.dropdown-icon) {
-	padding: .5rem 1rem;
+.socials a {
+	color: hsla(var(--text-normal) / .75);
+	transition: all .15s ease;
+	display: flex;
+}
+
+.socials a:hover {
+	color: hsl(var(--text-normal));
+}
+
+.brand-newsletter {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 	width: 100%;
 }
 
-#mobile-dropdown-container a:not(.dropdown-icon):hover {
-	background-color: #191919;
-	text-decoration: none;
+.brand-logo {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: center;
+}
+
+.keyword {
+	background: linear-gradient(135deg, #a581f3 0%, #c964cf 90%);
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	width: fit-content;
+}
+
+.keyword * {
+	background: inherit;
+	color: inherit;
+}
+
+.balanced {
+	text-wrap: balanced;
+}
+
+article {
+	max-width: 80ch;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+	line-height: 1.7;
+	min-height: 50vh;
+	font-size: 1.0625rem;
+	width: 100%;
+	text-align: left;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+	display: block;
+	scroll-margin: 4rem;
+}
+
+article p {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+article .heading-wrapper {
+	margin-top: 1rem;
+	font-size: 1.125em;
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+
+	.anchor-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+article hr {
+	height: 1px;
+	border: none;
+	background-color: hsl(var(--border));
+}
+
+article p:has(img) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+article img {
+	max-width: 100%;
+	height: auto;
+	border: 1px solid hsl(var(--border));
+	background-color: hsl(var(--background-step-1)) !important;
+	border-radius: 1rem;
+}
+
+article pre.astro-code {
+	background-color: hsl(var(--background-step-1)) !important;
+	border: 1px solid hsl(var(--border));
+	padding: .5rem .75rem;
+	border-radius: 1rem;
+}
+
+article pre.astro-code * {
+	font-family: 'JetBrains Mono', monospace !important;
+}
+
+article pre.astro-code code {
+	font-size: .925rem;
+}
+
+article code:not(.astro-code code) {
+	background-color: hsl(var(--background-step-3));
+	padding: .125rem .25rem;
+	font-size: .925rem;
+}
+
+article blockquote {
+	border-left: 2px solid hsl(var(--primary-base));
+	padding: .75rem 1rem;
+	margin-left: 0;
+	background-color: hsla(var(--primary-base) / .125);
+	border-radius: 0 1rem 1rem 0;
+	width: 100%;
+	margin: 1rem 0;
+}
+
+article blockquote p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+article table {
+	margin-top: 1rem;
+	text-align: left;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border-radius: 1rem;
+}
+
+article table th {
+	padding: .5rem 1.5rem .5rem .5rem;
+	text-align: left;
+	background-color: hsl(var(--background-step-2));
+	border: 1px solid hsl(var(--border));
+}
+
+article table tbody {
+	margin-top: 1rem;
+	border: 1px solid hsl(var(--border));
+}
+
+article table tbody tr {
+	border-bottom: 1px solid hsl(var(--border));
+}
+
+article table tbody tr td {
+	padding: .5rem 1.5rem .5rem .5rem;
+	border-right: 1px solid hsl(var(--border));
+	background-color: hsl(var(--background-step-1));
+}
+
+article hr {
+	margin: 1rem 0;
+}
+
+article .footnotes li p {
+	word-wrap: break-word;
+}
+
+article .footnotes ol {
+	padding-left: 1.5rem;
+	line-height: 1.2;
+}
+
+@media screen and (max-width: 1350px) {
+	section:not(.banner):not(main:not(.index) section) {
+		padding: 1.5rem;
+	}
+
+	main:not(.index) {
+		padding: 0 1.5rem;
+	}
 }

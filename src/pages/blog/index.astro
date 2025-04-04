@@ -1,27 +1,132 @@
 ---
-import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components';
-import BlogCard from '../../components/BlogCard.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from "@/components/PageHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import studiocms_SDK from 'studiocms:sdk';
+import cached_SDK from 'studiocms:sdk/cache';
 
-const blogPosts = await getCollection('blog');
+const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
+const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] }).children;
 
-blogPosts.sort(({ data: { publishDate: a } }, { data: { publishDate: b } }) => {
-	return b.getTime() - a.getTime();
+const articlePromises = entries.map(async (article) => {
+	if (!article.page || !article.pageData) return;
+
+	const { title, publishedAt, slug, authorId, heroImage } = article.pageData;
+
+	const author = await studiocms_SDK.GET.databaseEntry.users.byId(authorId!)!;
+
+	return {
+		title,
+		publishedAt,
+		slug,
+		heroImage,
+		author: (author ? {
+			name: author.name,
+			avatar: author.avatar ? author.avatar : null
+		} : null),
+	}
 });
----
 
-<BaseLayout title="Blog">
-  <main
-    class="studiocms-container mx-auto py-12 px-8 md:px-0 min-h-[calc(100vh_-_70px)]"
-  >
-    <h1 class="text-5xl font-bold mb-8">
-      The StudioCMS Blog <a href="/rss.xml" title="RSS Feed"
-        ><Icon name="heroicons:rss" class="inline" /></a>
-    </h1>
-    <p class="mb-12 text-lg">Get the latest news from StudioCMS</p>
-    <div class="grid md:grid-cols-3 gap-8 md:gap-4">
-      {blogPosts.map((post, index) => <BlogCard {post} {index} />)}
-    </div>
-  </main>
-</BaseLayout>
+const articles = (await Promise.all(articlePromises)).filter((x) => typeof x !== 'undefined').sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+---
+<Layout>
+	<PageHeader
+		title="Blog"
+	/>
+	<div class="articles-grid">
+		{articles.map((article) => (
+			<a href={`/blog/${article.slug}`} class="article-card">
+				<img src={article.heroImage} alt={article.title} class="article-card-image" />
+				<div class="article-card-content">
+					<h3>{article.title}</h3>
+					<div class="article-card-details">
+						<div class="article-card-author">
+							{article.author?.avatar && (
+								<Image src={article.author.avatar} alt={article.author.name} class="article-card-author-avatar" inferSize />
+							)}
+							<p>{article.author?.name}</p>
+						</div>
+						<span class="article-card-date">{article.publishedAt.toLocaleDateString()}</span>
+					</div>
+				</div>
+			</a>
+		))}
+	</div>
+</Layout>
+<style>
+	.articles-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.article-card {
+		display: flex;
+		flex-direction: column;
+		background-color: hsl(var(--background-step-1));
+		border: 1px solid hsl(var(--border));
+		border-radius: 1rem;
+		overflow: hidden;
+		text-decoration: none;
+		transition: all .15s ease;
+		color: hsl(var(--text-normal));
+	}
+
+	.article-card:hover {
+		border: 1px solid hsl(var(--primary-base));
+	}
+
+	.article-card-image {
+		width: 100%;
+		height: auto;
+		border-bottom: 1px solid hsl(var(--border));
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
+	.article-card-content {
+		padding: 1rem;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+		justify-content: space-between;
+	}
+
+	.article-card-details {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.article-card-author {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.article-card-author-avatar {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+	}
+
+	.article-card-date {
+		color: hsl(var(--text-muted));
+		font-size: 0.875rem;
+	}
+
+	@media screen and (max-width: 960px) {
+		.articles-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		.articles-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

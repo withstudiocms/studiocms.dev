@@ -1,31 +1,46 @@
 ---
-import ThemeManager from './ThemeManager.astro';
-import '@fontsource-variable/onest';
+import '@fontsource-variable/onest/index.css';
+import '@/styles/global.css';
 import onestWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
+import { Generator } from 'studiocms:components';
+import type { CombinedUserData } from 'studiocms:sdk/types';
+
 interface Props {
 	title?: string;
 	desc?: string;
 	ogImage?: URL | undefined;
+  author?: CombinedUserData;
+  published?: Date;
+  updated?: Date | null;
 }
 
-const OgBanner = new URL('/og.jpg', Astro.url);
+const OgBanner = new URL('/og.png', Astro.url);
 
 const RSSFeed = new URL('rss.xml', Astro.site);
 
-const { title, desc = 'A dedicated CMS for Astro DB.', ogImage = OgBanner } = Astro.props;
-
-const studioTitle = `StudioCMS${title ? ` - ${title}` : ''}`;
+const {
+	title,
+	desc = 'StudioCMS is the all-in-one content management solution for your next Astro project.',
+	ogImage = OgBanner,
+  author,
+  published,
+  updated
+} = Astro.props;
 ---
 
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <meta name='generator' content={Astro.generator} />
+  {/* Generator from StudioCMS includes generator tags for, Astro, StudioCMS and StudioCMS UI */}
+  <Generator />
+  <script is:inline defer src="https://analytics.studiocms.dev/script.js" data-website-id="fe590129-3619-4b81-9736-a4feadad848e"></script>
+  <meta name="keywords" content="studiocms, studio cms, headless cms, content management system, open source, open source cms, astro, cms for marketers, cms for developers, cms for enterprises, enterprise cms, astro cms" />
 
-  <title>{studioTitle}</title>
+  <title>{title}</title>
   <meta name='description' content={desc} />
+  <meta name="theme-color" content="#a581f3" />
 
-  <meta property='og:title' content={studioTitle} />
+  <meta property='og:title' content={title} />
   <meta property='og:description' content={desc} />
   <meta property='og:image' content={ogImage} />
   <meta property='og:url' content={Astro.url} />
@@ -33,27 +48,29 @@ const studioTitle = `StudioCMS${title ? ` - ${title}` : ''}`;
 
   <meta name='twitter:card' content='summary_large_image' />
   <meta name="twitter:url" content={Astro.url} />
-  <meta name='twitter:title' content={studioTitle} />
+  <meta name='twitter:title' content={title} />
   <meta name='twitter:description' content={desc} />
   <meta name='twitter:image' content={ogImage} />
   <meta name='twitter:creator' content='withstudiocms' />
   <meta name='twitter:site' content='withstudiocms' />
 
+  {published && (
+    <meta name='article:published_time' content={published.toISOString()} />
+  )}
+
+  {updated && (
+    <meta name='article:modified_time' content={updated.toISOString()} />
+  )}
+
+  {author && (  
+    <meta name='author' content={author.name} />
+    <meta property="article:author" content={author.name} />
+  )}
+
   <link rel="canonical" href={Astro.url} />
-  <link rel='shortcut icon' type='image/svg+xml' href='/favicon.svg' />
+  <link rel="icon" href="https://cdn.studiocms.dev/favicon-light.png" type="image/png" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="https://cdn.studiocms.dev/favicon-dark.png" type="image/png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" href="https://cdn.studiocms.dev/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href={onestWoff2} />
-  <link rel="alternate" type="application/rss+xml" title={studioTitle} href={RSSFeed} />
-
-  <ThemeManager defaultTheme="dark" />
-
-  <!-- 
-  
-  Disabled until new Analytics provider is available
-
-  <script 
-    is:inline 
-    defer 
-    src="https://analytics.studiocms.xyz/script.js" 
-    data-website-id="e3a84c8d-d45a-49d9-932b-00eeb63f8c48">
-  </script> -->
+  <link rel="alternate" type="application/rss+xml" title={title} href={RSSFeed} />
 </head>

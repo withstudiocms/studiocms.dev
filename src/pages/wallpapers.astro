@@ -1,0 +1,166 @@
+---
+import PageHeader from "@/components/PageHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "studiocms:ui/components";
+
+const WALLPAPERS = [
+	{
+		name: "Blobs",
+		dark: "/wallpapers/studiocms-blobs.png",
+		light: "/wallpapers/studiocms-blobs-light.png",
+	},
+	{
+		name: "Geography",
+		dark: "/wallpapers/studiocms-geography.png",
+		light: "/wallpapers/studiocms-geography-light.png",
+	},
+	{
+		name: "Orbits",
+		dark: "/wallpapers/studiocms-orbits.png",
+		light: "/wallpapers/studiocms-orbits-light.png",
+	},
+	{
+		name: "Stars",
+		dark: "/wallpapers/studiocms-stars.png",
+		light: "/wallpapers/studiocms-stars-light.png",
+	},
+];
+---
+<Layout
+	title="Wallpapers"
+	desc="Download StudioCMS wallpapers for your device!"
+>
+	<PageHeader title="Wallpapers" />
+	<section>
+		<div class="resource-grid">
+			{WALLPAPERS.map((item) => (
+				<div class="resource">
+					<div class="resource-preview-container">
+						<Image
+							src={item.dark as any}
+							alt={item.name}
+							width={960}
+							height={540}
+							class="resource-preview"
+							loading="eager"
+							quality={100}
+						/>
+						<a class="download-button dark" href={item.dark} download aria-label={`Download ${item.name} dark wallpaper`}>
+							<Icon name="arrow-down-tray" width={20} height={20} />
+						</a>
+						<Image
+							src={item.light as any}
+							alt={item.name}
+							width={960}
+							height={540}
+							class="resource-preview light"
+							loading="eager"
+							quality={100}
+						/>
+						<a class="download-button light" href={item.light} download aria-label={`Download ${item.name} light wallpaper`}>
+							<Icon name="arrow-down-tray" width={20} height={20} />
+						</a>
+					</div>
+					<div class="resource-content">
+						<h3>{item.name}</h3>
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+</Layout>
+<style>
+	h2 {
+		font-size: 1.75em;
+		margin-bottom: 1rem;
+	}
+
+	.resource-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
+
+	.resource {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		border: 1px solid hsl(var(--border));
+		border-radius: 1.25rem;
+		background-color: hsl(var(--background-step-1));
+		overflow: hidden;
+	}
+
+	.resource-preview-container {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.resource-preview {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.resource-preview.light {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 50.01%, black 100%);
+	}
+
+	.resource h3 {
+		color: hsl(var(--text-normal));
+	}
+
+	.resource-content {
+		padding: 1rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 1rem;
+		align-items: center;
+		background-color: hsl(var(--background-step-2));
+		border-top: 1px solid hsl(var(--border));
+		padding: 1rem;
+		text-align: left;
+		width: 100%;
+	}
+
+	.download-button {
+		background-color: hsla(var(--text-inverted) / .5);
+		padding: .25rem .75rem;
+		color: hsl(var(--text-normal));
+		border-radius: .25rem;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		bottom: 0.5rem;
+		right: 0.5rem;
+		transition: all .15s ease;
+		z-index: 6;
+	}
+
+	.download-button:hover {
+		background-color: hsla(var(--text-inverted) / .75);
+	}
+
+	.download-button.dark {
+		right: auto;
+		left: .5rem;
+		background-color: hsla(var(--text-normal) / .75);
+		color: hsl(var(--text-inverted));
+	}
+
+	.download-button.dark:hover {
+		background-color: hsla(var(--text-normal) / .85);
+	}
+</style>

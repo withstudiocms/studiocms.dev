@@ -1,103 +1,1072 @@
 ---
-import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components';
-import Image from 'astro/components/Image.astro';
-import FeatureCard from '../components/FeatureCard.astro';
-import Hero from '../components/Hero.astro';
-import Marquee from '../components/Marquee.astro';
-import Separator from '../components/Separator.astro';
-// import TestimonialCard from '../components/TestimonialCard.astro';
-import { GITHUB_URL, SPONSOR_URL } from '../constants';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import sponsors from '../share-link';
+import { Button, Icon } from 'studiocms:ui/components';
+import Layout from '../layouts/Layout.astro';
+import { Card } from 'studiocms:ui/components';
+import { Image } from 'astro:assets';
+import cached_SDK from 'studiocms:sdk/cache';
 
-const features = (await getCollection('features')).sort(
-	({ data: { sortOrder: a } }, { data: { sortOrder: b } }) => a - b
-);
+import AWS from '@/assets/icons/aws.svg';
+import Coolify from '@/assets/icons/coolify.svg';
+import Docker from '@/assets/icons/docker.svg';
+import Netlify from '@/assets/icons/netlify.svg';
+import Node from '@/assets/icons/node.svg';
+import Vercel from '@/assets/icons/vercel.svg';
+import NPM from '@/assets/npm.svg';
+import Discord from '@/assets/discord.svg';
+import GitHub from '@/assets/github.svg';
 
-// const testimonials = await getCollection('testimonials');
+import DevIconPattern from '@/assets/developer-icon-pattern.svg';
+import MarketerIconPattern from '@/assets/marketer-icon-pattern.svg';
+
+import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
+import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
+import Orbits from '@/assets/orbits.svg';
+
+import EcosystemSection from '@/components/EcosystemSection.astro';
+
+import ApolloDefaultExpression from '@/assets/apollo-default.png';
+import ApolloHappyExpression from '@/assets/apollo-happy.png';
+
+import { getNpmMonthlyDownloads, getDiscordMembers } from 'quick-astro:cache';
+
+const getNewestBlogPost = async () => {
+	const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
+	const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] })
+		.children;
+
+	const articles = entries
+		.filter((x) => !!x.pageData)
+		.sort((a, b) => b.pageData!.publishedAt.getTime() - a.pageData!.publishedAt.getTime());
+
+	if (articles.length === 0) {
+		return null;
+	}
+
+	const article = articles[0];
+
+	const { title, description, publishedAt, slug, heroImage } = article.pageData!;
+
+	return {
+		title,
+		publishedAt,
+		slug,
+		heroImage,
+		description,
+	};
+};
+
+const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
+	getNpmMonthlyDownloads('studiocms'),
+	getDiscordMembers(),
+	getNewestBlogPost(),
+]);
 ---
 
+<Layout
+	title="The Astro-native CMS for all your needs."
+	desc="StudioCMS is the all-in-one content management solution for your next Astro project."
+	home
+>
+	<section class="hero">
+		<a href="/blog/skip2-networks-our-official-network-partner" class="announcement-badge">
+			<span>Skip2 Networks is our newest sponsor!</span>
+			<Icon name='arrow-right-20-solid' width={16} height={16} />
+		</a>
+		<h1>The Astro-native CMS for all your needs.</h1>
+		<p>
+			StudioCMS is the all-in-one content management solution for your next Astro project.
+		</p>
+		<div class="hero-cta">
+			<code class="code-cta install-cta">
+				npx create studiocms
+				<Icon name='document-duplicate-20-solid' class='active copy-icon' width={16} height={16} />
+				<Icon name='check-20-solid' class='copy-check' width={16} height={16} />
+			</code>
+			{/* <Button color='primary'>
+				Try the demo!
+			</Button> */}
+		</div>
+	</section>
+	<div class="video-player">
+		<video autoplay loop muted playsinline preload="auto" src="https://louisescher.dev/studiocms-trailer.mp4" />
+		<Image src={'/video-placeholder.png'} alt="" width={960} height={540} quality={1} loading="lazy" class='video-placeholder' />
+	</div>
+	<section class="target-groups">
+		<Card class="target-group-div">
+			<div>
+				<h2>For Developers.</h2>
+				<p>
+					StudioCMS provies the flexibility of other CMSs while getting rid of the pain points and complexity.
+				</p>
+				<div class="reasons-list">
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='arrows-pointing-out-20-solid' width={20} height={20} />
+							<h3>Flexible</h3>
+						</div>
+						<p>
+							StudioCMS works seamlessly with any Astro v5 project, old or new.
+						</p>
+					</div>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='squares-plus-20-solid' width={20} height={20} />
+							<h3>Extensible</h3>
+						</div>
+						<p>
+							Plugins allow you to extend StudioCMS to do almost anything.
+						</p>
+					</div>
+				</div>
+			</div>
+			<Button href='/why-studiocms/studiocms-for-developers' color='mono'>
+				Read more
+			</Button>
+			<DevIconPattern class="icon-deco" />
+		</Card>
+		<Card class="target-group-div">
+			<div>
+				<h2>For Content Creators.</h2>
+				<p>
+					StudioCMS offers an intuitive way to produce content that will reach your target audience.
+				</p>
+				<div class="reasons-list">
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='pencil-square-20-solid' width={20} height={20} />
+							<h3>Intuitive Editing</h3>
+						</div>
+						<p>
+							StudioCMS offers a variety of editing tools to make your life easier.
+						</p>
+					</div>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='check-20-solid' width={20} height={20} />
+							<h3>
+								Easy to Use
+							</h3>
+						</div>
+						<p>
+							StudioCMS is designed to be easy to use, even for non-technical users.
+						</p>
+					</div>
+				</div>
+			</div>
+			<Button href='/why-studiocms/studiocms-for-content-creators' color='mono'>
+				Read more
+			</Button>
+			<MarketerIconPattern class="icon-deco" />
+		</Card>
+		<Card class="target-group-div enterprise">
+			<div>
+				<h2>For Enterprises.</h2>
+				<p>
+					StudioCMS focuses on the needs of large organizations and their teams,
+					allowing you to scale your content production to the next level.
+				</p>
+				<div class="reasons-list">
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='circle-stack-20-solid' width={20} height={20} />
+							<h3>Data Ownership</h3>
+						</div>
+						<p>
+							You own your data and choose where to host. No more vendor lock-in.
+						</p>
+					</div>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='user-group-20-solid' width={20} height={20} />
+							<h3>Team-Management</h3>
+						</div>
+						<p>
+							StudioCMS allows you to manage your team and their permissions with ease.
+						</p>
+					</div>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='lock-closed-20-solid' width={20} height={20} />
+							<h3>Secure</h3>
+						</div>
+						<p>
+							StudioCMS is built with security in mind, so you can rest assured that your data is safe.
+						</p>
+					</div>
+					<div class="reason">
+						<div class="reason-header">
+							<Icon name='bolt-20-solid' width={20} height={20} />
+							<h3>Performant</h3>
+						</div>
+						<p>
+							StudioCMS is built to be fast and efficient, so you can focus on what matters most.
+						</p>
+					</div>
+				</div>
+			</div>
+			<Button href='/why-studiocms/studiocms-for-enterprises' color='mono'>
+				Read more
+			</Button>
+		</Card>
+	</section>
+	<section class="hosting-methods">
+		<h2>Server <span class="keyword">and</span> Serverless</h2>
+		<p class="balanced">
+			StudioCMS stores all of it's data in a remote libSQL instance, <br>
+			so you can deploy your site to serverless hosts and still enjoy the full editing capabilities.
+		</p>
+		<div class="hosting-providers">
+			{/* TODO: Add links once we have guides for the various platforms */}
+			<Card class="hosting-provider" aria-label="NodeJS Logo">
+				<Node />
+				<Node class='glow-layer' />
+			</Card>
+			<Card class="hosting-provider" aria-label="Coolify Logo">
+				<Coolify />
+				<Coolify class='glow-layer' />
+			</Card>
+			<Card class="hosting-provider" aria-label="Docker Logo">
+				<Docker />
+				<Docker class='glow-layer' />
+			</Card>
+			<Card class="hosting-provider" aria-label="Netlify Logo">
+				<Netlify />
+				<Netlify class='glow-layer' />
+			</Card>
+			<Card class="hosting-provider" aria-label="Vercel Logo">
+				<Vercel />
+				<Vercel class='glow-layer' />
+			</Card>
+			<Card class="hosting-provider" aria-label="Amazon Web Services Logo">
+				<AWS />
+				<AWS class='glow-layer' />
+			</Card>
+		</div>
+	</section>
+	{/* <section class="plugins-section">
+	Leaving this here as a reminder we'd probably want a section to explain plugins. Also, a section detailing different features could be nice in the future.
+	</section> */}
+	<section class="banner">
+		<p>Join a community of developers already using StudioCMS.</p>
+		<div class="stats-container">
+			<div class="stat">
+				<Discord class="stat-icon" />
+				<div class="stat-number keyword">
+					<span class="stat-text">{discordMembers || '90'}</span><span>+</span>
+				</div>
+				<span class="stat-desc">Discord community members</span>
+			</div>
+			<div class="stat">
+				<NPM class="stat-icon" />
+				<div class="stat-number keyword">
+					<span class="stat-text">{npmDownloads || '450'}</span><span>+</span>
+				</div>
+				<span class="stat-desc">Monthly npm downloads</span>
+			</div>
+			<div class="stat">
+				<GitHub class="stat-icon" />
+				<div class="stat-number keyword">
+					<span class="stat-text gh-stars">0</span><span>+</span>
+				</div>
+				<span class="stat-desc">GitHub stars</span>
+			</div>
+			<Image
+				src={ApolloHappyExpression}
+				alt="Our mascot, Apollo, happily looking at the statistics."
+				width={177.5}
+				loading="lazy"
+				class='apollo-banner-deco'
+				quality={100}
+			/>
+		</div>
+	</section>
+	{/* <section class="social-proof">
+		<h2>Trusted by the community</h2>
+		<span>Social Proof</span>
+	</section> */}
+	<EcosystemSection />
+	<section class="blog-showcase">
+		<h2>Keep up With What's Happening</h2>
+		<p>The StudioCMS Blog is the place to go for updates to the ecosystem.</p>
+		<div class="blog-article">
+			<div class="image-container">
+				<Image
+					src={newestBlogPost!.heroImage}
+					width={960}
+					height={540}
+					class='blog-image'
+					alt={newestBlogPost!.title}
+					loading='lazy'
+					quality={100}
+				/>
+				<Image
+					src={newestBlogPost!.heroImage}
+					width={960}
+					height={540}
+					inferSize={true}
+					class='blog-image-glow'
+					alt='Alt Text'
+					loading='lazy'
+					quality={10}
+				/>
+			</div>
+			<div class="blog-info">
+				<div class="blog-info-text">
+					<h3>{newestBlogPost!.title}</h3>
+					<p>{newestBlogPost!.description}</p>
+				</div>
+				<a class="blog-read-more" href={`/blog/${newestBlogPost!.slug}`}>
+					<span>Read More</span>
+					<Icon name='arrow-right-20-solid' width={20} height={20} />
+				</a>
+			</div>
+		</div>
+	</section>
+	<section class="final-cta">
+		<div class="final-cta-card">
+			<h2>It's time to get started.</h2>
+			<div class="hero-cta">
+				<code class="code-cta install-cta">
+					npx create studiocms
+					<Icon name='document-duplicate-20-solid' class='active copy-icon' width={16} height={16} />
+					<Icon name='check-20-solid' class='copy-check' width={16} height={16} />
+				</code>
+			</div>
+			<Orbits class='final-cta-orbits' />
+		</div>
+	</section>
+	<section class="sponsors">
+		<h2>Sponsors</h2>
+		<p>StudioCMS is free, open source software, brought to you by:</p>
+		<div class="sponsors-grid">
+			<a href="https://tur.so/studiocms" class="sponsor turso">
+				<TursoFullLogo />
+				<p>Official Database Sponsor</p>
+			</a>
+			<a href="https://www.skip2.net/?utm_source=studiocms" class="sponsor skip2">
+				<Skip2FullLogo />
+				<p>Official Network Sponsor</p>
+			</a>
+		</div>
+	</section>
+	<div>
+		<Image
+			src={ApolloDefaultExpression}
+			alt="Our mascot, Apollo, poking out from behind the footer Element."
+			width={160}
+			loading="lazy"
+			class='apollo-footer-deco'
+			quality={100}
+		/>
+	</div>
+</Layout>
 <script>
-  import { animate, inView } from 'motion'
+	import { initNumberCountAnimations } from "../scripts/animations";
 
-  // DOM Nodes
-  const hero = document.getElementById('hero') as HTMLElement
-  inView(hero, () => {
-    animate(hero, { opacity: [0, 1], y: [60, 0] }, { duration: 2 })
-  })
+	// Elements
+	const copyBtns = document.querySelectorAll<HTMLButtonElement>('.install-cta')!;
+
+	copyBtns.forEach((copyBtn) => {
+		let timeout: NodeJS.Timeout | null = null;
+		const copyIcon = copyBtn.querySelector<HTMLElement>('.copy-icon')!;
+		const copyCheck = copyBtn.querySelector<HTMLElement>('.copy-check')!;
+
+		copyBtn.addEventListener('click', () => {
+			if (timeout) {
+				clearTimeout(timeout);
+			}
+
+			navigator.clipboard.writeText('npx create studiocms');
+			copyIcon.classList.remove('active');
+			copyCheck.classList.add('active');
+
+			timeout = setTimeout(() => {
+				copyIcon.classList.add('active');
+				copyCheck.classList.remove('active');
+			}, 3000);
+		});
+	})
+
+	// Initialize animations when stats section comes into view
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			// Only run animation once when element comes into view
+			if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+				initNumberCountAnimations('.stat-text');
+				entry.target.classList.add('animated');
+				// Optionally stop observing after animation is triggered
+				observer.unobserve(entry.target);
+			}
+		});
+	}, {
+		// Start animation when element is 25% visible for better timing
+		threshold: 0.25
+	});
+
+	// Create separate observer for footer Apollo
+	const footerApolloObserver = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+				entry.target.classList.add('visible');
+				footerApolloObserver.unobserve(entry.target);
+			}
+		});
+	}, {
+		threshold: 0.5
+	});
+
+	// Start observing both Apollo elements
+	document.addEventListener('DOMContentLoaded', () => {
+		const gitHubStars = document.querySelector('nav')?.dataset.stars;
+		const statCardTextItem = document.querySelector('.stat-text.gh-stars');
+		if (gitHubStars && statCardTextItem) {
+			statCardTextItem.textContent = gitHubStars;
+		}
+
+		const statsContainer = document.querySelector('.stats-container');
+		if (statsContainer) {
+			observer.observe(statsContainer);
+		}
+
+		// Observe footer Apollo
+		const footerApollo = document.querySelector('.apollo-footer-deco');
+		if (footerApollo) {
+			footerApolloObserver.observe(footerApollo);
+		}
+	});
 </script>
+<style is:global>
+	main {
+		padding-top: 6rem;
+	}
+</style>
+<style>
+	section:not(.banner), .video-player {
+		max-width: var(--page-width);
+		margin: 0 auto;
+		margin-bottom: 8rem;
+		text-align: center;
+	}
+	
+	section.hero {
+		width: 100%;
+		text-align: center;
+		height: 60vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		position: relative;
+		margin-bottom: 0;
+	}
 
-<BaseLayout>
-  <main>
+	section.banner {
+		margin-bottom: 8rem;
+	}
 
-    <Hero />
-    <span class="sr-only">Sponsor Section</span>
-    <section class='relative mx-auto studiocms-container px-8 py-10 -translate-y-20 md:-translate-y-32'>
-      <h2 class='block font-semibold text-3xl text-center'>Sponsored by</h2>
-      <div class='relative flex flex-row flex-wrap justify-center mb-12 align-center'>
-        <a href={sponsors.turso.web.sponsorLink} target="_blank" rel="sponsored">
-          <Image src={'/sponsors/turso.svg'} alt={'Turso Logo'} width={410} height={120} class='hidden dark:block' loading={'eager'} />
-          <Image src={'/sponsors/turso-dark.svg'} alt={'Turso Logo'} width={410} height={120} class='dark:hidden block' loading={'eager'} />
-        </a>
-      </div>
-    </section>
-    <span class='sr-only'>Features section</span>
-    <section class='mx-auto studiocms-container px-8 py-10'>
-      <h2 class='mb-4 md:mb-8 font-bold text-5xl text-center'>Features</h2>
-      <div class='gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
-        {features.map(({ data }) => <FeatureCard {...data} />)}
-      </div>
-    </section>
-    <span class='sr-only'>Marquee with Keywords</span>
-    <section>
-      <Marquee />
-    </section>
-    <span class='sr-only'>Pricing section</span>
-    <section class='mx-auto studiocms-container px-8 py-10'>
-      <div class='flex flex-col justify-center items-center mx-auto pb-10'>
-        <h2 class='mb-4 font-bold text-5xl'>Pricing</h2>
-        <p class='max-w-[60ch] text-xl text-center'>
-          Dive into our open-source adventure - it's totally free, no price tags
-          here! But hey, if you're feeling the vibe, jump in and contribute in
-          your own awesome way. Code, ideas, high-fives? We love it all!
-        </p>
-      </div>
-      <div
-        class='flex md:flex-row flex-col justify-center items-center gap-x-16 gap-y-10 mx-auto py-8'
-      >
-        <a
-          class='flex items-center gap-x-4 bg-slate-300 dark:bg-neutral-900/90 px-4 py-3 rounded-lg hover:text-yellow-400 hover:scale-105 transition-all duration-200 ease-in-out hover:cursor-pointer'
-          href={GITHUB_URL}
-        >
-          <h3 class='top-px relative text-2xl text-center'>Star it</h3>
-          <Icon name='star' class='text-2xl' />
-        </a>
-        <Separator orientation='vertical' extraClasses='h-3/5' />
-        <a
-          class='flex items-center gap-x-4 hover:text-green-400 hover:scale-105 transition-all duration-200 ease-in-out hover:cursor-pointer'
-          href={SPONSOR_URL}
-        >
-          <h3 class='text-2xl text-center'>Sponsor it</h3>
-          <Icon name='opencollective' class='text-3xl' />
-        </a>
-      </div>
-    </section>
-    <!-- { testimonials.length > 0 && (
-      <span class='sr-only'>Testimonials section</span>
-      <section class='mx-auto px-4 pb-20 container'>
-        <div class='flex flex-col justify-center items-center mx-auto pb-10'>
-          <h2 class='pb-8 font-bold text-5xl'>Testimonials</h2>
-          <p class='w-3/5 text-xl text-center'>
-            Look what our awesome community has to say about us. We're so grateful
-            for the love and support we've received. It's what keeps us going!
-          </p>
-        </div>
-        <div class='gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-10'>
-          {testimonials.map(({ data }) => <TestimonialCard {...data} />)}
-        </div>
-      </section>
-    )} -->
-  </main>
+	h2 {
+		font-size: 2.25em;
+		margin-bottom: .5rem;
+	}
 
-</BaseLayout>
+	.announcement-badge {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: .5rem;
+		outline: 1px solid hsl(var(--primary-base));
+		border-radius: 99px;
+		padding: .25rem .75rem;
+		background-color: hsl(var(--primary-flat));
+		transition: all .15s ease;
+		color: hsl(var(--text-normal));
+		text-decoration: none;
+		font-size: .825em;
+	}
+
+	.announcement-badge:hover {
+		background-color: hsl(var(--primary-flat-hover));
+	}
+
+	.hero h1 {
+		font-size: 2.5em;
+	}
+
+	.hero p {
+		font-size: 1.25em;
+	}
+
+	.hero-cta {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5rem;
+		align-items: center;
+	}
+
+	.code-cta {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: .75rem;
+		padding: .5rem .75rem;
+		height: 40px;
+		background-color: hsl(var(--background-step-1));
+		border: 1px solid hsl(var(--border));
+		border-radius: var(--radius-md);
+		cursor: pointer;
+		transition: all .15s ease;
+	}
+
+	.code-cta:hover {
+		background-color: hsl(var(--background-step-2));
+	}
+
+	.copy-icon, .copy-check {
+		display: none;
+	}
+
+	.copy-icon.active, .copy-check.active {
+		display: block;
+	}
+
+	.copy-check.active {
+		color: hsl(var(--success-base)) !important;
+	}
+
+	.video-player {
+		width: calc(100% - max(calc((100vw - var(--page-width)) / 2), 2rem));
+		aspect-ratio: 16 / 9;
+		background-color: hsl(var(--background-step-1));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 1.25rem;
+		z-index: 5;
+		background-image: url('/video-placeholder.png');
+		position: relative;
+	}
+
+	.video-player video {
+		width: 100%;
+		height: 100%;
+		border-radius: 1.25rem;
+		z-index: 2;
+	}
+
+	.video-placeholder {
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		border-radius: 1.25rem;
+		filter: blur(10px);
+	}
+
+	.target-groups {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.target-group-div {
+		width: calc(50% - .5rem);
+		background-color: hsl(var(--background-step-1));
+		transition: all .15s ease;
+		text-align: left;
+		overflow: hidden;
+		border-radius: 1.25rem;
+
+		--reason-cols: 2;
+	}
+
+	.target-group-div:hover {
+		border: 1px solid hsl(var(--primary-base));
+	}
+
+	.target-group-div h3 {
+		font-weight: 500;
+	}
+
+	.target-group-div.enterprise {
+		width: 100%;
+
+		--reason-cols: 4;
+	}
+
+	.reasons-list {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(var(--reason-cols), 1fr);
+		gap: 1rem;
+	}
+
+	.reason {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+		background-color: hsla(var(--background-step-3) / .25);
+		padding: .75rem;
+		border-radius: .5rem;
+		border: 1px solid hsl(var(--border));
+		backdrop-filter: blur(2px);
+	}
+
+	.reason-header {
+		display: flex;
+		flex-direction: row;
+		gap: .5rem;
+		align-items: center;
+	}
+
+	.reason-header svg {
+		color: hsl(var(--primary-base));
+	}
+
+	.icon-deco {
+		position: absolute;
+		filter: saturate(0);
+		opacity: .5;
+		rotate: -45deg;
+		top: 60%;
+		left: 60%;
+		z-index: -1;
+		transition: all .15s ease;
+	}
+
+	.target-group-div:hover .icon-deco {
+		filter: saturate(1);
+		opacity: 1;
+		transform: translateY(.5rem);
+		transform: translateX(.5rem);
+	}
+
+	.hosting-methods {
+		text-align: center;
+	}
+
+	.hosting-providers {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		margin-top: 3rem;
+		flex-wrap: wrap;
+		gap: 2rem;
+	}
+
+	.hosting-provider {
+		width: 5rem;
+		height: 5rem;
+		display: block;
+		background-color: hsl(var(--background-step-1));
+		transition: all .15s ease;
+		border-radius: 1.25rem;
+	}
+
+	/* .hosting-provider:hover {
+		background-image: radial-gradient(
+			hsl(var(--background-step-1)),
+			hsl(var(--background-step-3))
+		);
+		border: 1px solid hsl(var(--primary-base));
+	} */
+	
+	.hosting-provider svg {
+		max-width: 4.5rem;
+		max-height: 4.5rem;
+	}
+
+	.hosting-provider svg.glow-layer {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0;
+		transition: all .15s ease;
+		filter: blur(4px);
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+
+	.hosting-provider:hover svg.glow-layer {
+		opacity: .5;
+	}
+
+	section.banner {
+		width: 100%;
+		background-color: hsl(var(--background-step-1));
+		padding: 2rem max(calc((100vw - var(--page-width)) / 2), 2rem);
+		text-align: center;
+	}
+
+	.stats-container {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5rem;
+		margin: 0 auto;
+		margin-top: 1.5rem;
+		position: relative;
+	}
+
+  .stats-container .stat-number {
+    transition: all .15s ease;
+    opacity: 0;
+    transition-delay: .5s;
+  }
+
+  .stats-container.animated .stat-number {
+    opacity: 1;
+  }
+
+	.apollo-banner-deco {
+		position: absolute;
+		top: 0;
+		right: -50px;
+		z-index: -1;
+		opacity: 0;
+		transform: translate(-30%, 0%);
+		transition: all 0.75s cubic-bezier(0.34, 1.2, 0.64, 1);
+	}
+
+	.stats-container.animated .apollo-banner-deco {
+		opacity: 1;
+		transform: translate(30%, -40%);
+	}
+
+	.stat {
+		width: 100%;
+		border: 1px solid hsl(var(--border));
+		background-color: hsl(var(--background-step-2));
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		text-align: left;
+		padding: 1.5rem;
+		border-radius: 1.25rem;
+	}
+
+	.stat-icon {
+		width: 2rem;
+		height: auto;
+	}
+
+	.stat-number {
+		display: flex;
+		align-items: baseline;
+		font-size: 3em;
+		font-weight: bolder;
+	}
+
+	.stat-text {
+		font-size: 1em;
+	}
+
+	.stat-number .keyword {
+		font-size: 1em;
+		margin-left: 2px;
+	}
+
+	.blog-article {
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
+	}
+
+	.blog-showcase > p {
+		margin-bottom: 1.5rem;
+	}
+
+	.image-container {
+		width: calc(66.6666% - 1rem);
+		aspect-ratio: 16 / 9;
+		height: auto;
+	}
+
+	.blog-image {
+		border: 1px solid hsl(var(--border));
+	}
+
+	.blog-image, .blog-image-glow {
+		width: 100%;
+		height: 100%;
+		border-radius: 1.25rem;
+	}
+
+	.blog-image-glow {
+		position: absolute;
+		z-index: -1;
+		filter: blur(10px);
+		top: 0;
+		left: 0;
+	}
+
+	.blog-info {
+		width: calc(33.3333% - 1rem);
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 1rem;
+	}
+
+	.blog-info-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.blog-info h3 {
+		font-size: 1.75em;
+	}
+
+	.blog-tags {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: .5rem;
+	}
+
+	.blog-read-more {
+		display: flex;
+		flex-direction: row;
+		gap: .5rem;
+		text-decoration: none;
+		color: hsl(var(--text-normal));
+		width: fit-content;
+	}
+
+	.blog-read-more:hover {
+		text-decoration: underline;
+	}
+
+	.final-cta-card {
+		width: 100%;
+		max-width: var(--page-width);
+		margin: 0 auto;
+		padding: 2rem;
+		background-color: hsl(var(--background-step-1));
+		border-radius: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		padding: 12rem 4rem;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.final-cta-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: radial-gradient(circle at 50% 100%, #c964cf 0%, #a581f3 100%);
+		mask-image: radial-gradient(circle at 50% 100%, black 25%, transparent 100%);
+		z-index: 0;
+		opacity: .5;
+		animation: breathe 10s ease infinite;
+	}
+
+	@keyframes breathe {
+		0% {
+			opacity: 0.5;
+		}
+		50% {
+			opacity: .65;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+
+	.final-cta-card::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('/noise.png');
+		opacity: 0.5;
+		z-index: 1;
+	}
+
+	.final-cta-orbits {
+		position: absolute;
+		z-index: -1;
+		top: 100%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		user-select: none;
+		width: 100%;
+	}
+
+	.sponsors {
+		text-align: center;
+	}
+
+	.sponsors-grid {
+		width: 100%;
+		border-radius: 1.25rem;
+		border: 1px solid hsl(var(--border));
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		overflow: hidden;
+		gap: 1px;
+		background-color: hsl(var(--border));
+		margin-top: 1rem;
+	}
+
+	.sponsor {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		background-color: hsl(var(--background-step-1));
+		transition: all .15s ease;
+		text-decoration: none;
+		color: hsl(var(--text-muted));
+	}
+
+	.sponsor:hover {
+		background-color: hsl(var(--background-step-2));
+	}
+
+	.sponsor svg {
+		max-width: 100%;
+		height: 8rem;
+	}
+
+	.sponsor.turso {
+		grid-column: 1 / span 2;
+	}
+
+	.sponsor.skip2 {
+		grid-column: 3 / span 2;
+	}
+
+	.apollo-footer-deco {
+		position: relative;
+		left: 50vw;
+		transform: translate(-50%, 30%);
+		opacity: 0;
+		transform: translate(-50%, 100%);
+		transition: all 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
+	}
+
+	.apollo-footer-deco.visible {
+		opacity: 1;
+		transform: translate(-50%, 30%);
+	}
+
+	@media screen and (max-width: 1480px) {
+		.apollo-banner-deco {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 970px) {
+		.target-group-div {
+			width: 100%;
+		}
+
+		.target-group-div.enterprise {
+			--reason-cols: 2;
+		}
+
+		.stats-container {
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.blog-article {
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		.image-container {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+		}
+
+		.blog-info {
+			width: 100%;
+			gap: 1rem;
+			padding: 0;
+		}
+	}
+
+	@media screen and (max-width: 780px) {
+		.hosting-methods br {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		.target-group-div, .target-group-div.enterprise {
+			--reason-cols: 1;
+		}
+
+		.video-player {
+			display: none;
+		}
+
+		.final-cta-card {
+			padding: 6rem 2rem;
+		}
+	}
+</style>
+<style is:global>	
+	.hosting-provider .sui-card-body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		padding: 1.5rem;
+	}
+
+	.target-group-div .sui-card-body {
+		padding: 1.5rem;
+
+		h2 {
+			margin-bottom: 0;
+		}
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		> .sui-button {
+			margin-top: 1rem;
+		}
+	}
+
+	main {
+		width: 100vw !important;
+	}
+
+	.target-group-div .sui-button {
+		width: fit-content !important;
+	}
+
+	@media screen and (max-width: 1080px) {
+		.target-group-div {
+			height: auto;
+		}
+
+		.target-group-div .sui-card-body {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			justify-content: space-between;
+		}
+	}
+</style>

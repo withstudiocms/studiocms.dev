@@ -1,0 +1,51 @@
+---
+import TursoLogo from '../assets/turso-logo-illustrated.svg';
+import Skip2Logo from '../assets/skip2-wordmark-red.svg';
+import { Image } from 'astro:assets';
+---
+
+<div class="sponsors-container">
+	<a href="https://tur.so/studiocms">
+		<Image src={TursoLogo} alt="Turso Logo" />
+		<span>Official Database Sponsor</span>
+	</a>
+	<a href="https://www.skip2.net/?utm_source=studiocms">
+		<Image src={Skip2Logo} alt="Skip2 Networks Logo" />
+		<span>Official Network Sponsor</span>
+	</a>
+</div>
+<style>
+	.sponsors-container {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.sponsors-container a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-decoration: none;
+		color: inherit;
+		text-align: center;
+		border: 1px solid hsl(var(--border));
+		padding: 1rem;
+		border-radius: 1rem;
+		transition: all .15s ease;
+		background-color: hsl(var(--background-step-1));
+		gap: .5rem;
+	}
+
+	.sponsors-container a:hover {
+		border: 1px solid hsl(var(--primary-base));
+	}
+
+	.sponsors-container a img {
+		max-height: 80px;
+		max-width: 300px;
+		height: auto;
+		background: none !important;
+		border: none;
+	}
+</style>

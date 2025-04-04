@@ -1,0 +1,137 @@
+---
+import PageHeader from "@/components/PageHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import StudioCMSUIBanner from "@/assets/studiocms-ui-banner.png";
+import StudioCMSApolloBanner from "@/assets/apollo-banner.png";
+import cFetchBanner from "@/assets/cfetch-banner.png";
+
+const PROJECTS = [
+	{
+		name: "cFetch",
+		description: "An integration that provides a cacheable fetch function for Astro SSR.",
+		image: cFetchBanner,
+		href: "https://github.com/withstudiocms/cfetch",
+	},
+	{
+		name: "StudioCMS UI",
+		description: "The UI library we use to build StudioCMS.",
+		image: StudioCMSUIBanner,
+		href: "https://ui.studiocms.dev",
+	},
+	{
+		name: "Apollo",
+		description: "A Discord bot for managing OSS Discord servers.",
+		image: StudioCMSApolloBanner,
+		href: "https://github.com/withstudiocms/apollo",
+	},
+];
+---
+<Layout
+	title="Ecosystem"
+	desc="Explore the various packages and projects that make up the StudioCMS ecosystem."
+>
+	<PageHeader title="Ecosystem" />
+	<section>
+		<div class="resource-grid">
+			{PROJECTS.map((item) => (
+				<a href={item.href} class="resource">
+					<div class="resource-preview-container">
+						<Image
+							src={item.image as any}
+							alt={item.name}
+							width={1200}
+							height={600}
+							class="resource-preview"
+							loading="eager"
+							quality={100}
+						/>
+					</div>
+					<div class="resource-content">
+						<h3>{item.name}</h3>
+						<p>{item.description}</p>
+					</div>
+				</a>
+			))}
+		</div>
+	</section>
+</Layout>
+<style>
+	h2 {
+		font-size: 1.75em;
+		margin-bottom: 1rem;
+	}
+
+	.resource-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
+
+	.resource {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		border: 1px solid hsl(var(--border));
+		border-radius: 1.25rem;
+		background-color: hsl(var(--background-step-2));
+		overflow: hidden;
+		text-decoration: none !important;
+		transition: all .15s ease;
+	}
+
+	.resource:hover {
+		border: 1px solid hsl(var(--primary-base));
+	}
+
+	.resource-preview-container {
+		width: 100%;
+		aspect-ratio: 2 / 1;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.resource-preview {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.formats {
+		position: absolute;
+		bottom: .5rem;
+		right: .5rem;
+		display: flex;
+		gap: .5rem;
+		opacity: 0;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	.resource:hover .formats, .formats:focus-within {
+		opacity: 1;
+	}
+
+	.resource h3 {
+		color: hsl(var(--text-normal));
+	}
+
+	.resource-content {
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		background-color: hsl(var(--background-step-2));
+		border-top: 1px solid hsl(var(--border));
+		padding: 1rem;
+		text-align: left;
+		width: 100%;
+	}
+
+	.resource-content p {
+		color: hsl(var(--text-muted));
+		font-size: 0.875em;
+		margin: 0;
+	}
+</style>
