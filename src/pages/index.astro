@@ -89,7 +89,6 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	</section>
 	<div class="video-player">
 		<video autoplay loop muted playsinline preload="auto" src="https://louisescher.dev/studiocms-trailer.mp4" />
-		<Image src={'/video-placeholder.png'} alt="" width={960} height={540} quality={1} loading="lazy" class='video-placeholder' />
 	</div>
 	<section class="target-groups">
 		<Card class="target-group-div">
@@ -553,16 +552,6 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		border-radius: 1.25rem;
 		z-index: 2;
 	}
-
-	.video-placeholder {
-		position: absolute;
-		z-index: 1;
-		width: 100%;
-		height: 100%;
-		border-radius: 1.25rem;
-		filter: blur(10px);
-	}
-
 	.target-groups {
 		display: flex;
 		flex-direction: row;
