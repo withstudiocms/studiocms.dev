@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",
     "astro": "astro",
-    "ci:install": "pnpm install --frozen-lockfile"
+    "ci:install": "pnpm install --frozen-lockfile",
+    "lint:fix": "biome check --write ."
   },
   "dependencies": {
     "@astrojs/db": "^0.14.7",
