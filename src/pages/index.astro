@@ -295,7 +295,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 					width={960}
 					height={540}
 					class='blog-image'
-					alt='Alt Text'
+					alt={newestBlogPost!.title}
 					loading='lazy'
 					quality={100}
 				/>
