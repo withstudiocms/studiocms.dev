@@ -11,7 +11,7 @@ import studiocms from 'studiocms';
 // https://astro.build/config
 export default defineConfig({
 	output: 'server',
-	site: getCoolifyURL(true) || 'https://new.studiocms.dev',
+	site: getCoolifyURL(true) || 'https://studiocms.dev',
 	image: {
 		remotePatterns: [
 			{
