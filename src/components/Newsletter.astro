@@ -9,7 +9,7 @@ import { Button, Input } from "studiocms:ui/components";
 >
   <div class="newsletter-container">
     <span>Subscribe to our newsletter</span>
-    <input type="hidden" name="nonce" />
+    <input type="hidden" name="nonce" value="<%= generateNonce() %>" />
     <input
       id="06711"
       type="checkbox"
