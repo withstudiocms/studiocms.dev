@@ -1,20 +1,21 @@
 ---
-import PageHeader from "@/components/PageHeader.astro";
-import Layout from "@/layouts/Layout.astro";
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
+import PageHeader from '@/components/PageHeader.astro';
+import Layout from '@/layouts/Layout.astro';
 
 import { StudioCMSRenderer } from 'studiocms:renderer';
 import studioCMS_SDK from 'studiocms:sdk';
-import { Icon } from "studiocms:ui/components";
+import { Icon } from 'studiocms:ui/components';
 
 let { slug } = Astro.params;
 
 const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug(`${slug}`);
 
 if (!page) {
-  return Astro.redirect('/404');
+	return Astro.redirect('/404');
 }
 
+// biome-ignore lint/style/noNonNullAssertion: <explanation>
 const author = await studioCMS_SDK.GET.databaseEntry.users.byId(page.authorId!);
 ---
 <Layout

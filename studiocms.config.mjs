@@ -20,6 +20,6 @@ export default defineStudioCMSConfig({
 		},
 	},
 	componentRegistry: {
-		'sponsorswithimages': './src/components/SponsorsWithImages.astro',
-	}
+		sponsorswithimages: './src/components/SponsorsWithImages.astro',
+	},
 });

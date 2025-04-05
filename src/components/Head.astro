@@ -1,17 +1,17 @@
 ---
 import '@fontsource-variable/onest/index.css';
 import '@/styles/global.css';
-import onestWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
 import { Generator } from 'studiocms:components';
 import type { CombinedUserData } from 'studiocms:sdk/types';
+import onestWoff2 from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
 
 interface Props {
 	title?: string;
 	desc?: string;
 	ogImage?: URL | undefined;
-  author?: CombinedUserData;
-  published?: Date;
-  updated?: Date | null;
+	author?: CombinedUserData;
+	published?: Date;
+	updated?: Date | null;
 }
 
 const OgBanner = new URL('/og.png', Astro.url);
@@ -22,9 +22,9 @@ const {
 	title,
 	desc = 'StudioCMS is the all-in-one content management solution for your next Astro project.',
 	ogImage = OgBanner,
-  author,
-  published,
-  updated
+	author,
+	published,
+	updated,
 } = Astro.props;
 
 const path = Astro.originPathname;

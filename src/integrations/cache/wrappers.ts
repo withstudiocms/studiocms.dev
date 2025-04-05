@@ -1,7 +1,7 @@
 import {
 	getDiscordMembers as discordMembers,
-	getNpmMonthlyDownloads as npmDownloads,
 	getStudioCMSStars as githubStars,
+	getNpmMonthlyDownloads as npmDownloads,
 } from '../../utils/stats-helpers';
 
 const responseMap = new Map<string, { lastCheck: Date; data: unknown }>();
@@ -59,7 +59,7 @@ export async function getStudioCMSStars(): Promise<number> {
 
 		return newData;
 	}
-	
+
 	return cacheData.data as number;
 }
 
