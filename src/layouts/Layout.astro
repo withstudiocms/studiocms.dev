@@ -12,6 +12,7 @@ import GitHubLogo from '@/assets/github.svg';
 import LogoAdaptive from '@/assets/logo-adaptive.svg';
 import OpenCollectiveLogo from '@/assets/opencollective.svg';
 import TwitterLogo from '@/assets/twitter.svg';
+import Newsletter from '@/components/Newsletter.astro';
 
 interface Props {
 	title?: string;
@@ -64,9 +65,12 @@ const path = Astro.originPathname;
 		>
 			<div slot='brand' class='footer-brand'>
 				<LogoAdaptive height={48} width={45.76} />
-				<span class='studiocms-footer-text'>
-					<span>StudioCMS</span>
-				</span>
+				<div>
+					<span class='studiocms-footer-text'>
+						<span>StudioCMS</span>
+					</span>
+					<Newsletter />
+				</div>
 			</div>
 			<div slot='socials' class='socials'>
 				<a href='https://github.com/withstudiocms' aria-label="Our GitHub Organization">
