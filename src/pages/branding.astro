@@ -1,93 +1,93 @@
 ---
-import PageHeader from "@/components/PageHeader.astro";
-import Layout from "@/layouts/Layout.astro";
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
+import PageHeader from '@/components/PageHeader.astro';
+import Layout from '@/layouts/Layout.astro';
 const LOGOMARKS = [
 	{
-		name: "StudioCMS Logo (White)",
-		preview: "/press/logomarks/studiocms-logomark-light.png",
+		name: 'StudioCMS Logo (White)',
+		preview: '/press/logomarks/studiocms-logomark-light.png',
 		dark: false,
 		assets: [
 			{
-				format: "svg",
-				src: "/press/logomarks/studiocms-logomark-light.svg",
+				format: 'svg',
+				src: '/press/logomarks/studiocms-logomark-light.svg',
 			},
 			{
-				format: "png",
-				src: "/press/logomarks/studiocms-logomark-light.png",
+				format: 'png',
+				src: '/press/logomarks/studiocms-logomark-light.png',
 			},
 		],
 	},
 	{
-		name: "StudioCMS Logo (Black)",
-		preview: "/press/logomarks/studiocms-logomark-dark.png",
+		name: 'StudioCMS Logo (Black)',
+		preview: '/press/logomarks/studiocms-logomark-dark.png',
 		dark: true,
 		assets: [
 			{
-				format: "svg",
-				src: "/press/logomarks/studiocms-logomark-dark.svg",
+				format: 'svg',
+				src: '/press/logomarks/studiocms-logomark-dark.svg',
 			},
 			{
-				format: "png",
-				src: "/press/logomarks/studiocms-logomark-dark.png",
+				format: 'png',
+				src: '/press/logomarks/studiocms-logomark-dark.png',
 			},
 		],
 	},
 	{
-		name: "StudioCMS Logo (Adaptive)",
-		preview: "/press/logomarks/studiocms-logomark-adaptive.svg",
+		name: 'StudioCMS Logo (Adaptive)',
+		preview: '/press/logomarks/studiocms-logomark-adaptive.svg',
 		dark: true,
 		assets: [
 			{
-				format: "svg",
-				src: "/press/logomarks/studiocms-logomark-adaptive.svg",
+				format: 'svg',
+				src: '/press/logomarks/studiocms-logomark-adaptive.svg',
 			},
 		],
-	}
+	},
 ];
 
 const WORDMARKS = [
 	{
-		name: "StudioCMS Wordmark (White)",
-		preview: "/press/wordmarks/studiocms-wordmark-light.png",
+		name: 'StudioCMS Wordmark (White)',
+		preview: '/press/wordmarks/studiocms-wordmark-light.png',
 		dark: false,
 		assets: [
 			{
-				format: "svg",
-				src: "/press/wordmarks/studiocms-wordmark-light.svg",
+				format: 'svg',
+				src: '/press/wordmarks/studiocms-wordmark-light.svg',
 			},
 			{
-				format: "png",
-				src: "/press/wordmarks/studiocms-wordmark-light.png",
+				format: 'png',
+				src: '/press/wordmarks/studiocms-wordmark-light.png',
 			},
 		],
 	},
 	{
-		name: "StudioCMS Wordmark (Black)",
-		preview: "/press/wordmarks/studiocms-wordmark-dark.png",
+		name: 'StudioCMS Wordmark (Black)',
+		preview: '/press/wordmarks/studiocms-wordmark-dark.png',
 		dark: true,
 		assets: [
 			{
-				format: "svg",
-				src: "/press/wordmarks/studiocms-wordmark-dark.svg",
+				format: 'svg',
+				src: '/press/wordmarks/studiocms-wordmark-dark.svg',
 			},
 			{
-				format: "png",
-				src: "/press/wordmarks/studiocms-wordmark-dark.png",
+				format: 'png',
+				src: '/press/wordmarks/studiocms-wordmark-dark.png',
 			},
 		],
 	},
 	{
-		name: "StudioCMS Wordmark (Adaptive)",
-		preview: "/press/wordmarks/studiocms-wordmark-adaptive.svg",
+		name: 'StudioCMS Wordmark (Adaptive)',
+		preview: '/press/wordmarks/studiocms-wordmark-adaptive.svg',
 		dark: true,
 		assets: [
 			{
-				format: "svg",
-				src: "/press/wordmarks/studiocms-wordmark-adaptive.svg",
+				format: 'svg',
+				src: '/press/wordmarks/studiocms-wordmark-adaptive.svg',
 			},
 		],
-	}
+	},
 ];
 ---
 <Layout

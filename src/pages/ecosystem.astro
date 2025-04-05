@@ -1,29 +1,29 @@
 ---
-import PageHeader from "@/components/PageHeader.astro";
-import Layout from "@/layouts/Layout.astro";
-import { Image } from "astro:assets";
-import StudioCMSUIBanner from "@/assets/studiocms-ui-banner.png";
-import StudioCMSApolloBanner from "@/assets/apollo-banner.png";
-import cFetchBanner from "@/assets/cfetch-banner.png";
+import { Image } from 'astro:assets';
+import StudioCMSApolloBanner from '@/assets/apollo-banner.png';
+import cFetchBanner from '@/assets/cfetch-banner.png';
+import StudioCMSUIBanner from '@/assets/studiocms-ui-banner.png';
+import PageHeader from '@/components/PageHeader.astro';
+import Layout from '@/layouts/Layout.astro';
 
 const PROJECTS = [
 	{
-		name: "cFetch",
-		description: "An integration that provides a cacheable fetch function for Astro SSR.",
+		name: 'cFetch',
+		description: 'An integration that provides a cacheable fetch function for Astro SSR.',
 		image: cFetchBanner,
-		href: "https://github.com/withstudiocms/cfetch",
+		href: 'https://github.com/withstudiocms/cfetch',
 	},
 	{
-		name: "StudioCMS UI",
-		description: "The UI library we use to build StudioCMS.",
+		name: 'StudioCMS UI',
+		description: 'The UI library we use to build StudioCMS.',
 		image: StudioCMSUIBanner,
-		href: "https://ui.studiocms.dev",
+		href: 'https://ui.studiocms.dev',
 	},
 	{
-		name: "Apollo",
-		description: "A Discord bot for managing OSS Discord servers.",
+		name: 'Apollo',
+		description: 'A Discord bot for managing OSS Discord servers.',
 		image: StudioCMSApolloBanner,
-		href: "https://github.com/withstudiocms/apollo",
+		href: 'https://github.com/withstudiocms/apollo',
 	},
 ];
 ---

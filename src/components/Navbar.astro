@@ -1,9 +1,9 @@
 ---
-import LogoAdaptive from '@/assets/logo-adaptive.svg';
+import { getStudioCMSStars } from 'quick-astro:cache';
 import { Button, Icon } from 'studiocms:ui/components';
 import GitHubLogo from '@/assets/github.svg';
-import { getStudioCMSStars } from 'quick-astro:cache';
-const stars = await getStudioCMSStars()
+import LogoAdaptive from '@/assets/logo-adaptive.svg';
+const stars = await getStudioCMSStars();
 ---
 
 <nav data-stars={stars || '370'}>

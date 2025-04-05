@@ -10,12 +10,14 @@
     "start": "node ./dist/server/entry.mjs",
     "astro": "astro",
     "ci:install": "pnpm install --frozen-lockfile",
+    "lint": "biome check .",
     "lint:fix": "biome check --write ."
   },
   "dependencies": {
     "@astrojs/db": "^0.14.7",
     "@astrojs/markdown-remark": "^6.3.1",
     "@astrojs/node": "^9.1.2",
+    "@biomejs/biome": "1.9.4",
     "@fontsource-variable/onest": "^5.1.1",
     "@studiocms/ui": "^0.4.16",
     "@types/node": "^22.13.5",

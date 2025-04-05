@@ -1,18 +1,20 @@
 ---
-import PageHeader from "@/components/PageHeader.astro";
-import Layout from "@/layouts/Layout.astro";
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 import studiocms_SDK from 'studiocms:sdk';
 import cached_SDK from 'studiocms:sdk/cache';
+import PageHeader from '@/components/PageHeader.astro';
+import Layout from '@/layouts/Layout.astro';
 
 const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
-const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] }).children;
+const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] })
+	.children;
 
 const articlePromises = entries.map(async (article) => {
 	if (!article.page || !article.pageData) return;
 
 	const { title, publishedAt, slug, authorId, heroImage } = article.pageData;
 
+	// biome-ignore lint/style/noNonNullAssertion: <explanation>
 	const author = await studiocms_SDK.GET.databaseEntry.users.byId(authorId!)!;
 
 	return {
@@ -20,14 +22,18 @@ const articlePromises = entries.map(async (article) => {
 		publishedAt,
 		slug,
 		heroImage,
-		author: (author ? {
-			name: author.name,
-			avatar: author.avatar ? author.avatar : null
-		} : null),
-	}
+		author: author
+			? {
+					name: author.name,
+					avatar: author.avatar ? author.avatar : null,
+				}
+			: null,
+	};
 });
 
-const articles = (await Promise.all(articlePromises)).filter((x) => typeof x !== 'undefined').sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+const articles = (await Promise.all(articlePromises))
+	.filter((x) => typeof x !== 'undefined')
+	.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 ---
 <Layout>
 	<PageHeader
