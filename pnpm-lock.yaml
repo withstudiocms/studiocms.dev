@@ -24,8 +24,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
       '@studiocms/cfetch':
-        specifier: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807
-        version: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))
+        specifier: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@deb1897
+        version: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@deb1897(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))
       '@studiocms/ui':
         specifier: ^0.4.16
         version: 0.4.16(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))
@@ -677,8 +677,8 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@studiocms/cfetch@https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807':
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807}
+  '@studiocms/cfetch@https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@deb1897':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@deb1897}
     version: 0.1.2
     peerDependencies:
       astro: ^5.5
@@ -2645,7 +2645,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@studiocms/cfetch@https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))':
+  '@studiocms/cfetch@https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@deb1897(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))':
     dependencies:
       astro: 5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3)
       vite: 6.2.3(@types/node@22.13.5)
