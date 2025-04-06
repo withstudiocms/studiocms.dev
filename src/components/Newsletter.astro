@@ -1,5 +1,5 @@
 ---
-import { Button, Input } from "studiocms:ui/components";
+import { Button, Input, Toaster } from "studiocms:ui/components";
 ---
 
 <form
@@ -33,6 +33,7 @@ import { Button, Input } from "studiocms:ui/components";
       </Button>
     </div>
   </div>
+  <Toaster  position="bottom-center"/>
 </form>
 
 <script>
@@ -56,14 +57,14 @@ import { Button, Input } from "studiocms:ui/components";
         title: "Success",
         type: "success",
         description:
-          "You have successfully subscribed to the StudioCMS Newsletter.",
+          "You have successfully subscribed.",
       });
     } else {
       toast({
         title: "Error",
         type: "danger",
         description:
-          "An error occurred while subscribing to the StudioCMS Newsletter.",
+          "An error occurred while subscribing.",
       });
     }
   });
