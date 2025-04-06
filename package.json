@@ -19,7 +19,7 @@
     "@astrojs/node": "^9.1.2",
     "@biomejs/biome": "1.9.4",
     "@fontsource-variable/onest": "^5.1.1",
-    "@studiocms/cfetch": "https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@deb1897",
+    "@studiocms/cfetch": "https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@8c7c27b",
     "@studiocms/ui": "^0.4.16",
     "@types/node": "^22.13.5",
     "astro": "^5.5.5",
