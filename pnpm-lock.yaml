@@ -23,6 +23,9 @@ importers:
       '@fontsource-variable/onest':
         specifier: ^5.1.1
         version: 5.1.1
+      '@studiocms/cfetch':
+        specifier: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807
+        version: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))
       '@studiocms/ui':
         specifier: ^0.4.16
         version: 0.4.16(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))
@@ -673,6 +676,13 @@ packages:
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
+
+  '@studiocms/cfetch@https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807':
+    resolution: {tarball: https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807}
+    version: 0.1.2
+    peerDependencies:
+      astro: ^5.5
+      vite: ^6.2.0
 
   '@studiocms/markdown-remark-processor@1.2.0':
     resolution: {integrity: sha512-3qOupRze2HKO2VdcrN0c5j9ZYoM8hlhFjrs4m5pg4w5Do5I1MTuDDTXmfRnZ+CwDrXyUaYr+DK1Csb7zMYjzyA==}
@@ -2634,6 +2644,11 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@10.0.2': {}
+
+  '@studiocms/cfetch@https://pkg.pr.new/withstudiocms/cfetch/@studiocms/cfetch@79bc807(astro@5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3))(vite@6.2.3(@types/node@22.13.5))':
+    dependencies:
+      astro: 5.5.5(@types/node@22.13.5)(rollup@4.34.8)(typescript@5.7.3)
+      vite: 6.2.3(@types/node@22.13.5)
 
   '@studiocms/markdown-remark-processor@1.2.0':
     dependencies:
