@@ -42,8 +42,18 @@ export async function getNpmMonthlyDownloads(packageName: string) {
  * @returns The number of stars on the StudioCMS GitHub repository
  */
 export const getStudioCMSStars = async (): Promise<number> => {
-	const response = await fetch('https://api.github.com/repos/withstudiocms/studiocms');
 	try {
+		const response = await fetch('https://api.github.com/repos/withstudiocms/studiocms', {
+			headers: {
+				Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+				Accept: 'application/vnd.github.v3+json',
+			},
+		});
+
+		if (!response.ok) {
+			throw new Error(`GitHub API error: ${response.status}`);
+		}
+
 		const data = await response.json();
 		return Number.parseInt(`${data.stargazers_count}`);
 	} catch (error) {
