@@ -13,6 +13,7 @@ import LogoAdaptive from '@/assets/logo-adaptive.svg';
 import OpenCollectiveLogo from '@/assets/opencollective.svg';
 import TwitterLogo from '@/assets/twitter.svg';
 import Newsletter from '@/components/Newsletter.astro';
+import { Toaster } from 'studiocms:ui/components';
 
 interface Props {
 	title?: string;
@@ -38,6 +39,7 @@ const path = Astro.originPathname;
 <html lang="en">
 	<Head {...Astro.props} ogImage={OgImage} />
 	<body>
+		<Toaster />
 		<Navbar />
 		{(path === "/" || heroAnim) && (
 			<HeroAnimation />
