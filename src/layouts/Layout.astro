@@ -6,6 +6,7 @@ import HeroAnimation from '@/components/HeroAnimation.astro';
 import Navbar from '@/components/Navbar.astro';
 
 import type { CombinedUserData } from 'studiocms:sdk/types';
+import { Toaster } from 'studiocms:ui/components';
 import BlueSkyLogo from '@/assets/bsky.svg';
 import DiscordLogo from '@/assets/discord.svg';
 import GitHubLogo from '@/assets/github.svg';
@@ -13,7 +14,6 @@ import LogoAdaptive from '@/assets/logo-adaptive.svg';
 import OpenCollectiveLogo from '@/assets/opencollective.svg';
 import TwitterLogo from '@/assets/twitter.svg';
 import Newsletter from '@/components/Newsletter.astro';
-import { Toaster } from 'studiocms:ui/components';
 
 interface Props {
 	title?: string;
