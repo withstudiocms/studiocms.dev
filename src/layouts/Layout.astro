@@ -12,6 +12,8 @@ import GitHubLogo from '@/assets/github.svg';
 import LogoAdaptive from '@/assets/logo-adaptive.svg';
 import OpenCollectiveLogo from '@/assets/opencollective.svg';
 import TwitterLogo from '@/assets/twitter.svg';
+import Newsletter from '@/components/Newsletter.astro';
+import { Toaster } from 'studiocms:ui/components';
 
 interface Props {
 	title?: string;
@@ -37,6 +39,7 @@ const path = Astro.originPathname;
 <html lang="en">
 	<Head {...Astro.props} ogImage={OgImage} />
 	<body>
+		<Toaster />
 		<Navbar />
 		{(path === "/" || heroAnim) && (
 			<HeroAnimation />
@@ -63,10 +66,15 @@ const path = Astro.originPathname;
 			copyright='MIT License © 2025 - StudioCMS'
 		>
 			<div slot='brand' class='footer-brand'>
-				<LogoAdaptive height={48} width={45.76} />
-				<span class='studiocms-footer-text'>
-					<span>StudioCMS</span>
-				</span>
+				<div class="brand-newsletter">
+					<div class="brand-logo">
+						<LogoAdaptive height={48} width={45.76} />
+						<span class='studiocms-footer-text'>
+							<span>StudioCMS</span>
+						</span>
+					</div>
+					<Newsletter />
+				</div>
 			</div>
 			<div slot='socials' class='socials'>
 				<a href='https://github.com/withstudiocms' aria-label="Our GitHub Organization">
