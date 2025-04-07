@@ -27,7 +27,7 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
 
-import { getDiscordMembers, getNpmMonthlyDownloads } from 'quick-astro:cache';
+import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
 
 const getNewestBlogPost = async () => {
 	const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);

@@ -1,3 +1,5 @@
+import { cFetch } from 'c:fetch';
+
 /**
  * Fetches the number of downloads for an npm package over the past month.
  *
@@ -24,7 +26,7 @@ export async function getNpmMonthlyDownloads(packageName: string) {
 	const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
 
 	try {
-		const response = await fetch(url);
+		const response = await cFetch(url);
 		if (!response.ok) {
 			throw new Error(`Error fetching data: ${response.statusText}`);
 		}
@@ -42,8 +44,18 @@ export async function getNpmMonthlyDownloads(packageName: string) {
  * @returns The number of stars on the StudioCMS GitHub repository
  */
 export const getStudioCMSStars = async (): Promise<number> => {
-	const response = await fetch('https://api.github.com/repos/withstudiocms/studiocms');
 	try {
+		const response = await cFetch('https://api.github.com/repos/withstudiocms/studiocms', {
+			headers: {
+				Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+				Accept: 'application/vnd.github.v3+json',
+			},
+		});
+
+		if (!response.ok) {
+			throw new Error(`GitHub API error: ${response.status}`);
+		}
+
 		const data = await response.json();
 		return Number.parseInt(`${data.stargazers_count}`);
 	} catch (error) {
@@ -58,7 +70,7 @@ export const getStudioCMSStars = async (): Promise<number> => {
  */
 export async function getDiscordMembers() {
 	try {
-		const response = await fetch('https://apollo.studiocms.dev/api/members/1309279407743172608');
+		const response = await cFetch('https://apollo.studiocms.dev/api/members/1309279407743172608');
 		const data = await response.json();
 		return Number.parseInt(`${data.members}`);
 	} catch (error) {
