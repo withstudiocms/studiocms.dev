@@ -1,9 +1,7 @@
 import { defineConfig } from 'astro/config';
 import getCoolifyURL from './astro-config-utils';
-import { astroCache } from './src/integrations/cache/index';
-
+import cFetch from '@studiocms/cfetch';
 import UI from '@studiocms/ui';
-
 import db from '@astrojs/db';
 import node from '@astrojs/node';
 import studiocms from 'studiocms';
@@ -19,7 +17,7 @@ export default defineConfig({
 			},
 		],
 	},
-	integrations: [astroCache(), UI(), db(), studiocms()],
+	integrations: [cFetch({ lifetime: '1h' }), UI(), db(), studiocms()],
 	experimental: {
 		svg: true,
 	},
