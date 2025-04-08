@@ -26,7 +26,6 @@ export default defineStudioCMSConfig({
 	plugins: [
 		socialPoster({
 			bluesky: true,
-			twitter: true,
 		}),
 	],
 });
