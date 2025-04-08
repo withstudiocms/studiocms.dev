@@ -1,5 +1,5 @@
-import { defineStudioCMSConfig } from 'studiocms/config';
 import socialPoster from '@studiocms/socialposter';
+import { defineStudioCMSConfig } from 'studiocms/config';
 
 export default defineStudioCMSConfig({
 	dbStartPage: false,
