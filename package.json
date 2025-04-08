@@ -20,14 +20,20 @@
     "@biomejs/biome": "1.9.4",
     "@fontsource-variable/onest": "^5.1.1",
     "@studiocms/cfetch": "^0.1.6",
+    "@studiocms/socialposter": "^0.1.0-experimental.1",
     "@studiocms/ui": "^0.4.16",
     "@types/node": "^22.13.5",
     "astro": "^5.6.1",
+    "pathe": "2.0.3",
     "sharp": "^0.33.5",
     "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@280af0e",
     "tslib": "^2.8.1",
-    "vite": "^6.2.5",
-    "pathe": "2.0.3"
+    "vite": "^6.2.5"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.5.0",
+  "pnpm": {
+    "patchedDependencies": {
+      "@studiocms/socialposter@0.1.0-experimental.1": "patches/@studiocms__socialposter@0.1.0-experimental.1.patch"
+    }
+  }
 }

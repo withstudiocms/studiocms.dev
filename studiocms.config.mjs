@@ -1,4 +1,5 @@
 import { defineStudioCMSConfig } from 'studiocms/config';
+import socialPoster from '@studiocms/socialposter';
 
 export default defineStudioCMSConfig({
 	dbStartPage: false,
@@ -22,4 +23,10 @@ export default defineStudioCMSConfig({
 	componentRegistry: {
 		sponsorswithimages: './src/components/SponsorsWithImages.astro',
 	},
+	plugins: [
+		socialPoster({
+			bluesky: true,
+			twitter: true,
+		}),
+	],
 });
