@@ -20,6 +20,7 @@
     "@biomejs/biome": "1.9.4",
     "@fontsource-variable/onest": "^5.1.1",
     "@studiocms/cfetch": "^0.1.6",
+    "@studiocms/socialposter": "^0.1.0-experimental.1",
     "@studiocms/ui": "^0.4.16",
     "@types/node": "^22.13.5",
     "astro": "^5.6.1",
