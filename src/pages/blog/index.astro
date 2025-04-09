@@ -9,27 +9,29 @@ const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
 const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] })
 	.children;
 
-const articlePromises = entries.map(async (article) => {
-	if (!article.page || !article.pageData) return;
+const articlePromises = entries
+	.filter(({ pageData }) => pageData?.draft !== true)
+	.map(async (article) => {
+		if (!article.page || !article.pageData) return;
 
-	const { title, publishedAt, slug, authorId, heroImage } = article.pageData;
+		const { title, publishedAt, slug, authorId, heroImage } = article.pageData;
 
-	// biome-ignore lint/style/noNonNullAssertion: <explanation>
-	const author = await studiocms_SDK.GET.databaseEntry.users.byId(authorId!)!;
+		// biome-ignore lint/style/noNonNullAssertion: <explanation>
+		const author = await studiocms_SDK.GET.databaseEntry.users.byId(authorId!)!;
 
-	return {
-		title,
-		publishedAt,
-		slug,
-		heroImage,
-		author: author
-			? {
-					name: author.name,
-					avatar: author.avatar ? author.avatar : null,
-				}
-			: null,
-	};
-});
+		return {
+			title,
+			publishedAt,
+			slug,
+			heroImage,
+			author: author
+				? {
+						name: author.name,
+						avatar: author.avatar ? author.avatar : null,
+					}
+				: null,
+		};
+	});
 
 const articles = (await Promise.all(articlePromises))
 	.filter((x) => typeof x !== 'undefined')
