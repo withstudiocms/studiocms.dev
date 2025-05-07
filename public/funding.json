@@ -5,6 +5,7 @@
     "role": "maintainer",
     "name": "Adam Matthiesen",
     "email": "sponsor@studiocms.dev",
+    "phone": "",
     "description": "withstudiocms is a community-driven organization who's goal and overall mission is to build the best, free, open-source tools with the community for all to use, starting from our flagship project, StudioCMS, and then expanding and growing into multiple tools and utilities for the greater Astro ecosystem!",
     "webpageUrl": {
       "url": "https://studiocms.dev"
@@ -19,9 +20,12 @@
         "url": "https://studiocms.dev"
       },
       "repositoryUrl": {
-        "url": "https://github.com/withstudiocms/studiocms"
+        "url": "https://github.com/withstudiocms/studiocms",
+        "wellKnown": "https://github.com/withstudiocms/studiocms/.well-known/funding-manifest-urls"
       },
-      "licenses": ["MIT"],
+      "licenses": [
+        "MIT"
+      ],
       "tags": [
         "cms",
         "headless-cms",
@@ -38,13 +42,24 @@
       "name": "StudioCMS UI Library",
       "description": "The UI library for StudioCMS. Includes the layouts & components we use to build StudioCMS.",
       "webpageUrl": {
-        "url": "https://ui.studiocms.dev"
+        "url": "https://ui.studiocms.dev",
+        "wellKnown": "https://ui.studiocms.dev/.well-known/funding-manifest-urls"
       },
       "repositoryUrl": {
-        "url": "https://github.com/withstudiocms/ui"
+        "url": "https://github.com/withstudiocms/ui",
+        "wellKnown": "https://github.com/withstudiocms/ui/.well-known/funding-manifest-urls"
       },
-      "licenses": ["MIT"],
-      "tags": ["ui", "astro", "ui-components", "ui-library", "withastro", "studiocms"]
+      "licenses": [
+        "MIT"
+      ],
+      "tags": [
+        "ui",
+        "astro",
+        "ui-components",
+        "ui-library",
+        "withastro",
+        "studiocms"
+      ]
     }
   ],
   "funding": {
@@ -52,7 +67,8 @@
       {
         "guid": "opencollective",
         "type": "bank",
-        "address": "https://opencollective.com/studiocms"
+        "address": "https://opencollective.com/studiocms",
+        "description": ""
       }
     ],
     "plans": [
@@ -64,7 +80,9 @@
         "amount": 10,
         "currency": "USD",
         "frequency": "monthly",
-        "channels": ["opencollective"]
+        "channels": [
+          "opencollective"
+        ]
       },
       {
         "guid": "sponsor",
@@ -74,7 +92,9 @@
         "amount": 100,
         "currency": "USD",
         "frequency": "monthly",
-        "channels": ["opencollective"]
+        "channels": [
+          "opencollective"
+        ]
       },
       {
         "guid": "donation",
@@ -84,7 +104,9 @@
         "amount": 0,
         "currency": "USD",
         "frequency": "one-time",
-        "channels": ["opencollective"]
+        "channels": [
+          "opencollective"
+        ]
       }
     ],
     "history": []
