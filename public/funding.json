@@ -62,7 +62,7 @@
     "channels": [
       {
         "guid": "opencollective",
-        "type": "payment-provider",
+        "type": "bank",
         "address": "https://opencollective.com/studiocms"
       }
     ],
