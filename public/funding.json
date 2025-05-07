@@ -21,9 +21,7 @@
       "repositoryUrl": {
         "url": "https://github.com/withstudiocms/studiocms"
       },
-      "licenses": [
-        "MIT"
-      ],
+      "licenses": ["MIT"],
       "tags": [
         "cms",
         "headless-cms",
@@ -45,17 +43,8 @@
       "repositoryUrl": {
         "url": "https://github.com/withstudiocms/ui"
       },
-      "licenses": [
-        "MIT"
-      ],
-      "tags": [
-        "ui",
-        "astro",
-        "ui-components",
-        "ui-library",
-        "withastro",
-        "studiocms"
-      ]
+      "licenses": ["MIT"],
+      "tags": ["ui", "astro", "ui-components", "ui-library", "withastro", "studiocms"]
     }
   ],
   "funding": {
@@ -75,9 +64,7 @@
         "amount": 10,
         "currency": "USD",
         "frequency": "monthly",
-        "channels": [
-          "opencollective"
-        ]
+        "channels": ["opencollective"]
       },
       {
         "guid": "sponsor",
@@ -87,9 +74,7 @@
         "amount": 100,
         "currency": "USD",
         "frequency": "monthly",
-        "channels": [
-          "opencollective"
-        ]
+        "channels": ["opencollective"]
       },
       {
         "guid": "donation",
@@ -99,9 +84,7 @@
         "amount": 0,
         "currency": "USD",
         "frequency": "one-time",
-        "channels": [
-          "opencollective"
-        ]
+        "channels": ["opencollective"]
       }
     ],
     "history": []
