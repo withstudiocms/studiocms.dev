@@ -1,0 +1,109 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "organisation",
+    "role": "maintainer",
+    "name": "Adam Matthiesen",
+    "email": "sponsor@studiocms.dev",
+    "description": "withstudiocms is a community-driven organization who's goal and overall mission is to build the best, free, open-source tools with the community for all to use, starting from our flagship project, StudioCMS, and then expanding and growing into multiple tools and utilities for the greater Astro ecosystem!",
+    "webpageUrl": {
+      "url": "https://studiocms.dev"
+    }
+  },
+  "projects": [
+    {
+      "guid": "studiocms",
+      "name": "StudioCMS",
+      "description": "Headless CMS for Astro, built with Astro, that provides a user-friendly and configurable dashboard for content management.",
+      "webpageUrl": {
+        "url": "https://studiocms.dev"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/withstudiocms/studiocms"
+      },
+      "licenses": [
+        "MIT"
+      ],
+      "tags": [
+        "cms",
+        "headless-cms",
+        "astrojs",
+        "astro-integration",
+        "turso",
+        "libsql",
+        "astrodb",
+        "turso-db"
+      ]
+    },
+    {
+      "guid": "studiocms-ui",
+      "name": "StudioCMS UI Library",
+      "description": "The UI library for StudioCMS. Includes the layouts & components we use to build StudioCMS.",
+      "webpageUrl": {
+        "url": "https://ui.studiocms.dev"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/withstudiocms/ui"
+      },
+      "licenses": [
+        "MIT"
+      ],
+      "tags": [
+        "ui",
+        "astro",
+        "ui-components",
+        "ui-library",
+        "withastro",
+        "studiocms"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "opencollective",
+        "type": "payment-provider",
+        "address": "https://opencollective.com/studiocms"
+      }
+    ],
+    "plans": [
+      {
+        "guid": "backer",
+        "status": "active",
+        "name": "Individual Backer",
+        "description": "Support us with a monthly donation and help us continue to ship new features and fixes for StudioCMS.",
+        "amount": 10,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": [
+          "opencollective"
+        ]
+      },
+      {
+        "guid": "sponsor",
+        "status": "active",
+        "name": "Sponsor",
+        "description": "Become an StudioCMS Sponsor! As a thank you for this level of support, we will add your logo to the StudioCMS GitHub README and to our homepage",
+        "amount": 100,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": [
+          "opencollective"
+        ]
+      },
+      {
+        "guid": "donation",
+        "status": "active",
+        "name": "Donation",
+        "description": "Make a custom one-time or recurring contribution.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "opencollective"
+        ]
+      }
+    ],
+    "history": []
+  }
+}
