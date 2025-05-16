@@ -18,9 +18,6 @@ export default defineConfig({
 		],
 	},
 	integrations: [cFetch({ lifetime: '1h' }), UI(), db(), studiocms()],
-	experimental: {
-		svg: true,
-	},
 	security: {
 		checkOrigin: false,
 	},
