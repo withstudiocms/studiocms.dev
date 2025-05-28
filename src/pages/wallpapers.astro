@@ -40,11 +40,11 @@ const WALLPAPERS = [
 						<Image
 							src={item.dark as any}
 							alt={item.name}
-							width={960}
-							height={540}
+							width={480}
+							height={270}
 							class="resource-preview"
 							loading="eager"
-							quality={100}
+							quality={80}
 						/>
 						<a class="download-button dark" href={item.dark} download aria-label={`Download ${item.name} dark wallpaper`}>
 							<Icon name="arrow-down-tray" width={20} height={20} />
@@ -52,11 +52,11 @@ const WALLPAPERS = [
 						<Image
 							src={item.light as any}
 							alt={item.name}
-							width={960}
-							height={540}
+							width={480}
+							height={270}
 							class="resource-preview light"
 							loading="eager"
-							quality={100}
+							quality={80}
 						/>
 						<a class="download-button light" href={item.light} download aria-label={`Download ${item.name} light wallpaper`}>
 							<Icon name="arrow-down-tray" width={20} height={20} />
