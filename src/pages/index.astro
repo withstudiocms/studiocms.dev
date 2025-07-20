@@ -1,43 +1,46 @@
 ---
-import { Image } from 'astro:assets';
-import { SDKCoreJs, runSDK } from 'studiocms:sdk';
-import { Button, Icon } from 'studiocms:ui/components';
-import { Card } from 'studiocms:ui/components';
-import Layout from '../layouts/Layout.astro';
+import { Image } from "astro:assets";
+import { SDKCoreJs, runSDK } from "studiocms:sdk";
+import { Button, Icon } from "studiocms:ui/components";
+import { Card } from "studiocms:ui/components";
+import Layout from "../layouts/Layout.astro";
 
-import Discord from '@/assets/discord.svg';
-import GitHub from '@/assets/github.svg';
-import AWS from '@/assets/icons/aws.svg';
-import Coolify from '@/assets/icons/coolify.svg';
-import Docker from '@/assets/icons/docker.svg';
-import Netlify from '@/assets/icons/netlify.svg';
-import Node from '@/assets/icons/node.svg';
-import Vercel from '@/assets/icons/vercel.svg';
-import NPM from '@/assets/npm.svg';
+import Discord from "@/assets/discord.svg";
+import GitHub from "@/assets/github.svg";
+import AWS from "@/assets/icons/aws.svg";
+import Coolify from "@/assets/icons/coolify.svg";
+import Docker from "@/assets/icons/docker.svg";
+import Netlify from "@/assets/icons/netlify.svg";
+import Node from "@/assets/icons/node.svg";
+import Vercel from "@/assets/icons/vercel.svg";
+import NPM from "@/assets/npm.svg";
 
-import DevIconPattern from '@/assets/developer-icon-pattern.svg';
-import MarketerIconPattern from '@/assets/marketer-icon-pattern.svg';
+import DevIconPattern from "@/assets/developer-icon-pattern.svg";
+import MarketerIconPattern from "@/assets/marketer-icon-pattern.svg";
 
-import Orbits from '@/assets/orbits.svg';
-import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
-import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
+import Orbits from "@/assets/orbits.svg";
+import Skip2FullLogo from "@/assets/skip2-wordmark-red.svg";
+import TursoFullLogo from "@/assets/turso-logo-illustrated.svg";
 
-import EcosystemSection from '@/components/EcosystemSection.astro';
+import EcosystemSection from "@/components/EcosystemSection.astro";
 
-import ApolloDefaultExpression from '@/assets/apollo-default.png';
-import ApolloHappyExpression from '@/assets/apollo-happy.png';
+import ApolloDefaultExpression from "@/assets/apollo-default.png";
+import ApolloHappyExpression from "@/assets/apollo-happy.png";
 
-import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
+import {
+	getDiscordMembers,
+	getNpmMonthlyDownloads,
+} from "../utils/stats-helpers";
 
 const getNewestBlogPost = async () => {
-	const pageFolderTree = await runSDK(SDKCoreJs.GET.pageFolderTree(true));
-	const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] })
-		.children;
+	const blogPages = await runSDK(
+		SDKCoreJs.GET.folderPages("Blog", false, true),
+	);
+	const entries = blogPages.map(({ data }) => data);
 
-	const articles = entries
-		.filter((x) => !!x.pageData && x.pageData.draft !== true)
-		// biome-ignore lint/style/noNonNullAssertion: <explanation>
-		.sort((a, b) => b.pageData!.publishedAt.getTime() - a.pageData!.publishedAt.getTime());
+	const articles = entries.sort(
+		(a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
+	);
 
 	if (articles.length === 0) {
 		return null;
@@ -45,8 +48,7 @@ const getNewestBlogPost = async () => {
 
 	const article = articles[0];
 
-	// biome-ignore lint/style/noNonNullAssertion: <explanation>
-	const { title, description, publishedAt, slug, heroImage } = article.pageData!;
+	const { title, description, publishedAt, slug, heroImage } = article;
 
 	return {
 		title,
@@ -58,7 +60,7 @@ const getNewestBlogPost = async () => {
 };
 
 const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
-	getNpmMonthlyDownloads('studiocms'),
+	getNpmMonthlyDownloads("studiocms"),
 	getDiscordMembers(),
 	getNewestBlogPost(),
 ]);
@@ -70,57 +72,90 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	home
 >
 	<section class="hero">
-		<a href="/blog/skip2-networks-our-official-network-partner" class="announcement-badge">
+		<a
+			href="/blog/skip2-networks-our-official-network-partner"
+			class="announcement-badge"
+		>
 			<span>Skip2 Networks is our newest sponsor!</span>
-			<Icon name='arrow-right-20-solid' width={16} height={16} />
+			<Icon name="arrow-right-20-solid" width={16} height={16} />
 		</a>
 		<h1>The Astro-native CMS for all your needs.</h1>
 		<p>
-			StudioCMS is the all-in-one content management solution for your next Astro project.
+			StudioCMS is the all-in-one content management solution for your
+			next Astro project.
 		</p>
 		<div class="hero-cta">
 			<code class="code-cta install-cta">
 				npm create studiocms
-				<Icon name='document-duplicate-20-solid' class='active copy-icon' width={16} height={16} />
-				<Icon name='check-20-solid' class='copy-check' width={16} height={16} />
+				<Icon
+					name="document-duplicate-20-solid"
+					class="active copy-icon"
+					width={16}
+					height={16}
+				/>
+				<Icon
+					name="check-20-solid"
+					class="copy-check"
+					width={16}
+					height={16}
+				/>
 			</code>
-			{/* <Button color='primary'>
+			{
+				/* <Button color='primary'>
 				Try the demo!
-			</Button> */}
+			</Button> */
+			}
 		</div>
 	</section>
 	<div class="video-player">
-		<video autoplay loop muted playsinline preload="auto" src="https://cdn.studiocms.dev/studiocms-trailer.mp4" />
+		<video
+			autoplay
+			loop
+			muted
+			playsinline
+			preload="auto"
+			src="https://cdn.studiocms.dev/studiocms-trailer.mp4"></video>
 	</div>
 	<section class="target-groups">
 		<Card class="target-group-div">
 			<div>
 				<h2>For Developers.</h2>
 				<p>
-					StudioCMS provies the flexibility of other CMSs while getting rid of the pain points and complexity.
+					StudioCMS provies the flexibility of other CMSs while
+					getting rid of the pain points and complexity.
 				</p>
 				<div class="reasons-list">
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='arrows-pointing-out-20-solid' width={20} height={20} />
+							<Icon
+								name="arrows-pointing-out-20-solid"
+								width={20}
+								height={20}
+							/>
 							<h3>Flexible</h3>
 						</div>
 						<p>
-							StudioCMS works seamlessly with any Astro v5 project, old or new.
+							StudioCMS works seamlessly with any Astro v5
+							project, old or new.
 						</p>
 					</div>
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='squares-plus-20-solid' width={20} height={20} />
+							<Icon
+								name="squares-plus-20-solid"
+								width={20}
+								height={20}
+							/>
 							<h3>Extensible</h3>
 						</div>
 						<p>
-							Plugins allow you to extend StudioCMS to do almost anything.
+							Plugins allow you to extend StudioCMS to do almost
+							anything.
 						</p>
 					</div>
 				</div>
 			</div>
-			<Button href='/why-studiocms/studiocms-for-developers' color='mono'>
+			<Button href="/why-studiocms/studiocms-for-developers" color="mono">
 				Read more
 			</Button>
 			<DevIconPattern class="icon-deco" />
@@ -129,32 +164,44 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			<div>
 				<h2>For Content Creators.</h2>
 				<p>
-					StudioCMS offers an intuitive way to produce content that will reach your target audience.
+					StudioCMS offers an intuitive way to produce content that
+					will reach your target audience.
 				</p>
 				<div class="reasons-list">
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='pencil-square-20-solid' width={20} height={20} />
+							<Icon
+								name="pencil-square-20-solid"
+								width={20}
+								height={20}
+							/>
 							<h3>Intuitive Editing</h3>
 						</div>
 						<p>
-							StudioCMS offers a variety of editing tools to make your life easier.
+							StudioCMS offers a variety of editing tools to make
+							your life easier.
 						</p>
 					</div>
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='check-20-solid' width={20} height={20} />
-							<h3>
-								Easy to Use
-							</h3>
+							<Icon
+								name="check-20-solid"
+								width={20}
+								height={20}
+							/>
+							<h3>Easy to Use</h3>
 						</div>
 						<p>
-							StudioCMS is designed to be easy to use, even for non-technical users.
+							StudioCMS is designed to be easy to use, even for
+							non-technical users.
 						</p>
 					</div>
 				</div>
 			</div>
-			<Button href='/why-studiocms/studiocms-for-content-creators' color='mono'>
+			<Button
+				href="/why-studiocms/studiocms-for-content-creators"
+				color="mono"
+			>
 				Read more
 			</Button>
 			<MarketerIconPattern class="icon-deco" />
@@ -163,49 +210,69 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			<div>
 				<h2>For Enterprises.</h2>
 				<p>
-					StudioCMS focuses on the needs of large organizations and their teams,
-					allowing you to scale your content production to the next level.
+					StudioCMS focuses on the needs of large organizations and
+					their teams, allowing you to scale your content production
+					to the next level.
 				</p>
 				<div class="reasons-list">
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='circle-stack-20-solid' width={20} height={20} />
+							<Icon
+								name="circle-stack-20-solid"
+								width={20}
+								height={20}
+							/>
 							<h3>Data Ownership</h3>
 						</div>
 						<p>
-							You own your data and choose where to host. No more vendor lock-in.
+							You own your data and choose where to host. No more
+							vendor lock-in.
 						</p>
 					</div>
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='user-group-20-solid' width={20} height={20} />
+							<Icon
+								name="user-group-20-solid"
+								width={20}
+								height={20}
+							/>
 							<h3>Team-Management</h3>
 						</div>
 						<p>
-							StudioCMS allows you to manage your team and their permissions with ease.
+							StudioCMS allows you to manage your team and their
+							permissions with ease.
 						</p>
 					</div>
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='lock-closed-20-solid' width={20} height={20} />
+							<Icon
+								name="lock-closed-20-solid"
+								width={20}
+								height={20}
+							/>
 							<h3>Secure</h3>
 						</div>
 						<p>
-							StudioCMS is built with security in mind, so you can rest assured that your data is safe.
+							StudioCMS is built with security in mind, so you can
+							rest assured that your data is safe.
 						</p>
 					</div>
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name='bolt-20-solid' width={20} height={20} />
+							<Icon name="bolt-20-solid" width={20} height={20} />
 							<h3>Performant</h3>
 						</div>
 						<p>
-							StudioCMS is built to be fast and efficient, so you can focus on what matters most.
+							StudioCMS is built to be fast and efficient, so you
+							can focus on what matters most.
 						</p>
 					</div>
 				</div>
 			</div>
-			<Button href='/why-studiocms/studiocms-for-enterprises' color='mono'>
+			<Button
+				href="/why-studiocms/studiocms-for-enterprises"
+				color="mono"
+			>
 				Read more
 			</Button>
 		</Card>
@@ -213,54 +280,67 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	<section class="hosting-methods">
 		<h2>Server <span class="keyword">and</span> Serverless</h2>
 		<p class="balanced">
-			StudioCMS stores all of it's data in a remote libSQL instance, <br>
-			so you can deploy your site to serverless hosts and still enjoy the full editing capabilities.
+			StudioCMS stores all of it's data in a remote libSQL instance, <br
+			/>
+			so you can deploy your site to serverless hosts and still enjoy the full
+			editing capabilities.
 		</p>
 		<div class="hosting-providers">
-			{/* TODO: Add links once we have guides for the various platforms */}
+			{
+				/* TODO: Add links once we have guides for the various platforms */
+			}
 			<Card class="hosting-provider" aria-label="NodeJS Logo">
 				<Node />
-				<Node class='glow-layer' />
+				<Node class="glow-layer" />
 			</Card>
 			<Card class="hosting-provider" aria-label="Coolify Logo">
 				<Coolify />
-				<Coolify class='glow-layer' />
+				<Coolify class="glow-layer" />
 			</Card>
 			<Card class="hosting-provider" aria-label="Docker Logo">
 				<Docker />
-				<Docker class='glow-layer' />
+				<Docker class="glow-layer" />
 			</Card>
 			<Card class="hosting-provider" aria-label="Netlify Logo">
 				<Netlify />
-				<Netlify class='glow-layer' />
+				<Netlify class="glow-layer" />
 			</Card>
 			<Card class="hosting-provider" aria-label="Vercel Logo">
 				<Vercel />
-				<Vercel class='glow-layer' />
+				<Vercel class="glow-layer" />
 			</Card>
-			<Card class="hosting-provider" aria-label="Amazon Web Services Logo">
+			<Card
+				class="hosting-provider"
+				aria-label="Amazon Web Services Logo"
+			>
 				<AWS />
-				<AWS class='glow-layer' />
+				<AWS class="glow-layer" />
 			</Card>
 		</div>
 	</section>
-	{/* <section class="plugins-section">
+	{
+		/* <section class="plugins-section">
 	Leaving this here as a reminder we'd probably want a section to explain plugins. Also, a section detailing different features could be nice in the future.
-	</section> */}
+	</section> */
+	}
 	<section class="banner">
 		<p>Join a community of developers already using StudioCMS.</p>
 		<div class="stats-container">
 			<div class="stat">
 				<Discord class="stat-icon" />
 				<div class="stat-number keyword">
-					<span class="stat-text">{discordMembers || '90'}</span><span>+</span>
+					<span class="stat-text">{discordMembers || "90"}</span><span
+						>+</span
+					>
 				</div>
 				<span class="stat-desc">Discord community members</span>
 			</div>
 			<div class="stat">
 				<NPM class="stat-icon" />
 				<div class="stat-number keyword">
-					<span class="stat-text">{npmDownloads || '450'}</span><span>+</span>
+					<span class="stat-text">{npmDownloads || "450"}</span><span
+						>+</span
+					>
 				</div>
 				<span class="stat-desc">Monthly npm downloads</span>
 			</div>
@@ -276,28 +356,32 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 				alt="Our mascot, Apollo, happily looking at the statistics."
 				width={177.5}
 				loading="lazy"
-				class='apollo-banner-deco'
+				class="apollo-banner-deco"
 				quality={100}
 			/>
 		</div>
 	</section>
-	{/* <section class="social-proof">
+	{
+		/* <section class="social-proof">
 		<h2>Trusted by the community</h2>
 		<span>Social Proof</span>
-	</section> */}
+	</section> */
+	}
 	<EcosystemSection />
 	<section class="blog-showcase">
 		<h2>Keep up With What's Happening</h2>
-		<p>The StudioCMS Blog is the place to go for updates to the ecosystem.</p>
+		<p>
+			The StudioCMS Blog is the place to go for updates to the ecosystem.
+		</p>
 		<div class="blog-article">
 			<div class="image-container">
 				<Image
 					src={newestBlogPost!.heroImage}
 					width={960}
 					height={540}
-					class='blog-image'
+					class="blog-image"
 					alt={newestBlogPost!.title}
-					loading='lazy'
+					loading="lazy"
 					quality={100}
 				/>
 				<Image
@@ -305,9 +389,9 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 					width={960}
 					height={540}
 					inferSize={true}
-					class='blog-image-glow'
-					alt='Alt Text'
-					loading='lazy'
+					class="blog-image-glow"
+					alt="Alt Text"
+					loading="lazy"
 					quality={10}
 				/>
 			</div>
@@ -316,9 +400,12 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 					<h3>{newestBlogPost!.title}</h3>
 					<p>{newestBlogPost!.description}</p>
 				</div>
-				<a class="blog-read-more" href={`/blog/${newestBlogPost!.slug}`}>
+				<a
+					class="blog-read-more"
+					href={`/blog/${newestBlogPost!.slug}`}
+				>
 					<span>Read More</span>
-					<Icon name='arrow-right-20-solid' width={20} height={20} />
+					<Icon name="arrow-right-20-solid" width={20} height={20} />
 				</a>
 			</div>
 		</div>
@@ -329,11 +416,21 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			<div class="hero-cta">
 				<code class="code-cta install-cta">
 					npm create studiocms
-					<Icon name='document-duplicate-20-solid' class='active copy-icon' width={16} height={16} />
-					<Icon name='check-20-solid' class='copy-check' width={16} height={16} />
+					<Icon
+						name="document-duplicate-20-solid"
+						class="active copy-icon"
+						width={16}
+						height={16}
+					/>
+					<Icon
+						name="check-20-solid"
+						class="copy-check"
+						width={16}
+						height={16}
+					/>
 				</code>
 			</div>
-			<Orbits class='final-cta-orbits' />
+			<Orbits class="final-cta-orbits" />
 		</div>
 	</section>
 	<section class="sponsors">
@@ -344,7 +441,10 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 				<TursoFullLogo />
 				<p>Official Database Sponsor</p>
 			</a>
-			<a href="https://www.skip2.net/?utm_source=studiocms" class="sponsor skip2">
+			<a
+				href="https://www.skip2.net/?utm_source=studiocms"
+				class="sponsor skip2"
+			>
 				<Skip2FullLogo />
 				<p>Official Network Sponsor</p>
 			</a>
@@ -356,7 +456,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			alt="Our mascot, Apollo, poking out from behind the footer Element."
 			width={160}
 			loading="lazy"
-			class='apollo-footer-deco'
+			class="apollo-footer-deco"
 			quality={100}
 		/>
 	</div>
@@ -365,72 +465,85 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	import { initNumberCountAnimations } from "../scripts/animations";
 
 	// Elements
-	const copyBtns = document.querySelectorAll<HTMLButtonElement>('.install-cta')!;
+	const copyBtns =
+		document.querySelectorAll<HTMLButtonElement>(".install-cta")!;
 
 	copyBtns.forEach((copyBtn) => {
 		let timeout: NodeJS.Timeout | null = null;
-		const copyIcon = copyBtn.querySelector<HTMLElement>('.copy-icon')!;
-		const copyCheck = copyBtn.querySelector<HTMLElement>('.copy-check')!;
+		const copyIcon = copyBtn.querySelector<HTMLElement>(".copy-icon")!;
+		const copyCheck = copyBtn.querySelector<HTMLElement>(".copy-check")!;
 
-		copyBtn.addEventListener('click', () => {
+		copyBtn.addEventListener("click", () => {
 			if (timeout) {
 				clearTimeout(timeout);
 			}
 
-			navigator.clipboard.writeText('npm create studiocms');
-			copyIcon.classList.remove('active');
-			copyCheck.classList.add('active');
+			navigator.clipboard.writeText("npm create studiocms");
+			copyIcon.classList.remove("active");
+			copyCheck.classList.add("active");
 
 			timeout = setTimeout(() => {
-				copyIcon.classList.add('active');
-				copyCheck.classList.remove('active');
+				copyIcon.classList.add("active");
+				copyCheck.classList.remove("active");
 			}, 3000);
 		});
-	})
+	});
 
 	// Initialize animations when stats section comes into view
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach((entry) => {
-			// Only run animation once when element comes into view
-			if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-				initNumberCountAnimations('.stat-text');
-				entry.target.classList.add('animated');
-				// Optionally stop observing after animation is triggered
-				observer.unobserve(entry.target);
-			}
-		});
-	}, {
-		// Start animation when element is 25% visible for better timing
-		threshold: 0.25
-	});
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				// Only run animation once when element comes into view
+				if (
+					entry.isIntersecting &&
+					!entry.target.classList.contains("animated")
+				) {
+					initNumberCountAnimations(".stat-text");
+					entry.target.classList.add("animated");
+					// Optionally stop observing after animation is triggered
+					observer.unobserve(entry.target);
+				}
+			});
+		},
+		{
+			// Start animation when element is 25% visible for better timing
+			threshold: 0.25,
+		},
+	);
 
 	// Create separate observer for footer Apollo
-	const footerApolloObserver = new IntersectionObserver((entries) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-				entry.target.classList.add('visible');
-				footerApolloObserver.unobserve(entry.target);
-			}
-		});
-	}, {
-		threshold: 0.5
-	});
+	const footerApolloObserver = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (
+					entry.isIntersecting &&
+					!entry.target.classList.contains("visible")
+				) {
+					entry.target.classList.add("visible");
+					footerApolloObserver.unobserve(entry.target);
+				}
+			});
+		},
+		{
+			threshold: 0.5,
+		},
+	);
 
 	// Start observing both Apollo elements
-	document.addEventListener('DOMContentLoaded', () => {
-		const gitHubStars = document.querySelector('nav')?.dataset.stars;
-		const statCardTextItem = document.querySelector('.stat-text.gh-stars');
+	document.addEventListener("DOMContentLoaded", () => {
+		const gitHubStars = document.querySelector("nav")?.dataset.stars;
+		const statCardTextItem = document.querySelector(".stat-text.gh-stars");
 		if (gitHubStars && statCardTextItem) {
 			statCardTextItem.textContent = gitHubStars;
 		}
 
-		const statsContainer = document.querySelector('.stats-container');
+		const statsContainer = document.querySelector(".stats-container");
 		if (statsContainer) {
 			observer.observe(statsContainer);
 		}
 
 		// Observe footer Apollo
-		const footerApollo = document.querySelector('.apollo-footer-deco');
+		const footerApollo = document.querySelector(".apollo-footer-deco");
 		if (footerApollo) {
 			footerApolloObserver.observe(footerApollo);
 		}
@@ -442,13 +555,14 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	}
 </style>
 <style>
-	section:not(.banner), .video-player {
+	section:not(.banner),
+	.video-player {
 		max-width: var(--page-width);
 		margin: 0 auto;
 		margin-bottom: 8rem;
 		text-align: center;
 	}
-	
+
 	section.hero {
 		width: 100%;
 		text-align: center;
@@ -468,22 +582,22 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 
 	h2 {
 		font-size: 2.25em;
-		margin-bottom: .5rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.announcement-badge {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: .5rem;
+		gap: 0.5rem;
 		outline: 1px solid hsl(var(--primary-base));
 		border-radius: 99px;
-		padding: .25rem .75rem;
+		padding: 0.25rem 0.75rem;
 		background-color: hsl(var(--primary-flat));
-		transition: all .15s ease;
+		transition: all 0.15s ease;
 		color: hsl(var(--text-normal));
 		text-decoration: none;
-		font-size: .825em;
+		font-size: 0.825em;
 	}
 
 	.announcement-badge:hover {
@@ -509,25 +623,27 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: .75rem;
-		padding: .5rem .75rem;
+		gap: 0.75rem;
+		padding: 0.5rem 0.75rem;
 		height: 40px;
 		background-color: hsl(var(--background-step-1));
 		border: 1px solid hsl(var(--border));
 		border-radius: var(--radius-md);
 		cursor: pointer;
-		transition: all .15s ease;
+		transition: all 0.15s ease;
 	}
 
 	.code-cta:hover {
 		background-color: hsl(var(--background-step-2));
 	}
 
-	.copy-icon, .copy-check {
+	.copy-icon,
+	.copy-check {
 		display: none;
 	}
 
-	.copy-icon.active, .copy-check.active {
+	.copy-icon.active,
+	.copy-check.active {
 		display: block;
 	}
 
@@ -544,7 +660,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		justify-content: center;
 		border-radius: 1.25rem;
 		z-index: 5;
-		background-image: url('/video-placeholder.png');
+		background-image: url("/video-placeholder.png");
 		position: relative;
 	}
 
@@ -562,9 +678,9 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	}
 
 	.target-group-div {
-		width: calc(50% - .5rem);
+		width: calc(50% - 0.5rem);
 		background-color: hsl(var(--background-step-1));
-		transition: all .15s ease;
+		transition: all 0.15s ease;
 		text-align: left;
 		overflow: hidden;
 		border-radius: 1.25rem;
@@ -596,10 +712,10 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	.reason {
 		display: flex;
 		flex-direction: column;
-		gap: .5rem;
-		background-color: hsla(var(--background-step-3) / .25);
-		padding: .75rem;
-		border-radius: .5rem;
+		gap: 0.5rem;
+		background-color: hsla(var(--background-step-3) / 0.25);
+		padding: 0.75rem;
+		border-radius: 0.5rem;
 		border: 1px solid hsl(var(--border));
 		backdrop-filter: blur(2px);
 	}
@@ -607,7 +723,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	.reason-header {
 		display: flex;
 		flex-direction: row;
-		gap: .5rem;
+		gap: 0.5rem;
 		align-items: center;
 	}
 
@@ -618,19 +734,19 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	.icon-deco {
 		position: absolute;
 		filter: saturate(0);
-		opacity: .5;
+		opacity: 0.5;
 		rotate: -45deg;
 		top: 60%;
 		left: 60%;
 		z-index: -1;
-		transition: all .15s ease;
+		transition: all 0.15s ease;
 	}
 
 	.target-group-div:hover .icon-deco {
 		filter: saturate(1);
 		opacity: 1;
-		transform: translateY(.5rem);
-		transform: translateX(.5rem);
+		transform: translateY(0.5rem);
+		transform: translateX(0.5rem);
 	}
 
 	.hosting-methods {
@@ -651,7 +767,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		height: 5rem;
 		display: block;
 		background-color: hsl(var(--background-step-1));
-		transition: all .15s ease;
+		transition: all 0.15s ease;
 		border-radius: 1.25rem;
 	}
 
@@ -662,7 +778,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		);
 		border: 1px solid hsl(var(--primary-base));
 	} */
-	
+
 	.hosting-provider svg {
 		max-width: 4.5rem;
 		max-height: 4.5rem;
@@ -674,14 +790,14 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		left: 50%;
 		transform: translate(-50%, -50%);
 		opacity: 0;
-		transition: all .15s ease;
+		transition: all 0.15s ease;
 		filter: blur(4px);
 		width: 2.5rem;
 		height: 2.5rem;
 	}
 
 	.hosting-provider:hover svg.glow-layer {
-		opacity: .5;
+		opacity: 0.5;
 	}
 
 	section.banner {
@@ -700,15 +816,15 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		position: relative;
 	}
 
-  .stats-container .stat-number {
-    transition: all .15s ease;
-    opacity: 0;
-    transition-delay: .5s;
-  }
+	.stats-container .stat-number {
+		transition: all 0.15s ease;
+		opacity: 0;
+		transition-delay: 0.5s;
+	}
 
-  .stats-container.animated .stat-number {
-    opacity: 1;
-  }
+	.stats-container.animated .stat-number {
+		opacity: 1;
+	}
 
 	.apollo-banner-deco {
 		position: absolute;
@@ -778,7 +894,8 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		border: 1px solid hsl(var(--border));
 	}
 
-	.blog-image, .blog-image-glow {
+	.blog-image,
+	.blog-image-glow {
 		width: 100%;
 		height: 100%;
 		border-radius: 1.25rem;
@@ -815,13 +932,13 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		gap: .5rem;
+		gap: 0.5rem;
 	}
 
 	.blog-read-more {
 		display: flex;
 		flex-direction: row;
-		gap: .5rem;
+		gap: 0.5rem;
 		text-decoration: none;
 		color: hsl(var(--text-normal));
 		width: fit-content;
@@ -848,16 +965,24 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	}
 
 	.final-cta-card::before {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: radial-gradient(circle at 50% 100%, #c964cf 0%, #a581f3 100%);
-		mask-image: radial-gradient(circle at 50% 100%, black 25%, transparent 100%);
+		background-image: radial-gradient(
+			circle at 50% 100%,
+			#c964cf 0%,
+			#a581f3 100%
+		);
+		mask-image: radial-gradient(
+			circle at 50% 100%,
+			black 25%,
+			transparent 100%
+		);
 		z-index: 0;
-		opacity: .5;
+		opacity: 0.5;
 		animation: breathe 10s ease infinite;
 	}
 
@@ -866,7 +991,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			opacity: 0.5;
 		}
 		50% {
-			opacity: .65;
+			opacity: 0.65;
 		}
 		100% {
 			opacity: 0.5;
@@ -874,13 +999,13 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	}
 
 	.final-cta-card::after {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: url('/noise.webp');
+		background-image: url("/noise.webp");
 		opacity: 0.5;
 		z-index: 1;
 	}
@@ -919,7 +1044,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		justify-content: center;
 		padding: 1rem;
 		background-color: hsl(var(--background-step-1));
-		transition: all .15s ease;
+		transition: all 0.15s ease;
 		text-decoration: none;
 		color: hsl(var(--text-muted));
 	}
@@ -999,7 +1124,8 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	}
 
 	@media screen and (max-width: 640px) {
-		.target-group-div, .target-group-div.enterprise {
+		.target-group-div,
+		.target-group-div.enterprise {
 			--reason-cols: 1;
 		}
 
@@ -1012,7 +1138,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		}
 	}
 </style>
-<style is:global>	
+<style is:global>
 	.hosting-provider .sui-card-body {
 		display: flex;
 		align-items: center;
