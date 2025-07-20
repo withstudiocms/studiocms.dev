@@ -1,31 +1,28 @@
-import socialPoster from '@studiocms/socialposter';
 import { defineStudioCMSConfig } from 'studiocms/config';
 
 export default defineStudioCMSConfig({
 	dbStartPage: false,
 	verbose: true,
-	dashboardConfig: {
-		AuthConfig: {
+	features: {
+		authConfig: {
 			providers: {
 				usernameAndPasswordConfig: {
 					allowUserRegistration: false,
 				},
 			},
 		},
-		inject404Route: false,
-	},
-	pageTypeOptions: {
-		markdown: {
-			flavor: 'studiocms',
-			autoLinkHeadings: false,
+		dashboardConfig: {
+			inject404Route: false,
+		},
+		pageTypeOptions: {
+			markdown: {
+				flavor: 'studiocms',
+				autoLinkHeadings: false,
+			},
 		},
 	},
 	componentRegistry: {
 		sponsorswithimages: './src/components/SponsorsWithImages.astro',
 	},
-	plugins: [
-		socialPoster({
-			bluesky: true,
-		}),
-	],
+	plugins: [],
 });
