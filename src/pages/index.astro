@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import cached_SDK from 'studiocms:sdk/cache';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 import { Button, Icon } from 'studiocms:ui/components';
 import { Card } from 'studiocms:ui/components';
 import Layout from '../layouts/Layout.astro';
@@ -30,12 +30,12 @@ import ApolloHappyExpression from '@/assets/apollo-happy.png';
 import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
 
 const getNewestBlogPost = async () => {
-	const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
+	const pageFolderTree = await runSDK(SDKCoreJs.GET.pageFolderTree(true));
 	const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] })
 		.children;
 
 	const articles = entries
-		.filter((x) => !!x.pageData)
+		.filter((x) => !!x.pageData && x.pageData.draft !== true)
 		// biome-ignore lint/style/noNonNullAssertion: <explanation>
 		.sort((a, b) => b.pageData!.publishedAt.getTime() - a.pageData!.publishedAt.getTime());
 

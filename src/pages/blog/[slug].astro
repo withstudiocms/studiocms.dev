@@ -4,33 +4,33 @@ import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
 
 import { StudioCMSRenderer } from 'studiocms:renderer';
-import studioCMS_SDK from 'studiocms:sdk';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 import { Icon } from 'studiocms:ui/components';
 
 let { slug } = Astro.params;
 
-const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug(`${slug}`);
+const page = await runSDK(SDKCoreJs.GET.page.bySlug(`${slug}`));
 
-if (!page) {
+if (!page.data) {
 	return Astro.redirect('/404');
 }
 
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
-const author = await studioCMS_SDK.GET.databaseEntry.users.byId(page.authorId!);
+const author = await runSDK(SDKCoreJs.GET.users.byId(page.data.authorId!));
 ---
 <Layout
-	title={page.title}
-	desc={page.description}
-	ogImage={page.heroImage}
+	title={page.data.title}
+	desc={page.data.description}
+	ogImage={page.data.heroImage}
 	author={author}
-	published={page.publishedAt}
-	updated={page.updatedAt}
+	published={page.data.publishedAt}
+	updated={page.data.updatedAt}
 >
 	<PageHeader
-		title={page.title}
+		title={page.data.title}
 	/>
 	<article>
-		<StudioCMSRenderer data={page} />
+		<StudioCMSRenderer data={page.data} />
 		<hr />
 		<div class="article-info">
 			{author?.avatar && (
@@ -38,7 +38,7 @@ const author = await studioCMS_SDK.GET.databaseEntry.users.byId(page.authorId!);
 			)}
 			<div class="info-text">
 				<p>{author?.name}</p>
-				<span class="article-card-date">Published {page.publishedAt.toLocaleDateString()}</span>
+				<span class="article-card-date">Published {page.data.publishedAt.toLocaleDateString()}</span>
 			</div>
 		</div>
 		<hr />

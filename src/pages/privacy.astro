@@ -3,12 +3,12 @@ import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
 
 import { StudioCMSRenderer } from 'studiocms:renderer';
-import studioCMS_SDK from 'studiocms:sdk';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 
-const page = await studioCMS_SDK.GET.databaseEntry.pages.bySlug('privacy');
+const page = await runSDK(SDKCoreJs.GET.page.bySlug('privacy'));
 
-if (!page) {
-	return Astro.redirect('/404');
+if (!page.data) {
+	return new Response(null, { status: 404 });
 }
 ---
 <Layout
@@ -18,6 +18,6 @@ if (!page) {
 		title="Privacy Policy"
 	/>
 	<article>
-		<StudioCMSRenderer data={page} />	
+		<StudioCMSRenderer data={page.data} />
 	</article>
 </Layout>

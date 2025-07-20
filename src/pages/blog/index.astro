@@ -1,11 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import studiocms_SDK from 'studiocms:sdk';
-import cached_SDK from 'studiocms:sdk/cache';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
 
-const pageFolderTree = await cached_SDK.GET.pageFolderTree(false, true);
+const pageFolderTree = await runSDK(SDKCoreJs.GET.pageFolderTree( true));
 const entries = (pageFolderTree.data.find((folder) => folder.name === 'Blog') || { children: [] })
 	.children;
 
@@ -17,7 +16,7 @@ const articlePromises = entries
 		const { title, publishedAt, slug, authorId, heroImage } = article.pageData;
 
 		// biome-ignore lint/style/noNonNullAssertion: <explanation>
-		const author = await studiocms_SDK.GET.databaseEntry.users.byId(authorId!)!;
+		const author = await runSDK(SDKCoreJs.GET.users.byId(authorId!))!;
 
 		return {
 			title,
