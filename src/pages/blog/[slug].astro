@@ -12,7 +12,7 @@ let { slug } = Astro.params;
 const page = await runSDK(SDKCoreJs.GET.page.bySlug(`${slug}`));
 
 if (!page.data) {
-	return Astro.redirect('/404');
+	return new Response(null, { status: 404 });
 }
 
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
