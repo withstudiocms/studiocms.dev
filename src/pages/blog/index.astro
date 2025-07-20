@@ -1,10 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import { SDKCoreJs, runSDK } from "studiocms:sdk";
-import PageHeader from "@/components/PageHeader.astro";
-import Layout from "@/layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
+import PageHeader from '@/components/PageHeader.astro';
+import Layout from '@/layouts/Layout.astro';
 
-const blogPages = await runSDK(SDKCoreJs.GET.folderPages("dde4b58c-ff71-4b02-a261-dba8fe694644" /* Blog */, false, true));
+const blogPages = await runSDK(
+	SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false, true)
+);
 const entries = blogPages.map(({ data }) => data);
 
 const articlePromises = entries.map(async (article) => {
@@ -28,7 +30,7 @@ const articlePromises = entries.map(async (article) => {
 });
 
 const articles = (await Promise.all(articlePromises))
-	.filter((x) => typeof x !== "undefined")
+	.filter((x) => typeof x !== 'undefined')
 	.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 ---
 
