@@ -34,7 +34,7 @@ import {
 
 const getNewestBlogPost = async () => {
 	const blogPages = await runSDK(
-		SDKCoreJs.GET.folderPages("dde4b58c-ff71-4b02-a261-dba8fe694644", false, true),
+		SDKCoreJs.GET.folderPages("dde4b58c-ff71-4b02-a261-dba8fe694644" /* Blog */, false, true),
 	);
 	const entries = blogPages.map(({ data }) => data);
 
