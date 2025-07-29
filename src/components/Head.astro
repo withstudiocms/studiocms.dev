@@ -12,6 +12,7 @@ interface Props {
 	author?: CombinedUserData;
 	published?: Date;
 	updated?: Date | null;
+  videoPosterImage?: string;
 }
 
 const OgBanner = new URL('/og.png', Astro.url);
@@ -25,6 +26,7 @@ const {
 	author,
 	published,
 	updated,
+  videoPosterImage
 } = Astro.props;
 
 const path = Astro.originPathname;
@@ -77,6 +79,12 @@ const path = Astro.originPathname;
   <link rel="preload" as="image" href="/noise.webp" />
   {path === '/' && (
     <link rel="preload" as="video" href="https://louisescher.dev/studiocms-trailer.mp4" />
+    <link
+      rel="preload"
+      as="image"
+      fetchpriority="high"
+      href={videoPosterImage}
+    />
   )}
   <link rel="alternate" type="application/rss+xml" title={title} href={RSSFeed} />
 </head>
