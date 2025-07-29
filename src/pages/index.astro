@@ -26,8 +26,10 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 
 import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
+import VideoPoster from '@/assets/video-placeholder.png';
 
 import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
+import { getImage } from 'astro:assets';
 
 const getNewestBlogPost = async () => {
 	const blogPages = await runSDK(
@@ -54,10 +56,11 @@ const getNewestBlogPost = async () => {
 	};
 };
 
-const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
+const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = await Promise.all([
 	getNpmMonthlyDownloads('studiocms'),
 	getDiscordMembers(),
 	getNewestBlogPost(),
+	getImage({ src: VideoPoster, format: 'webp' })
 ]);
 ---
 
@@ -109,6 +112,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			muted
 			playsinline
 			preload="auto"
+			poster={optimizedVideoPoster.src}
 			src="https://cdn.studiocms.dev/studiocms-trailer.mp4"></video>
 	</div>
 	<section class="target-groups">
@@ -371,11 +375,11 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		<div class="blog-article">
 			<div class="image-container">
 				<Image
-					src={newestBlogPost.heroImage}
+					src={newestBlogPost!.heroImage}
 					width={960}
 					height={540}
 					class="blog-image"
-					alt={newestBlogPost.title}
+					alt={newestBlogPost!.title}
 					loading="lazy"
 					quality={100}
 				/>
@@ -655,7 +659,6 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		justify-content: center;
 		border-radius: 1.25rem;
 		z-index: 5;
-		background-image: url("/video-placeholder.png");
 		position: relative;
 	}
 
