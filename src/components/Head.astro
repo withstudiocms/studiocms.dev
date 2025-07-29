@@ -12,7 +12,7 @@ interface Props {
 	author?: CombinedUserData;
 	published?: Date;
 	updated?: Date | null;
-  videoPosterImage?: string;
+	videoPosterImage?: string;
 }
 
 const OgBanner = new URL('/og.png', Astro.url);
@@ -26,7 +26,7 @@ const {
 	author,
 	published,
 	updated,
-  videoPosterImage
+	videoPosterImage,
 } = Astro.props;
 
 const path = Astro.originPathname;

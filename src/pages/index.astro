@@ -28,8 +28,8 @@ import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
 import VideoPoster from '@/assets/video-placeholder.png';
 
-import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
 import { getImage } from 'astro:assets';
+import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
 
 const getNewestBlogPost = async () => {
 	const blogPages = await runSDK(
@@ -60,7 +60,7 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 	getNpmMonthlyDownloads('studiocms'),
 	getDiscordMembers(),
 	getNewestBlogPost(),
-	getImage({ src: VideoPoster, format: 'webp' })
+	getImage({ src: VideoPoster, format: 'webp' }),
 ]);
 ---
 
