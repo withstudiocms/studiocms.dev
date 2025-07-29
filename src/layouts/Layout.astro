@@ -24,9 +24,10 @@ interface Props {
 	published?: Date;
 	updated?: Date | null;
 	home?: boolean;
+	videoPosterImage?: string;
 }
 
-const { ogImage, heroAnim, home } = Astro.props;
+const { ogImage, heroAnim, home, videoPosterImage } = Astro.props;
 
 let OgImage: URL | undefined = undefined;
 if (ogImage) {
@@ -37,7 +38,7 @@ const path = Astro.originPathname;
 ---
 <!doctype html>
 <html lang="en">
-	<Head {...Astro.props} ogImage={OgImage} />
+	<Head {...Astro.props} ogImage={OgImage} {videoPosterImage} />
 	<body>
 		<Toaster />
 		<Navbar />

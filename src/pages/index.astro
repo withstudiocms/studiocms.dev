@@ -26,8 +26,10 @@ import EcosystemSection from '@/components/EcosystemSection.astro';
 
 import ApolloDefaultExpression from '@/assets/apollo-default.png';
 import ApolloHappyExpression from '@/assets/apollo-happy.png';
+import VideoPoster from '@/assets/video-placeholder.png';
 
 import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
+import { getImage } from 'astro:assets';
 
 const getNewestBlogPost = async () => {
 	const blogPages = await runSDK(
@@ -54,10 +56,11 @@ const getNewestBlogPost = async () => {
 	};
 };
 
-const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
+const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = await Promise.all([
 	getNpmMonthlyDownloads('studiocms'),
 	getDiscordMembers(),
 	getNewestBlogPost(),
+	getImage({ src: VideoPoster, format: 'webp' })
 ]);
 ---
 
@@ -65,6 +68,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	title="The Astro-native CMS for all your needs."
 	desc="StudioCMS is the all-in-one content management solution for your next Astro project."
 	home
+	videoPosterImage={optimizedVideoPoster.src}
 >
 	<section class="hero">
 		<a
@@ -109,6 +113,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			muted
 			playsinline
 			preload="auto"
+			poster={optimizedVideoPoster.src}
 			src="https://cdn.studiocms.dev/studiocms-trailer.mp4"></video>
 	</div>
 	<section class="target-groups">
@@ -150,10 +155,10 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 					</div>
 				</div>
 			</div>
-			<Button href="/why-studiocms/studiocms-for-developers" color="mono">
+			<Button href="/why-studiocms/studiocms-for-developers" color="mono" aria-label="Learn more about how StudioCMS helps developers make great sites.">
 				Read more
 			</Button>
-			<DevIconPattern class="icon-deco" />
+			<Image quality={100} src={DevIconPattern} class="icon-deco" width={384} height={120} alt="" />
 		</Card>
 		<Card class="target-group-div">
 			<div>
@@ -196,10 +201,11 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			<Button
 				href="/why-studiocms/studiocms-for-content-creators"
 				color="mono"
+				aria-label="Learn more about how StudioCMS helps content creators create amazing content."
 			>
 				Read more
 			</Button>
-			<MarketerIconPattern class="icon-deco" />
+			<Image quality={100} src={MarketerIconPattern} class="icon-deco" width={384} height={120} alt="" />
 		</Card>
 		<Card class="target-group-div enterprise">
 			<div>
@@ -267,6 +273,7 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			<Button
 				href="/why-studiocms/studiocms-for-enterprises"
 				color="mono"
+				aria-label="Learn more about how StudioCMS helps enterprises scale their online presence."
 			>
 				Read more
 			</Button>
@@ -284,30 +291,27 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 			{
 				/* TODO: Add links once we have guides for the various platforms */
 			}
-			<Card class="hosting-provider" aria-label="NodeJS Logo">
+			<Card class="hosting-provider">
 				<Node />
 				<Node class="glow-layer" />
 			</Card>
-			<Card class="hosting-provider" aria-label="Coolify Logo">
+			<Card class="hosting-provider">
 				<Coolify />
 				<Coolify class="glow-layer" />
 			</Card>
-			<Card class="hosting-provider" aria-label="Docker Logo">
+			<Card class="hosting-provider">
 				<Docker />
 				<Docker class="glow-layer" />
 			</Card>
-			<Card class="hosting-provider" aria-label="Netlify Logo">
+			<Card class="hosting-provider">
 				<Netlify />
 				<Netlify class="glow-layer" />
 			</Card>
-			<Card class="hosting-provider" aria-label="Vercel Logo">
+			<Card class="hosting-provider">
 				<Vercel />
 				<Vercel class="glow-layer" />
 			</Card>
-			<Card
-				class="hosting-provider"
-				aria-label="Amazon Web Services Logo"
-			>
+			<Card class="hosting-provider">
 				<AWS />
 				<AWS class="glow-layer" />
 			</Card>
@@ -363,48 +367,50 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 	</section> */
 	}
 	<EcosystemSection />
-	<section class="blog-showcase">
-		<h2>Keep up With What's Happening</h2>
-		<p>
-			The StudioCMS Blog is the place to go for updates to the ecosystem.
-		</p>
-		<div class="blog-article">
-			<div class="image-container">
-				<Image
-					src={newestBlogPost.heroImage}
-					width={960}
-					height={540}
-					class="blog-image"
-					alt={newestBlogPost.title}
-					loading="lazy"
-					quality={100}
-				/>
-				<Image
-					src={newestBlogPost!.heroImage}
-					width={960}
-					height={540}
-					inferSize={true}
-					class="blog-image-glow"
-					alt="Alt Text"
-					loading="lazy"
-					quality={10}
-				/>
-			</div>
-			<div class="blog-info">
-				<div class="blog-info-text">
-					<h3>{newestBlogPost!.title}</h3>
-					<p>{newestBlogPost!.description}</p>
+	{newestBlogPost && (
+		<section class="blog-showcase">
+			<h2>Keep up With What's Happening</h2>
+			<p>
+				The StudioCMS Blog is the place to go for updates to the ecosystem.
+			</p>
+			<div class="blog-article">
+				<div class="image-container">
+					<Image
+						src={newestBlogPost.heroImage}
+						width={960}
+						height={540}
+						class="blog-image"
+						alt={newestBlogPost.title}
+						loading="lazy"
+						quality={100}
+					/>
+					<Image
+						src={newestBlogPost.heroImage}
+						width={960}
+						height={540}
+						inferSize={true}
+						class="blog-image-glow"
+						alt="Alt Text"
+						loading="lazy"
+						quality={10}
+					/>
 				</div>
-				<a
-					class="blog-read-more"
-					href={`/blog/${newestBlogPost!.slug}`}
-				>
-					<span>Read More</span>
-					<Icon name="arrow-right-20-solid" width={20} height={20} />
-				</a>
+				<div class="blog-info">
+					<div class="blog-info-text">
+						<h3>{newestBlogPost.title}</h3>
+						<p>{newestBlogPost.description}</p>
+					</div>
+					<a
+						class="blog-read-more"
+						href={`/blog/${newestBlogPost.slug}`}
+					>
+						<span>Read More</span>
+						<Icon name="arrow-right-20-solid" width={20} height={20} />
+					</a>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	)}
 	<section class="final-cta">
 		<div class="final-cta-card">
 			<h2>It's time to get started.</h2>
@@ -655,7 +661,6 @@ const [npmDownloads, discordMembers, newestBlogPost] = await Promise.all([
 		justify-content: center;
 		border-radius: 1.25rem;
 		z-index: 5;
-		background-image: url("/video-placeholder.png");
 		position: relative;
 	}
 

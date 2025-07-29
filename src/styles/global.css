@@ -66,6 +66,10 @@ footer a:hover {
 	margin-bottom: .5rem;
 }
 
+.sui-footer li {
+	margin-bottom: .25rem;
+}
+
 .footer-brand {
 	display: flex;
 	flex-direction: row;
@@ -145,6 +149,11 @@ article {
 	font-size: 1.0625rem;
 	width: 100%;
 	text-align: left;
+}
+
+h1 {
+  margin-block: 0.67em;
+  font-size: 2em;
 }
 
 article h1,
