@@ -367,48 +367,50 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 	</section> */
 	}
 	<EcosystemSection />
-	<section class="blog-showcase">
-		<h2>Keep up With What's Happening</h2>
-		<p>
-			The StudioCMS Blog is the place to go for updates to the ecosystem.
-		</p>
-		<div class="blog-article">
-			<div class="image-container">
-				<Image
-					src={newestBlogPost!.heroImage}
-					width={960}
-					height={540}
-					class="blog-image"
-					alt={newestBlogPost!.title}
-					loading="lazy"
-					quality={100}
-				/>
-				<Image
-					src={newestBlogPost!.heroImage}
-					width={960}
-					height={540}
-					inferSize={true}
-					class="blog-image-glow"
-					alt="Alt Text"
-					loading="lazy"
-					quality={10}
-				/>
-			</div>
-			<div class="blog-info">
-				<div class="blog-info-text">
-					<h3>{newestBlogPost!.title}</h3>
-					<p>{newestBlogPost!.description}</p>
+	{newestBlogPost && (
+		<section class="blog-showcase">
+			<h2>Keep up With What's Happening</h2>
+			<p>
+				The StudioCMS Blog is the place to go for updates to the ecosystem.
+			</p>
+			<div class="blog-article">
+				<div class="image-container">
+					<Image
+						src={newestBlogPost.heroImage}
+						width={960}
+						height={540}
+						class="blog-image"
+						alt={newestBlogPost.title}
+						loading="lazy"
+						quality={100}
+					/>
+					<Image
+						src={newestBlogPost.heroImage}
+						width={960}
+						height={540}
+						inferSize={true}
+						class="blog-image-glow"
+						alt="Alt Text"
+						loading="lazy"
+						quality={10}
+					/>
 				</div>
-				<a
-					class="blog-read-more"
-					href={`/blog/${newestBlogPost!.slug}`}
-				>
-					<span>Read More</span>
-					<Icon name="arrow-right-20-solid" width={20} height={20} />
-				</a>
+				<div class="blog-info">
+					<div class="blog-info-text">
+						<h3>{newestBlogPost.title}</h3>
+						<p>{newestBlogPost.description}</p>
+					</div>
+					<a
+						class="blog-read-more"
+						href={`/blog/${newestBlogPost.slug}`}
+					>
+						<span>Read More</span>
+						<Icon name="arrow-right-20-solid" width={20} height={20} />
+					</a>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	)}
 	<section class="final-cta">
 		<div class="final-cta-card">
 			<h2>It's time to get started.</h2>
