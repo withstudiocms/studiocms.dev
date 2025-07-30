@@ -76,7 +76,7 @@ const path = Astro.originPathname;
   <link rel="icon" href="https://cdn.studiocms.dev/favicon-dark.png" type="image/png" media="(prefers-color-scheme: light)" />
   <link rel="icon" href="https://cdn.studiocms.dev/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href={onestWoff2} />
-  <link rel="preload" as="image" crossorigin="anonymous" href="/noise.webp" />
+  <link rel="preload" as="image" type="image/webp" crossorigin="anonymous" href="/noise.webp" />
   {path === '/' && (
     <link 
       rel="preload"
