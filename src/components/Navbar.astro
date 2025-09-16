@@ -28,8 +28,8 @@ const stars = await getStudioCMSStars();
       </Button>
       <Button id='mobile-nav-toggle'>
         <slot name="start-content">
-          <Icon name="bars-3" width={24} height={24} class="bars" />
-          <Icon name="x-mark" width={24} height={24} class="x-mark" />
+          <Icon name="heroicons:bars-3" width={24} height={24} class="bars" />
+          <Icon name="heroicons:x-mark" width={24} height={24} class="x-mark" />
         </slot>
       </Button>
     </div>
@@ -65,7 +65,7 @@ const stars = await getStudioCMSStars();
     padding: 1rem 1.5rem;
     background-color: hsla(var(--background-step-1) / .5);
     backdrop-filter: blur(2px);
-    border-bottom: 1px solid hsl(var(--border));
+    border-bottom: 1px solid var(--border);
     z-index: 50;
   }
 
@@ -88,7 +88,7 @@ const stars = await getStudioCMSStars();
   .nav-brand span {
     font-size: 1.5rem;
     font-weight: 700;
-    color: hsl(var(--text-normal));
+    color: var(--text-normal);
   }
 
   .nav-links {
@@ -101,17 +101,17 @@ const stars = await getStudioCMSStars();
 
   .nav-links a {
     text-decoration: none;
-    color: hsl(var(--text-normal));
+    color: var(--text-normal);
     transition: all .15s ease;
   }
 
   .nav-links a:hover {
-    color: hsl(var(--primary-hover));
+    color: var(--primary-hover);
   }
 
   .mobile-gh-button {
     display: none;
-    color: hsl(var(--text-normal)) !important;
+    color: var(--text-normal) !important;
   }
 
   #mobile-nav-toggle {

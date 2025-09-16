@@ -80,23 +80,23 @@ const articles = (await Promise.all(articlePromises))
 	.article-card {
 		display: flex;
 		flex-direction: column;
-		background-color: hsl(var(--background-step-1));
-		border: 1px solid hsl(var(--border));
+		background-color: var(--background-step-1);
+		border: 1px solid var(--border);
 		border-radius: 1rem;
 		overflow: hidden;
 		text-decoration: none;
 		transition: all 0.15s ease;
-		color: hsl(var(--text-normal));
+		color: var(--text-normal);
 	}
 
 	.article-card:hover {
-		border: 1px solid hsl(var(--primary-base));
+		border: 1px solid var(--primary-base);
 	}
 
 	.article-card-image {
 		width: 100%;
 		height: auto;
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
 	}
@@ -130,7 +130,7 @@ const articles = (await Promise.all(articlePromises))
 	}
 
 	.article-card-date {
-		color: hsl(var(--text-muted));
+		color: var(--text-muted);
 		font-size: 0.875rem;
 	}
 

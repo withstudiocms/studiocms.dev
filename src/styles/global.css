@@ -105,7 +105,7 @@ footer a:hover {
 }
 
 .socials a:hover {
-	color: hsl(var(--text-normal));
+	color: var(--text-normal);
 }
 
 .brand-newsletter {
@@ -188,7 +188,7 @@ article .heading-wrapper {
 article hr {
 	height: 1px;
 	border: none;
-	background-color: hsl(var(--border));
+	background-color: var(--border);
 }
 
 article p:has(img) {
@@ -202,14 +202,14 @@ article p:has(img) {
 article img {
 	max-width: 100%;
 	height: auto;
-	border: 1px solid hsl(var(--border));
-	background-color: hsl(var(--background-step-1)) !important;
+	border: 1px solid var(--border);
+	background-color: var(--background-step-1) !important;
 	border-radius: 1rem;
 }
 
 article pre.astro-code {
-	background-color: hsl(var(--background-step-1)) !important;
-	border: 1px solid hsl(var(--border));
+	background-color: var(--background-step-1) !important;
+	border: 1px solid var(--border);
 	padding: .5rem .75rem;
 	border-radius: 1rem;
 }
@@ -223,13 +223,13 @@ article pre.astro-code code {
 }
 
 article code:not(.astro-code code) {
-	background-color: hsl(var(--background-step-3));
+	background-color: var(--background-step-3);
 	padding: .125rem .25rem;
 	font-size: .925rem;
 }
 
 article blockquote {
-	border-left: 2px solid hsl(var(--primary-base));
+	border-left: 2px solid var(--primary-base);
 	padding: .75rem 1rem;
 	margin-left: 0;
 	background-color: hsla(var(--primary-base) / 0.125);
@@ -255,23 +255,23 @@ article table {
 article table th {
 	padding: .5rem 1.5rem .5rem .5rem;
 	text-align: left;
-	background-color: hsl(var(--background-step-2));
-	border: 1px solid hsl(var(--border));
+	background-color: var(--background-step-2);
+	border: 1px solid var(--border);
 }
 
 article table tbody {
 	margin-top: 1rem;
-	border: 1px solid hsl(var(--border));
+	border: 1px solid var(--border);
 }
 
 article table tbody tr {
-	border-bottom: 1px solid hsl(var(--border));
+	border-bottom: 1px solid var(--border);
 }
 
 article table tbody tr td {
 	padding: .5rem 1.5rem .5rem .5rem;
-	border-right: 1px solid hsl(var(--border));
-	background-color: hsl(var(--background-step-1));
+	border-right: 1px solid var(--border);
+	background-color: var(--background-step-1);
 }
 
 article hr {

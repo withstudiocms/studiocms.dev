@@ -74,16 +74,16 @@ const PROJECTS = [
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: 1.25rem;
-		background-color: hsl(var(--background-step-2));
+		background-color: var(--background-step-2);
 		overflow: hidden;
 		text-decoration: none !important;
 		transition: all .15s ease;
 	}
 
 	.resource:hover {
-		border: 1px solid hsl(var(--primary-base));
+		border: 1px solid var(--primary-base);
 	}
 
 	.resource-preview-container {
@@ -114,7 +114,7 @@ const PROJECTS = [
 	}
 
 	.resource h3 {
-		color: hsl(var(--text-normal));
+		color: var(--text-normal);
 	}
 
 	.resource-content {
@@ -122,15 +122,15 @@ const PROJECTS = [
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		background-color: hsl(var(--background-step-2));
-		border-top: 1px solid hsl(var(--border));
+		background-color: var(--background-step-2);
+		border-top: 1px solid var(--border);
 		padding: 1rem;
 		text-align: left;
 		width: 100%;
 	}
 
 	.resource-content p {
-		color: hsl(var(--text-muted));
+		color: var(--text-muted);
 		font-size: 0.875em;
 		margin: 0;
 	}

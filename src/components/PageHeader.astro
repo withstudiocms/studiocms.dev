@@ -30,7 +30,7 @@ const { title } = Astro.props;
 		border-bottom-right-radius: 1.25rem;
 		position: relative;
 		overflow: hidden;
-		background-color: hsl(var(--background-base));
+		background-color: var(--background-base);
 		z-index: 1;
 		margin-bottom: 2rem;
 	}
@@ -61,8 +61,16 @@ const { title } = Astro.props;
 		height: 100%;
 		background-color: #a581f3;
 		mask-image: 
-			radial-gradient(ellipse at 0% -10%, hsl(var(--background-base) / 0) 0%, hsla(var(--background-base) / 0) 70%, hsl(var(--background-base)) 100%),
-			radial-gradient(ellipse at 100% -10%, hsl(var(--background-base) / 0) 0%, hsla(var(--background-base) / 0) 70%, hsl(var(--background-base)) 100%);
+			radial-gradient(ellipse at 0% -10%,
+				transparent 0%,
+				transparent 70%,
+				var(--background-base) 100%
+			),
+			radial-gradient(ellipse at 100% -10%,
+				transparent 0%,
+				transparent 70%,
+				var(--background-base) 100%
+			);
 		opacity: 0.4;
 		z-index: 1;
 	}
