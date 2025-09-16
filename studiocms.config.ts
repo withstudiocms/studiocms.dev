@@ -1,4 +1,5 @@
 import { defineStudioCMSConfig } from 'studiocms/config';
+import md from '@studiocms/md';
 
 export default defineStudioCMSConfig({
 	dbStartPage: false,
@@ -14,15 +15,14 @@ export default defineStudioCMSConfig({
 		dashboardConfig: {
 			inject404Route: false,
 		},
-		pageTypeOptions: {
-			markdown: {
-				flavor: 'studiocms',
-				autoLinkHeadings: false,
-			},
-		},
 	},
 	componentRegistry: {
 		sponsorswithimages: './src/components/SponsorsWithImages.astro',
 	},
-	plugins: [],
+	plugins: [md({
+		flavor: 'studiocms',
+		autoLinkHeadings: false,
+		callouts: "obsidian",
+		discordSubtext: true
+	})],
 });
