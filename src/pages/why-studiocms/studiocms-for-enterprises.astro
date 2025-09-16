@@ -7,7 +7,7 @@ import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 
 const page = await runSDK(SDKCoreJs.GET.page.bySlug('studiocms-for-enterprises'));
 
-if (!page.data) {
+if (!page) {
 	return new Response(null, { status: 404 });
 }
 ---
