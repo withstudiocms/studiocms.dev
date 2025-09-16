@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'studiocms:ui/components';
+import { Icon } from 'studiocms:ui/components/icon';
 import AstroLogo from '@/assets/astro.svg';
 import SwordsIcon from '@/assets/swords.svg';
 ---
@@ -28,7 +28,7 @@ import SwordsIcon from '@/assets/swords.svg';
             </p>
         </div>
         <div class="benefit-card">
-            <Icon name='user-group' width={24} height={24} aria-hidden="true" />
+            <Icon name='heroicons:user-group' width={24} height={24} aria-hidden="true" />
             <h3>Community-built</h3>
             <p>
                 StudioCMS isn't a closed-off project or organization - it is made up of Astro 
@@ -72,11 +72,11 @@ import SwordsIcon from '@/assets/swords.svg';
         width: 100%;
         padding: 2rem;
         border-radius: 1rem;
-        background-color: hsl(var(--background-step-1));
+        background-color: var(--background-step-1);
         display: flex;
         flex-direction: column;
         gap: .5rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
     }
 
     .benefit-card h3 {

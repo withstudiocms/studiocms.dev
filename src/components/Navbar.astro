@@ -1,5 +1,6 @@
 ---
-import { Button, Icon } from 'studiocms:ui/components';
+import { Icon } from 'studiocms:ui/components/icon';
+import { Button } from 'studiocms:ui/components/button';
 import GitHubLogo from '@/assets/github.svg';
 import LogoAdaptive from '@/assets/logo-adaptive.svg';
 import { getStudioCMSStars } from '../utils/stats-helpers';
@@ -28,8 +29,8 @@ const stars = await getStudioCMSStars();
       </Button>
       <Button id='mobile-nav-toggle'>
         <slot name="start-content">
-          <Icon name="bars-3" width={24} height={24} class="bars" />
-          <Icon name="x-mark" width={24} height={24} class="x-mark" />
+          <Icon name="heroicons:bars-3" width={24} height={24} class="bars" />
+          <Icon name="heroicons:x-mark" width={24} height={24} class="x-mark" />
         </slot>
       </Button>
     </div>
@@ -63,9 +64,9 @@ const stars = await getStudioCMSStars();
     align-items: center;
     justify-content: center;
     padding: 1rem 1.5rem;
-    background-color: hsla(var(--background-step-1) / .5);
+    background-color: color-mix(in srgb, var(--background-step-1) 50%, transparent 50%);
     backdrop-filter: blur(2px);
-    border-bottom: 1px solid hsl(var(--border));
+    border-bottom: 1px solid var(--border);
     z-index: 50;
   }
 
@@ -88,7 +89,7 @@ const stars = await getStudioCMSStars();
   .nav-brand span {
     font-size: 1.5rem;
     font-weight: 700;
-    color: hsl(var(--text-normal));
+    color: var(--text-normal);
   }
 
   .nav-links {
@@ -101,17 +102,17 @@ const stars = await getStudioCMSStars();
 
   .nav-links a {
     text-decoration: none;
-    color: hsl(var(--text-normal));
+    color: var(--text-normal);
     transition: all .15s ease;
   }
 
   .nav-links a:hover {
-    color: hsl(var(--primary-hover));
+    color: var(--primary-hover);
   }
 
   .mobile-gh-button {
     display: none;
-    color: hsl(var(--text-normal)) !important;
+    color: var(--text-normal) !important;
   }
 
   #mobile-nav-toggle {
@@ -157,7 +158,7 @@ const stars = await getStudioCMSStars();
       left: -1.5rem;
       flex-direction: column;
       padding: 1.5rem;
-      background-color: hsla(var(--background-step-1) / .75);
+      background-color: color-mix(in srgb, var(--background-base) 75%, transparent 25%);
       backdrop-filter: blur(4px) !important;
       height: calc(100vh - 73px);
       top: calc(100% + 1rem + 1px);

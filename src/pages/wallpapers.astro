@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { Icon } from 'studiocms:ui/components';
+import { Icon } from 'studiocms:ui/components/icon';
 import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
 
@@ -47,7 +47,7 @@ const WALLPAPERS = [
 							quality={80}
 						/>
 						<a class="download-button dark" href={item.dark} download aria-label={`Download ${item.name} dark wallpaper`}>
-							<Icon name="arrow-down-tray" width={20} height={20} />
+							<Icon name="heroicons:arrow-down-tray" width={20} height={20} />
 						</a>
 						<Image
 							src={item.light as any}
@@ -59,7 +59,7 @@ const WALLPAPERS = [
 							quality={80}
 						/>
 						<a class="download-button light" href={item.light} download aria-label={`Download ${item.name} light wallpaper`}>
-							<Icon name="arrow-down-tray" width={20} height={20} />
+							<Icon name="heroicons:arrow-down-tray" width={20} height={20} />
 						</a>
 					</div>
 					<div class="resource-content">
@@ -88,9 +88,9 @@ const WALLPAPERS = [
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: 1.25rem;
-		background-color: hsl(var(--background-step-1));
+		background-color: var(--background-step-1);
 		overflow: hidden;
 	}
 
@@ -116,7 +116,7 @@ const WALLPAPERS = [
 	}
 
 	.resource h3 {
-		color: hsl(var(--text-normal));
+		color: var(--text-normal);
 	}
 
 	.resource-content {
@@ -126,17 +126,17 @@ const WALLPAPERS = [
 		justify-content: space-between;
 		gap: 1rem;
 		align-items: center;
-		background-color: hsl(var(--background-step-2));
-		border-top: 1px solid hsl(var(--border));
+		background-color: var(--background-step-2);
+		border-top: 1px solid var(--border);
 		padding: 1rem;
 		text-align: left;
 		width: 100%;
 	}
 
 	.download-button {
-		background-color: hsla(var(--text-inverted) / .5);
+		background-color: color-mix(in srgb, var(--text-inverted) 50%, transparent 50%);
 		padding: .25rem .75rem;
-		color: hsl(var(--text-normal));
+		color: var(--text-normal);
 		border-radius: .25rem;
 		text-decoration: none;
 		display: flex;
@@ -150,17 +150,17 @@ const WALLPAPERS = [
 	}
 
 	.download-button:hover {
-		background-color: hsla(var(--text-inverted) / .75);
+		background-color: color-mix(in srgb, var(--text-inverted) 75%, transparent 25%);
 	}
 
 	.download-button.dark {
 		right: auto;
 		left: .5rem;
-		background-color: hsla(var(--text-normal) / .75);
-		color: hsl(var(--text-inverted));
+		background-color: color-mix(in srgb, var(--text-normal) 75%, transparent 25%);
+		color: var(--text-inverted);
 	}
 
 	.download-button.dark:hover {
-		background-color: hsla(var(--text-normal) / .85);
+		background-color: color-mix(in srgb, var(--text-normal) 85%, transparent 15%);
 	}
 </style>

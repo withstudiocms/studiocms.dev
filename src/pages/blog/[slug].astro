@@ -5,13 +5,13 @@ import Layout from '@/layouts/Layout.astro';
 
 import { StudioCMSRenderer } from 'studiocms:renderer';
 import { SDKCoreJs, runSDK } from 'studiocms:sdk';
-import { Icon } from 'studiocms:ui/components';
+import { Icon } from 'studiocms:ui/components/icon';
 
 let { slug } = Astro.params;
 
 const page = await runSDK(SDKCoreJs.GET.page.bySlug(`${slug}`));
 
-if (!page.data) {
+if (!page) {
 	return new Response(null, { status: 404 });
 }
 
@@ -43,7 +43,7 @@ const author = await runSDK(SDKCoreJs.GET.users.byId(page.data.authorId!));
 		</div>
 		<hr />
 		<a class="back-to-blog-link" href="/blog">
-			<Icon name="arrow-left-16-solid" width={16} height={16} />
+			<Icon name="heroicons:arrow-left-16-solid" width={16} height={16} />
 			Back to Blog
 		</a>
 	</article>
@@ -76,7 +76,7 @@ const author = await runSDK(SDKCoreJs.GET.users.byId(page.data.authorId!));
 
 	.article-card-date {
 		font-size: .875rem;
-		color: hsl(var(--text-muted));
+		color: var(--text-muted);
 	}
 
 	.back-to-blog-link {
@@ -84,14 +84,14 @@ const author = await runSDK(SDKCoreJs.GET.users.byId(page.data.authorId!));
 		align-items: center;
 		gap: .5rem;
 		margin-top: 2rem;
-		color: hsl(var(--text-muted));
+		color: var(--text-muted);
 		text-decoration: none;
 		transition: all .15s ease;
 		width: fit-content;
 	}
 
 	.back-to-blog-link:hover {
-		color: hsl(var(--text-normal));
+		color: var(--text-normal);
 		text-decoration: underline;
 	}
 </style>

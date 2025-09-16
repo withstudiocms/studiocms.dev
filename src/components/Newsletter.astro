@@ -1,5 +1,6 @@
 ---
-import { Button, Input } from 'studiocms:ui/components';
+import { Input } from 'studiocms:ui/components/input';
+import { Button } from 'studiocms:ui/components/button';
 ---
 
 <form
@@ -36,7 +37,7 @@ import { Button, Input } from 'studiocms:ui/components';
 </form>
 
 <script>
-  import { toast } from "studiocms:ui/components";
+  import { toast } from "studiocms:ui/components/toaster";
 
   const form = document.getElementById("newsletter-form") as HTMLFormElement;
 

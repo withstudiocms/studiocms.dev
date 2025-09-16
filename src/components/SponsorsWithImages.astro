@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import Skip2Logo from '../assets/skip2-wordmark-red.svg';
 import TursoLogo from '../assets/turso-logo-illustrated.svg';
+
+interface Props {}
 ---
 
 <div class="sponsors-container">
@@ -29,16 +31,16 @@ import TursoLogo from '../assets/turso-logo-illustrated.svg';
 		text-decoration: none;
 		color: inherit;
 		text-align: center;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		padding: 1rem;
 		border-radius: 1rem;
 		transition: all .15s ease;
-		background-color: hsl(var(--background-step-1));
+		background-color: var(--background-step-1);
 		gap: .5rem;
 	}
 
 	.sponsors-container a:hover {
-		border: 1px solid hsl(var(--primary-base));
+		border: 1px solid var(--primary-base);
 	}
 
 	.sponsors-container a img {
