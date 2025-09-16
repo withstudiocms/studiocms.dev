@@ -99,7 +99,7 @@ footer a:hover {
 }
 
 .socials a {
-	color: color-mix(var(--text-normal) 75%, transparent 25%);
+	color: color-mix(in srgb, var(--text-normal) 75%, transparent 25%);
 	transition: all .15s ease;
 	display: flex;
 }
@@ -232,7 +232,7 @@ article blockquote {
 	border-left: 2px solid var(--primary-base);
 	padding: .75rem 1rem;
 	margin-left: 0;
-	background-color: color-mix(var(--text-normal) 12.5%, transparent 87.5%);
+	background-color: color-mix(in srgb, var(--text-normal) 12.5%, transparent 87.5%);
 	border-radius: 0 1rem 1rem 0;
 	width: 100%;
 	/* biome-ignore lint/suspicious/noShorthandPropertyOverrides: <explanation> */
