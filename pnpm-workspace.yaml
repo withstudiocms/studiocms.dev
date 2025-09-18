@@ -1,0 +1,13 @@
+minimumReleaseAge: 4320
+
+minimumReleaseAgeExclude:
+  - studiocms
+  - '@studiocms/*'
+  - '@withstudiocms/*'
+
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@parcel/watcher'
+  - esbuild
+  - msgpackr-extract
+  - sharp
