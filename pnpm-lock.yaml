@@ -16,7 +16,7 @@ importers:
         version: 6.3.6
       '@astrojs/node':
         specifier: ^9.4.3
-        version: 9.4.3(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+        version: 9.4.3(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
@@ -25,19 +25,19 @@ importers:
         version: 5.2.10
       '@studiocms/cfetch':
         specifier: ^0.1.6
-        version: 0.1.6(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))
+        version: 0.1.6(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))
       '@studiocms/md':
         specifier: ^0.1.0-beta.26
-        version: 0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(7wumwtys7r5bnhqzmzt6cjmiqa))(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))
+        version: 0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(4d0345716d0b79ebf0286d0c260370f8))(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))
       '@studiocms/ui':
         specifier: ^1.0.0-beta.0
-        version: 1.0.0-beta.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))
+        version: 1.0.0-beta.1(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))
       '@types/node':
         specifier: ^22.13.5
-        version: 22.18.4
+        version: 22.18.3
       astro:
         specifier: ^5.13.7
-        version: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+        version: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       pathe:
         specifier: 2.0.3
         version: 2.0.3
@@ -46,13 +46,13 @@ importers:
         version: 0.33.5
       studiocms:
         specifier: 0.1.0-beta.26
-        version: 0.1.0-beta.26(7wumwtys7r5bnhqzmzt6cjmiqa)
+        version: 0.1.0-beta.26(4d0345716d0b79ebf0286d0c260370f8)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
       vite:
         specifier: ^6.3.5
-        version: 6.3.6(@types/node@22.18.4)(yaml@2.8.1)
+        version: 6.3.6(@types/node@22.18.3)(yaml@2.8.1)
 
 packages:
 
@@ -123,24 +123,28 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-arm64@1.9.4':
     resolution: {integrity: sha512-fJIW0+LYujdjUgJJuwesP4EjIBl/N/TcOX3IvIHJQNsAqvV2CHIogsmA94BPG6jZATS4Hi+xv4SkBBQSt1N4/g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-x64-musl@1.9.4':
     resolution: {integrity: sha512-gEhi/jSBhZ2m6wjV530Yy8+fNqG8PAinM3oV7CyO+6c3CEh16Eizm21uHVsyVBEB6RIM8JHIl6AGYCv6Q6Q9Tg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-x64@1.9.4':
     resolution: {integrity: sha512-lRCJv/Vi3Vlwmbd6K+oQ0KhLHMAysN8lXoCI7XeHlxaajk06u7G+UsFSO01NAs5iYuWKmVZjmiOzJ0OJmGsMwg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-win32-arm64@1.9.4':
     resolution: {integrity: sha512-tlbhLk+WXZmgwoIKwHIHEBZUwxml7bRJgk0X2sPyNR3S93cdRq6XulAZRQJ17FYGGzWne0fgrXBKpl7l4M87Hg==}
@@ -176,8 +180,8 @@ packages:
       '@effect/printer-ansi': ^0.45.0
       effect: ^3.17.8
 
-  '@effect/cluster@0.48.7':
-    resolution: {integrity: sha512-aO9Gpt/70J2wDxPUPVDEVMPjGKpiWGHLaliGmZenl2F74gRbOJj6782e/gx0qtv5lvcfIGR0fyTMnFXDLjRrIQ==}
+  '@effect/cluster@0.48.6':
+    resolution: {integrity: sha512-ZrFOdAZhEiNRr0R6H+yP17aoQ5kWqU6MR8awV074GLGKd6Hyocn+9GNPGU0qvbP48Iad1j707J7b/nfvhVF8TA==}
     peerDependencies:
       '@effect/platform': ^0.90.9
       '@effect/rpc': ^0.69.2
@@ -480,144 +484,170 @@ packages:
     resolution: {integrity: sha512-9B+taZ8DlyyqzZQnoeIvDVR/2F4EbMepXMc/NdVbkzsJbzkUjhXv/70GQJ7tdLA4YJgNP25zukcxpX2/SueNrA==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-arm64@1.2.0':
     resolution: {integrity: sha512-RXwd0CgG+uPRX5YYrkzKyalt2OJYRiJQ8ED/fi1tq9WQW2jsQIn0tqrlR5l5dr/rjqq6AHAxURhj2DVjyQWSOA==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-arm@1.0.5':
     resolution: {integrity: sha512-gvcC4ACAOPRNATg/ov8/MnbxFDJqf/pDePbBnuBDcjsI8PssmjoKMAz4LtLaVi+OnSb5FK/yIOamqDwGmXW32g==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-arm@1.2.0':
     resolution: {integrity: sha512-mWd2uWvDtL/nvIzThLq3fr2nnGfyr/XMXlq8ZJ9WMR6PXijHlC3ksp0IpuhK6bougvQrchUAfzRLnbsen0Cqvw==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-ppc64@1.2.0':
     resolution: {integrity: sha512-Xod/7KaDDHkYu2phxxfeEPXfVXFKx70EAFZ0qyUdOjCcxbjqyJOEUpDe6RIyaunGxT34Anf9ue/wuWOqBW2WcQ==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-s390x@1.0.4':
     resolution: {integrity: sha512-u7Wz6ntiSSgGSGcjZ55im6uvTrOxSIS8/dgoVMoiGE9I6JAfU50yH5BoDlYA1tcuGS7g/QNtetJnxA6QEsCVTA==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-s390x@1.2.0':
     resolution: {integrity: sha512-eMKfzDxLGT8mnmPJTNMcjfO33fLiTDsrMlUVcp6b96ETbnJmd4uvZxVJSKPQfS+odwfVaGifhsB07J1LynFehw==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-x64@1.0.4':
     resolution: {integrity: sha512-MmWmQ3iPFZr0Iev+BAgVMb3ZyC4KeFc3jFxnNbEPas60e1cIfevbtuyf9nDGIzOaW9PdnDciJm+wFFaTlj5xYw==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-x64@1.2.0':
     resolution: {integrity: sha512-ZW3FPWIc7K1sH9E3nxIGB3y3dZkpJlMnkk7z5tu1nSkBoCgw2nSRTFHI5pB/3CQaJM0pdzMF3paf9ckKMSE9Tg==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linuxmusl-arm64@1.0.4':
     resolution: {integrity: sha512-9Ti+BbTYDcsbp4wfYib8Ctm1ilkugkA/uscUn6UXK1ldpC1JjiXbLfFZtRlBhjPZ5o1NCLiDbg8fhUPKStHoTA==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-libvips-linuxmusl-arm64@1.2.0':
     resolution: {integrity: sha512-UG+LqQJbf5VJ8NWJ5Z3tdIe/HXjuIdo4JeVNADXBFuG7z9zjoegpzzGIyV5zQKi4zaJjnAd2+g2nna8TZvuW9Q==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-libvips-linuxmusl-x64@1.0.4':
     resolution: {integrity: sha512-viYN1KX9m+/hGkJtvYYp+CCLgnJXwiQB39damAO7WMdKWlIhmYTfHjwSbQeUK/20vY154mwezd9HflVFM1wVSw==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-libvips-linuxmusl-x64@1.2.0':
     resolution: {integrity: sha512-SRYOLR7CXPgNze8akZwjoGBoN1ThNZoqpOgfnOxmWsklTGVfJiGJoC/Lod7aNMGA1jSsKWM1+HRX43OP6p9+6Q==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-linux-arm64@0.33.5':
     resolution: {integrity: sha512-JMVv+AMRyGOHtO1RFBiJy/MBsgz0x4AWrT6QoEVVTyh1E39TrCUpTRI7mx9VksGX4awWASxqCYLCV4wBZHAYxA==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-arm64@0.34.3':
     resolution: {integrity: sha512-QdrKe3EvQrqwkDrtuTIjI0bu6YEJHTgEeqdzI3uWJOH6G1O8Nl1iEeVYRGdj1h5I21CqxSvQp1Yv7xeU3ZewbA==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-arm@0.33.5':
     resolution: {integrity: sha512-JTS1eldqZbJxjvKaAkxhZmBqPRGmxgu+qFKSInv8moZ2AmT5Yib3EQ1c6gp493HvrvV8QgdOXdyaIBrhvFhBMQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-arm@0.34.3':
     resolution: {integrity: sha512-oBK9l+h6KBN0i3dC8rYntLiVfW8D8wH+NPNT3O/WBHeW0OQWCjfWksLUaPidsrDKpJgXp3G3/hkmhptAW0I3+A==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-ppc64@0.34.3':
     resolution: {integrity: sha512-GLtbLQMCNC5nxuImPR2+RgrviwKwVql28FWZIW1zWruy6zLgA5/x2ZXk3mxj58X/tszVF69KK0Is83V8YgWhLA==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-s390x@0.33.5':
     resolution: {integrity: sha512-y/5PCd+mP4CA/sPDKl2961b+C9d+vPAveS33s6Z3zfASk2j5upL6fXVPZi7ztePZ5CuH+1kW8JtvxgbuXHRa4Q==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-s390x@0.34.3':
     resolution: {integrity: sha512-3gahT+A6c4cdc2edhsLHmIOXMb17ltffJlxR0aC2VPZfwKoTGZec6u5GrFgdR7ciJSsHT27BD3TIuGcuRT0KmQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-x64@0.33.5':
     resolution: {integrity: sha512-opC+Ok5pRNAzuvq1AG0ar+1owsu842/Ab+4qvU879ippJBHvyY5n2mxF1izXqkPYlGuP/M556uh53jRLJmzTWA==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-x64@0.34.3':
     resolution: {integrity: sha512-8kYso8d806ypnSq3/Ly0QEw90V5ZoHh10yH0HnrzOCr6DKAPI6QVHvwleqMkVQ0m+fc7EH8ah0BB0QPuWY6zJQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linuxmusl-arm64@0.33.5':
     resolution: {integrity: sha512-XrHMZwGQGvJg2V/oRSUfSAfjfPxO+4DkiRh6p2AFjLQztWUuY/o8Mq0eMQVIY7HJ1CDQUJlxGGZRw1a5bqmd1g==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-linuxmusl-arm64@0.34.3':
     resolution: {integrity: sha512-vAjbHDlr4izEiXM1OTggpCcPg9tn4YriK5vAjowJsHwdBIdx0fYRsURkxLG2RLm9gyBq66gwtWI8Gx0/ov+JKQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-linuxmusl-x64@0.33.5':
     resolution: {integrity: sha512-WT+d/cgqKkkKySYmqoZ8y3pxx7lx9vVejxW/W4DOFMYVSkErR+w7mf2u8m/y4+xHe7yY9DAXQMWQhpnMuFfScw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-linuxmusl-x64@0.34.3':
     resolution: {integrity: sha512-gCWUn9547K5bwvOn9l5XGAEjVTTRji4aPTqLzGXHvIr6bIDZKNTA34seMPgM0WmSf+RYBH411VavCejp3PkOeQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-wasm32@0.33.5':
     resolution: {integrity: sha512-ykUW4LVGaMcU9lu9thv85CbRMAwfeadCJHRsg2GmeRa/cJxsVY9Rbd57JcMxBkKHag5U/x7TSBpScF4U8ElVzg==}
@@ -842,36 +872,42 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm-musl@2.5.1':
     resolution: {integrity: sha512-6E+m/Mm1t1yhB8X412stiKFG3XykmgdIOqhjWj+VL8oHkKABfu/gjFj8DvLrYVHSBNC+/u5PeNrujiSQ1zwd1Q==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-arm64-glibc@2.5.1':
     resolution: {integrity: sha512-LrGp+f02yU3BN9A+DGuY3v3bmnFUggAITBGriZHUREfNEzZh/GO06FF5u2kx8x+GBEUYfyTGamol4j3m9ANe8w==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm64-musl@2.5.1':
     resolution: {integrity: sha512-cFOjABi92pMYRXS7AcQv9/M1YuKRw8SZniCDw0ssQb/noPkRzA+HBDkwmyOJYp5wXcsTrhxO0zq1U11cK9jsFg==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-x64-glibc@2.5.1':
     resolution: {integrity: sha512-GcESn8NZySmfwlTsIur+49yDqSny2IhPeZfXunQi48DMugKeZ7uy1FX83pO0X22sHntJ4Ub+9k34XQCX+oHt2A==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-x64-musl@2.5.1':
     resolution: {integrity: sha512-n0E2EQbatQ3bXhcH2D1XIAANAcTZkQICBPVaxMeaCVBtOpBZpWJuf7LwyWPSBDITb7In8mqQgJ7gH8CILCURXg==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-win32-arm64@2.5.1':
     resolution: {integrity: sha512-RFzklRvmc3PkjKjry3hLF9wD7ppR4AKcWNzH7kXR7GUe0Igb3Nz8fyPwtZCSquGrhU5HhUNDr/mKBqj7tqA2Vw==}
@@ -938,56 +974,67 @@ packages:
     resolution: {integrity: sha512-9VlPY/BN3AgbukfVHAB8zNFWB/lKEuvzRo1NKev0Po8sYFKx0i+AQlCYftgEjcL43F2h9Ui1ZSdVBc4En/sP2w==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.50.2':
     resolution: {integrity: sha512-+GdKWOvsifaYNlIVf07QYan1J5F141+vGm5/Y8b9uCZnG/nxoGqgCmR24mv0koIWWuqvFYnbURRqw1lv7IBINw==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.50.2':
     resolution: {integrity: sha512-df0Eou14ojtUdLQdPFnymEQteENwSJAdLf5KCDrmZNsy1c3YaCNaJvYsEUHnrg+/DLBH612/R0xd3dD03uz2dg==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.50.2':
     resolution: {integrity: sha512-iPeouV0UIDtz8j1YFR4OJ/zf7evjauqv7jQ/EFs0ClIyL+by++hiaDAfFipjOgyz6y6xbDvJuiU4HwpVMpRFDQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loong64-gnu@4.50.2':
     resolution: {integrity: sha512-OL6KaNvBopLlj5fTa5D5bau4W82f+1TyTZRr2BdnfsrnQnmdxh4okMxR2DcDkJuh4KeoQZVuvHvzuD/lyLn2Kw==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-ppc64-gnu@4.50.2':
     resolution: {integrity: sha512-I21VJl1w6z/K5OTRl6aS9DDsqezEZ/yKpbqlvfHbW0CEF5IL8ATBMuUx6/mp683rKTK8thjs/0BaNrZLXetLag==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.50.2':
     resolution: {integrity: sha512-Hq6aQJT/qFFHrYMjS20nV+9SKrXL2lvFBENZoKfoTH2kKDOJqff5OSJr4x72ZaG/uUn+XmBnGhfr4lwMRrmqCQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.50.2':
     resolution: {integrity: sha512-82rBSEXRv5qtKyr0xZ/YMF531oj2AIpLZkeNYxmKNN6I2sVE9PGegN99tYDLK2fYHJITL1P2Lgb4ZXnv0PjQvw==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.50.2':
     resolution: {integrity: sha512-4Q3S3Hy7pC6uaRo9gtXUTJ+EKo9AKs3BXKc2jYypEcMQ49gDPFU2P1ariX9SEtBzE5egIX6fSUmbmGazwBVF9w==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.50.2':
     resolution: {integrity: sha512-9Jie/At6qk70dNIcopcL4p+1UirusEtznpNtcq/u/C5cC4HBX7qSGsYIcG6bdxj15EYWhHiu02YvmdPzylIZlA==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.50.2':
     resolution: {integrity: sha512-HPNJwxPL3EmhzeAnsWQCM3DcoqOz3/IC6de9rWfGR8ZCuEHETi9km66bH/wG3YH0V3nyzyFEGUZeL5PKyy4xvw==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-openharmony-arm64@4.50.2':
     resolution: {integrity: sha512-nMKvq6FRHSzYfKLHZ+cChowlEkR2lj/V0jYj9JnGUVPL2/mIeFGmVM2mLaFeNa5Jev7W7TovXqXIG2d39y1KYA==}
@@ -1051,8 +1098,8 @@ packages:
       studiocms: 0.1.0-beta.26
       vite: ^6.3.4
 
-  '@studiocms/ui@1.0.0-beta.0':
-    resolution: {integrity: sha512-QGCb+Zk1Q2FA0PmmeWGE+bVCNXijVtNDbMzKUXDsS7mOxAw33fG0GYgCvsduUqTU3dW70tBe8QvQza6w8RirHw==}
+  '@studiocms/ui@1.0.0-beta.1':
+    resolution: {integrity: sha512-CYRIW+jGCiVGwWr/cwlO8rhdpYFQ650AwKe3lh/0BvOu/l9ORe68iG1aZ/0HXJ799qK0jt5ktqSQEKjFYUHv6A==}
     peerDependencies:
       astro: ^4.5 || ^5.0.0-beta.0
       vite: ^5.0.0 || ^6.0.0
@@ -1084,11 +1131,11 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@20.19.15':
-    resolution: {integrity: sha512-W3bqcbLsRdFDVcmAM5l6oLlcl67vjevn8j1FPZ4nx+K5jNoWCh+FC/btxFoBPnvQlrHHDwfjp1kjIEDfwJ0Mog==}
+  '@types/node@20.19.14':
+    resolution: {integrity: sha512-gqiKWld3YIkmtrrg9zDvg9jfksZCcPywXVN7IauUGhilwGV/yOyeUsvpR796m/Jye0zUzMXPKe8Ct1B79A7N5Q==}
 
-  '@types/node@22.18.4':
-    resolution: {integrity: sha512-UJdblFqXymSBhmZf96BnbisoFIr8ooiiBRMolQgg77Ea+VM37jXw76C2LQr9n8wm9+i/OvlUlW6xSvqwzwqznw==}
+  '@types/node@22.18.3':
+    resolution: {integrity: sha512-gTVM8js2twdtqM+AE2PdGEe9zGQY4UvmFjan9rZcVb6FGdStfjWoWejdmy4CfWVO9rh5MiYQGZloKAGkJt8lMw==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
@@ -1579,8 +1626,8 @@ packages:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
     engines: {node: ^12.20 || >= 14.13}
 
-  figlet@1.9.2:
-    resolution: {integrity: sha512-rRnXvw0JtuEQtN6jlqa7nZ/N2RY49VsGTKTSj8rk5D7z9gY/0F7Gkt57Er7r/xZZ7UGNHsHUwhIA09URknhyVA==}
+  figlet@1.9.1:
+    resolution: {integrity: sha512-DpKC89iXFjq6NCaIQ1O91R+ofpfyvkwuBfoVd8LpP/JZGZQpelMXgiTStGOfksuMYaDoBAwFlvx7mk+wX+3rrA==}
     engines: {node: '>= 17.0.0'}
     hasBin: true
 
@@ -1771,6 +1818,7 @@ packages:
 
   libsql@0.5.22:
     resolution: {integrity: sha512-NscWthMQt7fpU8lqd7LXMvT9pi+KhhmTHAJWUB/Lj6MWa0MKFv0F2V4C6WKKpjCVZl0VwcDz4nOI3CyaT1DDiA==}
+    cpu: [x64, arm64, wasm32, arm]
     os: [darwin, linux, win32]
 
   longest-streak@3.1.0:
@@ -2694,10 +2742,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.4.3(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
+  '@astrojs/node@9.4.3(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.2
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       send: 1.2.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -2800,7 +2848,7 @@ snapshots:
       toml: 3.0.0
       yaml: 2.8.1
 
-  '@effect/cluster@0.48.7(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)':
+  '@effect/cluster@0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)':
     dependencies:
       '@effect/platform': 0.90.9(effect@3.17.13)
       '@effect/rpc': 0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13)
@@ -2814,9 +2862,9 @@ snapshots:
       effect: 3.17.13
       uuid: 11.1.0
 
-  '@effect/platform-node-shared@0.49.1(@effect/cluster@0.48.7(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)':
+  '@effect/platform-node-shared@0.49.1(@effect/cluster@0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)':
     dependencies:
-      '@effect/cluster': 0.48.7(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
+      '@effect/cluster': 0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
       '@effect/platform': 0.90.9(effect@3.17.13)
       '@effect/rpc': 0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13)
       '@effect/sql': 0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13)
@@ -2828,11 +2876,11 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@0.96.1(@effect/cluster@0.48.7(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)':
+  '@effect/platform-node@0.96.1(@effect/cluster@0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)':
     dependencies:
-      '@effect/cluster': 0.48.7(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
+      '@effect/cluster': 0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
       '@effect/platform': 0.90.9(effect@3.17.13)
-      '@effect/platform-node-shared': 0.49.1(@effect/cluster@0.48.7(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
+      '@effect/platform-node-shared': 0.49.1(@effect/cluster@0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
       '@effect/rpc': 0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13)
       '@effect/sql': 0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13)
       effect: 3.17.13
@@ -3143,21 +3191,21 @@ snapshots:
   '@img/sharp-win32-x64@0.34.3':
     optional: true
 
-  '@inox-tools/modular-station@0.7.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
+  '@inox-tools/modular-station@0.7.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
       '@inox-tools/utils': 0.7.0
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
-  '@inox-tools/runtime-logger@0.7.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
+  '@inox-tools/runtime-logger@0.7.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
-      '@inox-tools/modular-station': 0.7.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      '@inox-tools/modular-station': 0.7.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       '@inox-tools/utils': 0.7.0
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -3452,10 +3500,10 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
-  '@studiocms/cfetch@0.1.6(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))':
+  '@studiocms/cfetch@0.1.6(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))':
     dependencies:
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      vite: 6.3.6(@types/node@22.18.4)(yaml@2.8.1)
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@22.18.3)(yaml@2.8.1)
 
   '@studiocms/markdown-remark-processor@1.2.0':
     dependencies:
@@ -3489,26 +3537,26 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(7wumwtys7r5bnhqzmzt6cjmiqa))(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))':
+  '@studiocms/md@0.1.0-beta.26(@astrojs/markdown-remark@6.3.6)(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(effect@3.17.13)(studiocms@0.1.0-beta.26(4d0345716d0b79ebf0286d0c260370f8))(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.6
       '@studiocms/markdown-remark-processor': 1.2.0
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       effect: 3.17.13
-      studiocms: 0.1.0-beta.26(7wumwtys7r5bnhqzmzt6cjmiqa)
-      vite: 6.3.6(@types/node@22.18.4)(yaml@2.8.1)
+      studiocms: 0.1.0-beta.26(4d0345716d0b79ebf0286d0c260370f8)
+      vite: 6.3.6(@types/node@22.18.3)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@studiocms/ui@1.0.0-beta.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))':
+  '@studiocms/ui@1.0.0-beta.1(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))':
     dependencies:
       '@iconify-json/heroicons': 1.2.2
       '@iconify/types': 2.0.0
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-transition-event-polyfill: 1.1.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-transition-event-polyfill: 1.1.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       pathe: 1.1.2
-      vite: 6.3.6(@types/node@22.18.4)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@22.18.3)(yaml@2.8.1)
 
   '@swc/helpers@0.5.17':
     dependencies:
@@ -3528,7 +3576,7 @@ snapshots:
 
   '@types/fontkit@2.0.8':
     dependencies:
-      '@types/node': 22.18.4
+      '@types/node': 22.18.3
 
   '@types/hast@3.0.4':
     dependencies:
@@ -3544,11 +3592,11 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@20.19.15':
+  '@types/node@20.19.14':
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@22.18.4':
+  '@types/node@22.18.3':
     dependencies:
       undici-types: 6.21.0
 
@@ -3559,17 +3607,17 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.18.4
+      '@types/node': 22.18.3
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@withstudiocms/auth-kit@0.1.0-beta.1(ndhozpi6sk5fsiuhdgt5k3tspa)':
+  '@withstudiocms/auth-kit@0.1.0-beta.1(b74bdc78e13c4cc5b1d7f545d523db8a)':
     dependencies:
       '@oslojs/binary': 1.0.0
       '@oslojs/crypto': 1.0.1
       '@oslojs/encoding': 1.1.0
-      '@withstudiocms/effect': 0.1.0-beta.2(ndhozpi6sk5fsiuhdgt5k3tspa)
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      '@withstudiocms/effect': 0.1.0-beta.2(b74bdc78e13c4cc5b1d7f545d523db8a)
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@effect/cli'
       - '@effect/platform'
@@ -3586,7 +3634,7 @@ snapshots:
       chalk: 5.6.2
       cli-cursor: 5.0.0
       commander: 13.1.0
-      figlet: 1.9.2
+      figlet: 1.9.1
       is-unicode-supported: 2.1.0
       package-manager-detector: 1.3.0
       slice-ansi: 7.1.2
@@ -3594,11 +3642,11 @@ snapshots:
       tinyexec: 1.0.1
       wrap-ansi: 9.0.2
 
-  '@withstudiocms/component-registry@0.1.0-beta.2(ndhozpi6sk5fsiuhdgt5k3tspa)':
+  '@withstudiocms/component-registry@0.1.0-beta.2(b74bdc78e13c4cc5b1d7f545d523db8a)':
     dependencies:
-      '@withstudiocms/effect': 0.1.0-beta.2(ndhozpi6sk5fsiuhdgt5k3tspa)
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      '@withstudiocms/effect': 0.1.0-beta.2(b74bdc78e13c4cc5b1d7f545d523db8a)
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       ts-morph: 26.0.0
       ultrahtml: 1.6.0
     transitivePeerDependencies:
@@ -3607,29 +3655,29 @@ snapshots:
       - '@effect/platform-node'
       - effect
 
-  '@withstudiocms/config-utils@0.1.0-beta.3(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
+  '@withstudiocms/config-utils@0.1.0-beta.3(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       deepmerge-ts: 7.1.5
       esbuild: 0.25.9
 
-  '@withstudiocms/effect@0.1.0-beta.2(ndhozpi6sk5fsiuhdgt5k3tspa)':
+  '@withstudiocms/effect@0.1.0-beta.2(b74bdc78e13c4cc5b1d7f545d523db8a)':
     dependencies:
       '@effect/cli': 0.69.2(@effect/platform@0.90.9(effect@3.17.13))(@effect/printer-ansi@0.45.0(@effect/typeclass@0.36.0(effect@3.17.13))(effect@3.17.13))(@effect/printer@0.45.0(@effect/typeclass@0.36.0(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
       '@effect/platform': 0.90.9(effect@3.17.13)
-      '@effect/platform-node': 0.96.1(@effect/cluster@0.48.7(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      '@effect/platform-node': 0.96.1(@effect/cluster@0.48.6(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/workflow@0.9.5(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(@effect/rpc@0.69.2(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/sql@0.44.2(@effect/experimental@0.54.6(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(@effect/platform@0.90.9(effect@3.17.13))(effect@3.17.13))(effect@3.17.13)
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       deepmerge-ts: 7.1.5
       effect: 3.17.13
       micromatch: 4.0.8
       nodemailer: 7.0.6
       socks: 2.8.7
 
-  '@withstudiocms/internal_helpers@0.1.0-beta.1(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
+  '@withstudiocms/internal_helpers@0.1.0-beta.1(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       mdast-util-from-markdown: 2.0.2
       mdast-util-to-string: 4.0.0
       unist-util-visit: 5.0.0
@@ -3665,18 +3713,18 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro-integration-kit@0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)):
+  astro-integration-kit@0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)):
     dependencies:
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       pathe: 1.1.2
 
-  astro-transition-event-polyfill@1.1.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)):
+  astro-transition-event-polyfill@1.1.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)):
     dependencies:
-      '@types/node': 20.19.15
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      '@types/node': 20.19.14
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
       pathe: 2.0.3
 
-  astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1):
+  astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.2
@@ -3732,8 +3780,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.17.1
       vfile: 6.0.3
-      vite: 6.3.6(@types/node@22.18.4)(yaml@2.8.1)
-      vitefu: 1.1.1(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))
+      vite: 6.3.6(@types/node@22.18.3)(yaml@2.8.1)
+      vitefu: 1.1.1(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -4040,7 +4088,7 @@ snapshots:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.3.3
 
-  figlet@1.9.2:
+  figlet@1.9.1:
     dependencies:
       commander: 14.0.1
 
@@ -5088,26 +5136,26 @@ snapshots:
     dependencies:
       ansi-regex: 6.2.2
 
-  studiocms@0.1.0-beta.26(7wumwtys7r5bnhqzmzt6cjmiqa):
+  studiocms@0.1.0-beta.26(4d0345716d0b79ebf0286d0c260370f8):
     dependencies:
       '@astrojs/db': 0.17.2
       '@clack/core': 0.4.1
       '@clack/prompts': 0.9.1
       '@iconify-json/flat-color-icons': 1.2.3
       '@iconify-json/simple-icons': 1.2.52
-      '@inox-tools/runtime-logger': 0.7.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      '@inox-tools/runtime-logger': 0.7.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       '@libsql/client': 0.15.15
       '@nanostores/i18n': 1.2.2(nanostores@1.0.1)
       '@nanostores/persistent': 1.1.0(nanostores@1.0.1)
-      '@studiocms/ui': 1.0.0-beta.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1))
-      '@withstudiocms/auth-kit': 0.1.0-beta.1(ndhozpi6sk5fsiuhdgt5k3tspa)
+      '@studiocms/ui': 1.0.0-beta.1(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1))
+      '@withstudiocms/auth-kit': 0.1.0-beta.1(b74bdc78e13c4cc5b1d7f545d523db8a)
       '@withstudiocms/cli-kit': 0.1.0
-      '@withstudiocms/component-registry': 0.1.0-beta.2(ndhozpi6sk5fsiuhdgt5k3tspa)
-      '@withstudiocms/config-utils': 0.1.0-beta.3(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
-      '@withstudiocms/effect': 0.1.0-beta.2(ndhozpi6sk5fsiuhdgt5k3tspa)
-      '@withstudiocms/internal_helpers': 0.1.0-beta.1(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
-      astro: 5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
-      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.4)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      '@withstudiocms/component-registry': 0.1.0-beta.2(b74bdc78e13c4cc5b1d7f545d523db8a)
+      '@withstudiocms/config-utils': 0.1.0-beta.3(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      '@withstudiocms/effect': 0.1.0-beta.2(b74bdc78e13c4cc5b1d7f545d523db8a)
+      '@withstudiocms/internal_helpers': 0.1.0-beta.1(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
+      astro: 5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1)
+      astro-integration-kit: 0.19.0(astro@5.13.7(@types/node@22.18.3)(rollup@4.50.2)(typescript@5.9.2)(yaml@2.8.1))
       boxen: 8.0.1
       chalk: 5.6.2
       diff: 8.0.2
@@ -5129,7 +5177,7 @@ snapshots:
       three: 0.170.0
       tinyglobby: 0.2.15
       ultrahtml: 1.6.0
-      vite: 6.3.6(@types/node@22.18.4)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@22.18.3)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@effect/cli'
       - '@effect/platform'
@@ -5284,7 +5332,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1):
+  vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1):
     dependencies:
       esbuild: 0.25.9
       fdir: 6.5.0(picomatch@4.0.3)
@@ -5293,13 +5341,13 @@ snapshots:
       rollup: 4.50.2
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 22.18.4
+      '@types/node': 22.18.3
       fsevents: 2.3.3
       yaml: 2.8.1
 
-  vitefu@1.1.1(vite@6.3.6(@types/node@22.18.4)(yaml@2.8.1)):
+  vitefu@1.1.1(vite@6.3.6(@types/node@22.18.3)(yaml@2.8.1)):
     optionalDependencies:
-      vite: 6.3.6(@types/node@22.18.4)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@22.18.3)(yaml@2.8.1)
 
   web-namespaces@2.0.1: {}
 
