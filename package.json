@@ -8,10 +8,10 @@
     },
     "scripts": {
         "ci:install": "pnpm install --frozen-lockfile",
-        "dev": "pnpm --filter www dev",
-        "build": "pnpm --filter www build",
-        "preview": "pnpm --filter www preview",
-        "start": "pnpm --filter www start",
+        "dev": "pnpm --filter studiocms.dev dev",
+        "build": "pnpm --filter studiocms.dev build",
+        "preview": "pnpm --filter studiocms.dev preview",
+        "start": "pnpm --filter studiocms.dev start",
         "lint": "biome check .",
         "lint:fix": "biome check --write ."
     },
