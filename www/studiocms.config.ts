@@ -1,5 +1,5 @@
-import { defineStudioCMSConfig } from 'studiocms/config';
 import md from '@studiocms/md';
+import { defineStudioCMSConfig } from 'studiocms/config';
 
 export default defineStudioCMSConfig({
 	dbStartPage: false,
@@ -19,10 +19,12 @@ export default defineStudioCMSConfig({
 	componentRegistry: {
 		sponsorswithimages: './src/components/SponsorsWithImages.astro',
 	},
-	plugins: [md({
-		flavor: 'studiocms',
-		autoLinkHeadings: false,
-		callouts: "obsidian",
-		discordSubtext: true
-	})],
+	plugins: [
+		md({
+			flavor: 'studiocms',
+			autoLinkHeadings: false,
+			callouts: 'obsidian',
+			discordSubtext: true,
+		}),
+	],
 });
