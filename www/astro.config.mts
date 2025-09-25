@@ -35,10 +35,12 @@ export const getCoolifyURL = () => {
 	return newUrl;
 };
 
+console.log('Astro Config - Coolify URL:', getCoolifyURL());
+
 // https://astro.build/config
 export default defineConfig({
 	output: 'server',
-	site: getCoolifyURL(),
+	site: getCoolifyURL() || 'https://studiocms.dev',
 	image: {
 		remotePatterns: [
 			{
