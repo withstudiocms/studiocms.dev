@@ -1,3 +1,9 @@
+import db from '@astrojs/db';
+import node from '@astrojs/node';
+import cFetch from '@studiocms/cfetch';
+import { defineConfig } from 'astro/config';
+import studiocms from 'studiocms';
+
 function setHTTPS(url: string) {
 	return `https://${url}`;
 }
@@ -21,7 +27,30 @@ export const getCoolifyURL = () => {
 	}
 	const url = splitListAndSelectFirst(urlList);
 	const strippedUrl = url;
-	return setHTTPS(strippedUrl);
+	const newUrl = setHTTPS(strippedUrl);
+
+	console.log('--------------------------------')
+	console.log('Coolify ENV URL: ', newUrl);
+	console.log('--------------------------------')
+	return newUrl;
 };
 
-export default getCoolifyURL;
+// https://astro.build/config
+export default defineConfig({
+	output: 'server',
+	site: getCoolifyURL(),
+	image: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+			},
+		],
+	},
+	integrations: [cFetch({ lifetime: '1h' }), db(), studiocms()],
+	security: {
+		checkOrigin: false,
+	},
+	adapter: node({
+		mode: 'standalone',
+	}),
+});
