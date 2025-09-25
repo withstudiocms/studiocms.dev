@@ -15,7 +15,16 @@ interface Props {
 	videoPosterImage?: string;
 }
 
-const OgBanner = new URL('/og.png', Astro.url);
+function convertToHTTPS(url: URL) {
+	if (url.protocol === 'http:') {
+		url.protocol = 'https:';
+	}
+	return url;
+}
+
+const safeUrl = convertToHTTPS(Astro.url);
+
+const OgBanner = new URL('/og.png', safeUrl);
 
 const RSSFeed = new URL('rss.xml', Astro.site);
 
@@ -28,6 +37,8 @@ const {
 	updated,
 	videoPosterImage,
 } = Astro.props;
+
+const safeOgImage = convertToHTTPS(ogImage);
 
 const path = Astro.originPathname;
 ---
@@ -46,15 +57,15 @@ const path = Astro.originPathname;
 
   <meta property='og:title' content={title} />
   <meta property='og:description' content={desc} />
-  <meta property='og:image' content={ogImage} />
-  <meta property='og:url' content={Astro.url} />
+  <meta property='og:image' content={safeOgImage} />
+  <meta property='og:url' content={safeUrl} />
   <meta property='og:type' content='website' />
 
   <meta name='twitter:card' content='summary_large_image' />
-  <meta name="twitter:url" content={Astro.url} />
+  <meta name="twitter:url" content={safeUrl} />
   <meta name='twitter:title' content={title} />
   <meta name='twitter:description' content={desc} />
-  <meta name='twitter:image' content={ogImage} />
+  <meta name='twitter:image' content={safeOgImage} />
   <meta name='twitter:creator' content='withstudiocms' />
   <meta name='twitter:site' content='withstudiocms' />
 
@@ -71,7 +82,7 @@ const path = Astro.originPathname;
     <meta property="article:author" content={author.name} />
   )}
 
-  <link rel="canonical" href={Astro.url} />
+  <link rel="canonical" href={safeUrl} />
   <link rel="icon" href="https://cdn.studiocms.dev/favicon-light.png" type="image/png" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href="https://cdn.studiocms.dev/favicon-dark.png" type="image/png" media="(prefers-color-scheme: light)" />
   <link rel="icon" href="https://cdn.studiocms.dev/favicon.svg" type="image/svg+xml" />
