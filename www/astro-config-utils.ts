@@ -10,12 +10,12 @@ function splitListAndSelectFirst(list: string) {
 /**
  * Get the Domain of the Coolify URL from the coolify runtime environment
  *
- * Requires the COOLIFY_FQDN environment variable to be set as per the coolify docs:
+ * Requires the COOLIFY_DOMAIN environment variable to be set as per the coolify docs:
  *
  * @see https://coolify.io/docs/knowledge-base/environment-variables#predefined-variables
  */
 export const getCoolifyURL = () => {
-	const urlList = process.env.COOLIFY_FQDN; // should be a comma-separated list of URLs www.studiocms.dev,studiocms.dev
+	const urlList = process.env.COOLIFY_DOMAIN; // should be a comma-separated list of URLs www.studiocms.dev,studiocms.dev
 	if (!urlList) {
 		return undefined;
 	}
