@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { SDKCoreJs, runSDK } from 'studiocms:sdk';
 import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
@@ -50,11 +49,13 @@ const articles = (await Promise.all(articlePromises))
 						<div class="article-card-details">
 							<div class="article-card-author">
 								{article.author?.avatar && (
-									<Image
+									<img
 										src={article.author.avatar}
 										alt={article.author.name}
 										class="article-card-author-avatar"
-										inferSize
+										width="32"
+										height="32"
+										onerror="this.src='https://cdn.studiocms.dev/default_avatar.png'"
 									/>
 								)}
 								<p>{article.author?.name}</p>
