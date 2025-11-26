@@ -34,7 +34,14 @@ const author = await runSDK(SDKCoreJs.GET.users.byId(page.data.authorId!));
 		<hr />
 		<div class="article-info">
 			{author?.avatar && (
-				<Image src={author.avatar} alt={author.name} class="article-card-author-avatar" width={48} height={48} />
+				<img
+					src={author.avatar}
+					alt={author.name}
+					class="article-card-author-avatar"
+					width={48}
+					height={48}
+					onerror="this.src='https://cdn.studiocms.dev/default_avatar.png'"
+				/>
 			)}
 			<div class="info-text">
 				<p>{author?.name}</p>
