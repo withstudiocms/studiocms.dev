@@ -33,10 +33,9 @@ import { getImage } from 'astro:assets';
 import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
 
 const getNewestBlogPost = async () => {
-	const blogPages = await runSDK(
+	const entries = await runSDK(
 		SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false, true)
 	);
-	const entries = blogPages.map(({ data }) => data);
 
 	const articles = entries.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 
@@ -377,7 +376,7 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 			<div class="blog-article">
 				<div class="image-container">
 					<Image
-						src={newestBlogPost.heroImage}
+						src={newestBlogPost.heroImage!}
 						width={960}
 						height={540}
 						class="blog-image"
@@ -386,7 +385,7 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 						quality={100}
 					/>
 					<Image
-						src={newestBlogPost.heroImage}
+						src={newestBlogPost.heroImage!}
 						width={960}
 						height={540}
 						inferSize={true}
