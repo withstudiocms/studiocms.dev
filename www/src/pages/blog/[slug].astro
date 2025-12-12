@@ -14,7 +14,6 @@ if (!page) {
 	return new Response(null, { status: 404 });
 }
 
-// biome-ignore lint/style/noNonNullAssertion: <explanation>
 const author = await runSDK(SDKCoreJs.GET.users.byId(page.authorId));
 ---
 <Layout

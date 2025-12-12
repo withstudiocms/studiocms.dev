@@ -11,7 +11,7 @@ const articlePromises = entries.map(async (article) => {
 	const { title, publishedAt, slug, authorId, heroImage } = article;
 
 	// biome-ignore lint/style/noNonNullAssertion: <explanation>
-	const author = await runSDK(SDKCoreJs.GET.users.byId(authorId!))!;
+	const author = await runSDK(SDKCoreJs.GET.users.byId(authorId))!;
 
 	return {
 		title,

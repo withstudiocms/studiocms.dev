@@ -6,7 +6,6 @@
   "scripts": {
     "astro": "astro",
     "studiocms": "studiocms",
-    "studiocms-migrator": "studiocms-migrator",
     "dev": "astro dev",
     "build": "astro build ",
     "preview": "astro preview",
@@ -23,11 +22,10 @@
     "astro": "^5.16.4",
     "pathe": "2.0.3",
     "sharp": "^0.33.5",
-    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@2d987d7",
+    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@3ebd4bd",
     "tslib": "^2.8.1",
     "vite": "^6.3.5",
-    "@studiocms/md": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@2d987d7",
-    "@studiocms/migrator": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/migrator@2d987d7",
+    "@studiocms/md": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@3ebd4bd",
     "@libsql/client": "^0.15.15",
     "@libsql/kysely-libsql": "^0.4.1"
   },
