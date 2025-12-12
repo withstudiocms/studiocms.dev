@@ -4,13 +4,13 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "astro": "astro",
+    "studiocms": "studiocms",
+    "studiocms-migrator": "studiocms-migrator",
     "dev": "astro dev",
     "build": "astro build ",
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",
-    "astro": "astro",
-    "studiocms": "studiocms",
-    "studiocms-migrator": "studiocms-migrator",
     "lint": "biome check .",
     "lint:fix": "biome check --write ."
   },
