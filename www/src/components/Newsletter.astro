@@ -9,7 +9,7 @@ import { Input } from 'studiocms:ui/components/input';
   id="newsletter-form"
 >
   <div class="newsletter-container">
-    <span>Subscribe to our newsletter</span>
+    <span>Subscribe to our newsletter (coming soon)</span>
     <input type="hidden" name="nonce" />
     <input
       id="06711"
@@ -28,8 +28,9 @@ import { Input } from 'studiocms:ui/components/input';
         placeholder="E-mail"
         aria-label="E-Mail"
         class="newsletter-email-input"
+        disabled
       />
-      <Button type="submit" color="primary" style="width: fit-content;">
+      <Button type="submit" color="primary" style="width: fit-content;" disabled>
         Subscribe
       </Button>
     </div>
@@ -37,7 +38,7 @@ import { Input } from 'studiocms:ui/components/input';
 </form>
 
 <script>
-  import { toast } from "studiocms:ui/components/toaster";
+  import { toast } from "studiocms:ui/components/toaster/client";
 
   const form = document.getElementById("newsletter-form") as HTMLFormElement;
 

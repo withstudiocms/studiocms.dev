@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "packageManager": "pnpm@10.17.0",
     "engines": {
-        "node": "22.19.0"
+        "node": "22.20.0"
     },
     "scripts": {
         "ci:install": "pnpm install --frozen-lockfile",
@@ -13,7 +13,10 @@
         "preview": "pnpm --filter studiocms.dev preview",
         "start": "pnpm --filter studiocms.dev start",
         "lint": "biome check .",
-        "lint:fix": "biome check --write ."
+        "lint:fix": "biome check --write .",
+
+        "studiocms": "pnpm --filter studiocms.dev studiocms",
+        "studiocms-migrator": "pnpm --filter studiocms.dev studiocms-migrator"
     },
     "dependencies": {
         "@biomejs/biome": "1.9.4"

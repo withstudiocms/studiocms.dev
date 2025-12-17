@@ -8,6 +8,7 @@ import Layout from '../layouts/Layout.astro';
 
 import Discord from '@/assets/discord.svg';
 import GitHub from '@/assets/github.svg';
+import HostingerWordmark from '@/assets/hostinger.svg';
 import AWS from '@/assets/icons/aws.svg';
 import Coolify from '@/assets/icons/coolify.svg';
 import Docker from '@/assets/icons/docker.svg';
@@ -33,10 +34,9 @@ import { getImage } from 'astro:assets';
 import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
 
 const getNewestBlogPost = async () => {
-	const blogPages = await runSDK(
+	const entries = await runSDK(
 		SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false, true)
 	);
-	const entries = blogPages.map(({ data }) => data);
 
 	const articles = entries.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 
@@ -317,6 +317,24 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 				<AWS class="glow-layer" />
 			</Card>
 		</div>
+
+		<Card class="hosting-cta">
+			<HostingerWordmark width={300} height={60} />
+			<h3>Want to self-host StudioCMS?</h3>
+			<span>Hostinger offers high performance VPS, perfect for hosting StudioCMS. Use the link below to get a discount!</span>
+			<Button
+				as='a'
+				href='https://www.hostinger.com/cart?product=vps%3Avps_kvm_2&period=12&referral_type=cart_link&REFERRALCODE=FSMAMATTH73C&referral_id=019b013c-6b5c-7321-842a-aa21eef07473'
+				target='_blank'
+   			rel='noopener noreferrer'
+				class="cta"
+				color="primary"
+				variant='solid'
+			>
+				<span>Get started with <strong>Hostinger VPS</strong></span>
+			</Button>
+		</Card>
+
 	</section>
 	{
 		/* <section class="plugins-section">
@@ -377,7 +395,7 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 			<div class="blog-article">
 				<div class="image-container">
 					<Image
-						src={newestBlogPost.heroImage}
+						src={newestBlogPost.heroImage!}
 						width={960}
 						height={540}
 						class="blog-image"
@@ -386,7 +404,7 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 						quality={100}
 					/>
 					<Image
-						src={newestBlogPost.heroImage}
+						src={newestBlogPost.heroImage!}
 						width={960}
 						height={540}
 						inferSize={true}
@@ -1019,6 +1037,40 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 		transform: translate(-50%, -50%);
 		user-select: none;
 		width: 100%;
+	}
+
+	.hosting-cta {
+		padding: 2rem;
+		background-color: var(--background-step-1);
+		border-radius: 1.25rem;
+		border: 1px solid var(--border);
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		width: fit-content;
+		margin: 0 auto;
+		margin-top: 8rem;
+
+		svg {
+			margin-bottom: 2rem;
+		}
+
+		h3 {
+			font-size: 1.5em;
+			margin-bottom: .5rem;
+		}
+
+		> span {
+			color: var(--text-muted);
+		}
+
+		.cta {
+			margin: auto;
+			margin-top: 2rem;
+			width: fit-content;
+			position: relative;
+		}
 	}
 
 	.sponsors {

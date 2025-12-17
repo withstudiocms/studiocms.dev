@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
 
@@ -15,22 +14,21 @@ if (!page) {
 	return new Response(null, { status: 404 });
 }
 
-// biome-ignore lint/style/noNonNullAssertion: <explanation>
-const author = await runSDK(SDKCoreJs.GET.users.byId(page.data.authorId!));
+const author = await runSDK(SDKCoreJs.GET.users.byId(page.authorId));
 ---
 <Layout
-	title={page.data.title}
-	desc={page.data.description}
-	ogImage={page.data.heroImage}
+	title={page.title}
+	desc={page.description}
+	ogImage={page.heroImage!}
 	author={author}
-	published={page.data.publishedAt}
-	updated={page.data.updatedAt}
+	published={page.publishedAt}
+	updated={page.updatedAt}
 >
 	<PageHeader
-		title={page.data.title}
+		title={page.title}
 	/>
 	<article>
-		<StudioCMSRenderer data={page.data} />
+		<StudioCMSRenderer data={page} />
 		<hr />
 		<div class="article-info">
 			{author?.avatar && (
@@ -45,7 +43,7 @@ const author = await runSDK(SDKCoreJs.GET.users.byId(page.data.authorId!));
 			)}
 			<div class="info-text">
 				<p>{author?.name}</p>
-				<span class="article-card-date">Published {page.data.publishedAt.toLocaleDateString()}</span>
+				<span class="article-card-date">Published {page.publishedAt.toLocaleDateString()}</span>
 			</div>
 		</div>
 		<hr />

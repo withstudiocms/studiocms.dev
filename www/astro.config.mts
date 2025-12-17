@@ -1,14 +1,16 @@
-import db from '@astrojs/db';
 import node from '@astrojs/node';
 import cFetch from '@studiocms/cfetch';
 import { defineConfig } from 'astro/config';
 import studiocms from 'studiocms';
-import getCoolifyURL from './astro-config-utils';
+
+const site = process.env.DOKPLOY_DEPLOY_URL
+	? `https://${process.env.DOKPLOY_DEPLOY_URL}`
+	: 'https://studiocms.dev/';
 
 // https://astro.build/config
 export default defineConfig({
 	output: 'server',
-	site: getCoolifyURL() || 'https://studiocms.dev',
+	site,
 	image: {
 		remotePatterns: [
 			{
@@ -16,7 +18,7 @@ export default defineConfig({
 			},
 		],
 	},
-	integrations: [cFetch({ lifetime: '1h' }), db(), studiocms()],
+	integrations: [cFetch({ lifetime: '1h' }), studiocms()],
 	security: {
 		checkOrigin: false,
 	},
