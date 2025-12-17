@@ -22,10 +22,10 @@
     "astro": "^5.16.4",
     "pathe": "2.0.3",
     "sharp": "^0.33.5",
-    "studiocms": "https://pkg.pr.new/withstudiocms/studiocms@120de3e",
+    "studiocms": "0.1.0-beta.31",
     "tslib": "^2.8.1",
     "vite": "^6.3.5",
-    "@studiocms/md": "https://pkg.pr.new/withstudiocms/studiocms/@studiocms/md@120de3e",
+    "@studiocms/md": "0.1.0-beta.31",
     "@libsql/client": "^0.15.15",
     "@libsql/kysely-libsql": "^0.4.1"
   },
