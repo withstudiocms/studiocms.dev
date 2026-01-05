@@ -1,53 +1,44 @@
 ---
-import { Image } from "astro:assets";
-import { SDKCoreJs, runSDK } from "studiocms:sdk";
-import { Button } from "studiocms:ui/components/button";
-import { Card } from "studiocms:ui/components/card";
-import { Icon } from "studiocms:ui/components/icon";
-import Layout from "../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import { SDKCoreJs, runSDK } from 'studiocms:sdk';
+import { Button } from 'studiocms:ui/components/button';
+import { Card } from 'studiocms:ui/components/card';
+import { Icon } from 'studiocms:ui/components/icon';
+import Layout from '../layouts/Layout.astro';
 
-import Discord from "@/assets/discord.svg";
-import GitHub from "@/assets/github.svg";
-import HostingerWordmark from "@/assets/hostinger.svg";
-import AWS from "@/assets/icons/aws.svg";
-import Coolify from "@/assets/icons/coolify.svg";
-import Docker from "@/assets/icons/docker.svg";
-import Netlify from "@/assets/icons/netlify.svg";
-import Node from "@/assets/icons/node.svg";
-import Vercel from "@/assets/icons/vercel.svg";
-import NPM from "@/assets/npm.svg";
+import Discord from '@/assets/discord.svg';
+import GitHub from '@/assets/github.svg';
+import HostingerWordmark from '@/assets/hostinger.svg';
+import AWS from '@/assets/icons/aws.svg';
+import Coolify from '@/assets/icons/coolify.svg';
+import Docker from '@/assets/icons/docker.svg';
+import Netlify from '@/assets/icons/netlify.svg';
+import Node from '@/assets/icons/node.svg';
+import Vercel from '@/assets/icons/vercel.svg';
+import NPM from '@/assets/npm.svg';
 
-import DevIconPattern from "@/assets/developer-icon-pattern.svg";
-import MarketerIconPattern from "@/assets/marketer-icon-pattern.svg";
+import DevIconPattern from '@/assets/developer-icon-pattern.svg';
+import MarketerIconPattern from '@/assets/marketer-icon-pattern.svg';
 
-import Orbits from "@/assets/orbits.svg";
-import Skip2FullLogo from "@/assets/skip2-wordmark-red.svg";
-import TursoFullLogo from "@/assets/turso-logo-illustrated.svg";
+import Orbits from '@/assets/orbits.svg';
+import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
+import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
 
-import EcosystemSection from "@/components/EcosystemSection.astro";
+import EcosystemSection from '@/components/EcosystemSection.astro';
 
-import ApolloDefaultExpression from "@/assets/apollo-default.png";
-import ApolloHappyExpression from "@/assets/apollo-happy.png";
-import VideoPoster from "@/assets/video-placeholder.png";
+import ApolloDefaultExpression from '@/assets/apollo-default.png';
+import ApolloHappyExpression from '@/assets/apollo-happy.png';
+import VideoPoster from '@/assets/video-placeholder.png';
 
-import { getImage } from "astro:assets";
-import {
-	getDiscordMembers,
-	getNpmMonthlyDownloads,
-} from "../utils/stats-helpers";
+import { getImage } from 'astro:assets';
+import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
 
 const getNewestBlogPost = async () => {
 	const entries = await runSDK(
-		SDKCoreJs.GET.folderPages(
-			"dde4b58c-ff71-4b02-a261-dba8fe694644" /* Blog */,
-			false,
-			true,
-		),
+		SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false, true)
 	);
 
-	const articles = entries.sort(
-		(a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
-	);
+	const articles = entries.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 
 	if (articles.length === 0) {
 		return null;
@@ -66,13 +57,12 @@ const getNewestBlogPost = async () => {
 	};
 };
 
-const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] =
-	await Promise.all([
-		getNpmMonthlyDownloads("studiocms"),
-		getDiscordMembers(),
-		getNewestBlogPost(),
-		getImage({ src: VideoPoster, format: "webp" }),
-	]);
+const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = await Promise.all([
+	getNpmMonthlyDownloads('studiocms'),
+	getDiscordMembers(),
+	getNewestBlogPost(),
+	getImage({ src: VideoPoster, format: 'webp' }),
+]);
 ---
 
 <Layout
