@@ -1,44 +1,53 @@
 ---
-import { Image } from 'astro:assets';
-import { SDKCoreJs, runSDK } from 'studiocms:sdk';
-import { Button } from 'studiocms:ui/components/button';
-import { Card } from 'studiocms:ui/components/card';
-import { Icon } from 'studiocms:ui/components/icon';
-import Layout from '../layouts/Layout.astro';
+import { Image } from "astro:assets";
+import { SDKCoreJs, runSDK } from "studiocms:sdk";
+import { Button } from "studiocms:ui/components/button";
+import { Card } from "studiocms:ui/components/card";
+import { Icon } from "studiocms:ui/components/icon";
+import Layout from "../layouts/Layout.astro";
 
-import Discord from '@/assets/discord.svg';
-import GitHub from '@/assets/github.svg';
-import HostingerWordmark from '@/assets/hostinger.svg';
-import AWS from '@/assets/icons/aws.svg';
-import Coolify from '@/assets/icons/coolify.svg';
-import Docker from '@/assets/icons/docker.svg';
-import Netlify from '@/assets/icons/netlify.svg';
-import Node from '@/assets/icons/node.svg';
-import Vercel from '@/assets/icons/vercel.svg';
-import NPM from '@/assets/npm.svg';
+import Discord from "@/assets/discord.svg";
+import GitHub from "@/assets/github.svg";
+import HostingerWordmark from "@/assets/hostinger.svg";
+import AWS from "@/assets/icons/aws.svg";
+import Coolify from "@/assets/icons/coolify.svg";
+import Docker from "@/assets/icons/docker.svg";
+import Netlify from "@/assets/icons/netlify.svg";
+import Node from "@/assets/icons/node.svg";
+import Vercel from "@/assets/icons/vercel.svg";
+import NPM from "@/assets/npm.svg";
 
-import DevIconPattern from '@/assets/developer-icon-pattern.svg';
-import MarketerIconPattern from '@/assets/marketer-icon-pattern.svg';
+import DevIconPattern from "@/assets/developer-icon-pattern.svg";
+import MarketerIconPattern from "@/assets/marketer-icon-pattern.svg";
 
-import Orbits from '@/assets/orbits.svg';
-import Skip2FullLogo from '@/assets/skip2-wordmark-red.svg';
-import TursoFullLogo from '@/assets/turso-logo-illustrated.svg';
+import Orbits from "@/assets/orbits.svg";
+import Skip2FullLogo from "@/assets/skip2-wordmark-red.svg";
+import TursoFullLogo from "@/assets/turso-logo-illustrated.svg";
 
-import EcosystemSection from '@/components/EcosystemSection.astro';
+import EcosystemSection from "@/components/EcosystemSection.astro";
 
-import ApolloDefaultExpression from '@/assets/apollo-default.png';
-import ApolloHappyExpression from '@/assets/apollo-happy.png';
-import VideoPoster from '@/assets/video-placeholder.png';
+import ApolloDefaultExpression from "@/assets/apollo-default.png";
+import ApolloHappyExpression from "@/assets/apollo-happy.png";
+import VideoPoster from "@/assets/video-placeholder.png";
 
-import { getImage } from 'astro:assets';
-import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helpers';
+import { getImage } from "astro:assets";
+import {
+	getDiscordMembers,
+	getNpmMonthlyDownloads,
+} from "../utils/stats-helpers";
 
 const getNewestBlogPost = async () => {
 	const entries = await runSDK(
-		SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false, true)
+		SDKCoreJs.GET.folderPages(
+			"dde4b58c-ff71-4b02-a261-dba8fe694644" /* Blog */,
+			false,
+			true,
+		),
 	);
 
-	const articles = entries.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+	const articles = entries.sort(
+		(a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
+	);
 
 	if (articles.length === 0) {
 		return null;
@@ -57,12 +66,13 @@ const getNewestBlogPost = async () => {
 	};
 };
 
-const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = await Promise.all([
-	getNpmMonthlyDownloads('studiocms'),
-	getDiscordMembers(),
-	getNewestBlogPost(),
-	getImage({ src: VideoPoster, format: 'webp' }),
-]);
+const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] =
+	await Promise.all([
+		getNpmMonthlyDownloads("studiocms"),
+		getDiscordMembers(),
+		getNewestBlogPost(),
+		getImage({ src: VideoPoster, format: "webp" }),
+	]);
 ---
 
 <Layout
@@ -77,7 +87,11 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 			class="announcement-badge"
 		>
 			<span>Skip2 Networks is our newest sponsor!</span>
-			<Icon name="heroicons:arrow-right-20-solid" width={16} height={16} />
+			<Icon
+				name="heroicons:arrow-right-20-solid"
+				width={16}
+				height={16}
+			/>
 		</a>
 		<h1>The Astro-native CMS for all your needs.</h1>
 		<p>
@@ -156,10 +170,21 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 					</div>
 				</div>
 			</div>
-			<Button href="/why-studiocms/studiocms-for-developers" color="mono" aria-label="Learn more about how StudioCMS helps developers make great sites.">
+			<Button
+				href="/why-studiocms/studiocms-for-developers"
+				color="mono"
+				aria-label="Learn more about how StudioCMS helps developers make great sites."
+			>
 				Read more
 			</Button>
-			<Image quality={100} src={DevIconPattern} class="icon-deco" width={384} height={120} alt="" />
+			<Image
+				quality={100}
+				src={DevIconPattern}
+				class="icon-deco"
+				width={384}
+				height={120}
+				alt=""
+			/>
 		</Card>
 		<Card class="target-group-div">
 			<div>
@@ -206,7 +231,14 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 			>
 				Read more
 			</Button>
-			<Image quality={100} src={MarketerIconPattern} class="icon-deco" width={384} height={120} alt="" />
+			<Image
+				quality={100}
+				src={MarketerIconPattern}
+				class="icon-deco"
+				width={384}
+				height={120}
+				alt=""
+			/>
 		</Card>
 		<Card class="target-group-div enterprise">
 			<div>
@@ -261,7 +293,11 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 					</div>
 					<div class="reason">
 						<div class="reason-header">
-							<Icon name="heroicons:bolt-20-solid" width={20} height={20} />
+							<Icon
+								name="heroicons:bolt-20-solid"
+								width={20}
+								height={20}
+							/>
 							<h3>Performant</h3>
 						</div>
 						<p>
@@ -283,8 +319,7 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 	<section class="hosting-methods">
 		<h2>Server <span class="keyword">and</span> Serverless</h2>
 		<p class="balanced">
-			StudioCMS stores all of its data in a remote libSQL instance, <br
-			/>
+			StudioCMS stores all of its data in a remote libSQL instance, <br />
 			so you can deploy your site to serverless hosts and still enjoy the full
 			editing capabilities.
 		</p>
@@ -321,20 +356,22 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 		<Card class="hosting-cta">
 			<HostingerWordmark width={300} height={60} />
 			<h3>Want to self-host StudioCMS?</h3>
-			<span>Hostinger offers high performance VPS, perfect for hosting StudioCMS. Use the link below to get a discount!</span>
+			<span
+				>Hostinger offers high performance VPS, perfect for hosting
+				StudioCMS. Use the link below to get a discount!</span
+			>
 			<Button
-				as='a'
-				href='https://www.hostinger.com/cart?product=vps%3Avps_kvm_2&period=12&referral_type=cart_link&REFERRALCODE=FSMAMATTH73C&referral_id=019b013c-6b5c-7321-842a-aa21eef07473'
-				target='_blank'
-   			rel='noopener noreferrer'
+				as="a"
+				href="https://www.hostinger.com/cart?product=vps%3Avps_kvm_2&period=12&referral_type=cart_link&REFERRALCODE=STUDIOCMS&referral_id=019b8cb0-6034-73cf-9131-7b1c2b9ddb09"
+				target="_blank"
+				rel="noopener noreferrer"
 				class="cta"
 				color="primary"
-				variant='solid'
+				variant="solid"
 			>
 				<span>Get started with <strong>Hostinger VPS</strong></span>
 			</Button>
 		</Card>
-
 	</section>
 	{
 		/* <section class="plugins-section">
@@ -386,50 +423,57 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 	</section> */
 	}
 	<EcosystemSection />
-	{newestBlogPost && (
-		<section class="blog-showcase">
-			<h2>Keep up With What's Happening</h2>
-			<p>
-				The StudioCMS Blog is the place to go for updates to the ecosystem.
-			</p>
-			<div class="blog-article">
-				<div class="image-container">
-					<Image
-						src={newestBlogPost.heroImage!}
-						width={960}
-						height={540}
-						class="blog-image"
-						alt={newestBlogPost.title}
-						loading="lazy"
-						quality={100}
-					/>
-					<Image
-						src={newestBlogPost.heroImage!}
-						width={960}
-						height={540}
-						inferSize={true}
-						class="blog-image-glow"
-						alt="Alt Text"
-						loading="lazy"
-						quality={10}
-					/>
-				</div>
-				<div class="blog-info">
-					<div class="blog-info-text">
-						<h3>{newestBlogPost.title}</h3>
-						<p>{newestBlogPost.description}</p>
+	{
+		newestBlogPost && (
+			<section class="blog-showcase">
+				<h2>Keep up With What's Happening</h2>
+				<p>
+					The StudioCMS Blog is the place to go for updates to the
+					ecosystem.
+				</p>
+				<div class="blog-article">
+					<div class="image-container">
+						<Image
+							src={newestBlogPost.heroImage!}
+							width={960}
+							height={540}
+							class="blog-image"
+							alt={newestBlogPost.title}
+							loading="lazy"
+							quality={100}
+						/>
+						<Image
+							src={newestBlogPost.heroImage!}
+							width={960}
+							height={540}
+							inferSize={true}
+							class="blog-image-glow"
+							alt="Alt Text"
+							loading="lazy"
+							quality={10}
+						/>
 					</div>
-					<a
-						class="blog-read-more"
-						href={`/blog/${newestBlogPost.slug}`}
-					>
-						<span>Read More</span>
-						<Icon name="heroicons:arrow-right-20-solid" width={20} height={20} />
-					</a>
+					<div class="blog-info">
+						<div class="blog-info-text">
+							<h3>{newestBlogPost.title}</h3>
+							<p>{newestBlogPost.description}</p>
+						</div>
+						<a
+							class="blog-read-more"
+							href={`/blog/${newestBlogPost.slug}`}
+						>
+							<span>Read More</span>
+							<Icon
+								name="heroicons:arrow-right-20-solid"
+								width={20}
+								height={20}
+							/>
+						</a>
+					</div>
 				</div>
-			</div>
-		</section>
-	)}
+			</section>
+		)
+	}
 	<section class="final-cta">
 		<div class="final-cta-card">
 			<h2>It's time to get started.</h2>
@@ -732,7 +776,11 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		background-color: color-mix(in srgb, var(--background-step-3) 25%, transparent 75%);
+		background-color: color-mix(
+			in srgb,
+			var(--background-step-3) 25%,
+			transparent 75%
+		);
 		padding: 0.75rem;
 		border-radius: 0.5rem;
 		border: 1px solid var(--border);
@@ -1058,7 +1106,7 @@ const [npmDownloads, discordMembers, newestBlogPost, optimizedVideoPoster] = awa
 
 		h3 {
 			font-size: 1.5em;
-			margin-bottom: .5rem;
+			margin-bottom: 0.5rem;
 		}
 
 		> span {
