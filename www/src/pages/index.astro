@@ -35,7 +35,7 @@ import { getDiscordMembers, getNpmMonthlyDownloads } from '../utils/stats-helper
 
 const getNewestBlogPost = async () => {
 	const entries = await runSDK(
-		SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false, true)
+		SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false)
 	);
 
 	const articles = entries.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
