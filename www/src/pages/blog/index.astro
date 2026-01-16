@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
 
 const entries = await runSDK(
-	SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false, true)
+	SDKCoreJs.GET.folderPages('dde4b58c-ff71-4b02-a261-dba8fe694644' /* Blog */, false)
 );
 
 const articlePromises = entries.map(async (article) => {

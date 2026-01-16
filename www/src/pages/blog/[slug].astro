@@ -10,7 +10,7 @@ let { slug } = Astro.params;
 
 const page = await runSDK(SDKCoreJs.GET.page.bySlug(`${slug}`));
 
-if (!page) {
+if (!page || page.draft === true) {
 	return new Response(null, { status: 404 });
 }
 

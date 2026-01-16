@@ -26,12 +26,11 @@ export async function getNpmMonthlyDownloads(packageName: string) {
 	const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
 
 	try {
-		const response = await cFetch(url);
+		const response = await cFetch<{ downloads: string }>(url, (res) => res.json());
 		if (!response.ok) {
 			throw new Error(`Error fetching data: ${response.statusText}`);
 		}
-		const data: { downloads: string } = await response.json();
-		return Number.parseInt(`${data.downloads}`);
+		return Number.parseInt(`${response.data.downloads}`);
 	} catch (error) {
 		console.error('Failed to fetch npm downloads:', error);
 		return null;
@@ -45,7 +44,7 @@ export async function getNpmMonthlyDownloads(packageName: string) {
  */
 export const getStudioCMSStars = async (): Promise<number> => {
 	try {
-		const response = await cFetch('https://api.github.com/repos/withstudiocms/studiocms', {
+		const response = await cFetch<{ stargazers_count: number }>('https://api.github.com/repos/withstudiocms/studiocms', (res) => res.json(), {
 			headers: {
 				Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
 				Accept: 'application/vnd.github.v3+json',
@@ -56,8 +55,7 @@ export const getStudioCMSStars = async (): Promise<number> => {
 			throw new Error(`GitHub API error: ${response.status}`);
 		}
 
-		const data = await response.json();
-		return Number.parseInt(`${data.stargazers_count}`);
+		return Number.parseInt(`${response.data.stargazers_count}`);
 	} catch (error) {
 		console.error('Error fetching StudioCMS stars:', error);
 		return 0;
@@ -70,9 +68,8 @@ export const getStudioCMSStars = async (): Promise<number> => {
  */
 export async function getDiscordMembers() {
 	try {
-		const response = await cFetch('https://apollo.studiocms.dev/api/members/1309279407743172608');
-		const data = await response.json();
-		return Number.parseInt(`${data.members}`);
+		const response = await cFetch<{ members: number }>('https://apollo.studiocms.dev/api/members/1309279407743172608', (res) => res.json());
+		return Number.parseInt(`${response.data.members}`);
 	} catch (error) {
 		return 0;
 	}
