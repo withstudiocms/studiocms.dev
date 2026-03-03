@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import StudioCMSApolloBanner from '@/assets/apollo-banner.png';
 import cFetchBanner from '@/assets/cfetch-banner.png';
+import ecTwoslashBanner from '@/assets/ec-twoslash.png';
 import StudioCMSUIBanner from '@/assets/studiocms-ui-banner.png';
 import PageHeader from '@/components/PageHeader.astro';
 import Layout from '@/layouts/Layout.astro';
@@ -14,16 +15,23 @@ const PROJECTS = [
 		href: 'https://github.com/withstudiocms/cfetch',
 	},
 	{
+		name: 'Expressive-Code-Twoslash',
+		description: 'Twoslash support for Expressive Code.',
+		image: ecTwoslashBanner,
+		href: 'https://twoslash.studiocms.dev',
+	},
+	{
 		name: 'StudioCMS UI',
 		description: 'The UI library we use to build StudioCMS.',
 		image: StudioCMSUIBanner,
 		href: 'https://ui.studiocms.dev',
 	},
 	{
-		name: 'Apollo',
-		description: 'A Discord bot for managing OSS Discord servers.',
+		name: 'Artemis and Apollo',
+		description: 'Collection of bots used by the @withstudiocms organization on GitHub.',
+		// TODO: Replace with a custom banner for the bots repo
 		image: StudioCMSApolloBanner,
-		href: 'https://github.com/withstudiocms/apollo',
+		href: 'https://github.com/withstudiocms/bots',
 	},
 ];
 ---
