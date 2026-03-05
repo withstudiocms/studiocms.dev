@@ -65,7 +65,7 @@ const path = Astro.originPathname;
 					{ label: 'Privacy Policy', href: '/privacy' },
 				],
 			}}
-			copyright='MIT License © 2025 - StudioCMS'
+			copyright={`MIT License © ${new Date().getFullYear()} - StudioCMS`}
 		>
 			<div slot='brand' class='footer-brand'>
 				<div class="brand-newsletter">
