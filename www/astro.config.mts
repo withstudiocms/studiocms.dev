@@ -29,14 +29,14 @@ export default defineConfig({
 	],
 	security: {
 		checkOrigin: false,
-		allowedDomains: [
-			{
-				hostname: 'studiocms.dev',
-			},
-			{
-				hostname: '*.studiocms.dev',
-			}
-		]
+		// allowedDomains: [
+		// 	{
+		// 		hostname: 'studiocms.dev',
+		// 	},
+		// 	{
+		// 		hostname: '*.studiocms.dev',
+		// 	}
+		// ]
 	},
 	adapter: node({
 		mode: 'standalone',
