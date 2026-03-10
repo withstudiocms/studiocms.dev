@@ -15,13 +15,15 @@ export default defineStudioCMSConfig({
 		dashboardConfig: {
 			inject404Route: false,
 		},
+		api: {
+			apiDocs: false
+		},
 	},
 	componentRegistry: {
 		sponsorswithimages: './src/components/SponsorsWithImages.astro',
 	},
 	plugins: [
 		md({
-			flavor: 'studiocms',
 			autoLinkHeadings: false,
 			callouts: 'obsidian',
 			discordSubtext: true,

@@ -1,5 +1,5 @@
 import node from '@astrojs/node';
-import cFetch from '@studiocms/cfetch';
+import cFetch, { Duration } from '@studiocms/cfetch';
 import { defineConfig } from 'astro/config';
 import studiocms from 'studiocms';
 
@@ -21,7 +21,12 @@ export default defineConfig({
 			},
 		],
 	},
-	integrations: [cFetch({ lifetime: '1 hour' }), studiocms()],
+	integrations: [
+		cFetch({
+			lifetime: Duration.hours(1),
+		}),
+		studiocms()
+	],
 	security: {
 		checkOrigin: false,
 	},
