@@ -60,8 +60,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       studiocms:
-        specifier: https://pkg.pr.new/studiocms@642ee75
-        version: https://pkg.pr.new/studiocms@642ee75(108a6aa0858df60abc97a1153ab1fca7)
+        specifier: ^0.4.2
+        version: 0.4.2(108a6aa0858df60abc97a1153ab1fca7)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -1340,9 +1340,8 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@withstudiocms/api-spec@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/api-spec@642ee75':
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/api-spec@642ee75}
-    version: 0.3.0
+  '@withstudiocms/api-spec@0.3.1':
+    resolution: {integrity: sha512-pC+iexBB2GEBQiY75FkedktcLypNPlK7NmqMAhP2lMLAYVmbQuV9mrXs/7a+5SG86e8DOXU9PWRW8LAyz2P26Q==}
     peerDependencies:
       '@effect/platform': ^0.94.5
       '@effect/platform-node': ^0.104.1
@@ -1701,20 +1700,8 @@ packages:
   effect@3.19.19:
     resolution: {integrity: sha512-Yc8U/SVXo2dHnaP7zNBlAo83h/nzSJpi7vph6Hzyl4ulgMBIgPmz3UzOjb9sBgpFE00gC0iETR244sfXDNLHRg==}
 
-  effectify@0.1.0:
-    resolution: {integrity: sha512-5mA9Ztc83TzDdbNa64JkCDQ9eLkAwuh+emlsGN48hy2by1YG3M3btCfsjBM6RSZMtFBigD1MHd8jazFjPIhs0Q==}
-    peerDependencies:
-      '@effect/platform': ^0.94.5
-      '@effect/platform-node': ^0.104.1
-      astro: ^5.12.9
-      effect: ^3.19.19
-    peerDependenciesMeta:
-      astro:
-        optional: true
-
-  effectify@https://pkg.pr.new/withstudiocms/studiocms/effectify@642ee75:
-    resolution: {tarball: https://pkg.pr.new/withstudiocms/studiocms/effectify@642ee75}
-    version: 0.1.0
+  effectify@0.1.1:
+    resolution: {integrity: sha512-9FoTAcGBgv5Td5o9C0BTEpwzHbRZaThl4QTbiPWWPC6ycRiALhjRpCSdvqPHzD35dz2eUC0ZUdRyjY9cVtkjeA==}
     peerDependencies:
       '@effect/platform': ^0.94.5
       '@effect/platform-node': ^0.104.1
@@ -2573,9 +2560,8 @@ packages:
     resolution: {integrity: sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w==}
     engines: {node: '>=12'}
 
-  studiocms@https://pkg.pr.new/studiocms@642ee75:
-    resolution: {tarball: https://pkg.pr.new/studiocms@642ee75}
-    version: 0.4.1
+  studiocms@0.4.2:
+    resolution: {integrity: sha512-jr6217GQn0cPMX7CJYZTnOmdb89Gz0S9Cyb8OHfrfYATUjlE00vrdfk+sJtZre6I9AUmDk/j3fMAezWHPLQQ7w==}
     hasBin: true
     peerDependencies:
       '@effect/platform': ^0.94.5
@@ -3891,14 +3877,14 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@withstudiocms/api-spec@https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/api-spec@642ee75(40c75271ddddfb1f207f17570c80ef3e)':
+  '@withstudiocms/api-spec@0.3.1(40c75271ddddfb1f207f17570c80ef3e)':
     dependencies:
       '@effect/platform': 0.94.5(effect@3.19.19)
       '@effect/platform-node': 0.104.1(@effect/cluster@0.56.4(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/workflow@0.16.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(effect@3.19.19)
       '@withstudiocms/sdk': 0.3.0(effect@3.19.19)
       astro: 5.18.0(@types/node@22.19.15)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2)
       effect: 3.19.19
-      effectify: https://pkg.pr.new/withstudiocms/studiocms/effectify@642ee75(6b8ac2bdc12e03ae217424f51b765084)
+      effectify: 0.1.1(6b8ac2bdc12e03ae217424f51b765084)
 
   '@withstudiocms/auth-kit@0.1.4(d1bce51f17bbf6c19f1fab9202242666)':
     dependencies:
@@ -3954,7 +3940,7 @@ snapshots:
       astro: 5.18.0(@types/node@22.19.15)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2)
       deepmerge-ts: 7.1.5
       effect: 3.19.19
-      effectify: 0.1.0(6b8ac2bdc12e03ae217424f51b765084)
+      effectify: 0.1.1(6b8ac2bdc12e03ae217424f51b765084)
       micromatch: 4.0.8
       nodemailer: 8.0.1
       socks: 2.8.7
@@ -4331,15 +4317,7 @@ snapshots:
       '@standard-schema/spec': 1.1.0
       fast-check: 3.23.2
 
-  effectify@0.1.0(6b8ac2bdc12e03ae217424f51b765084):
-    dependencies:
-      '@effect/platform': 0.94.5(effect@3.19.19)
-      '@effect/platform-node': 0.104.1(@effect/cluster@0.56.4(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/workflow@0.16.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(effect@3.19.19)
-      effect: 3.19.19
-    optionalDependencies:
-      astro: 5.18.0(@types/node@22.19.15)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2)
-
-  effectify@https://pkg.pr.new/withstudiocms/studiocms/effectify@642ee75(6b8ac2bdc12e03ae217424f51b765084):
+  effectify@0.1.1(6b8ac2bdc12e03ae217424f51b765084):
     dependencies:
       '@effect/platform': 0.94.5(effect@3.19.19)
       '@effect/platform-node': 0.104.1(@effect/cluster@0.56.4(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/workflow@0.16.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(@effect/rpc@0.73.2(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/sql@0.49.0(@effect/experimental@0.58.0(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(@effect/platform@0.94.5(effect@3.19.19))(effect@3.19.19))(effect@3.19.19)
@@ -5579,7 +5557,7 @@ snapshots:
     dependencies:
       ansi-regex: 6.2.2
 
-  studiocms@https://pkg.pr.new/studiocms@642ee75(108a6aa0858df60abc97a1153ab1fca7):
+  studiocms@0.4.2(108a6aa0858df60abc97a1153ab1fca7):
     dependencies:
       '@effect/platform': 0.94.5(effect@3.19.19)
       '@iconify-json/circle-flags': 1.2.10
@@ -5590,7 +5568,7 @@ snapshots:
       '@nanostores/persistent': 1.3.3(nanostores@1.1.1)
       '@outerbase/sdk-transform': 1.0.8
       '@studiocms/ui': 1.1.2(astro@5.18.0(@types/node@22.19.15)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2))(vite@6.4.1(@types/node@22.19.15)(yaml@2.8.2))
-      '@withstudiocms/api-spec': https://pkg.pr.new/withstudiocms/studiocms/@withstudiocms/api-spec@642ee75(40c75271ddddfb1f207f17570c80ef3e)
+      '@withstudiocms/api-spec': 0.3.1(40c75271ddddfb1f207f17570c80ef3e)
       '@withstudiocms/auth-kit': 0.1.4(d1bce51f17bbf6c19f1fab9202242666)
       '@withstudiocms/cli-kit': 0.2.1
       '@withstudiocms/component-registry': 0.1.4(d1bce51f17bbf6c19f1fab9202242666)
@@ -5608,7 +5586,7 @@ snapshots:
       dompurify: 3.3.2
       dotenv: 17.3.1
       effect: 3.19.19
-      effectify: https://pkg.pr.new/withstudiocms/studiocms/effectify@642ee75(6b8ac2bdc12e03ae217424f51b765084)
+      effectify: 0.1.1(6b8ac2bdc12e03ae217424f51b765084)
       fuse.js: 7.1.0
       jose: 6.2.0
       magicast: 0.5.2

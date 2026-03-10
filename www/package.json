@@ -22,7 +22,7 @@
     "astro": "^5.18.0",
     "pathe": "2.0.3",
     "sharp": "^0.33.5",
-    "studiocms": "https://pkg.pr.new/studiocms@642ee75",
+    "studiocms": "^0.4.2",
     "tslib": "^2.8.1",
     "vite": "^6.3.5",
     "effect": "^3.19.19",
