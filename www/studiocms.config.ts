@@ -15,9 +15,9 @@ export default defineStudioCMSConfig({
 		dashboardConfig: {
 			inject404Route: false,
 		},
-		// api: {
-		// 	apiDocs: false
-		// },
+		api: {
+			apiDocs: false
+		},
 	},
 	componentRegistry: {
 		sponsorswithimages: './src/components/SponsorsWithImages.astro',
