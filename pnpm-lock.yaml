@@ -51,8 +51,8 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       studiocms:
-        specifier: https://pkg.pr.new/studiocms@cba1651
-        version: https://pkg.pr.new/studiocms@cba1651(76722411df63f10717a1db82ad53b966)
+        specifier: ^0.4.1
+        version: 0.4.1(76722411df63f10717a1db82ad53b966)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -2455,9 +2455,8 @@ packages:
     resolution: {integrity: sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w==}
     engines: {node: '>=12'}
 
-  studiocms@https://pkg.pr.new/studiocms@cba1651:
-    resolution: {tarball: https://pkg.pr.new/studiocms@cba1651}
-    version: 0.4.0
+  studiocms@0.4.1:
+    resolution: {integrity: sha512-10BPQdr0lCIHDhsbhm8+tBemVRb4oGH/RWUDNx0kNhPMjBEVgJwN3H6tHp4sBR2xtDD+CH0TtWXSFvtVVjP9xw==}
     hasBin: true
     peerDependencies:
       '@effect/platform': ^0.94.5
@@ -5339,7 +5338,7 @@ snapshots:
     dependencies:
       ansi-regex: 6.2.2
 
-  studiocms@https://pkg.pr.new/studiocms@cba1651(76722411df63f10717a1db82ad53b966):
+  studiocms@0.4.1(76722411df63f10717a1db82ad53b966):
     dependencies:
       '@effect/platform': 0.94.5(effect@3.19.19)
       '@iconify-json/circle-flags': 1.2.10
