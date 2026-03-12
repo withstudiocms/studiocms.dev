@@ -25,7 +25,7 @@ export default defineConfig({
 		cFetch({
 			lifetime: Duration.hours(1),
 		}),
-		studiocms()
+		studiocms(),
 	],
 	security: {
 		allowedDomains: [
@@ -34,7 +34,7 @@ export default defineConfig({
 			},
 			{
 				hostname: '*.studiocms.dev',
-			}
+			},
 		],
 	},
 	adapter: node({

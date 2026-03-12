@@ -16,7 +16,7 @@ export default defineStudioCMSConfig({
 			inject404Route: false,
 		},
 		api: {
-			apiDocs: false
+			apiDocs: false,
 		},
 	},
 	componentRegistry: {
