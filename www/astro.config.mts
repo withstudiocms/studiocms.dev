@@ -28,7 +28,14 @@ export default defineConfig({
 		studiocms()
 	],
 	security: {
-		checkOrigin: false,
+		allowedDomains: [
+			{
+				hostname: 'studiocms.dev',
+			},
+			{
+				hostname: '*.studiocms.dev',
+			}
+		],
 	},
 	adapter: node({
 		mode: 'standalone',
