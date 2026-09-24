@@ -14,25 +14,23 @@
     "lint:fix": "biome check --write ."
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^6.3.10",
-    "@astrojs/node": "^9.5.4",
-    "@fontsource-variable/onest": "^5.2.11",
-    "@studiocms/cfetch": "^0.4.1",
+    "@astrojs/node": "^11.1.6",
+    "@fontsource-variable/onest": "^5.3.1",
+    "@studiocms/cfetch": "^0.5.1",
     "@types/node": "^22.13.5",
-    "astro": "^5.18.0",
+    "astro": "^7.3.0",
     "pathe": "2.0.3",
     "sharp": "^0.33.5",
-    "studiocms": "^0.4.2",
+    "studiocms": "^0.5.0",
     "tslib": "^2.8.1",
-    "vite": "^6.3.5",
-    "effect": "^3.19.19",
-    "@effect/platform": "^0.94.5",
-    "@effect/platform-node": "^0.104.1",
-    "@studiocms/md": "^0.3.0",
-    "@libsql/client": "^0.15.15",
-    "kysely-turso": "^0.1.1"
+    "vite": "^8.3.0",
+    "effect": "^3.22.2",
+    "@effect/platform": "^0.97.2",
+    "@effect/platform-node": "^0.108.2",
+    "@studiocms/md": "^0.4.0",
+    "@libsql/client": "^0.17.4"
   },
   "peerDependencies": {
-    "@studiocms/ui": "^1.1.2"
+    "@studiocms/ui": "^1.2.2"
   }
 }
